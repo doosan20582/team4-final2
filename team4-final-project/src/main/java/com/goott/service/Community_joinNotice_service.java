@@ -38,4 +38,6 @@ public interface Community_joinNotice_service {
 
 	public void delete_reply(Map<String, Object> map);
 
+	public String adminConfirmation(String member_id);
+
 }

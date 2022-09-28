@@ -69,12 +69,12 @@
     </select>
     
     <select id="listCount" parameterType = "hashMap" resultType="com.goott.domain.T_board_VO">
-  		select count(*) as 'board_count' from t_board
+  		select count(*) as 'board_count' from t_board where board_deleteYN = 'N'
   		<if test="board_tag_id != null and board_tag_id != '' and board_tag_id != 0">
-			where board_tag_id = #{board_tag_id}
+			and board_tag_id = #{board_tag_id}
 		</if>
 		<if test="keyword != null and keyword != ''">
-			where board_title like CONCAT('%',#{keyword},'%') or board_text like CONCAT('%',#{keyword},'%') or member_id like CONCAT('%',#{keyword},'%')
+			and board_title like CONCAT('%',#{keyword},'%') or board_text like CONCAT('%',#{keyword},'%') or member_id like CONCAT('%',#{keyword},'%')
 		</if>
   	</select>
   	

@@ -152,6 +152,7 @@ main{
     list-style: none;
     display: flex;
     flex-direction: row;
+    position:relative;
 }
 
 .section_notice_main_content>li{
@@ -159,6 +160,12 @@ main{
     line-height: 58px;
     font-size: 1.1rem;
     text-align: center;
+}
+
+.section_notice_main_content .list_check{
+	position:absolute;
+	top:24px;
+	left:10px;
 }
 
 .section_notice_main_content>li:nth-child(1){
@@ -248,6 +255,16 @@ main{
     border-radius: 5px;
     position: absolute;
     right: 20px;
+}
+
+.delete_btn{
+    width: 100px;
+    height: 40px;
+    font-size: 1.0rem;
+    border-style: none;
+    border-radius: 5px;
+    position: absolute;
+    left: 20px;
 }
 
 .not_found{

@@ -21,7 +21,13 @@
 	<li>${data.camping_period}</li>
 	<li>${data.camping_hit}</li>
 	<li>${data.camping_close}</li>
-</div>
+		<c:if test="${member_auth eq '관리자'}">
+			<input class="list_check" type="checkbox">
+		</c:if>
+		<c:if test="${member_auth ne '관리자'}">
+			<input class="list_check" type="checkbox" style="display: none">
+		</c:if>
+	</div>
 <form method="POST" class="list_form" action="/community/joinNotice/go_detail">
 				<input type="hidden" name="user_id" value="${data.member_id}">
 				<input type="hidden" name="camping_id" value="${data.camping_id}">

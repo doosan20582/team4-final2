@@ -38,4 +38,6 @@ public interface Community_joinNotice_mapper {
 
 	public void delete_reply(Map<String, Object> map);
 
+	public String adminConfirmation(String member_id);
+
 }

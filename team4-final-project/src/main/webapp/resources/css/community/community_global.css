@@ -71,6 +71,10 @@ header .login a{
     text-decoration: none;
 }
 
+#logOutBtn{
+	cursor:pointer;
+}
+
 main{
     width: 100%;
     background-color: var(--subColor);
