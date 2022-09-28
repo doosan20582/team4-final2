@@ -10,7 +10,7 @@
 
 <!-- ±€∑Œπ˙ css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<link rel="stylesheet" href="/resources/css/shop/grade.css">
+<link rel="stylesheet" href="/resources/css/user/grade.css">
 <!--ºÓ«Œ∏Ù ±€∑Œπ˙ æ∆¿Ãƒ‹ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <title>Document</title>
@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<div class="NextMonthGrade">
-					<div class="NextMonthGrade_top" style="background-color: ${Info.grade_color}">
+					<div class="NextMonthGrade" style="background-color: ${Info.grade_color}">
 						<p class="p1">
 							¥Ÿ¿Ω¥ﬁ øπªÛµÓ±ﬁ¿∫
 							<span id="cus_nextgrade">$$</span>
