@@ -14,5 +14,6 @@ public interface DrawServiceAdmin {
 	public List<Map<String, Object>> admin_add_plus_product_name(Map<String,Object> map);
 	public List<Map<String, Object>> admin_add_plus_product_price(Map<String,Object> map);
 	public void draw_admin_add(DrawVO vo);
+	public List<DrawVO> draw_customer();
 	
-}
+} 

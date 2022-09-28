@@ -56,7 +56,13 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 		drawAdminMapper.draw_admin_add(vo);
 	}
 
-	
+	@Override
+	public List<DrawVO> draw_customer() {
+		// TODO Auto-generated method stub
+		return drawAdminMapper.draw_customer();
+	}
+ 
+	   
 
 
 }

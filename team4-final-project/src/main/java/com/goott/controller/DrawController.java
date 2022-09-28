@@ -52,6 +52,22 @@ public class DrawController {
 
 	}
 	
+	@RequestMapping(value = "/shop/draw_customer", method = RequestMethod.GET)
+	public ModelAndView draw_customer() {
+		log.info("draw 목록 관리자 ====================================================");
+
+		List<DrawVO> draw_customer = drawServiceAdmin.draw_customer();
+
+		log.info("draw 목록 : " + draw_customer);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("shop/draw_customer");
+		mv.addObject("list", draw_customer);
+
+		return mv;
+
+	}
+	
 	@RequestMapping(value = "shop/draw_admin_add", method = RequestMethod.GET)
 	public String draw_admin_add_get() {
 		return "/shop/draw_admin_add";

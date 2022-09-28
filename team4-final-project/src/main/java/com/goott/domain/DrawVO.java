@@ -2,7 +2,7 @@ package com.goott.domain;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 
