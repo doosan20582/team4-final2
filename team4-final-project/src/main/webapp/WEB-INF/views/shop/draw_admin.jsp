@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +58,6 @@
 										<input type="button" value="삭제" class="adminBtns">
 									</div>
 								</div>
-							
 								<div class="font_bottom">
 									<table>
 										<tbody>
@@ -69,7 +67,7 @@
 											</tr>
 											<tr>
 												<td>상품 제목</td>
-												<td>${row.product_id}</td>
+												<td>${row.draw_title}</td>
 											</tr>
 											<tr>
 												<td>가격</td>
@@ -81,39 +79,31 @@
 											</tr>
 											<tr>
 												<td>이벤트 시작일</td>
-												<td> 
-													<%-- <fmt:parseDate value="${row.draw_event_start_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" /> --%>
-													<%--  <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
-													<fmt:formatDate value="${row.draw_event_start_date }"/>
-													
+												<td><fmt:formatDate value="${row.draw_event_start_date}" />
+												 <%-- <fmt:parseDate value="${row.draw_event_start_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" />
+												 <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
 												</td>
 											</tr>
-											<tr>
+												<tr>
 												<td>이벤트 종료일</td>
-												<td> 
-													<%-- <fmt:parseDate value="${row.draw_event_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" /> --%>
-												 	<%-- <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
-													<fmt:formatDate value="${row.draw_event_end_date }"/>
-													
+												<td> <fmt:formatDate value="${row.draw_event_end_date}" /> 
+												<%-- <fmt:parseDate value="${row.draw_event_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" />
+												 <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
 												</td>
 
 											</tr>
 											<tr>
 												<td>구매 시작일</td>
-												<td> 
-													<%-- <fmt:parseDate value="${row.draw_pur_start_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" /> --%>
-												 	<%-- <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
-													<fmt:formatDate value="${row.draw_pur_start_date }"/>
-													
+												<td>  <fmt:formatDate value="${row.draw_pur_start_date}" /> 
+												<%-- <fmt:parseDate value="${row.draw_pur_start_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" />
+												 <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
 												</td>
 												
-											<tr>
+												<tr>
 												<td>구매 종료일</td>
-												<td> 
-													<%-- <fmt:parseDate value="${row.draw_pur_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" /> --%>
-												 	<%-- <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
-													<fmt:formatDate value="${row.draw_pur_end_date }"/>
-													
+												<td> <fmt:formatDate value="${row.draw_pur_end_date}" />
+												<%-- <fmt:parseDate value="${row.draw_pur_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" />
+												 <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
 												</td>
 
 											</tr>
@@ -121,7 +111,7 @@
 										
 											
 
-											
+											</tr>
 											
 											<tr>
 												<td>코멘트</td>

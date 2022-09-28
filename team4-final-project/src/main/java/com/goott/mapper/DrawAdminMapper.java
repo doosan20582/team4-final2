@@ -36,6 +36,8 @@ public interface DrawAdminMapper {
 
 	public void draw_admin_add(DrawVO vo);
 
+	public List<DrawVO> draw_customer();
+  
 
 
  

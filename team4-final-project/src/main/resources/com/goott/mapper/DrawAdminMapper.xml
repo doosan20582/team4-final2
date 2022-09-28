@@ -10,6 +10,15 @@
 		]]>
 	</select>
 	
+		<select id="draw_customer" resultType="com.goott.domain.DrawVO">
+		<![CDATA[
+			select draw_id, draw_title, draw_price, product_id,
+				   draw_reqruit, draw_event_start_date, draw_event_end_date,
+		           draw_pur_start_date, draw_pur_end_date, draw_comment 
+		      from t_draw;
+		]]>
+	</select>
+	
 	<select id="draw_admin_add_plus" parameterType="_int" resultType="hashMap">
 	<![CDATA[
       
