@@ -7,6 +7,37 @@ const search_btn = document.querySelector(".side_nav_search_btn"); // 검색 버
 const search_option = document.querySelector(".side_nav"); // 검색 시 submit 할 form
 let camping_title = document.querySelectorAll(".camping_title"); // 게시글 제목 (상세페이지로 넘어가게)
 const write_btn = document.querySelector(".write_btn"); // 글쓰기 버튼
+const delete_btn = document.querySelector(".delete_btn"); // 관리자 글 삭제 버튼
+
+delete_btn.addEventListener("click",function(){ // 관리자 글 삭제하기
+	if (confirm("게시글을 삭제하시겠습니까?")) {
+		let list_check = document.querySelectorAll(".list_check");
+		let delete_list = [];
+		for(i=0; i<list_check.length; i++){
+			if(list_check[i].checked){
+				delete_list.push(list_check[i].parentNode.nextElementSibling[1].value);
+			}
+		}
+		
+		$.ajax({
+			type : "POST",
+			traditional : true,
+			url : "/community/joinNotice/admin_delete",
+			async: false,
+			data : {
+				        delete_list : delete_list        // 보내고자 하는 data 변수 설정
+				    },
+			success : function(data) {
+				document.location.reload();
+			},
+			error : function(data) {
+				console.log(data);
+			}
+		});
+	}
+	
+	
+})
 
 for(let i=0; i<camping_title.length; i++){ // 제목 누르면 상세페이지로
 	camping_title[i].addEventListener("click",function(){
@@ -113,7 +144,10 @@ for(let i=0; i<page; i++){
 	
 	//페이지 제일 마지막으로 가게
 	end_btn.addEventListener("click",function(){
-		page_area.style.left = -(page-3)*60+"px";
+		if(page>5){
+			page_area.style.left = -(page-3)*60+"px";
+		}
+		
 		$(page_area).children().children().css("color","white");
 		$(page_area).children().last().children().css("color","rgb(0, 173, 26)");
 		

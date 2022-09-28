@@ -92,4 +92,9 @@ public class Community_joinNotice_service_impl implements Community_joinNotice_s
 		mapper.delete_reply(map);
 	}
 
+	@Override
+	public String adminConfirmation(String member_id) {
+		return mapper.adminConfirmation(member_id);
+	}
+
 }

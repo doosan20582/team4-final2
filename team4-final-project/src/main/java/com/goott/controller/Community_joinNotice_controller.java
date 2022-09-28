@@ -2,6 +2,9 @@ package com.goott.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -26,10 +29,19 @@ public class Community_joinNotice_controller {
 	private Community_joinNotice_service jservice;
 	
 	@GetMapping("/main") // 캠핑모임게시판 메인
-	public void getList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map , Model model) {
+	public void getList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map , Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_auth = " ";
+		//세션에 저장된 아이디
+		if(session.getAttribute("login_id")!=null) {
+			String member_id = session.getAttribute("login_id").toString();
+			member_auth= jservice.adminConfirmation(member_id); // 회원 관리자 여부
+		}
 		model.addAttribute("list", jservice.getList(map)); // 게시글 리스트
 		model.addAttribute("count", jservice.listCount(map)); // 게시글 갯수
 		model.addAttribute("option", map); // 페이징 처리에 사용할 검색 옵션
+		model.addAttribute("member_auth", member_auth); // 관리자 여부 확인
+		
 	}
 	
 	@PostMapping("/go_detail")// 상세페이지 조건
@@ -117,9 +129,17 @@ public class Community_joinNotice_controller {
 	}
 	
 	@PostMapping("change_page") // 게시판 게시글 리스트 페이지 전환
-	public ModelAndView change_page(@RequestBody Map<String, Object> map) {
+	public ModelAndView change_page(@RequestBody Map<String, Object> map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_auth = " ";
+		//세션에 저장된 아이디
+		if(session.getAttribute("login_id")!=null) {
+			String member_id = session.getAttribute("login_id").toString();
+			member_auth= jservice.adminConfirmation(member_id); // 회원 관리자 여부
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", jservice.changePage(map));
+		mv.addObject("member_auth", member_auth);
 		mv.setViewName("community/joinNotice/list");
 		return mv;
 	}
@@ -130,5 +150,16 @@ public class Community_joinNotice_controller {
 		mv.addObject("data", jservice.campsite(map));
 		mv.setViewName("community/joinNotice/modal");  
 		return mv;
+	}
+	
+	@PostMapping("admin_delete") // 관리자 계정 글 삭제 기능
+	@ResponseBody
+	public void admin_delete(HttpServletRequest request) {
+		String[] delete_list = request.getParameterValues("delete_list");
+		int size = delete_list.length;
+		for(int i = 0; i<size; i++) {
+			int camping_id = Integer.parseInt(delete_list[i]);
+			jservice.delete(camping_id);
+		}
 	}
 }

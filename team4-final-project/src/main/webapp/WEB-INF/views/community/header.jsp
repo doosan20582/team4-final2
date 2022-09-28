@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--글로벌 css-->
     <link rel="stylesheet"
-	href="<c:url value="/resources/css/community/global.css?ver=2"/>">
+	href="<c:url value="/resources/css/community_global.css?ver=2"/>">
     <!--쇼핑몰 글로벌 아이콘 cdn-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
     <title>Document</title>
@@ -19,7 +19,7 @@
      <!--헤더-->
      <header>
         <div class="logo">
-            <a href="/community/main"><h1>Camp<span>ing</span></h1></a>
+            <a><h1>Camp<span>ing</span></h1></a>
         </div>
         <div class="menu">
             <a href="/community/freeNotice/main">자유게시판</a>
@@ -38,16 +38,21 @@
             </a>
             
              <c:if test="${sessionScope.login_id eq null}">
-            	<a href="/login">LogIn</a>
-	            <a href="">SignUp</a>
-	            <input type=hidden id=user_id value="">
+            	<a href="/login">로그인</a>
+	            <a href="/agree">회원가입</a>
+	            <a id="loginName" class="noneClass" href="/user">${sessionScope.login_id }님</a>
+	            <a id="logOutBtn" class="noneClass">로그아웃</a>
             </c:if>
             <c:if test="${sessionScope.login_id ne null}">
-	            <a>${sessionScope.login_id} 님</a>
-	            <button id="logOutBtn">LogOut</button>
-	            <input type=hidden id=user_id value="${sessionScope.login_id}">
+            	<a href="/login" class="noneClass">로그인</a>
+	            <a href="/agree" class="noneClass">회원가입</a>
+	            <a id="loginName"  href="/user">${sessionScope.login_id }님</a>
+	            <a id="logOutBtn" >로그아웃</a>
             </c:if>
+            <input type="hidden" id="user_id" value="sessionScope.login_id">
         </div>
+        
+        <script src="/resources/js/shop/header.js"></script>
     </header>
       
 </body>

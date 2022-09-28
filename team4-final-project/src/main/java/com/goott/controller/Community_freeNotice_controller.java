@@ -34,9 +34,12 @@ public class Community_freeNotice_controller {
 		String keyword = (String) map.get("keyword");
 		int tag_id = tag_vo.getBoard_tag_id();
 		HttpSession session = request.getSession();
+		String member_auth = " ";
 		//세션에 저장된 아이디
-		String member_id = session.getAttribute("login_id").toString();
-		String member_auth = fservice.adminConfirmation(member_id); // 회원 관리자 여부
+		if(session.getAttribute("login_id")!=null) {
+			String member_id = session.getAttribute("login_id").toString();
+			member_auth= fservice.adminConfirmation(member_id); // 회원 관리자 여부
+		}
 		model.addAttribute("data", fservice.getList(map));
 		model.addAttribute("tag", fservice.getTag());
 		model.addAttribute("count", fservice.listCount(map));
@@ -134,10 +137,29 @@ public class Community_freeNotice_controller {
 	}
 	
 	@PostMapping("change_page") // 자유게시판 게시글 리스트 페이지 전환
-	public ModelAndView change_page(@RequestBody Map<String, Object> map) {
+	public ModelAndView change_page(@RequestBody Map<String, Object> map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_auth = " ";
+		//세션에 저장된 아이디
+		if(session.getAttribute("login_id")!=null) {
+			String member_id = session.getAttribute("login_id").toString();
+			member_auth= fservice.adminConfirmation(member_id); // 회원 관리자 여부
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("data", fservice.change_page(map));
+		mv.addObject("member_auth", member_auth);
 		mv.setViewName("community/freeNotice/list");
 		return mv;
+	}
+	
+	@PostMapping("admin_delete") // 관리자 계정 글 삭제 기능
+	@ResponseBody
+	public void admin_delete(HttpServletRequest request) {
+		String[] delete_list = request.getParameterValues("delete_list");
+		int size = delete_list.length;
+		for(int i = 0; i<size; i++) {
+			int board_id = Integer.parseInt(delete_list[i]);
+			fservice.delete(board_id);
+		}
 	}
 }

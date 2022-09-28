@@ -61,6 +61,7 @@
     <select id="listCount" parameterType = "hashMap" resultType="com.goott.domain.T_camping_VO">
   		select count(*) as 'camping_count' from t_camping where
   		<include refid="search_option" />
+  		and camping_deleteYN = 'N'
   	</select>
   	
   	<select id="changePage" resultType="com.goott.domain.T_camping_VO">
@@ -150,5 +151,9 @@
 	<delete id="delete_reply">
     	delete from t_camping_reply where camping_reply_id = #{camping_reply_id}
     </delete>
+    
+    <select id="adminConfirmation" resultType="String">
+    	select member_auth from t_member where member_id = #{member_id}
+    </select>
   	
   </mapper>

@@ -67,7 +67,12 @@
 					<script>
 						let camping_count = '<c:out value="${camping_count}"/>';
 					</script>
-
+					<c:if test="${member_auth eq '관리자'}">
+						<input type="button" value="글삭제" class="delete_btn">
+					</c:if>
+					<c:if test="${member_auth ne '관리자'}">
+						<input type="button" value="글삭제" class="delete_btn" style="display: none">
+					</c:if>
 					<input type="button" value="글쓰기" class="write_btn">
 				</div>
 			</div>
@@ -76,8 +81,6 @@
 
 	<!--푸터-->
 	<%@ include file="../footer.jsp"%>
-
 	<script src="<c:url value="/resources/js/community/joinNotice/main.js?ver=1"/>"></script>
-
 </body>
 </html>
