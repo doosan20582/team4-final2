@@ -18,9 +18,16 @@
 <title>Document</title>
 
 </head>
-<script>
 
-</script>
+	<script type="text/javascript">
+    let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
+    QnA_Title_btn.addEventListener('click',function(){
+    	location.href="Question";
+    });
+    
+     
+  
+	</script>
 
 <!-- header -->
 <%@include file="./header.jsp"%>
@@ -97,12 +104,5 @@
 
 	<!-- <script src="js/QnA.js"></script> -->
 
-	<script type="text/javascript">
-    let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
-    QnA_Title_btn.addEventListener('click',function(){
-    	location.href="Question";
-    });
-  
-	</script>
 </body>
 </html>
