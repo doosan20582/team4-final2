@@ -31,7 +31,7 @@
 			</c:if>
 			
 			<div class="productTop">
-				<input type="hidden" name="product_id" value="${product.product_id }">
+				<input type="hidden" name="product_id" id="product_id" value="${product.product_id }">
 				<div class="topLeft">
 					<div class="mainImgDiv">
 						<!-- 상품 이미지1 -->
@@ -161,13 +161,13 @@
 				</c:forEach>
 				
 			</div>
+				
 				<c:if test="${pageReview.end eq true }">
 					<div class="veiwMoreRewviesDiv noneClass">리뷰 더보기</div>
 				</c:if>
 				<c:if test="${pageReview.end eq false }">
 					<div class="veiwMoreRewviesDiv">리뷰 더보기</div>
 				</c:if>
-				
 		</div>
 		<!--네비게이터-->
 		<div class="navigatorContainer">

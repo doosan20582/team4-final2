@@ -1,11 +1,13 @@
 package com.goott.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,6 +103,27 @@ public class ProductController {
 		return "redirect:/shop/admin";
 	}
 
+	@RequestMapping(value = "/review", method = RequestMethod.POST)
+	public String moreReview(@RequestBody Map<String, Object> param, Model model) {
+		log.info(param);
+		int product_id = Integer.parseInt(param.get("product_id").toString());
+		int currentPage = Integer.parseInt(param.get("currentPage").toString());
+
+		// 리뷰 페이지
+		int totalNum = productService.getReviewTotalNum(product_id);
+		// 리뷰 페이지 엔티티 초기화
+		PageReview pageReview = new PageReview(currentPage, totalNum);
+
+		// 상품 아이디
+		pageReview.setProduct_id(product_id);
+		log.info(pageReview);
+
+		// 상품 리뷰 목록
+		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);
+		model.addAttribute("reviewList", reviewList);
+		return "/shop/product/productReview";
+	}
+
 	// 상품 상세
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detailGet(@RequestParam(value = "product_id") int product_id,
@@ -123,7 +146,7 @@ public class ProductController {
 		model.addAttribute("product", productVO);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageReview", pageReview);
-	
+
 		return "shop/product/product_detail_user";
 	}
 
@@ -149,7 +172,7 @@ public class ProductController {
 		model.addAttribute("product", productVO);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageReview", pageReview);
-		
+
 		return "shop/product/product_detail_admin";
 	}
 }
