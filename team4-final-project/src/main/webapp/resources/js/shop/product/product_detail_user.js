@@ -1,5 +1,6 @@
 'use strict'
-
+//상품 키
+const product_id = document.querySelector('#product_id');
 /*메인 이미지 */
 const productMainImg = document.querySelector('.productMainImg');
 /*서브 이미지들 */
@@ -39,6 +40,8 @@ const toReveiwCon = document.querySelector('.toReveiwCon');
 const currentPage = document.querySelector('#currentPage');
 //리뷰 더보기 디비전
 const veiwMoreRewviesDiv = document.querySelector('.veiwMoreRewviesDiv');
+//리뷰 컨테이너
+const reviewBottom = document.querySelector('.reviewBottom');
 
 //==================================================================================================
 
@@ -75,7 +78,23 @@ function viewMoreReview(){
 	temp += 1;
 	//현재 페이지 1 증가
 	currentPage.value = temp;
+	let param = { product_id : product_id.value ,currentPage : currentPage.value };
 	//ajax 처리후 다음 10개 가져오기 로직 작성
+	$.ajax({
+		type: 'post',
+		url: '/product/review',
+		data: JSON.stringify(param),
+		dataType: 'html',
+		contentType:'application/json; charset=utf-8',
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			alert('통신 성공');
+			$('.reviewBottom').append(data);
+		}
+		
+	});
 }
 
 /*리뷰 구역 이동 함수 */
