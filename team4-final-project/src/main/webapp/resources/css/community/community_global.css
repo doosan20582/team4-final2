@@ -1,0 +1,150 @@
+/* :root{
+    --mainColor : rgb(24, 24, 24);
+    --subColor : rgb(59, 59, 59);
+    --borderColor : rgba(209, 209, 209, 0.486);
+    --fontColor : rgb(0, 173, 26); 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ */
+header{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    background-color: var(--subColor);
+    border-bottom: 0.5px solid var(--borderColor);
+}
+
+header .logo{
+    width: 20%;
+    height: 100%;
+    color: var(--fontColor);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo a{
+	text-decoration : none;
+	cursor : pointer;
+	color: var(--fontColor);
+}
+
+header .logo span{
+    color : white;
+}
+
+header .menu{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    margin-left: 3rem;
+    cursor:pointer;
+}
+
+header .login{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+header .login a{
+    color: rgb(209, 209, 209);
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+main{
+    width: 100%;
+    background-color: var(--subColor);
+}
+
+.side_nav{
+    width: 90%;
+    height: 592.5px;
+    border: 3px solid darkorange;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: var(--subColor);
+    list-style: none;
+    padding-left: 20px;
+}
+
+.side_nav>li{
+    color: white;
+    font-size: 1.3rem;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.side_nav_search{
+    width: 230px;
+    height: 25px;
+    font-size: 1.2rem;
+    border-style: none;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.side_nav_search:focus{
+    outline: none;
+}
+
+.side_nav_search_btn{
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+footer{
+    width: 100%;
+    height: 300px;
+    border-top: 0.5px solid var(--borderColor);
+    background-color: var(--subColor);
+    display: flex;
+    flex-direction: row;
+}
+
+footer .footer_logo{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .footer_logo h1{
+    color: var(--fontColor);
+}
+
+footer .footer_logo h1 span{
+    color: white;
+}
+
+footer .footer_content{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(209, 209, 209);
+}
+

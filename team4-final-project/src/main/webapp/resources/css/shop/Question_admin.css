@@ -1,0 +1,84 @@
+main{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+main > form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h3 {
+    width: 20%;
+}
+span{
+    width: 80%; 
+}
+.Answer_Header{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+.Answer_Name{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+.Answer_Date{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+.Answer_Type{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+.Answer_Title{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+.Answer_Title > input{
+    width: 80%;
+}
+.Answer_Content{
+    width: 50%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+}
+.Answer_Content > textarea{
+    width: 80%;
+    height: 100%;
+    border: 1px solid red;
+}
+.Answer_Check{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+.Answer_Check > input{
+    width: 80px;
+    height: 50px;
+    margin: 5px;
+}

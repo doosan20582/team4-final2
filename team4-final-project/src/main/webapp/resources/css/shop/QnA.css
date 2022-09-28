@@ -1,0 +1,86 @@
+
+.QnA_Title{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid pink;
+}
+.QnA_Title > input{
+    width: 100px;
+    height: 30px;
+}
+.QnA_Search{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border: 1px solid pink;
+}
+.QnA_Search :nth-child(1){
+    width: 400px;
+    height: 30px;
+}
+.QnA_Search :nth-child(2){
+    width: 100px;
+    height: 30px;
+}
+.QnA_Nav{
+    height: 50px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border: 1px solid pink;
+}
+.QnA_Nav label{
+    padding-right: 5%;
+}
+.QnA_Admin_Main{
+    height: 600px;
+    border: 1px solid pink;
+}
+.QnA_Admin_Main_Table{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.QnA_Admin_Main_Table thead {
+    height: 100px;
+}
+.QnA_Admin_Main_Table > thead >tr :nth-child(3){
+    width: 40%;
+}
+.QnA_Admin_Main_Table td {
+    cursor: pointer;
+    text-align: left;
+    padding-left: 1rem;
+}
+.QnA_Admin_Main_Table, th, tr, td{
+    border: 1px solid black;
+}
+.QnA_Paging{
+    height: 30px;
+    border: 1px solid pink;
+}
+.QnA_Paging > ol{
+    text-align: center;
+}
+.QnA_Paging > ol > li{
+    display: inline-block;
+    vertical-align: middle;
+    align-items: center;
+}
+.QnA_Paging > ol > li > a{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: var(--fontColor);
+}
+td > a{
+	text-decoration: none;
+	color: var(--fontColor);
+}

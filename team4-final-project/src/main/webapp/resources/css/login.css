@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/*로그인 컨테이너 */
+.loginContainer {
+	border: 3px solid black;
+	width: 400px;
+	/* width: 100%; */
+	/* max-width: 1200px; */
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+/*아이디 구역 */
+.idDiv {
+	height: 100%;
+	min-height: 100px;
+	border: 3px solid crimson;
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*비밀번호 구역 */
+.pwDiv {
+	height: 100%;
+	min-height: 100px;
+	border: 3px solid dodgerblue;
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*버튼 구역 */
+.btnDiv {
+	height: 100%;
+	padding: 1rem;
+	border: 3px solid green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*버튼 */
+.formBtns {
+	width: 150px;
+	height: 50px;
+	background-color: var(--mainColor);
+	transition: .3s;
+	color: white;
+	cursor: pointer;
+}
+
+.formBtns:hover {
+	background-color: rgb(63, 63, 63);
+}
+
+/*폼 텍스트 인풋 공통 */
+.formInputs {
+	width: 300px;
+	height: 50px;
+	padding-left: 0.5rem;
+}

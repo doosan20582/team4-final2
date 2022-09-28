@@ -1,0 +1,107 @@
+main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content:center;
+    background-color: var(--mainColor);
+}
+
+.section{
+    width: 82%;
+    height: 1500px;
+    border: 5px solid tomato;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_header{
+    width: 97%;
+    height: 13%;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--subColor);
+    justify-content: center;
+}
+
+.section_header>h1{
+    font-size: 1.3rem;
+    margin: 20px 0;
+    margin-top: 0;
+}
+
+.section_header_brackets{
+    width: 30%;
+    height: 30%;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border-style: none;
+    color: white;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.section_header_headline{
+    width: 100%;
+    height: 30%;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border-style: none;
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+    resize: none;
+}
+
+.section_header_headline:focus{
+    outline: none;
+}
+
+
+.section_main{
+    width: 97%;
+    height: 78%;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    color: white;
+    background-color: var(--subColor);
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+
+.section_main>h1{
+    font-size: 1.3rem;
+    margin: 20px;
+}
+
+.section_footer{
+    width: 97%;
+    height: 5%;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    position: relative;
+}
+
+.section_footer_registrationBtn{
+    width: 85px;
+    height: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border: none;
+    color: white;
+    box-shadow: white 0 0 1px 1px;
+    position: absolute;
+    right: 20px;
+    top:16px;
+}

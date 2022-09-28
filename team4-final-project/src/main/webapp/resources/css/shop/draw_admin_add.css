@@ -1,0 +1,150 @@
+.draw_container{
+    width: 100%;
+    background-color: var(--subColor);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+}
+/*테이블*/
+.admin_body{
+    width: 1200px;
+    background-color: white;
+    border-collapse: collapse;
+}
+/*테이블 공통*/
+.admin_body td{
+    border: 1px solid black;
+}
+/*테이블 메뉴*/
+.admin_body tr td:first-child{
+    padding: 2rem;
+    width: 30%;
+    text-align: center;
+    background-color: rgb(119, 213, 119);
+    color: white;
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+/*테이블 내용*/
+.admin_body tr td:last-child{
+    padding: 2rem;
+    width: 70%;
+}
+/*이벤트 등록 버튼*/
+.file_submit{
+    width: 300px;
+    height: 70px;
+    font-size: 2.0rem;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    margin-top: 2rem;
+    background-color: var(--mainColor);
+}
+/*한정판 상품 목록 컨테이너*/
+.selectDrawProductContainer{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.221);
+    z-index: 99;
+    /* position: relative; */
+}
+/*한정판 상품 목록*/
+.drawList{
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    font-size: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7rem;
+    text-align: center;
+    /* background-color: red; */
+    
+}
+
+.drawList_cc{
+    width: 20%;
+    height: 100%;
+    border: 1px solid black;
+    
+}
+.drawList_b{
+    width: 30%;
+    border: 1px solid black;
+
+}
+.drawList_i{
+    width: 50%;
+    border: 1px solid black;
+}
+.drawList_ul {
+
+   font-size: 1.7rem;
+}
+.drawList_li{
+    font-size: 1.7rem;
+    height: 90px;
+    margin-top: 16px;
+}
+.btn{
+	width:98%;
+	height: 100%;
+	background-color: whitesmoke;
+    border: 0;
+    outline: 0;
+    box-shadow: 1px 1px 1px 1px rgb(185, 184, 184);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.drawList_brand_table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 16px;
+    padding: auto;
+}
+.drawList_cate{
+    margin: 30px;
+}
+.btn_brand {
+
+    box-shadow: 1px 1px px 1px rgb(185, 184, 184);
+    width: 275px;
+    height: 50px;
+    background-color: pink;
+    font-size: 1.5rem;
+    margin: 5px;
+
+}
+.productBtns{
+ width: 150px;
+	height: 50px;
+	background-color: black;
+	color: white;
+
+}
+
+.categoryBtns {
+	width: 150px;
+	height: 50px;
+	background-color: black;
+	color: white;
+}
+
+
+
+

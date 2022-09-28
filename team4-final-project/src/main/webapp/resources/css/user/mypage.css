@@ -1,0 +1,247 @@
+
+
+/*내정보*/
+.myInfoCon{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+    background-color: var(--subColor);
+    color: white;
+}
+/*네비구역*/
+.navDiv{
+	width: 80%;
+	height: 10%;
+	border: 3px solid green;
+	display: flex;
+	justify-content: space-around;
+    align-items: center;
+    font-family: 'Black Han Sans';
+}
+
+.navDiv a{
+	color: white;
+	text-decoration: none;
+	transition: .3s;
+	font-size: 1.5rem;
+}
+
+.navDiv a:hover{
+	color: red;
+}
+/*사진, 유저정보 */
+.myInfoCon .infoTopDiv{
+    width: 80%;
+    height: 50%;
+    border: 3px solid violet;
+    display: flex;    
+}
+
+.userImgDiv{
+    width: 30%;
+    height: 100%;
+    border: 3px solid blue;
+    padding: 1rem;
+}
+
+#userImg{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border: 3px solid black;
+}
+
+.userInfoDiv{
+    width: 60%;
+    height: 100%;
+    border: 3px solid saddlebrown;
+    padding: 1rem;
+    font-family: 'Black Han Sans';
+}
+
+.userNameSpan{
+    font-size: 2rem;
+    color: var(--fontColor);
+}
+
+.userModifyDiv{
+    border: 3px solid blue;
+    width: 10%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.userModifyDiv span{
+    margin-bottom: 1rem;
+}
+
+.myInfoCon .infoBottomDiv{
+    width: 80%;
+    height: 40%;
+    border: 3px solid chocolate;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.userGradeDiv, .userQuoponHistoryDiv, .userOrderHistoryDiv{
+    width: 33%;
+    height: 100%;
+    border: 3px solid green;
+    padding: 1rem;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.userGradeDiv:hover{
+	background-color: red;
+}
+
+.userOrderHistoryDiv:hover{
+	background-color: red;
+}
+
+/*유저 활동 내역 컨테이너 */
+.userHistoryCon{
+    width: 100%;
+    
+    border: 3px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--subColor);
+}
+
+.userModifyDiv a{
+	color: white;
+	transition: .3s;
+	cursor: pointer;
+	margin-bottom: 0.5rem;
+}
+
+.userModifyDiv a:hover{
+	color: red;
+}
+/*진행중인 주문내역 */
+.deliveryHisroyDiv{
+    width: 80%;
+    height: 50%;
+    max-height: 500px;
+    overflow-y: scroll;
+    border: 3px solid white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+/*진행주문내역 테이블*/
+.deliveryHisroyTable{
+	border-collapse: collapse;
+}
+
+.deliveryHisroyTable th, .deliveryHisroyTable td{
+	border: 2px solid black;
+}
+/*기타 내역 */
+.etcHistoryDiv{
+    width: 80%;
+    height: 50%;
+    border: 3px solid red;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.etcHistoryDiv a{
+	color: white;
+	transition: .3s;
+	cursor: pointer;
+	margin-bottom: 0.5rem;
+}
+
+.etcHistoryDiv a:hover{
+	color: red;
+}
+
+.etcHistoryDiv span{
+    margin-bottom: 1rem;
+}
+
+/*구매내역 보기 모달 컨테이너 */
+.orderHistoryModalCon{
+	
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.21);
+    backdrop-filter: blur(4px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+}
+/*구매내역 테이블 */
+.orderHistoryDiv{
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px;
+    height: 800px;
+    background-color: var(--subColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.orderHistoryTable{
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.orderHistoryTable th, td{
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+.reviewTd{
+	cursor: pointer;
+	transition: .3s;
+	
+}
+
+.reviewTd a{
+	color: white;
+	transition: .3s;
+	text-decoration: none;
+}
+
+.reviewTd a:hover{
+	color: red;
+}
+
+
+.writeReviewSpan{
+    color: var(--fontColor);
+    cursor: pointer;
+}
+
+.confirmBuy{
+	width: 100px;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.confirmBuy:hover{
+	color: red;
+}
+
+
+

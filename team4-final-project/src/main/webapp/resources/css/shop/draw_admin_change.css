@@ -1,0 +1,45 @@
+.draw_container{
+    width: 100%;
+    background-color: var(--subColor);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+}
+/*테이블*/
+.admin_body{
+    width: 1200px;
+    background-color: white;
+    border-collapse: collapse;
+}
+/*테이블 공통*/
+.admin_body td{
+    border: 1px solid black;
+}
+/*테이블 메뉴*/
+.admin_body tr td:first-child{
+    padding: 2rem;
+    width: 30%;
+    text-align: center;
+    background-color: rgb(119, 213, 119);
+    color: white;
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+/*테이블 내용*/
+.admin_body tr td:last-child{
+    padding: 2rem;
+    width: 70%;
+}
+/*이벤트 수정 버튼*/
+.file_submit{
+    width: 300px;
+    height: 70px;
+    font-size: 2.0rem;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    margin-top: 2rem;
+    background-color: var(--mainColor);
+}
+

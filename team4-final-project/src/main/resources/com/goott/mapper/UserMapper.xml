@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goott.mapper.UserMapper">
+	<!-- 유저별 구매 확정 목록 가져오기 -->
+	<select id="selectSalesAll" parameterType="String" resultType="com.goott.domain.SalesVO">
+		<![CDATA[
+			select s.sales_id, s.order_id, s.sales_date, s.sales_review, s.sales_review_date from t_sales s 
+			inner join t_order o on s.order_id = o.order_id
+			inner join t_member m on o.member_id = m.member_id where m.member_id = #{member_id};
+		]]>
+	</select>
+
+	<!-- 구매상품 리뷰 작성하기 -->
+	<insert id="insertReview" parameterType="com.goott.domain.ProductReviewVO">
+		<![CDATA[
+			insert into t_product_review(product_id, member_id, product_review_text, 
+											product_review_grade, product_review_img_url, 
+											product_review_video_url, product_review_speed)
+			values(#{product_id}, #{member_id}, #{product_review_text}, #{product_review_grade}, #{product_review_img_url},
+					#{product_review_video_url}, #{product_review_speed})
+		]]>
+	</insert>
+	
+	<!-- 리뷰 작성 여부 업데이트 -->
+	<update id="updateReviewState" parameterType="_int">
+		<![CDATA[
+			update t_sales set sales_review = 'y' where sales_id = #{sales_id}
+		]]>
+	</update>
+</mapper>
+
+

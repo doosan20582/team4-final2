@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Black Han Sans';
+    src: url(/resources/font/BlackHanSans-Regular.ttf) format('truetype');
+}
+
+:root{
+    --mainColor : rgb(24, 24, 24);
+    --subColor : rgb(59, 59, 59);
+    --borderColor : rgba(209, 209, 209, 0.486);
+    --fontColor : rgb(0, 173, 26); 
+    --subFontColor : rgb(209, 209, 209);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.errorContainer{
+	
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+}
+/*숨기기 */
+.noneClass{
+	display: none;
+}
+
+
+

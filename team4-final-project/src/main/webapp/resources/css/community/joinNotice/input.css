@@ -1,0 +1,244 @@
+main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    background-color: var(--subColor);
+}
+
+.section{
+    width: 82%;
+    height: auto;
+    border: 5px solid tomato;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_header{
+    width: 97%;
+    height: auto;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--subColor);
+    justify-content: center;
+}
+
+.section_header>h1{
+    font-size: 1.3rem;
+    margin: 20px 0;
+    margin-top: 0;
+}
+
+.section_header_headline{
+    width: 100%;
+    height: 45px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border-style: none;
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.section_header_headline:focus{
+    outline: none;
+}
+
+.section_header_select>input, .section_header_select>select,
+.section_header_search>input[type=text]{
+    width: 24.7%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border-style: none;
+    color: white;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+.section_header_select>p, .section_header_search>p{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.campsite_search{
+	width: 100px;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border: none;
+    color: white;
+    box-shadow: white 0 0 1px 1px;
+}
+
+.section_header_back{
+	width: 100vw;
+	height: 100vh;
+	background-color:rgb(146, 146, 146,0.5);
+	display:none;
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:1;
+}
+
+.section_header_modal{
+	width: 1400px;
+    height: 530px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border-style: none;
+    color: white;
+    position : absolute;
+    top:25%;
+    left:15%;
+    z-index:2;
+}
+
+.section_header_modal>h1{
+	font-size : 1.5rem;
+	margin: 15px;
+}
+
+.section_header_modal>select, .section_header_modal>input[type=text]{
+	width: 24.7%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--subColor);
+    border-style: none;
+    color: white;
+    padding-left: 20px;
+    margin: 10px 0;
+    margin-left:15px;
+}
+
+.modal_search{
+	width: 10%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--subColor);
+    border-style: none;
+    color: white;
+    margin: 10px;
+    margin-left:35px;
+}
+
+.section_header_modal_result{
+	width: 97%;
+    height: 300px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--subColor);
+    border-style: none;
+    color: white;
+    margin: 15px;
+    padding-top : 5px;
+    overflow-y:auto;
+}
+
+.section_header_modal_result_header{
+	width:100%;
+	list-style:none;
+	display : flex;
+	flex-direction : row;
+	margin: 10px 0;
+}
+
+.section_header_modal_result_header>li:nth-child(1){
+	width:30%;
+	margin-left:5px;
+}
+.section_header_modal_result_header>li:nth-child(2){
+	width:23%;
+}
+.section_header_modal_result_header>li:nth-child(3){
+	width:47%;
+}
+
+.section_header_modal_result_content{
+	width:100%;
+	list-style:none;
+	display : flex;
+	flex-direction : row;
+	font-size: 1rem;
+}
+
+.section_header_modal_result_content>li:nth-child(1){
+	width:30%;
+}
+.section_header_modal_result_content>li:nth-child(2){
+	width:23%;
+}
+.section_header_modal_result_content>li:nth-child(3){
+	width:47%;
+}
+
+
+.modal_submit, .modal_close{
+	width: 10%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--subColor);
+    border-style: none;
+    color: white;
+	margin: 10px 0;
+    margin-left:15px;
+}
+
+.section_main{
+    width: 97%;
+    height: 69.5%;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    color: white;
+    background-color: var(--subColor);
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+
+.section_main>h1{
+    font-size: 1.3rem;
+    margin: 20px 17px;
+}
+
+.section_footer{
+    width: 97%;
+    height: 70px;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 12px 0;
+    position: relative;
+}
+
+.section_footer_registrationBtn{
+    width: 85px;
+    height: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    border: none;
+    color: white;
+    box-shadow: white 0 0 1px 1px;
+    position: absolute;
+    right: 20px;
+    top:16px;
+}
+
