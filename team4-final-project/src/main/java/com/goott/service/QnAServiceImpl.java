@@ -1,5 +1,6 @@
 package com.goott.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,11 +19,11 @@ public class QnAServiceImpl implements QnAService {
 	@Autowired
 	private QnAMapper qnaMapper;
 	
-	@Override
-	public List<QnAVO> list() {
-		// TODO Auto-generated method stub
-		return qnaMapper.list();
-	}
+//	@Override
+//	public List<QnAVO> list() {
+//		// TODO Auto-generated method stub
+//		return qnaMapper.list();
+//	}
 	
 	@Override
 	public void Question(QnAVO QnA) {
@@ -53,8 +54,13 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public List<QnAVO> selectQnABoard(PagingVO vo) {
-		return qnaMapper.selectQnABoard(vo);
+	public List<QnAVO> selectQnABoard(PagingVO vo, String ckeckcategory) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vo", vo);
+//		전체검색을 했을때와 카테고리 값이 있을때 ckeckcategory 조건의 기준을 찾아
+		map.put("ckeckcategory", ckeckcategory);
+		System.out.println(map);
+		return qnaMapper.selectQnABoard(map);
 	}
 
 	

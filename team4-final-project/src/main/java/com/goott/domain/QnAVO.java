@@ -18,7 +18,7 @@ public class QnAVO {
 	private int qna_id;	//qna 아이디
 	private String member_id;	// member 아이디
 	private String qna_category;	// category 아이디
-	private String qna_public;	// qna 공개여부
+	private String qna_public;	// qna 공개여부 
 	private String qna_title;	// qna 제목
 	private String qna_text;	// qna 내용
 	private Date qna_regdate;	// qna 작성일
