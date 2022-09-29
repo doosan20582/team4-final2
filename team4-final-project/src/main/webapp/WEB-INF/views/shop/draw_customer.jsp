@@ -61,7 +61,7 @@
 										<tbody>
 											<tr>
 												<td>상품키</td>
-												<td>${row.draw_id}</td>
+												<td>${row.product_id}</td>
 											</tr>
 											<tr>
 												<td>상품 제목</td>
@@ -106,9 +106,6 @@
 
 											</tr>
 										
-										
-											
-
 											</tr>
 											
 											<tr>
@@ -122,7 +119,7 @@
                                    <button class="font_top_button"">
 										응모하기
 									</button>
-									<button class="font_top_button_end"">
+									<button class="font_top_button_end">
 										응모 결과 보기
 									</button>
                                    </div>

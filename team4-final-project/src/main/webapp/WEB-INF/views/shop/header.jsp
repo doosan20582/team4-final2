@@ -25,7 +25,7 @@
         </div>
         <div class="menu">
             <a href="/shop">Shop</a>
-            <a href="">Draw</a>
+            <a href="/shop/draw_customer">Draw</a>
             <a href="/shop/QnA">Q&A</a>
         </div>
         <div class="login">
