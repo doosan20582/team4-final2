@@ -10,7 +10,7 @@ import com.goott.domain.QnAVO;
 
 @Mapper
 public interface QnAMapper {
-	public List<QnAVO> list();
+//	public List<QnAVO> list();
 	
 	public void Question(QnAVO QnA);
 
@@ -23,7 +23,7 @@ public interface QnAMapper {
 	public int countQnABoard();
 
 	// 페이징 처리 게시글 조회
-	public List<QnAVO> selectQnABoard(PagingVO vo);
+	public List<QnAVO> selectQnABoard(Map<String, Object> map);
 
 }
 

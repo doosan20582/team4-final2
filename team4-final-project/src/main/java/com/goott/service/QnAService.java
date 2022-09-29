@@ -8,7 +8,7 @@ import com.goott.domain.QnAVO;
 
 public interface QnAService {
 	
-	public List<QnAVO> list();
+//	public List<QnAVO> list();
 
 	public void Question(QnAVO QnA);
 
@@ -21,5 +21,5 @@ public interface QnAService {
 	public int countQnABoard();
 
 	// 페이징 처리 게시글 조회
-	public List<QnAVO> selectQnABoard(PagingVO vo);
+	public List<QnAVO> selectQnABoard(PagingVO vo, String ckeckcategory);
 }

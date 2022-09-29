@@ -15,44 +15,39 @@
 <link rel="stylesheet" href="/resources/css/shop/QnA.css?after">
 <!--ì¼íëª° ê¸ë¡ë² ìì´ì½ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Document</title>
 
 </head>
-
-	<script type="text/javascript">
-    let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
-    QnA_Title_btn.addEventListener('click',function(){
-    	location.href="Question";
-    });
-    
-     
-  
-	</script>
-
 <!-- header -->
 <%@include file="./header.jsp"%>
-
 
 <!--메인-->
 <body>
 	<main>
-		<form action="">
+		
 		<div class="QnA_Title">
 			<h1>QnA</h1>
-			<c:if test="${sessionScope.login_id != null}">
+			 <%-- <c:if test="${sessionScope.login_id != null}"> --%>
 			<input id="QnA_Title_btn" class="btn" type="button" value="문의하기">
-			</c:if>
+			<%-- </c:if>  --%>
 		</div>
-		
+		<form action="/shop/QnA" name="sk">
 			<div class="QnA_Search">
-				<input id="QnA_Search_text" type="search" placeholder="무엇을 도와드릴까요?">
+				<input id="QnA_Search_text" type="search" placeholder="제목을 검색하세요.">
 				<input id="QnA_Search_btn" type="submit" value="검색">
 			</div>
-		</form>
+		
 		<div class="QnA_Nav">
-			<label for="QnA_Nav_btn1"><input type="checkbox" name="" id="QnA_Nav_btn1" value="주문/결제">주문/결제</label> <label for="QnA_Nav_btn2"><input type="checkbox" name="" id="QnA_Nav_btn2" value="배송">배송</label> <label for="QnA_Nav_btn3"><input type="checkbox" name="" id="QnA_Nav_btn3" value="취소/교환/환불">취소/교환/환불</label> <label for="QnA_Nav_btn4"><input type="checkbox" name="" id="QnA_Nav_btn4" value="회원">회원</label> <label for="QnA_Nav_btn5"><input type="checkbox" name="" id="QnA_Nav_btn5" value="기타">기타</label>
-			<input type="button" value="정렬하기">
+			<label for="QnA_Nav_btn6"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn6" value=''>전체</label>
+			<label for="QnA_Nav_btn2"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
+			<label for="QnA_Nav_btn1"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
+			<label for="QnA_Nav_btn3"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
+			<label for="QnA_Nav_btn4"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
+			<label for="QnA_Nav_btn5"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
+			<input type="button" id="checkboxbtn" value="정렬하기">
 		</div>
+		</form>
 		<div class="QnA_Admin_Main">
 			<table class="QnA_Admin_Main_Table">
 				<thead>
@@ -65,7 +60,7 @@
 					</tr>
 				</thead>
 				<c:forEach var="row" items="${list}">
-					<tr>
+					<tr class="qna_table">
 						<!-- <input type="hidden" name=""> -->
 						<td>${row.qna_category}</td>
 						<td><a href="QnA_detail?qna_id=${row.qna_id}">${row.qna_title}</a></td>
@@ -104,5 +99,29 @@
 
 	<!-- <script src="js/QnA.js"></script> -->
 
+	<script type="text/javascript">
+    let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
+    let checkboxbtn = document.querySelector("#checkboxbtn");
+    let checktype = document.querySelectorAll(".checktype");
+    QnA_Title_btn.addEventListener('click',function(){
+    	if(${sessionScope.login_id == true}){
+    		location.href="Question";
+    	}else{
+    		alert("로그인 후 이용해주세요!");
+    	}
+    	
+    });
+    checkboxbtn.addEventListener('click', function(){
+    	for(let i=0; i<checktype.length; i++){
+    		if(checktype[i].checked == true){
+    			console.log(checktype[i].value);
+    			document.sk.submit();
+    		}
+    	}
+    		
+    })
+    
+  
+	</script> 
 </body>
 </html>

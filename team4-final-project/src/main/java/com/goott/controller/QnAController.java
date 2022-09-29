@@ -27,22 +27,13 @@ public class QnAController {
 
 	@Autowired
 	QnAService qnaservice;
-	
-//	@RequestMapping(value = "/QnA", method = RequestMethod.GET)
-//	public ModelAndView QnA(@RequestParam Map<String, Object> map) {
-//		List<QnAVO> list = qnaservice.list();
-//		log.info("QnA ==========================================================");
-//		log.info("QnA 데이터 : " + list.toString());
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("/shop/QnA");
-//		mv.addObject("list", list);
-//		return mv;
-//	}			
+			
 	
 	@RequestMapping(value = "/QnA")
 	public String QnA(PagingVO vo, Model model	
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
+			, @RequestParam(defaultValue = "")String ckeckcategory) {
 		
 		int total = qnaservice.countQnABoard();
 		if (nowPage == null && cntPerPage == null) {
@@ -53,10 +44,11 @@ public class QnAController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		} 
-		
+		System.out.println(ckeckcategory);
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", vo);
-		model.addAttribute("list", qnaservice.selectQnABoard(vo));
+		model.addAttribute("list", qnaservice.selectQnABoard(vo, ckeckcategory));
+		System.out.println(qnaservice.selectQnABoard(vo, ckeckcategory));
 		log.info(vo);
 		return "/shop/QnA";
 	}

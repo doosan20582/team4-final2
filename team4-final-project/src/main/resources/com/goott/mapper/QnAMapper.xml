@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goott.mapper.QnAMapper">
-	<select id="list" resultType="com.goott.domain.QnAVO">
-		select qna_id, qna_category, qna_title, qna_regdate, qna_admin_answer from t_qna;
-	</select>
+	<!-- <select id="list" resultType="com.goott.domain.QnAVO">
+		select qna_id, qna_category, qna_title, qna_regdate, qna_admin_answer from t_qna
+		;
+	</select> -->
 	
 	<insert id="Question" parameterType="com.goott.domain.QnAVO">
 		insert into t_qna ( member_id, qna_category, qna_public, qna_title, qna_text) 
@@ -37,9 +38,17 @@
   					FROM t_qna A, (
   									SELECT @ROWNUM := 0
   									) R
-  			WHERE 1=1
+  			WHERE <choose>
+					<when test="ckeckcategory!=null and ckeckcategory!=''">
+					qna_category = #{ckeckcategory} 
+					</when>
+					<otherwise>
+						qna_category like CONCAT('%','','%')
+					</otherwise>
+				</choose>
 			) LIST
-			WHERE rnum between #{start} AND #{end} ;
+			WHERE
+			 rnum between #{vo.start} AND #{vo.end} ;
 	</select>
 
 </mapper>
