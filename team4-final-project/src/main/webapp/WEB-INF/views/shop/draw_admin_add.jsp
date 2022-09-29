@@ -28,23 +28,7 @@
 
 <body>
 	<!--헤더-->
-	<header>
-		<div class="logo">
-			<h1>
-				Camp<span>ing</span>
-			</h1>
-		</div>
-		<div class="menu">
-			<a href="shop.html">Shop</a> <a href="draw_customer.html">Draw</a> <a
-				href="">Q&A</a>
-		</div>
-		<div class="login">
-			<a href=""> <i class="xi-search"></i>
-			</a> <a href=""> <i class="xi-truck"></i>
-			</a> <a href="basket.html"> <i class="xi-cart"></i>
-			</a> <a href="">LogIn</a> <a href="">SignUp</a>
-		</div>
-	</header>
+	<jsp:include page="header.jsp" />
 	<!--메인-->
 	<main>
 	<!-- 드로우 상품 추가하기  테이블-->
@@ -62,9 +46,12 @@
                         </tr> -->
                           <!-- 상품키 모달 버튼 -->
 						<tr class="admin_title">
-							<td>상품키</td>
-							<td><input type="button" value="상품 보기" id="selectDrawBtn">
+							<td>상품키 <input type="button" value="상품 보기" id="selectDrawBtn">
 								<span id="selectedDrawName"></span></td>
+							<td class="admin_product_id">
+							<input type="text" id="draw_product_id" name="product_id">
+							
+								</td>
 						</tr>
 						 <!-- 상품이름 -->
 						<tr class="admin_title">
@@ -113,7 +100,7 @@
 					</table>
 
 				</div>
-				<input type="button" value="등록" class="file_submit">
+				<input type="submit" value="등록" class="file_submit">
 			</div>
 		</form>
 		<!--디비에서 한정판 상품 목록 보여주는 디비전 -->
@@ -196,15 +183,14 @@
 	<script>
 //====== 상품 카테고리를 클릭했을때 ====== //
 	const btn = document.querySelectorAll('.btn');
-	let draw_title; 
 	let draw_title2 = document.querySelector("#draw_title");
 	let draw_price = document.querySelector("#draw_price");
 	let file_submit= document.querySelector(".file_submit");
 	let frm1 = document.querySelector('#admin_container');
-	let test;
 	
-	file_submit.addEventListener('click', function(){
-		console.log(test);
+	
+	//file_submit.addEventListener('click', function(){
+		//console.log(test);
 		//console.log(draw_price.childNodes[0].data);
 		//console.log(draw_title2.childNodes[0].data);
 		//let form_data= $("#admin_container").serialize();
@@ -214,7 +200,7 @@
 		
 		//$("#admin_container").submit();
 
-	});
+	//});
 	
 	
 	
@@ -225,7 +211,7 @@
 	function ajaxCategory(){
 		// 카테고리 아이디 파람으로 설정
 		const param = { product_category_id : this.dataset.productCategoryId }
-		console.log(param);
+
 		
 		//에이잭스 시작
 		$.ajax({ 
@@ -242,7 +228,6 @@
 			},
 			//에이잭스 통신 성공 했을시 실행할 함수
 			success : function(productList){
-				console.log(productList);
 		
 				
 				const drawList_b = document.querySelector('.drawList_brand');
@@ -263,6 +248,7 @@
 							testBtn.addEventListener('click' , ajaxProduct);	
 						    testBtn.addEventListener('click' , ajaxproductname);
 						    testBtn.addEventListener('click' , ajaxproductprice);
+						    testBtn.addEventListener('click', ajaxproductproductid);
 						
 				}
 				
@@ -331,6 +317,7 @@
 		const param = {
 			product_category_id : this.dataset.productCategoryId,
 			product_brand_name : this.innerHTML
+			
         }
 
 $.ajax({
@@ -359,7 +346,6 @@ $.ajax({
 		})
 		
 		for(let i = 0; i < product_name.length; i++){
-			console.log(product_name[i]);
 			admin_title_name.value = product_name[i].product_name;
 		}
 		
@@ -402,7 +388,6 @@ $.ajax({
 		})
 		
 		for(let i = 0; i < product_price.length; i++){
-			console.log(product_price[i]);
 			admin_title_price.value = product_price[i].product_price;	
 		}
 		
@@ -410,6 +395,54 @@ $.ajax({
 
 })
 	 }
+	 
+
+	//====== product_price 가격 가져오기 ====== //
+	function ajaxproductproductid(){
+		console.log()
+		const param = {
+			product_category_id : this.dataset.productCategoryId,
+			product_brand_name : this.innerHTML
+		
+        }
+		console.log(param);
+
+$.ajax({
+	
+	//url
+	url : '/shop/admin_add_plus_product_product_id.os',
+	//내가 보낼 거 
+	data : param,
+	dataType : 'json',
+	//method (get/post)
+	type : 'get',
+	//에이잭스 통신 실패 했을시 실행할 함수
+	error : function(){
+		alert('카테고리 에이잭스 통신 실패');
+	},
+	success : function(product_id){
+		
+		const admin_title_product_id = document.querySelector('#draw_product_id');
+		// 반복문을 통해 리무브 차일드 하기 (누적되는 값을 지우기)
+		while(admin_title_product_id.hasChildNodes()){
+			admin_title_product_id.removeChild(admin_title_product_id.firstChild);
+		}
+		// 하나의 값만 나오게 하기 
+		admin_title_product_id.addEventListener('click',function(event){
+			admin_title_product_id.value=event.target.product_id;
+		})
+		
+		for(let i = 0; i < product_id.length; i++){
+			console.log(product_id[i]);
+			admin_title_product_id.value = product_id[i].product_id;	
+		}
+		
+	}
+
+})
+	 }
+	 
+	 
 	
 	 	
 	

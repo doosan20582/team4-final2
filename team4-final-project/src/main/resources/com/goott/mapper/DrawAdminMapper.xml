@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goott.mapper.DrawAdminMapper">
-	<select id="draw_admin" resultType="com.goott.domain.DrawVO">
+	<select id="draw_admin" resultType="hashMap">
 		<![CDATA[
-			select draw_id, draw_title, draw_price, product_id,
-				   draw_reqruit, draw_event_start_date, draw_event_end_date,
-		           draw_pur_start_date, draw_pur_end_date, draw_comment 
-		      from t_draw;
+		  select p.product_name,p.product_price,p.product_id, 
+				  d.draw_reqruit, d.draw_event_start_date, d.draw_event_end_date,
+		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment  from t_draw as 
+	       d join t_product as p on d.product_id = p.product_id  ;
 		]]>
 	</select>
 	
@@ -49,23 +49,47 @@
     
    </select>
    
-      <select id="admin_add_plus_product_price" parameterType="hashMap" resultType="hashMap">
-      <![CDATA[
+     <select id="admin_add_plus_product_price" parameterType="hashMap" resultType="hashMap">
+      <![CDATA[  
 	    select b.product_brand_name, b.product_brand_id, p.product_id, p.product_name, p.product_price,p.product_category_id from t_product as 
 	       p join t_product_brand as b on b.product_brand_id = p.product_brand_id and p.product_category_id=#{product_category_id} 
-	       and b.product_brand_name=#{product_brand_name} and p.product_limited = '한정판'  order by p.product_category_id ; 
-     ]]>
-       
+	       and b.product_brand_name=#{product_brand_name} and p.product_limited = '한정판'  order by p.product_category_id ;
+     ]]>   
+    
    </select>
+   
+     <select id="admin_title_product_id" parameterType="hashMap" resultType="hashMap">
+      <![CDATA[  
+	    select b.product_brand_name, b.product_brand_id, p.product_id, p.product_name, p.product_price,p.product_category_id from t_product as 
+	       p join t_product_brand as b on b.product_brand_id = p.product_brand_id and p.product_category_id=#{product_category_id} 
+	       and b.product_brand_name=#{product_brand_name} and p.product_limited = '한정판'  order by p.product_category_id ;
+     ]]>   
+    
+   </select>
+   
+    
    
    		<insert id="draw_admin_add" parameterType="com.goott.domain.DrawVO">
    		<![CDATA[
 		insert into t_draw(draw_title, product_id, draw_price,draw_event_start_date, draw_event_end_date,
-		 draw_comment,draw_pur_start_date, draw_pur_end_date, draw_reqruit) values (#{draw_title}, #{product_id}, #{draw_price}, , #{draw_event_start_date}, , #{draw_event_end_date}, , #{draw_comment}, , #{draw_pur_start_date},
+		 draw_comment,draw_pur_start_date, draw_pur_end_date, draw_reqruit) values (#{draw_title}, #{product_id}, #{draw_price}, #{draw_event_start_date},  #{draw_event_end_date},  #{draw_comment},  #{draw_pur_start_date},
 		 #{draw_pur_end_date},#{draw_reqruit});
 		 ]]>
 	</insert>
 	
+	<select id="set_draw_id" parameterType="_int" resultType="int">
+ 
+	    select draw_id from t_draw where product_id=#{product_id}; 
+    
+   </select>
+   
+   <update id="update" parameterType="hashMap">
+		update t_draw
+		set draw_title=#{draw_title}, product_id=#{product_id},  draw_price=#{draw_price}, draw_event_start_date=#{draw_event_start_date}, draw_event_end_date=#{draw_event_end_date}, draw_comment=#{draw_comment}, draw_pur_start_date=#{draw_pur_start_date},
+		draw_pur_end_date=#{draw_pur_end_date},draw_reqruit=#{draw_reqruit}
+		where draw_id=#{draw_id};
+	</update>
+   
 	
 	
 	

@@ -2,6 +2,8 @@ package com.goott.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 
@@ -12,14 +14,14 @@ public class DrawVO {
 	public String draw_title;
 	public int product_id;
 	public int draw_price;
-//	@DateTimeFormat(pattern="yyyy-MM-dd")
+   @DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date draw_event_start_date;
-//	@DateTimeFormat(pattern="yyyy-MM-dd")
+   @DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date draw_event_end_date;
 	public String draw_comment;
-//	@DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date draw_pur_start_date;
-//	@DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date draw_pur_end_date;
 	public int draw_reqruit;
 	  
