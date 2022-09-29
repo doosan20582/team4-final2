@@ -53,10 +53,17 @@
 						</p>
 						<p class="section_header_info_id_recommend">
 							추천수 :
-							<span>${data.board_recommend}</span>
+							<span>${data.board_recommend}</span>&nbsp;
+							<input type="button" value="추천" class="section_header_info_id_recommend_btn">
 						</p>
 					</div>
 					<div class="section_header_info_btns">
+							<c:if test="${sessionScope.login_auth eq '관리자'}">
+								<form class="delete_form" method="POST" action="/community/freeNotice/delete">
+									<input type="hidden" name="board_id" value="${data.board_id}">
+									<input type="button" value="글 삭제 " class="section_header_info_btns_deleteBtn">
+								</form>
+							</c:if>
 						<p class="section_header_info_btns_lookup">
 							조회수 :
 							<span>${data.board_hit}</span>
@@ -101,7 +108,7 @@
 					<c:forEach var="reply" items="${reply_data}">
 						<div class="section_footer_commentList_comment">
 							<div class="section_footer_commentList_comment_count">
-								<c:if test="${reply.member_id eq sessionScope.login_id}">
+								<c:if test="${reply.member_id eq sessionScope.login_id or sessionScope.login_auth eq '관리자'}">
 									<i class="xi-close"></i>
 									<input type="hidden" value="${reply.board_reply_id}">
 								</c:if>

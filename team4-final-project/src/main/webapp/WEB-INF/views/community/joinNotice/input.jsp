@@ -35,7 +35,7 @@
 			<div class="section_header">
 				<h1>제목</h1>
 
-				<textarea name="camping_title" id="" class="section_header_headline" placeholder="제목을 입력하세요."></textarea>
+				<textarea name="camping_title" id="" class="section_header_headline" placeholder="제목을 입력하세요." maxlength='50'></textarea>
 
 				<div class="section_header_select">
 					<p>출발일</p>

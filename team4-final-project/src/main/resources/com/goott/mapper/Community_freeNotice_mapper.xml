@@ -15,7 +15,7 @@
 			t_board.board_title like CONCAT('%',#{keyword},'%') or t_board.board_text like CONCAT('%',#{keyword},'%') or t_board.member_id like CONCAT('%',#{keyword},'%') and
 		</if>
 		board_deleteYN = 'N'
-  		group by t_board.board_id order by t_board.board_id DESC limit 0, 10;
+  		group by t_board.board_id order by case board_tag_id when 2 then 1 else 2 end, t_board.board_id DESC limit 0, 10;
   	</select>
   	
   	<select id="getTag" resultType="com.goott.domain.T_board_tag_VO">
@@ -88,7 +88,7 @@
 			and board_tag_id = ${board_tag_id}
 		</if>
 		and board_deleteYN = 'N'
-  		group by t_board.board_id order by t_board.board_id DESC limit ${page_count}, 10;
+  		group by t_board.board_id order by case board_tag_id when 2 then 1 else 2 end, t_board.board_id DESC limit ${page_count}, 10;
   	</select>
   	
   	<delete id="delete_reply">
@@ -97,6 +97,18 @@
     
     <select id="adminConfirmation" resultType="String">
     	select member_auth from t_member where member_id = #{member_id}
+    </select>
+    
+    <update id="board_recommend" parameterType="hashMap">
+    	update t_board set board_recommend = board_recommend+1 where board_id = #{board_id}
+    </update>
+    
+    <select id="recommend" parameterType="hashMap">
+    	insert into t_board_recommend(board_id, member_id) values(#{board_id}, #{member_id})
+    </select>
+    
+     <select id="recommend_check" parameterType="hashMap" resultType="int">
+    	select count(*) from t_board_recommend where board_id = #{board_id} and member_id = #{member_id};
     </select>
   	
   </mapper>

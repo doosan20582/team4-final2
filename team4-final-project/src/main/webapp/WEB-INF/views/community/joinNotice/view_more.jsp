@@ -26,7 +26,7 @@
 	<c:forEach var="data" items="${data}">
 		<div class="section_footer_commentList_comment">
 			<div class="section_footer_commentList_comment_count">
-				<c:if test="${data.member_id eq sessionScope.login_id}">
+				<c:if test="${data.member_id eq sessionScope.login_id or sessionScope.login_auth eq '관리자'}">
 					<i class="xi-close" ></i>
 					<input type="hidden" value="${data.camping_reply_id}">
 				</c:if>

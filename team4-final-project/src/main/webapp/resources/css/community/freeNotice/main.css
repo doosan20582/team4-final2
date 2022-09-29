@@ -108,6 +108,9 @@ main{
     line-height: 58px;
     font-size: 1.1rem;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .section_notice_main_content .list_check{

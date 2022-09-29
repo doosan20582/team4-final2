@@ -49,7 +49,8 @@
 	            <a id="loginName"  href="/user">${sessionScope.login_id }님</a>
 	            <a id="logOutBtn" >로그아웃</a>
             </c:if>
-            <input type="hidden" id="user_id" value="sessionScope.login_id">
+            <input type="hidden" id="user_id" value="${sessionScope.login_id}">
+            <input type="hidden" id="user_auth" value="${sessionScope.login_auth}">
         </div>
         
         <script src="/resources/js/shop/header.js"></script>

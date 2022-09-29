@@ -54,7 +54,6 @@
 							추천수 :
 							<span>${data.board_recommend}</span>
 						</p>
-						<input type="button" value="추천" class="section_header_info_id_btn">
 					</div>
 					<div class="section_header_info_btns">
 						<div>

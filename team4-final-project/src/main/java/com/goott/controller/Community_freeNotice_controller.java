@@ -162,4 +162,16 @@ public class Community_freeNotice_controller {
 			fservice.delete(board_id);
 		}
 	}
+	
+	@PostMapping("recommend") // 추천기능
+	@ResponseBody
+	public String recommend(@RequestBody Map<String, Object> map) {
+		if(fservice.recommend_check(map)!=0) {
+			return "fail";
+		} else {
+			fservice.recommend(map);
+			fservice.board_recommend(map);
+			return "success";
+		}
+	}
 }

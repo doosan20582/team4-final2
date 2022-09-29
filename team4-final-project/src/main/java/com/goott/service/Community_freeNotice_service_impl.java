@@ -97,4 +97,19 @@ public class Community_freeNotice_service_impl implements Community_freeNotice_s
 		return mapper.adminConfirmation(member_id);
 	}
 
+	@Override
+	public int recommend_check(Map<String, Object> map) {
+		return mapper.recommend_check(map);
+	}
+
+	@Override
+	public void recommend(Map<String, Object> map) {
+		mapper.recommend(map);
+	}
+
+	@Override
+	public void board_recommend(Map<String, Object> map) {
+		mapper.board_recommend(map);
+	}
+
 }
