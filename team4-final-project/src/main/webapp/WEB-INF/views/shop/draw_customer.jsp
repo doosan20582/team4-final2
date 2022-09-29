@@ -116,7 +116,7 @@
 										</tbody>
 									</table>
                                    <div class="button_container">
-                                   <button class="font_top_button"">
+                                   <button class="font_top_button">
 										응모하기
 									</button>
 									<button class="font_top_button_end">

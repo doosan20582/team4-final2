@@ -154,9 +154,15 @@
 				</div>
 				<!-- 카테고리 구역 -->
 				<div class="categoryDiv">
-					<span class="categorySpan" data-category-id = "0">All</span>
+					<div class="categoryInnerDiv">
+						<span class="categorySpan" data-category-id = "0">All</span>
+					</div>
+					
 					<c:forEach var="item" items="${categoryList }">
-						<span class="categorySpan" data-category-id = "${item.product_category_id }">${item.product_category_name }</span>
+						<div class="categoryInnerDiv">
+							<span class="categorySpan" data-category-id = "${item.product_category_id }">${item.product_category_name }</span>
+						
+						</div>
 					</c:forEach>
 					
 				</div>
@@ -166,7 +172,7 @@
 	</main>
 	<!-- 푸터 -->
 	<jsp:include page="footer.jsp" />
-
+	
 	<!-- shop js -->
 	<script src="/resources/js/shop/shop_user.js"></script>
 </body>

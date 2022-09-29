@@ -9,9 +9,20 @@
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
 <link rel="stylesheet" href="/resources/css/auth_mail.css">
+<!-- 구글 아이콘 닷닷닷 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <title>인증번호 체크</title>
 </head>
 <body>
+	<!-- 진행상태 -->
+	<div class="progressDiv">
+		<span class="material-symbols-outlined backOne"> looks_one </span> 
+		<span class="material-symbols-outlined backOne"> more_horiz </span> 
+		<span class="material-symbols-outlined backOne"> looks_two </span> 
+		<span class="material-symbols-outlined backOne"> more_horiz </span> 
+		<span class="material-symbols-outlined one"> looks_3 </span>
+	</div>
 	<!--메일인증 처리 전 저장할 임시 데이터 목록 
 		
 		String member_id;
@@ -46,8 +57,8 @@
 	<!-- 이메일 인증번호 -->
 	<div class="secretEmailDiv">
 		<input type="hidden" id = "codeInput" value=${code }>
-		<input type="text" name="secretEmailText" id="secretEmailText" placeholder="인증번호를 입력해 주세요">
-		<button class="secretEmailBtn">인증번호 체크</button>
+		<input type="text" name="secretEmailText" id="secretEmailText" class="formInputs" placeholder="인증번호를 입력해 주세요">
+		<button class="formBtns">인증번호 체크</button>
 		<span class="secretEmailSpan"></span>
 	</div>
 	

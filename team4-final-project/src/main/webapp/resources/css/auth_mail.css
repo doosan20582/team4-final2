@@ -1,33 +1,69 @@
 @charset "UTF-8";
+
+body{
+	background-color: var(--subColor);
+}
+
+.progressDiv{
+	display: flex;
+	justify-content: space-around;
+    align-items: center;
+	position: fixed;
+	top: 40px;
+	right: 20px;
+	border: 3px solid pink;
+	width: 200px;
+	height: 50px;
+	color: black;
+}
+
+.one{
+	animation: colorChange 1s 1s infinite linear alternate;
+}	
+
+.oneDot{
+	/* animation: colorChange 1s leaner infinite normal forwards; */
+	animation: colorChange 1s infinite linear alternate;
+}
+
+.backOne{
+	color: yellow;
+}
+
+
+@keyframes colorChange {
+	0%{
+		color: yellow;
+	}
+	
+	50%{
+		color: white;
+	}
+}
+
+h2{
+	font-family: 'GimpoGothicBold00';
+	color: var(--subFontColor);
+}
+
 /*이메일 인증번호 */
 .secretEmailDiv{
-	width: 500px;
-	height: 500px;
+	
+	width: 400px;
+	height: 200px;
 	border: 3px solid black;
 	margin: 0 auto;
 	display: flex;
-	flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 	padding: 1rem;
-}
-/*인증번호 입력 텍스트 */
-#secretEmailText{
-	width: 300px;
-	height: 50px;
-	padding-left: 0.5rem;
-	margin: 0.5rem 0;
-}
-
-/*인증번호 체크 버튼 */
-.secretEmailBtn{
-	width: 200px;
-	height: 50px;
-	background-color: var(--mainColor);
-	color: white;
-	transition: .3s;
-	margin-bottom: 0.5rem;
-}
-
-.secretEmailBtn:hover{
-	background-color: rgb(43, 43, 43);
 	
 }
+
+
+.secretEmailSpan{
+	font-family: 'GimpoGothicBold00';
+	margin-top: 0.5rem;
+}
+

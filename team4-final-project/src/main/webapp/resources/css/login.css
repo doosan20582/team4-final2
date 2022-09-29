@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body{
+	background-color: var(--subColor);
+}
 /*로그인 컨테이너 */
 .loginContainer {
 	border: 3px solid black;
@@ -37,27 +40,20 @@
 	padding: 1rem;
 	border: 3px solid green;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 }
 
-/*버튼 */
-.formBtns {
-	width: 150px;
-	height: 50px;
-	background-color: var(--mainColor);
+.btnDiv a{
+	text-decoration: none;
+	color: var(--subFontColor);
 	transition: .3s;
-	color: white;
-	cursor: pointer;
+	font-family: 'GimpoGothicBold00';
+	text-decoration: underline;
 }
 
-.formBtns:hover {
-	background-color: rgb(63, 63, 63);
+.btnDiv a:hover{
+	color: red;
 }
 
-/*폼 텍스트 인풋 공통 */
-.formInputs {
-	width: 300px;
-	height: 50px;
-	padding-left: 0.5rem;
-}
+

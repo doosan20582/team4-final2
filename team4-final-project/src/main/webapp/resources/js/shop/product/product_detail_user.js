@@ -50,6 +50,10 @@ window.onload = function(){
     if(productPriceTd.innerHTML != undefined){
         productPriceSpan.innerHTML = productPriceTd.innerHTML;
     }
+    //평점차트
+    gradeChart();
+    //배송속도 차트
+    speedChart();
    
 }
 
@@ -72,6 +76,76 @@ veiwMoreRewviesDiv.addEventListener('click' , viewMoreReview);
 
 //==================================================================================================
 
+//수평 차트 평점 함수
+function gradeChart(){
+	//평점
+	const gradeProduct = document.querySelectorAll('.gradeProduct');
+	let labels = [];
+	let datas = [];
+	gradeProduct.forEach((item) => {
+		labels.push(item.dataset.grade);
+		datas.push(item.value);
+	});
+	console.log(labels);
+	console.log(datas);
+	new Chart(document.getElementById("bar-chart-horizontal"), {
+	    type: 'bar',
+	    data: {
+	      labels: labels,
+	      datasets: [
+	        {
+	          label: "평점",
+	          backgroundColor: ["#3e95cd","#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+	          data: datas
+	        }
+	      ]
+	    },
+	    options: {
+	      legend: { display: false },
+	      scales: {
+	            
+	            y: {
+	                
+	                beginAtZero: true
+	            }
+	        },
+	      title: {
+	        display: true,
+	        text: '구매자 분들의 후기 점수에요'
+	      }
+	    }
+	});
+}
+
+//파이차트 배송 속도 나타내는 함수
+function speedChart(){
+	//배송 속도 평균
+    const speedProduct = document.querySelectorAll('.speedProduct');
+    let labels = [];
+    let datas = [];
+    speedProduct.forEach((item) => {
+    	labels.push(item.dataset.speed);
+    	datas.push(item.value);
+    })
+   
+    new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Delivery Speed",
+            backgroundColor: ["#3e95cd","#8e5ea2","#3cba9f"],
+            data: datas
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: '구매자 분들이 작성해준 후기에요'
+          }
+        }
+    });
+}
 //리뷰 10개씩 더보기 함수
 function viewMoreReview(){
 	let temp = parseInt(currentPage.value);
@@ -90,8 +164,14 @@ function viewMoreReview(){
 			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
 		},
 		success: function(data){
-			alert('통신 성공');
+			
 			$('.reviewBottom').append(data);
+			//끝페이지면 더보기 비활성화
+			if(	document.querySelector('#pageEnd').value == 'true'){
+				veiwMoreRewviesDiv.style.display = 'none';
+			}
+			//일회성 필요하므로 삭제
+			document.querySelector('#pageEnd').remove();
 		}
 		
 	});
@@ -172,6 +252,8 @@ function priceToString(price) {
 function basket(){
   
 }
+
+
 
 
 

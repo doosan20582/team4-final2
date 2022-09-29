@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/resources/css/global.css">
 <!-- 제이쿼리 cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 구글 폰트 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <title>Product Detail</title>
 </head>
 <body>
@@ -29,7 +31,7 @@
 			<c:if test="${sessionScope.login_id ne null }">
 				<input type="hidden" name="member_id" value="${login_id}">
 			</c:if>
-			
+
 			<div class="productTop">
 				<input type="hidden" name="product_id" id="product_id" value="${product.product_id }">
 				<div class="topLeft">
@@ -95,8 +97,7 @@
 									<input type="text" id="quantityText" value="1" name="order_quantity" readonly>
 								</div>
 								<div class="quantityConRight">
-									<input type="button" value="추가" class="quantityBtn" id="quantityUpBtn">
-									<input type="button" value="제거" class="quantityBtn" id="quantityDownBtn">
+									<input type="button" value="추가" class="quantityBtn" id="quantityUpBtn"> <input type="button" value="제거" class="quantityBtn" id="quantityDownBtn">
 								</div>
 							</div>
 						</div>
@@ -106,9 +107,9 @@
 					</div>
 					<div class="btnDiv">
 						<!--장바구니 담기는 ajax-->
-						<input type="button" value="장바구니 담기" class="productBtn" id="basketBtn">
+						<input type="button" value="장바구니 담기" class="formBtns" id="basketBtn">
 						<!--구매하기는 submit-->
-						<input type="submit" value="구매하기" class="productBtn" id="submitBtn">
+						<input type="submit" value="구매하기" class="formBtns" id="submitBtn">
 					</div>
 				</div>
 			</div>
@@ -135,39 +136,104 @@
 		<div class="productBottom">
 			<!--리뷰 통계-->
 			<div class="reviewTop">
-				<div class="reviewTitle">상품리뷰</div>
+				<div class="reviewTitle">
+					상품리뷰( <span class="colorSpans">${pageReview.totalNum }</span> )
+				</div>
 				<div class="reviewGraphDiv">
-					<div class="reviewGrade">리뷰 평점</div>
-					<div class="reviewGraph">리뷰 그래프</div>
+					<div class="reviewGrade">
+						<h3>평점</h3>
+
+						<c:forEach var="item" items="${gradeData }">
+							<input type="hidden" value="${item.count}" data-grade="${item.product_review_grade }점" class="gradeProduct">
+
+						</c:forEach>
+
+						<!-- Horizontal bar chart -->
+						<canvas id="bar-chart-horizontal" width="250" height="250"></canvas>
+					</div>
+					<div class="reviewGraph">
+						<h3>배송</h3>
+
+						<c:forEach var="item" items="${data }">
+							<input type="hidden" value="${item.count}" data-speed="${item.product_review_speed }" class="speedProduct">
+
+						</c:forEach>
+
+						<!-- 파이 차트 -->
+						<canvas id="pie-chart" width="250" height="250"></canvas>
+					</div>
 				</div>
 			</div>
 			<!--리뷰 내용들-->
-			<input type="text" name="currentPage" id="currentPage" value="1" readonly>
+			<input type="hidden" name="currentPage" id="currentPage" value="1">
 			<div class="reviewBottom">
 				<c:forEach var="item" items="${reviewList }">
 					<div class="reviews">
-						<p>${item.product_review_id }</p>
-						<p>${item.product_id }</p>
-						<p>${item.member_id }</p>
-						<p>${item.product_review_regdate }</p>
-						<p>${item.product_review_text }</p>
-						<p>${item.product_review_grade }</p>
-						<p>${item.product_review_helpful }</p>
-						<p>${item.product_review_img_url }</p>
-						<p>${item.product_review_video_url }</p>
-						<p>${item.product_review_speed }</p>
+						<!-- 아이디, 날짜 -->
+						<div class="reviewsDiv reviewsHeader">
+							<input type="hidden" value="${item.product_review_id }"> <input type="hidden" value="${item.product_id }"> <span><span class="reviewWriterSpan">${item.member_id }</span> &nbsp;님</span> <span> <fmt:formatDate value="${item.product_review_regdate }" />
+
+							</span>
+						</div>
+						<!-- 별점 -->
+						<div class="reviewsDiv reviewsGrade">
+							<input type="hidden" value="${item.product_review_speed }">
+							
+							<div class="reviewsGradeInner">
+
+								<c:forEach begin="1" end="${item.product_review_grade }">
+									<span class="material-symbols-outlined star">
+										grade
+									</span>
+								</c:forEach>
+								
+								<span>${item.product_review_grade }점</span>
+							</div>
+							<div class="reviewsGradeInner reviewsGradeInnerThumb">
+								<span class="material-symbols-outlined thumb">
+									thumb_up
+								</span>
+								
+								<span class="helpfulSpan">${item.product_review_helpful }</span>
+							</div>
+						</div>
+						<!-- 내용 -->
+						<div class="reviewsDiv reviewsContent">
+							<p>${item.product_review_text }</p>
+						</div>
+						<!-- 사진, 영상 -->
+						<div class="reviewsDiv reviewsPhoto">
+							<div class="reviewsPhotoInner reviewsPhotoInnerPhoto">
+								<!-- 조건 처리 작업 -->
+								<img alt="이미지 준비중" src="${item.product_review_img_url }">
+
+							</div>
+							<div class="reviewsPhotoInner reviewsPhotoInnerVideo">
+								<!-- 조건 처리 작업 -->
+								<video controls width="100%">
+									<source src="${item.product_review_video_url }" type="video/mp4">
+								</video>
+							</div>
+
+
+						</div>
+
+
+
+
+
 					</div>
-				
+
 				</c:forEach>
-				
+
 			</div>
-				
-				<c:if test="${pageReview.end eq true }">
-					<div class="veiwMoreRewviesDiv noneClass">리뷰 더보기</div>
-				</c:if>
-				<c:if test="${pageReview.end eq false }">
-					<div class="veiwMoreRewviesDiv">리뷰 더보기</div>
-				</c:if>
+
+			<c:if test="${pageReview.end eq true }">
+				<div class="veiwMoreRewviesDiv noneClass">리뷰 더보기</div>
+			</c:if>
+			<c:if test="${pageReview.end eq false }">
+				<div class="veiwMoreRewviesDiv">리뷰 더보기</div>
+			</c:if>
 		</div>
 		<!--네비게이터-->
 		<div class="navigatorContainer">
@@ -180,6 +246,10 @@
 
 	<!-- 푸터 -->
 	<jsp:include page="../footer.jsp" />
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
+	<!-- chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 
 	<!-- js -->
 	<script src="/resources/js/shop/product/product_detail_user.js"></script>

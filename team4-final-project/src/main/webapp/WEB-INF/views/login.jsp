@@ -31,6 +31,7 @@
 			<!--서브밋-->
 			<div class="btnDiv">
 				<input type="submit" value="로그인" class="formBtns">
+				<a href="/agree" id="joinAnchor">아직 회원이 아니신가요?</a>
 			</div>
 		</form>
 	</div>

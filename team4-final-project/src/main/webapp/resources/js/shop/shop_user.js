@@ -45,8 +45,9 @@ window.onload = function(){
 
     section_best_items.style.left = '-100%';
     adContainer.style.left = '-100%';
-
-    window.open("/shop/popup", "신상품", "width=600, height=500");
+    
+    //팝업
+    window.open("/shop/popup", "신상품", "width=500, height=500");
 }
 
 // ==================================================================================================

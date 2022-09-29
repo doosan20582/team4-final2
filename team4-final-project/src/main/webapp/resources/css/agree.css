@@ -1,3 +1,50 @@
+body{
+	
+	background-color: var(--subColor);
+	color: white;
+}
+/*진행상태*/
+.progressDiv{
+	display: flex;
+	justify-content: space-around;
+    align-items: center;
+	position: fixed;
+	top: 40px;
+	right: 20px;
+	border: 3px solid pink;
+	width: 200px;
+	height: 50px;
+	color: black;
+}
+
+.one{
+	animation: colorChange 1s 1s infinite linear alternate;
+}	
+
+.oneDot{
+	/* animation: colorChange 1s leaner infinite normal forwards; */
+	animation: colorChange 1s infinite linear alternate;
+}
+
+@keyframes colorChange {
+	0%{
+		color: yellow;
+	}
+	
+	50%{
+		color: white;
+	}
+}
+
+h1,h2,h3,h4{
+	font-family: 'GimpoGothicBold00';
+	color: var(--subFontColor);
+}
+
+p{
+	font-family: 'GimpoGothicRegular00';
+}
+
 /*회원가입 컨테이너 */
 .loginContainer{
     margin: 0 auto;
@@ -28,14 +75,16 @@
 .loginHeader{
     display: flex;
     justify-content: center;
-    text-align: center;
     border: 3px solid aqua;
+    font-size: 2rem;
+    color: white;
 }
 
 /*모두 동의 */
 .allAgreeDiv{
     border: 3px solid saddlebrown;
     display: flex;
+    
 }
 
 /*모두 동의 왼쪽, 오른쪽 */
@@ -153,17 +202,4 @@
     align-items: center;
     justify-content: center;
     
-}
-#nextBtn{
-    width: 200px;
-    height: 50px;
-    color: white;
-    background-color: var(--mainColor);
-    margin: 1rem;
-    cursor: pointer;
-    transition: .3s;
-}
-
-#nextBtn:hover{
-    background-color: rgb(62, 62, 62)
 }
