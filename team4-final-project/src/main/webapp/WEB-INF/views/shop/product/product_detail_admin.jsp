@@ -23,8 +23,9 @@
 	<!--메인-->
 
 	<!-- 상품 pk -->
-	<input type="hidden" readonly="readonly" name="product_id" value="${product.product_id }">
+	<input type="hidden" readonly="readonly" name="product_id" id="product_id" value="${product.product_id }">
 	<main>
+		
 		<!--상품 이미지, 상품 가격, 상품 설명, 수량, 장바구니 담기, 구매하기-->
 		<div class="productTop">
 			<div class="topLeft">
@@ -133,13 +134,38 @@
 		<div class="productBottom">
 			<!--리뷰 통계-->
 			<div class="reviewTop">
-				<div class="reviewTitle">상품리뷰</div>
+				<div class="reviewTitle">
+					상품리뷰(
+					<span class="colorSpans">${pageReview.totalNum }</span>
+					)
+				</div>
 				<div class="reviewGraphDiv">
-					<div class="reviewGrade">리뷰 평점</div>
-					<div class="reviewGraph">리뷰 그래프</div>
+					<div class="reviewGrade">
+						<h3>평점</h3>
+						
+						<c:forEach var="item" items="${gradeData }">
+							<input type="hidden" value="${item.count}" data-grade="${item.product_review_grade }점" class="gradeProduct">
+						
+						</c:forEach>
+						
+						<!-- Horizontal bar chart -->
+						<canvas id="bar-chart-horizontal" width="250" height="250"></canvas>
+					</div>
+					<div class="reviewGraph">
+						<h3>배송 속도</h3>
+
+						<c:forEach var="item" items="${data }">
+							<input type="hidden" value="${item.count}" data-speed="${item.product_review_speed }" class="speedProduct">
+						
+						</c:forEach>
+						
+						<!-- 파이 차트 -->
+						<canvas id="pie-chart" width="250" height="250"></canvas>
+					</div>
 				</div>
 			</div>
 			<!--리뷰 내용들-->
+			<input type="hidden" name="currentPage" id="currentPage" value="1">
 			<div class="reviewBottom">
 				<c:forEach var="item" items="${reviewList }">
 					<div class="reviews">
@@ -177,6 +203,8 @@
 	<!-- 푸터 -->
 	<jsp:include page="../footer.jsp" />
 
+	<!-- chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 	<!-- js -->
 	<script src="/resources/js/shop/product/product_detail_admin.js"></script>
 </body>

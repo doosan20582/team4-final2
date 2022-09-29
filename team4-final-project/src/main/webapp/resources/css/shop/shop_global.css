@@ -108,6 +108,10 @@ footer{
     font-family: 'Black Han Sans'; 
 }
 
+footer p{
+	font-family: 'GimpoGothicBold00'; 
+}
+
 footer .footer_logo{
     width: 30%;
     height: 100%;

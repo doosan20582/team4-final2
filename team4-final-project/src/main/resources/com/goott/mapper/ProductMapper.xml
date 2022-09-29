@@ -210,4 +210,21 @@
 			from t_product where product_delete = 'n' and product_public = 'y' order by product_regdate desc limit 0,1
 		]]>
 	</select>
+	
+	<!-- 상품 배송 후기 정보 가져오기 -->
+	<select id="selectCountSpeed" parameterType="_int" resultType="map">
+		<![CDATA[
+			select product_review_speed, count(*) as count  from t_product_review  
+			where product_id = #{product_id} group by product_review_speed
+		]]>
+		
+	</select>
+	
+	<!-- 상품 평점 정보 가져오기 -->
+	<select id="selectCountGrade" parameterType="_int" resultType="map">
+		<![CDATA[
+			select product_review_grade, count(*) as count 
+			from t_product_review where product_id = #{product_id} group by product_review_grade order by product_review_grade desc
+		]]>
+	</select>
 </mapper>

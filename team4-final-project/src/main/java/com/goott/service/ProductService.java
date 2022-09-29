@@ -99,4 +99,17 @@ public interface ProductService {
 	 * @return 리뷰 개수
 	 */
 	public int getReviewTotalNum(int product_id);
+	
+	/**
+	 * 상품 구매 후기 배송 속도 정보 가져오기
+	 * @param product_id 상품 번호(PK)
+	 * @return 느려요,보통이에요,빨라요 count
+	 */
+	public List<Map<String, Object>> getSpeedAverage(int product_id);
+	/**
+	 * 상품 평점 정보 가져오기
+	 * @param product_id
+	 * @return (1, 2, 3, 4, 5)
+	 */
+	public List<Map<String, Object>> getGradeAverage(int product_id);
 }

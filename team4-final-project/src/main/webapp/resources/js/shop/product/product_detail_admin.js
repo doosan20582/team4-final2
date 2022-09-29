@@ -18,6 +18,12 @@ const toBottomDiv = document.querySelector('.toBottomDiv');
 const productBottom = document.querySelector('.productBottom');
 /*네비게이터 리뷰 이동 디비전 */
 const toReveiwCon = document.querySelector('.toReveiwCon');
+//리뷰 현재 페이지 
+const currentPage = document.querySelector('#currentPage');
+//리뷰 더보기 디비전
+const veiwMoreRewviesDiv = document.querySelector('.veiwMoreRewviesDiv');
+//리뷰 컨테이너
+const reviewBottom = document.querySelector('.reviewBottom');
 
 //==================================================================================================
 window.addEventListener('scroll' , showHideNavigator);
@@ -31,9 +37,113 @@ viewMoreDiv.addEventListener('click' , fullHeightContainer);
 toTopDiv.addEventListener('click' , scrollToTop);
 toBottomDiv.addEventListener('click' , scrollToBottom);
 toReveiwCon.addEventListener('click' , scrollToReview);
-
+veiwMoreRewviesDiv.addEventListener('click' , viewMoreReview);
 //==================================================================================================
 
+window.onload = function(){
+	speedChart();
+	gradeChart();
+}
+
+//수평 차트 평점 함수
+function gradeChart(){
+	//평점
+	const gradeProduct = document.querySelectorAll('.gradeProduct');
+	let labels = [];
+	let datas = [];
+	gradeProduct.forEach((item) => {
+		labels.push(item.dataset.grade);
+		datas.push(item.value);
+	});
+	new Chart(document.getElementById("bar-chart-horizontal"), {
+	    type: 'bar',
+	    data: {
+	      labels: labels,
+	      datasets: [
+	        {
+	          label: "평점",
+	          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+	          data: datas
+	        }
+	      ]
+	    },
+	    options: {
+	      legend: { display: false },
+	      scales: {
+	            
+	            y: {
+	                
+	                beginAtZero: true
+	            }
+	        },
+	      title: {
+	        display: true,
+	        text: '구매자 분들의 후기 점수에요'
+	      }
+	    }
+	});
+}
+
+//파이 차트 배송 속도 함수
+function speedChart(){
+	//배송 속도 평균
+    const speedProduct = document.querySelectorAll('.speedProduct');
+    let labels = [];
+    let datas = [];
+    speedProduct.forEach((item) => {
+    	labels.push(item.dataset.speed);
+    	datas.push(item.value);
+    })
+   
+    new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Delivery Speed",
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+            data: datas
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: '구매자 분들이 작성해준 후기에요'
+          }
+        }
+    });
+}
+
+//리뷰 10개씩 더보기 함수
+function viewMoreReview(){
+	let temp = parseInt(currentPage.value);
+	temp += 1;
+	//현재 페이지 1 증가
+	currentPage.value = temp;
+	let param = { product_id : product_id.value ,currentPage : currentPage.value };
+	//ajax 처리후 다음 10개 가져오기 로직 작성
+	$.ajax({
+		type: 'post',
+		url: '/product/review',
+		data: JSON.stringify(param),
+		dataType: 'html',
+		contentType:'application/json; charset=utf-8',
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			
+			$('.reviewBottom').append(data);
+			//끝페이지면 더보기 비활성화
+			if(	document.querySelector('#pageEnd').value == 'true'){
+				veiwMoreRewviesDiv.style.display = 'none';
+			}
+			//일회성 필요하므로 삭제
+			document.querySelector('#pageEnd').remove();
+		}
+		
+	});
+}
 /*리뷰 구역 이동 함수 */
 function scrollToReview(){
     window.scroll({ 

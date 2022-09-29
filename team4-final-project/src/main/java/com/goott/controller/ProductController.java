@@ -121,6 +121,7 @@ public class ProductController {
 		// 상품 리뷰 목록
 		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);
 		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("pageReview", pageReview);
 		return "/shop/product/productReview";
 	}
 
@@ -136,6 +137,10 @@ public class ProductController {
 		int totalNum = productService.getReviewTotalNum(product_id);
 		// 리뷰 페이지 엔티티 초기화
 		PageReview pageReview = new PageReview(currentPage, totalNum);
+		// 상품 후기 배송 정보
+		List<Map<String, Object>> data = productService.getSpeedAverage(product_id);
+		// 상품 평점
+		List<Map<String, Object>> gradeData = productService.getGradeAverage(product_id);
 
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
@@ -146,6 +151,8 @@ public class ProductController {
 		model.addAttribute("product", productVO);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageReview", pageReview);
+		model.addAttribute("data", data);
+		model.addAttribute("gradeData", gradeData);
 
 		return "shop/product/product_detail_user";
 	}
@@ -163,16 +170,20 @@ public class ProductController {
 		// 리뷰 페이지 엔티티 초기화
 		PageReview pageReview = new PageReview(currentPage, totalNum);
 
+		// 상품 후기 배송 정보
+		List<Map<String, Object>> data = productService.getSpeedAverage(product_id);
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
 		log.info(pageReview);
-
+		// 상품 평점
+		List<Map<String, Object>> gradeData = productService.getGradeAverage(product_id);
 		// 리뷰 목록
 		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);
 		model.addAttribute("product", productVO);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("pageReview", pageReview);
-
+		model.addAttribute("data", data);
+		model.addAttribute("gradeData", gradeData);
 		return "shop/product/product_detail_admin";
 	}
 }

@@ -65,11 +65,21 @@ member_age.addEventListener('keyup' , checkAge);
 //==================================================================================
 //이메일 중복 확인 함수
 function checkDupEmail(){
+	//이메일 양식 확인
+	if(emailSpan.innerHTML != '성공'){
+        alert('이메일 이름양식을 확인해 주세요');
+        return;
+    }
+    if(domainSpan.innerHTML != '성공'){
+        alert('도메인 양식을 확인해 주세요');
+        return;
+    }
+	
 	let emailText = (emailName.value + '@' + domain.value).trim();
 	const param = {
 			"email" : emailText
 	}
-	alert(param.email);
+	
 	$.ajax({
 		
 		url : 'checkDupEmailAjax',
@@ -83,13 +93,16 @@ function checkDupEmail(){
 			//중복된 아이디가 아닙니다.
 			if(data == 0){
 				emailDupCheckSpan.innerHTML = '사용 가능 이메일 입니다.';
+				emailDupCheckSpan.style.color = 'var(--fontColor)';
 			}
 			//증복 아이디
 			else if(data == 1){
 				emailDupCheckSpan.innerHTML = '이미 사용중인 이메일 입니다.';
+				emailDupCheckSpan.style.color = 'red';
 			}
 			else{
 				emailDupCheckSpan.innerHTML = '심각한 오류 발생.';
+				emailDupCheckSpan.style.color = 'red';
 			}
 		}
 	});
@@ -112,13 +125,16 @@ function checkDupId(){
 			//중복된 아이디가 아닙니다.
 			if(data == 0){
 				idDupCheckSpan.innerHTML = '사용 가능 아이디 입니다.';
+				idDupCheckSpan.style.color = 'var(--fontColor)';
 			}
 			//증복 아이디
 			else if(data == 1){
 				idDupCheckSpan.innerHTML = '이미 사용중인 아이디 입니다.';
+				idDupCheckSpan.style.color = 'red';
 			}
 			else{
 				idDupCheckSpan.innerHTML = '심각한 오류 발생.';
+				idDupCheckSpan.style.color = 'red';
 			}
 		}
 	});
@@ -204,37 +220,50 @@ function checkAge(){
     
     if(member_age.value < 1){
         ageSpan.innerHTML = '1살 이상만 입력해주세요.';
+        ageSpan.style.color = 'red';
     }
     else if(member_age.value > 130){
         ageSpan.innerHTML = '130살 이하로 입력해주세요.';
+        ageSpan.style.color = 'red';
     }
     else if(member_age.value > 0 && member_age.value < 131){
         ageSpan.innerHTML = '성공';
+        ageSpan.style.color = 'var(--fontColor)';
     }
     else{
         ageSpan.innerHTML = '죄송합니다. 다시 입력해 주세요.';
+        ageSpan.style.color = 'red';
     }
 }
 
 //비밀번호 확인 체크 함수
 function checkPw2(){
-    if(member_pw2.value.length == 0){
+	if(passwordSpan.innerHTML != '성공'){
+		password2Span.innerHTML = '올바른 비밀번호를 입력해 주세요.';
+		password2Span.style.color = 'red';
+	}
+	else if(member_pw2.value.length == 0){
         password2Span.innerHTML = '';
     }
     else if(WS_REG.test(member_pw2.value)){
         password2Span.innerHTML = '비밀번호에는 공백이 포함될 수 없습니다.';
+        password2Span.style.color = 'red';
      }
      else if(member_pw2.value != member_pw.value){
         password2Span.innerHTML = '비밀번호가 틀립니다.';
+        password2Span.style.color = 'red';
      }
      else if(member_pw2.value == null || member_pw2.value == undefined){
         password2Span.innerHTML = '죄송합니다. 다시 입력해 주세요.';
+        password2Span.style.color = 'red';
      }
      else if(member_pw2.value === member_pw.value){
         password2Span.innerHTML = '성공';
+        password2Span.style.color = 'var(--fontColor)';
      }
      else{
         password2Span.innerHTML = '심각한 오류 발생. 다시 입력해 주세요.';
+        password2Span.style.color = 'red';
      }
 }
 //도메인 양식 체크 함수
@@ -246,12 +275,15 @@ function checkDomain(){
      }
      else if(WS_REG.test(domain.value)){
         domainSpan.innerHTML = '도메인에는 공백이 포함될 수 없습니다.';
+        domainSpan.style.color = 'red';
      }
      else if(!DOMAIN_REG.test(domain.value)){
         domainSpan.innerHTML = '도메인 양식이 틀렸습니다.';
+        domainSpan.style.color = 'red';
      }
      else{
         domainSpan.innerHTML = '성공';
+        domainSpan.style.color = 'var(--fontColor)';
      }
 }
 //이메일 이름 체크 함수
@@ -264,12 +296,15 @@ function checkEmailName(){
      }
      else if(WS_REG.test(emailName.value)){
         emailSpan.innerHTML = '이메일에는 공백이 포함될 수 없습니다.';
+        emailSpan.style.color = 'red';
      }
      else if(!EMAILNAME_REG.test(emailName.value)){
         emailSpan.innerHTML = '이메일 양식이 틀렸습니다.';
+        emailSpan.style.color = 'red';
      }
      else{
         emailSpan.innerHTML = '성공';
+        emailSpan.style.color = 'var(--fontColor)';
      }
 }
 
@@ -297,6 +332,7 @@ function selectDomain(){
     else{
     	domain.value = emailSelect.value;
     	domainSpan.innerHTML = '성공';
+        domainSpan.style.color = 'var(--fontColor)';
     	
     }
 }
@@ -310,12 +346,15 @@ function checkphone(){
     }
     else if(WS_REG.test(member_phone.value)){
         phoneSpan.innerHTML = '핸드폰 번호에는 공백이 포함될 수 없습니다.';
+        phoneSpan.style.color = 'red';
     }
     else if(!HP_REG.test(member_phone.value)){
         phoneSpan.innerHTML = '핸드폰 번호 양식이 틀렸습니다.';
+        phoneSpan.style.color = 'red';
     }
     else{
         phoneSpan.innerHTML = '성공';
+        phoneSpan.style.color = 'var(--fontColor)';
     }
 }
 //이름 한글 체크 함수
@@ -328,12 +367,15 @@ function checkName(){
     }
     else if(WS_REG.test(member_name.value)){
         nameSpan.innerHTML = '이름에는 공백이 포함될 수 없습니다.';
+        nameSpan.style.color = 'red';
     }
     else if(!NAME_REG.test(member_name.value)){
         nameSpan.innerHTML = '이름 양식이 틀렸습니다.';
+        nameSpan.style.color = 'red';
     }
     else{
         nameSpan.innerHTML = '성공';
+        nameSpan.style.color = 'var(--fontColor)';
     }
 }
 //아이디 정규식 체크 함수
@@ -347,12 +389,15 @@ function checkId(){
     }
     else if(WS_REG.test(member_id.value)){
         idSpan.innerHTML = '아이디에는 공백이 포함될 수 없습니다.';
+        idSpan.style.color = 'red';
     }
     else if(!ID_REG.test(member_id.value)){
         idSpan.innerHTML = '아이디 양식이 틀렸습니다.';
+        idSpan.style.color = 'red';
     }
     else{
         idSpan.innerHTML = '성공';
+        idSpan.style.color = 'var(--fontColor)';
     }
 }
 //비밀번호 입력시 정규식 + 비밀번호 확인 인풋 초기화 하는 함수
@@ -366,12 +411,15 @@ function checkRegAndInitPw2(){
     }
     else if(WS_REG.test(member_pw.value)){
         passwordSpan.innerHTML = '비밀번호에는 공백이 포함될 수 없습니다.';
+        passwordSpan.style.color = 'red';
     }
     else if(!PW_REG.test(member_pw.value)){
         passwordSpan.innerHTML = '비밀번호 양식이 틀렸습니다.';
+        passwordSpan.style.color = 'red';
     }
     else{
         passwordSpan.innerHTML = '성공';
+        passwordSpan.style.color = 'var(--fontColor)';
     }
     //비밀번호 변경시 비밀번호 확인 인풋 초기화
     member_pw2.value = '';
@@ -408,6 +456,7 @@ function searchAddress() {
             document.getElementById("roadAddress").value = roadAddr;
 //            document.getElementById("jibunAddress").value = data.jibunAddress;
             addressSpan.innerHTML = '성공';
+            addressSpan.style.color = 'var(--fontColor)';
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
             if(roadAddr !== ''){
                 document.getElementById("extraAddress").value = extraRoadAddr;

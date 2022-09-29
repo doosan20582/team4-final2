@@ -346,6 +346,16 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productMapper.selectCountReview(product_id);
 	}
+	//배송 속도
+	@Override
+	public List<Map<String, Object>> getSpeedAverage(int product_id) {
+		return productMapper.selectCountSpeed(product_id);
+	}
+	//평점 정보
+	@Override
+	public List<Map<String, Object>> getGradeAverage(int product_id) {
+		return productMapper.selectCountGrade(product_id);
+	}
 	
 	
 

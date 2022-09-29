@@ -94,4 +94,16 @@ public interface ProductMapper {
 	 * @return 리뷰 총 개수 
 	 */
 	public int selectCountReview(int product_id);
+	/**
+	 * 상품 후기 배송 정보 가져오기
+	 * @param product_id 상품 번호(PK)
+	 * @return 상품 후기 배송 카운트 (느려요, 보통이에요, 빨라요)
+	 */
+	public List<Map<String, Object>> selectCountSpeed(int product_id);
+	/**
+	 * 상품 평점 정보 가져오기
+	 * @param product_id 상품 번호(PK)
+	 * @return 상품 평점 정보 카운트(1, 2, 3, 4, 5)
+	 */
+	public List<Map<String, Object>> selectCountGrade(int product_id);
 }
