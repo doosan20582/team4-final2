@@ -71,10 +71,7 @@ main{
     top:0;
 }
 
-.section_header_info_id_btn{
-    position: absolute;
-    right: 15px;
-    top:13px;
+.section_header_info_id_recommend_btn{
     width: 40px;
     height: 30px;
 }
@@ -85,11 +82,7 @@ main{
     top:0;
 }
 
-.section_header_info_btns_ohterBtn{
-    width: 150px;
-    height: 30px;
-}
-.section_header_info_btns_noteBtn{
+.section_header_info_btns_deleteBtn{
     width: 100px;
     height: 30px;
 }

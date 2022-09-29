@@ -41,4 +41,10 @@ public interface Community_freeNotice_mapper {
 
 	public String adminConfirmation(String member_id);
 
+	public int recommend_check(Map<String, Object> map);
+
+	public void recommend(Map<String, Object> map);
+
+	public void board_recommend(Map<String, Object> map);
+
 }

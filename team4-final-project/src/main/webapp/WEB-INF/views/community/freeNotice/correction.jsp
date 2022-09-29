@@ -33,7 +33,9 @@
 				<select name="board_tag_id" id="" class="section_header_brackets">
 					<option value="">말머리 선택</option>
 					<option value=1 <c:out value="${data.board_tag_name == '잡담' ? 'selected' : ''}"/>>[잡담]</option>
-					<option value=2 <c:out value="${data.board_tag_name == '공지' ? 'selected' : ''}"/>>[공지]</option>
+					<c:if test="${sessionScope.login_auth eq '관리자'}">
+						<option value=2 <c:out value="${data.board_tag_name == '공지' ? 'selected' : ''}"/>>[공지]</option>
+					</c:if>
 					<option value=3 <c:out value="${data.board_tag_name == '캠핑팁' ? 'selected' : ''}"/>>[캠핑팁]</option>
 					<option value=4 <c:out value="${data.board_tag_name == '상품후기' ? 'selected' : ''}"/>>[상품후기]</option>
 					<option value=5 <c:out value="${data.board_tag_name == '캠핑후기' ? 'selected' : ''}"/>>[캠핑후기]</option>

@@ -33,12 +33,14 @@
 				<select name="board_tag_id" id="" class="section_header_brackets">
 					<option value="">말머리 선택</option>
 					<option value=1>[잡담]</option>
-					<option value=2>[공지]</option>
+					<c:if test="${sessionScope.login_auth eq '관리자'}">
+						<option value=2>[공지]</option>
+					</c:if>
 					<option value=3>[캠핑팁]</option>
 					<option value=4>[상품후기]</option>
 					<option value=5>[캠핑후기]</option>
 				</select>
-				<textarea name="board_title" id="" class="section_header_headline" placeholder="제목을 입력하세요."></textarea>
+				<textarea name="board_title" id="" class="section_header_headline" placeholder="제목을 입력하세요." maxlength='50'></textarea>
 			</div>
 
 			<div class="section_main">

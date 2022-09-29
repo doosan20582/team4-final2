@@ -109,6 +109,12 @@
 				data : JSON.stringify(change_page),
 				success : function(data) {
 					$('.section_notice_main').html(data);
+					let board_title = document.querySelectorAll(".board_title");
+					for(let i=0; i<board_title.length; i++){ // 제목 누르면 상세페이지로
+						board_title[i].addEventListener("click",function(){
+							this.parentNode.nextElementSibling.submit();
+						})
+					}
 				},
 				error : function(data) {
 					console.log(data);
@@ -138,6 +144,12 @@
 			data : JSON.stringify(change_page),
 			success : function(data) {
 				$('.section_notice_main').html(data);
+				let board_title = document.querySelectorAll(".board_title");
+				for(let i=0; i<board_title.length; i++){ // 제목 누르면 상세페이지로
+					board_title[i].addEventListener("click",function(){
+						this.parentNode.nextElementSibling.submit();
+					})
+				}
 			},
 			error : function(data) {
 				console.log(data);
@@ -167,6 +179,12 @@
 			data : JSON.stringify(change_page),
 			success : function(data) {
 				$('.section_notice_main').html(data);
+				let board_title = document.querySelectorAll(".board_title");
+				for(let i=0; i<board_title.length; i++){ // 제목 누르면 상세페이지로
+					board_title[i].addEventListener("click",function(){
+						this.parentNode.nextElementSibling.submit();
+					})
+				}
 			},
 			error : function(data) {
 				console.log(data);

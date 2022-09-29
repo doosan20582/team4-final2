@@ -103,6 +103,12 @@ for(let i=0; i<page; i++){
 			data : JSON.stringify(change_page),
 			success : function(data) {
 				$('.section_notice_main').html(data);
+				let camping_title = document.querySelectorAll(".camping_title"); // 게시글 제목 (상세페이지로 넘어가게)
+				for(let i=0; i<camping_title.length; i++){ // 제목 누르면 상세페이지로
+					camping_title[i].addEventListener("click",function(){
+						this.parentNode.nextElementSibling.submit();
+					})
+				}
 			},
 			error : function(data) {
 				console.log(data);
@@ -135,6 +141,12 @@ for(let i=0; i<page; i++){
 			data : JSON.stringify(change_page),
 			success : function(data) {
 				$('.section_notice_main').html(data);
+				let camping_title = document.querySelectorAll(".camping_title"); // 게시글 제목 (상세페이지로 넘어가게)
+				for(let i=0; i<camping_title.length; i++){ // 제목 누르면 상세페이지로
+					camping_title[i].addEventListener("click",function(){
+						this.parentNode.nextElementSibling.submit();
+					})
+				}
 			},
 			error : function(data) {
 				console.log(data);
@@ -169,6 +181,12 @@ for(let i=0; i<page; i++){
 			data : JSON.stringify(change_page),
 			success : function(data) {
 				$('.section_notice_main').html(data);
+				let camping_title = document.querySelectorAll(".camping_title"); // 게시글 제목 (상세페이지로 넘어가게)
+				for(let i=0; i<camping_title.length; i++){ // 제목 누르면 상세페이지로
+					camping_title[i].addEventListener("click",function(){
+						this.parentNode.nextElementSibling.submit();
+					})
+				}
 			},
 			error : function(data) {
 				console.log(data);
