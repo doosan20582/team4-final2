@@ -49,7 +49,7 @@
 							<td>상품키 <input type="button" value="상품 보기" id="selectDrawBtn">
 								<span id="selectedDrawName"></span></td>
 							<td class="admin_product_id">
-							<input type="text" id="draw_product_id" name="product_id">
+							<input type="text" id="draw_product_id" name="product_id" readonly>
 							
 								</td>
 						</tr>
@@ -57,13 +57,13 @@
 						<tr class="admin_title">
 							<td>상품 이름</td>
 							<td class="admin_title_name">
-								<input type="text" id="draw_title" name="draw_title">
+								<input type="text" id="draw_title" name="draw_title" readonly>
 							</td>
 						<!-- 상품가격 -->
 						<tr class=" admin_title">
 							<td>상품 가격</td> 
 							<td class="admin_title_price"> 
-								<input type="text" id="draw_price" name="draw_price">
+								<input type="text" id="draw_price" name="draw_price" readonly>
 							</td>
 						</tr>
 						<!-- 모집인원 -->
@@ -75,21 +75,21 @@
 						<!-- 이벤트 시작일 -->
 						<tr class="admin_title">
 							<td>이벤트 시작일</td>
-							<td><input type="date" class="drawInputs" name="draw_event_start_date"></td>
+							<td><input type="date" class="drawInputs"  id="Date" name="draw_event_start_date" ></td>
 						</tr> 
 						<tr class="admin_title">
 							<td>이벤트 종료일</td>
-							<td><input type="date" class="drawInputs"  name="draw_event_end_date"></td>
+							<td><input type="date" class="drawInputs"  id="Date_event_end" name="draw_event_end_date"  ></td>
 						</tr> 
 						
 						<tr class="admin_title">
 							<td>구매 시작일</td>
-							<td><input type="date" class="drawInputs" name="draw_pur_start_date"></td>
+							<td><input type="date" class="drawInputs" id="Date_pur_start" name="draw_pur_start_date" ></td>
 						</tr> 
 					
 						<tr class="admin_title">
 							<td>구매 종료일</td>
-							<td><input type="date" class="drawInputs" name="draw_pur_end_date"></td>
+							<td><input type="date" class="drawInputs" name="draw_pur_end_date" id="Date_start"></td>
 						</tr>  
 					
 						<tr class="admin_title">
@@ -179,7 +179,7 @@
 			<h1>푸터 내용</h1>
 		</div>
 	</footer>
-	<script src="/resources/js/shop/draw_customer_add.js"></script>
+	<script src="/resources/js/shop/draw_admin_add.js"></script>
 	<script>
 //====== 상품 카테고리를 클릭했을때 ====== //
 	const btn = document.querySelectorAll('.btn');

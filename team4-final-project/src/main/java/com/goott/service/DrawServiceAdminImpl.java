@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO; 
 import com.goott.mapper.DrawAdminMapper;
 
@@ -17,10 +18,16 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 	DrawAdminMapper drawAdminMapper;
 	
 	@Override
-	public List<DrawVO> draw_admin(Map<String, Object> map) {
+	public List<DrawVO> draw_admin() {
 		// TODO Auto-generated method stub
-		return drawAdminMapper.draw_admin(map);
+		return drawAdminMapper.draw_admin();
 	}
+	@Override
+	public List<DrawVO> draw_admin_change(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return drawAdminMapper.draw_admin_change(map);
+	}
+	
 	@Override
 	public List<DrawVO> draw_customer() {
 		// TODO Auto-generated method stub
@@ -75,16 +82,30 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 		
 		return drawAdminMapper.set_draw_id(id);  
 	}
+	@Override
+	public void update(DrawVO vo) {
+		// TODO Auto-generated method stub
+		 drawAdminMapper.update(vo);
+	}
+	@Override
+	public void delete(DrawVO vo) {
+		// TODO Auto-generated method stub
+		drawAdminMapper.delete(vo);
+	}
 
 	@Override
-	public int update(DrawVO vo) {
+	public List<DrawResultVO> admin_count(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return drawAdminMapper.update(vo);
-	}
+		return drawAdminMapper.admin_count(map);
+	} 
+
+
+	    
+	
 
 	 
 	   
-
+ 
 	
  
  

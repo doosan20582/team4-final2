@@ -24,6 +24,8 @@
 		<div class="draw_container">
 			<form class="count_container">
 				<div class="count_main">
+				<!--foreach 반복 디비전-->
+				<c:forEach var="row" items="${list}">
 					<table class="count_body">
 						<thead>
 							<tr class="count_Title_title">
@@ -32,33 +34,12 @@
 						</thead>
 						<tbody>
 							<tr class="count_Title">
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-							</tr>
-							<tr class="count_Title">
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-							</tr>
-							<tr class="count_Title">
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-							</tr>
-							<tr class="count_Title">
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
-								<td><input type="checkbox" class="box"> 당첨자</td>
+								<td><input type="checkbox" class="box">${row.member_id}</td>
 							</tr>
 						</tbody>
 					</table>
 					<input type="button" name="submit" value="적용하기" class="file_submit" type="button" onclick="location.href='draw_admin.html'">
-
+                </c:forEach>
 				</div>
 
 			</form>

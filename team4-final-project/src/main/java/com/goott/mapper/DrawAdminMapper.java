@@ -5,20 +5,21 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-
+import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
 
 
 @Mapper
 public interface DrawAdminMapper {
 
-	public List<DrawVO> draw_admin(Map<String, Object> map);
+	public List<DrawVO> draw_admin();
+	public List<DrawVO> draw_admin_change(Map<String, Object> map);
 
 	public List<Map<String, Object>> draw_admin_add_plus_product(Map<String,Object> map);
 
 	public List<Map<String,Object>> draw_admin_add_plus(int product_category_id);
 	
-	/**
+	/** 
 	 * 
 	 * @param category_id,brand_id
 	 * @return 상품 이름 (admin_add에 상품이름 추가)
@@ -42,11 +43,13 @@ public interface DrawAdminMapper {
 
 	public Integer set_draw_id(Integer product_id);
 
+	public void update(DrawVO vo);
+	public void delete(DrawVO vo);
+	public List<DrawResultVO> admin_count(Map<String, Object> map);
+
 	
-
-	public int update(DrawVO vo);
    
-
+ 
  
  
 }

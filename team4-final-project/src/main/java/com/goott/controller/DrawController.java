@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 
 
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.goott.domain.DrawVO;
 
 import com.goott.service.DrawServiceAdmin;
-
+ 
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -32,10 +31,9 @@ public class DrawController {
 	DrawServiceAdmin drawServiceAdmin;
 
 	@RequestMapping(value = "/shop/draw_admin", method = RequestMethod.GET)
-	public ModelAndView draw_admin(Map<String,Object> map) {
+	public ModelAndView draw_admin() {
 		log.info("draw 목록 관리자 ====================================================");
-
-		List<DrawVO> draw_admin = drawServiceAdmin.draw_admin(map);
+        List<DrawVO> draw_admin = drawServiceAdmin.draw_admin();
 
 		log.info("draw 목록 : " + draw_admin);
 
@@ -188,29 +186,48 @@ public class DrawController {
 			System.out.println(list);
 			 return list;
 	   }  
-	
+	// === admin count view=== //
 	@RequestMapping(value = "/shop/draw_admin_count", method = RequestMethod.GET)
-	public String draw_admin_count() {
-		return "/shop/draw_admin_count";
+	public ModelAndView admin_count(@RequestParam Map<String, Object> map) {
+		List<DrawResultVO> list = this.drawServiceAdmin.admin_count(map);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("data", drawServiceAdmin.admin_count(map));
+		mv.addObject("map",map);
+		mv.setViewName("/shop/draw_admin_count"); 
+		return mv;
 	}
-	
+	// === admin update view=== //
 	@RequestMapping(value = "/shop/draw_admin_change", method = RequestMethod.GET)
 	public ModelAndView update(@RequestParam Map<String, Object> map) {
-		List<DrawVO> list = this.drawServiceAdmin.draw_admin(map);
+		List<DrawVO> list = this.drawServiceAdmin.draw_admin_change(map);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("data", list);
-		mv.setViewName("shop/draw_admin_change");
+		mv.addObject("data", drawServiceAdmin.draw_admin_change(map));
+		mv.addObject("map",map);
+		mv.setViewName("/shop/draw_admin_change"); 
 		return mv;
 	}
-
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	// === admin update 디비에 보내기=== //
+	@RequestMapping(value = "/shop/draw_admin_change", method = RequestMethod.POST)
 	public ModelAndView update(DrawVO vo) {
+		log.info(vo);
 		ModelAndView mv = new ModelAndView();
-		int idx = drawServiceAdmin.update(vo);
-		mv.setViewName("shop/draw_admin");
+		drawServiceAdmin.update(vo);
+		
+		mv.setViewName("redirect:/shop/draw_admin");
+		return mv; 
+	} 
+	// === admin 삭제기능 === //
+	@RequestMapping(value = "/shop/draw_admin_delete", method = RequestMethod.GET)
+	public ModelAndView delete(DrawVO vo) {
+		ModelAndView mv = new ModelAndView();
+		drawServiceAdmin.delete(vo);
+		mv.setViewName("redirect:/shop/draw_admin");
 		return mv;
 	}
-	
 	 
+}   
 
-}  
+	 
+	  
+
+

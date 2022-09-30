@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@  taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,67 +10,115 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- �۷ι� css -->
+<!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
 <link rel="stylesheet" href="/resources/css/shop/draw_admin_change.css">
-<!--���θ� �۷ι� ������ cdn-->
+<!--쇼핑몰 글로벌 아이콘 cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <title>Document</title>
 </head>
 
 <body>
-	<!-- ��� -->
+	<!-- 헤더 -->
 	<jsp:include page="header.jsp" />
 
-	<!--����-->
+	<!--메인-->  
 	<main>
-		<form class="admin_container">
+				<form class="admin_container" id="admin_container"
+			name="admin_container" method="POST" action="/shop/draw_admin_change?draw_id=${map.no}">
 			<div class="draw_container">
 
-				<div class="admin_main">
+				<div class="admin_main"> <!--  input을 줘서 히든을 줘라 -->
 					<table class="admin_body">
-						<tr class="admin_body_file">
-							<td class="file_top_fir">�̺�Ʈ �̹���</td>
-							<td><input type="file" name="file" class="drawInputs"></td>
-						</tr>
+					<c:forEach var="data" items="${data}">
+						<!-- <tr class="admin_body_file">
+                            <td class="file_top_fir">이벤트 이미지</td>
+                            <td>
+                                <input type="file" name="file" class="drawInputs">
+                            </td>
+                        </tr> -->
+                          <!-- 상품키 모달 버튼 -->
 						<tr class="admin_title">
-							<td>��ǰŰ</td>
-							<td><span id="selectedDrawName">������ ��ǰ1</span></td>
+							<td>드로우키 </td>
+							<td class="admin_product_id">
+							<input type="text" name="draw_id" value=" ${data.draw_id}" />
+							
+								</td>
 						</tr>
+						 <!-- 상품이름 -->
 						<tr class="admin_title">
-							<td>�ο�</td>
-							<td><input type="number" value="1" id="selectDrawBtn"></td>
+							<td>상품 이름</td>
+							<td class="admin_title_name">
+							<input type="text" name="draw_title" value="${data.product_name}" />
+								 
+							</td> 
+						<!-- 상품가격 -->
+						
+						<tr class=" admin_title">
+							<td>상품 가격</td> 
+							<td class="admin_title_price"> 
+								<input type="text" name="draw_price" value="${data.product_price}" />
+							</td>
 						</tr>
+						
+						<!-- 모집인원 -->
 						<tr class="admin_title">
-							<td>�̺�Ʈ ������</td>
-							<td>�̺�Ʈ ������1</td>
+							<td>인원</td>
+							<td><input type="number" id="selectDrawBtn" name="draw_reqruit" value="${data.draw_reqruit}" />
+							</td>
 						</tr>
+						<!-- 이벤트 시작일 -->
 						<tr class="admin_title">
-							<td>�̺�Ʈ ������</td>
-							<td><input type="date" class="drawInputs"></td>
-						</tr>
+							<td>이벤트 시작일</td>
+							<td>
+							<fmt:parseDate value="${data.draw_event_start_date}" pattern = "yyyy-MM-dd'T'HH:mm" var="date1" type="both"/> 
+							<input type="date" name="draw_event_start_date" value="<fmt:formatDate value="${date1}" pattern="yyyy-MM-dd" />" >
+							
+							</td>
+						</tr>  
+						 <tr class="admin_title">
+							<td>이벤트 종료일</td>
+							<td> 
+								<fmt:parseDate value="${data.draw_event_end_date}" pattern = "yyyy-MM-dd'T'HH:mm" var="date1" type="both"/> 
+								<input type="date" name="draw_event_end_date" value="<fmt:formatDate value="${date1}" pattern="yyyy-MM-dd" />" >
+							</td>
+							
+						</tr> 
+						
 						<tr class="admin_title">
-							<td>���� ������</td>
-							<td><input type="date" class="drawInputs"></td>
-						</tr>
+							<td>구매 시작일</td>
+							<td> 
+								<fmt:parseDate value="${data.draw_pur_start_date}" pattern = "yyyy-MM-dd'T'HH:mm" var="date1" type="both"/> 
+								<input type="date" name="draw_pur_start_date" value="<fmt:formatDate value="${date1}" pattern="yyyy-MM-dd" />" >
+							</td>
+							
+						</tr> 
+					
 						<tr class="admin_title">
-							<td>���� ������</td>
-							<td><input type="date" class="drawInputs"></td>
-						</tr>
+							<td>구매 종료일</td>
+							<td> 
+								<fmt:parseDate value="${data.draw_pur_end_date}" pattern = "yyyy-MM-dd'T'HH:mm" var="date1" type="both"/> 
+								<input type="date" name="draw_pur_end_date" value="<fmt:formatDate value="${date1}" pattern="yyyy-MM-dd" />" >
+							</td>
+						</tr>   
+					
 						<tr class="admin_title">
-							<td>�ڸ�Ʈ</td>
-							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+							<td>코멘트</td>
+							<td><textarea name="draw_comment" id="" cols="30" rows="10" >
+							${data.draw_comment}
+							 </textarea>
+							
+							</td>
 						</tr>
-
+						</c:forEach>
 					</table>
 
 				</div>
-				<input type="button" name="submit" value="����" class="file_submit" type="button">
+				<input type="submit" value="완료" class="file_submit">
 			</div>
 		</form>
-
 	</main>
-	<!-- Ǫ�� -->
+	<!-- 푸터 -->
 	<jsp:include page="footer.jsp" />
 	
 	<script src="/resources/js/shop/draw_customer_add.js"></script>
