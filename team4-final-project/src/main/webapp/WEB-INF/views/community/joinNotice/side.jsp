@@ -68,4 +68,14 @@
                 <input type="text" name="keyword" class="side_nav_search">
                 <i class="xi-search side_nav_search_btn"></i>
             </form>
+            
+            <form class="side_nav_form" method="get"> <!-- 조회순 클릭 시 넘어 갈 폼 -->
+				<input name="camping_region" type="hidden" value="${option.camping_region}">
+				<input name="camping_recruitment" type="hidden" value="${option.camping_recruitment}">
+				<input name="camping_departure" type="hidden" value="${option.camping_departure}">
+				<input name="camping_period" type="hidden" value="${option.camping_period}">
+				<input name="camping_close" type="hidden" value="${option.camping_close}">
+				<input name="keyword" class="hit_keyword" type="hidden" value="${option.keyword}">
+				<input name="sort_value" class="hit_value" type="hidden" value="desc">
+			</form>
         </div>

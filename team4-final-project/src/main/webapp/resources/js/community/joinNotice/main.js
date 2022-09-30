@@ -8,6 +8,19 @@ const search_option = document.querySelector(".side_nav"); // 검색 시 submit 
 let camping_title = document.querySelectorAll(".camping_title"); // 게시글 제목 (상세페이지로 넘어가게)
 const write_btn = document.querySelector(".write_btn"); // 글쓰기 버튼
 const delete_btn = document.querySelector(".delete_btn"); // 관리자 글 삭제 버튼
+const hit_sort = document.querySelector(".sort"); // 조회순 버튼
+const side_form = document.querySelector(".side_nav_form"); //조회순 submit 할 form
+
+hit_sort.addEventListener("click",function(){ // 조회순 정렬
+	if(sort_value == "desc"){
+		document.querySelector(".hit_value").value="asc";
+		side_form.action="/community/joinNotice/main";
+		side_form.submit();
+	} else {
+		side_form.action="/community/joinNotice/main";
+		side_form.submit();
+	}
+})
 
 delete_btn.addEventListener("click",function(){ // 관리자 글 삭제하기
 	if (confirm("게시글을 삭제하시겠습니까?")) {
@@ -92,7 +105,8 @@ for(let i=0; i<page; i++){
 				camping_departure : camping_departure,
 				camping_period : camping_period,
 				camping_close : camping_close,
-				keyword : keyword
+				keyword : keyword,
+				sort_value : sort_value
 		};
 
 		$.ajax({
@@ -130,7 +144,8 @@ for(let i=0; i<page; i++){
 				camping_departure : camping_departure,
 				camping_period : camping_period,
 				camping_close : camping_close,
-				keyword : keyword
+				keyword : keyword,
+				sort_value : sort_value
 		};
 
 		$.ajax({
@@ -170,7 +185,8 @@ for(let i=0; i<page; i++){
 				camping_departure : camping_departure,
 				camping_period : camping_period,
 				camping_close : camping_close,
-				keyword : keyword
+				keyword : keyword,
+				sort_value : sort_value
 		};
 
 		$.ajax({

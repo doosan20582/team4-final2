@@ -59,6 +59,8 @@
 				<input type="hidden" value="${sessionScope.login_id}" name="member_id">
 				<input type="button" value="글 등록" class="section_footer_registrationBtn">
 			</div>
+			
+			<input type="hidden" name="write_point" class="write_point">
 		</form>
 	</main>
 	<!--푸터-->

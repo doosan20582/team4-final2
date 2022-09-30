@@ -31,12 +31,19 @@ public class Community_freeNotice_controller {
 	
 	@GetMapping("/main") //자유게시판 목록 페이지
 	public void getList(@RequestParam Map<String, Object> map , T_board_tag_VO tag_vo, Model model, HttpServletRequest request) {
+
+		String sort_value = (String) map.get("sort_value");
+		
 		String keyword = (String) map.get("keyword");
+		if(keyword==null) { // 키워드가 없으면 value없이 key만 던짐
+			map.put("keyword", "");
+		}
+		
 		int tag_id = tag_vo.getBoard_tag_id();
 		HttpSession session = request.getSession();
 		String member_auth = " ";
-		//세션에 저장된 아이디
-		if(session.getAttribute("login_id")!=null) {
+		
+		if(session.getAttribute("login_id")!=null) {//세션에 저장된 아이디
 			String member_id = session.getAttribute("login_id").toString();
 			member_auth= fservice.adminConfirmation(member_id); // 회원 관리자 여부
 		}
@@ -45,6 +52,7 @@ public class Community_freeNotice_controller {
 		model.addAttribute("count", fservice.listCount(map));
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("tag_id", tag_id);
+		model.addAttribute("sort_value", sort_value);
 		model.addAttribute("member_auth", member_auth);
 	}
 	
@@ -55,7 +63,10 @@ public class Community_freeNotice_controller {
 	
 	@PostMapping("/input") // 글 입력 페이지에서 글 등록하기
 	public String inputPost (T_board_VO board) {
-		fservice.inputPost(board);
+		
+		/* fservice.inputPost(board); */
+		  fservice.inputPoint(board);
+		 
 		return "redirect:/community/freeNotice/main";
 	}
 	

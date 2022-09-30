@@ -30,6 +30,8 @@ public class Community_joinNotice_controller {
 	
 	@GetMapping("/main") // 캠핑모임게시판 메인
 	public void getList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map , Model model, HttpServletRequest request) {
+		String sort_value = (String) map.get("sort_value");
+		
 		HttpSession session = request.getSession();
 		String member_auth = " ";
 		//세션에 저장된 아이디
@@ -41,7 +43,7 @@ public class Community_joinNotice_controller {
 		model.addAttribute("count", jservice.listCount(map)); // 게시글 갯수
 		model.addAttribute("option", map); // 페이징 처리에 사용할 검색 옵션
 		model.addAttribute("member_auth", member_auth); // 관리자 여부 확인
-		
+		model.addAttribute("sort_value", sort_value);// 조회순 정렬 종류
 	}
 	
 	@PostMapping("/go_detail")// 상세페이지 조건

@@ -12,31 +12,34 @@ delete_btn.addEventListener("click", function() { //게시글 삭제
 })
 
 
-for(let i=0; i<reply_delete.length; i++){ // 댓글 삭제
-	reply_delete[i].addEventListener("click",function(){
-		if (confirm("댓글을 삭제하시겠습니까?")) {
-			let board_reply_id = this.nextElementSibling.value;
-			let reply_box = this.parentNode.parentNode;
-			let reply_id = {
-					board_reply_id : board_reply_id
-			};
-			$.ajax({
-				type : "POST",
-				url : "/community/freeNotice/delete_reply",
-				dataType : "text",
-				contentType : "application/json",
-				data : JSON.stringify(reply_id),
-				success : function(data) {
-					reply_box.style.display="none";
-					get_reply_count.textContent = get_reply_count.textContent-1;
-				},
-				error : function(data) {
-					console.log(data);
-				}
-			});
-		}
-	})
+var delete_reply = function () { //댓글 삭제 함수
+	if (confirm("댓글을 삭제하시겠습니까?")) {
+		let board_reply_id = this.nextElementSibling.value;
+		let reply_box = this.parentNode.parentNode;
+		let reply_id = {
+				board_reply_id : board_reply_id
+		};
+		$.ajax({
+			type : "POST",
+			url : "/community/freeNotice/delete_reply",
+			dataType : "text",
+			contentType : "application/json",
+			data : JSON.stringify(reply_id),
+			success : function(data) {
+				reply_box.style.display="none";
+				$('.reply_count').load(location.href+' .reply_count');
+			},
+			error : function(data) {
+				console.log(data);
+			}
+		});
+	}
 }
+
+for(let i=0; i<reply_delete.length; i++){ // 댓글 삭제
+	reply_delete[i].addEventListener("click",delete_reply)
+}
+
 
 
 //댓글 달기
@@ -66,8 +69,9 @@ $(function() {
 					data : JSON.stringify(reply_info),
 					success : function(data) {
 						$('.section_footer_commentList').prepend(data);
-						console.log(input_reply_count);
-						get_reply_count.textContent = parseInt(get_reply_count.textContent)+1;
+						$('.reply_count').load(location.href+' .reply_count');
+						let delete_btn = document.querySelector(".xi-close"); //댓글 추가 후 삭제 버튼
+						delete_btn.addEventListener("click",delete_reply)// 댓글 추가 후 삭제
 					},
 					error : function(data) {
 						console.log(data);

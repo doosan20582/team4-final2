@@ -61,7 +61,7 @@ public class Community_controller {
     		byte[] bytes = upload.getBytes();
     		
     		//이미지 경로 생성 
-    		String path = "C:\\Users\\diklr\\Desktop\\uploadImg" + "ckImage/";	// 이미지 경로 설정(폴더 자동 생성)
+    		String path = "C:\\projectImg" + "ckImage/";	// 이미지 경로 설정(폴더 자동 생성)
     		String ckUploadPath = path + uid + "_" + fileName;
     		File folder = new File(path);
 
@@ -81,7 +81,6 @@ public class Community_controller {
     	String callback = request.getParameter("CKEditorFuncNum");
     	printWriter = response.getWriter();
     	String fileUrl = "/community/imgSubmit?uid=" + uid + "&fileName=" + fileName; // 작성화면
-    	
     	// 업로드시 메시지 출력
     	printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
     	printWriter.flush();
@@ -104,7 +103,7 @@ public class Community_controller {
     		, HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException{
     	//서버에 저장된 이미지 경로
-    	String path = "C:\\Users\\diklr\\Desktop\\uploadImg" + "ckImage/";	// 저장된 이미지 경로
+    	String path = "C:\\projectImg" + "ckImage/";	// 저장된 이미지 경로
     	String sDirPath = path + uid + "_" + fileName;
     	
     	File imgFile = new File(sDirPath);

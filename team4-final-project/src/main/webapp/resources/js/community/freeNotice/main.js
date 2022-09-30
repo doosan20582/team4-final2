@@ -6,11 +6,38 @@
 	const tag_list = document.querySelectorAll('.side_nav_tag'); //사이드 메뉴의 태그 리스트
 	const side_form1 = document.querySelector(".side_nav_form1"); //태그 클릭 시 submit 할 form
 	const side_form2 = document.querySelector(".side_nav_form2"); //검색 시 submit 할 form
+	const side_form3 = document.querySelector(".side_nav_form3"); //조회순 submit 할 form
+	const side_form4 = document.querySelector(".side_nav_form4"); //추천순 submit 할 form
 	const input_hidden = document.querySelector(".side_nav_input"); //태그 클릭 시 정보 실려 보낼 인풋 태그
 	const search_btn = document.querySelector(".side_nav_search_btn"); // 검색 버튼
 	let board_title = document.querySelectorAll(".board_title"); // 게시글 제목 (상세페이지로 넘어가게)
 	const write_btn = document.querySelector(".write_btn"); // 글쓰기 버튼
 	const delete_btn = document.querySelector(".delete_btn"); // 관리자 글 삭제 버튼
+	const hit_sort = document.querySelector(".hit_sort"); // 조회순 버튼
+	const recommend_sort = document.querySelector(".recommend_sort"); //추천순 버튼
+	
+	hit_sort.addEventListener("click",function(){ // 조회순 정렬
+		if(sort_value == "h_desc"){
+			document.querySelector(".hit_value").value="h_asc";
+			side_form3.action="/community/freeNotice/main";
+			side_form3.submit();
+		} else {
+			side_form3.action="/community/freeNotice/main";
+			side_form3.submit();
+		}
+	})
+	
+	recommend_sort.addEventListener("click",function(){ // 추천순 정렬
+		if(sort_value == "r_desc"){
+			document.querySelector(".rec_value").value="r_asc";
+			side_form4.action="/community/freeNotice/main";
+			side_form4.submit();
+		} else {
+			side_form4.action="/community/freeNotice/main";
+			side_form4.submit();
+		}
+	})
+	
 
 	delete_btn.addEventListener("click",function(){ // 관리자 글 삭제하기
 		if (confirm("게시글을 삭제하시겠습니까?")) {
@@ -65,6 +92,12 @@
 			side_form1.submit();
 		})
 	}
+	
+	var tag_color = function(){ //태그 누르면 색 변하게
+		document.querySelector(".side_nav").children[tag_id].style.color = "rgb(0, 173, 26)";
+	}
+	
+	tag_color();
 
 	search_btn.addEventListener("click",function(){ // 검색 키워드에 맞게 글 목록이 나오게
 		side_form2.action="/community/freeNotice/main";
@@ -98,7 +131,8 @@
 			let change_page = {
 					page_count : i*10,
 					board_tag_id : tag_id,
-					keyword : searching_keyword
+					keyword : searching_keyword,
+					sort_value : sort_value
 			};
 
 			$.ajax({
@@ -133,7 +167,8 @@
 		let change_page = {
 				page_count : 0,
 				board_tag_id : tag_id,
-				keyword : searching_keyword
+				keyword : searching_keyword,
+				sort_value : sort_value
 		};
 
 		$.ajax({
@@ -168,7 +203,8 @@
 		let change_page = {
 				page_count : (page-1)*10,
 				board_tag_id : tag_id,
-				keyword : searching_keyword
+				keyword : searching_keyword,
+				sort_value : sort_value
 		};
 
 		$.ajax({
@@ -192,34 +228,3 @@
 		});
 	})
 
-/*let page = Math.ceil(board_count/10); //전체 게시글 수를 10개 단위로 나눠서 페이지 개수를 구함
-let page_count = 1; // 페이지를 표시해 줄 변수
-let page_area = document.querySelector(".section_notice_footer"); // 페이지가 표시 될 공간
-
-//페이징??
-for(let i=0; i<page; i++){
-	let page_btn = document.createElement( 'p' );
-	let page_text = document.createTextNode(page_count);
-	page_btn.append(page_text);
-	page_area.insertBefore(page_btn,document.querySelector(".write_btn"));
-	page_btn.addEventListener("click",function(){
-		let change_page = {
-				page_count : i*10
-		};
-		$.ajax({
-			type : "POST",
-			url : "/community/freeNotice/change_page",
-			dataType : "text",
-			contentType : "application/json",
-			data : JSON.stringify(change_page),
-			success : function(data) {
-				$('.section_notice_main').html(data);
-			},
-			error : function(data) {
-				console.log(data);
-			}
-		});
-	})
-	page_count++;
-}
-*/

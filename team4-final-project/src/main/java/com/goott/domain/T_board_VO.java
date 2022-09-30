@@ -15,6 +15,7 @@ public class T_board_VO {
 	private int board_count;
 	private int reply_count;
 	private String board_deleteYN;
+	private int write_point;
 	public int getBoard_id() {
 		return board_id;
 	}
@@ -87,13 +88,20 @@ public class T_board_VO {
 	public void setBoard_deleteYN(String board_deleteYN) {
 		this.board_deleteYN = board_deleteYN;
 	}
+	public int getWrite_point() {
+		return write_point;
+	}
+	public void setWrite_point(int write_point) {
+		this.write_point = write_point;
+	}
 	@Override
 	public String toString() {
 		return "T_board_VO [board_id=" + board_id + ", member_id=" + member_id + ", board_tag_id=" + board_tag_id
 				+ ", board_regdate=" + board_regdate + ", board_title=" + board_title + ", board_text=" + board_text
 				+ ", board_hit=" + board_hit + ", board_recommend=" + board_recommend + ", board_tag_name="
 				+ board_tag_name + ", board_count=" + board_count + ", reply_count=" + reply_count + ", board_deleteYN="
-				+ board_deleteYN + "]";
+				+ board_deleteYN + ", write_point=" + write_point + "]";
 	}
+	
 	
 }

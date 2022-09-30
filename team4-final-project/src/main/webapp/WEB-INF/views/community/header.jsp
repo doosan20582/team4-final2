@@ -27,14 +27,8 @@
             <a href="/community/joinNotice/main">캠핑모임게시판</a>
         </div>
         <div class="login">
-            <a href="">
-                <i class="xi-search"></i>
-            </a>
-            <a href="">
-                <i class="xi-truck"></i>
-            </a>
-            <a href="basket.html">
-                <i class="xi-cart"></i>
+            <a href="/shop">
+                <i class="xi-shop"></i>Shop &nbsp;&nbsp;&nbsp;
             </a>
             
              <c:if test="${sessionScope.login_id eq null}">

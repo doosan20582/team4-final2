@@ -47,4 +47,6 @@ public interface Community_freeNotice_mapper {
 
 	public void board_recommend(Map<String, Object> map);
 
+	public void inputPoint(T_board_VO board);
+
 }

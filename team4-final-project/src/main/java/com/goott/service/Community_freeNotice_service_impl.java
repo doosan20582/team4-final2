@@ -112,4 +112,9 @@ public class Community_freeNotice_service_impl implements Community_freeNotice_s
 		mapper.board_recommend(map);
 	}
 
+	@Override
+	public void inputPoint(T_board_VO board) {
+		mapper.inputPoint(board);
+	}
+
 }
