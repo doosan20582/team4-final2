@@ -1,6 +1,5 @@
 .registProductCon {
 	width: 100%;
-	
 	border: 3px solid saddlebrown;
 	display: flex;
 }
@@ -17,20 +16,25 @@
 .registProductDiv table {
 	border-collapse: collapse;
 	width: 100%;
+	font-family: 'GimpoGothicBold00';
+	color: white;
 }
 
-table th, td {
+table th,table td {
 	width: 50%;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	padding: 1rem;
+}
+table th{
+	color: var(--mainColor);
+	font-size: 1.5rem;
 }
 
-table td textarea {
-	width: 100%;
-	height: 100%;
-	padding: 1rem;
-	resize: none;
+table td:nth-child(2n-1){
+	font-size: 1.3rem;
+	color: var(--subFontColor);
 }
+
 /*업로드 이미지 리스트 디비전 */
 .mainFileListDiv, .subFileListDiv {
 	width: 100%;
@@ -146,12 +150,25 @@ table td textarea {
 	display: flex;
 	flex-direction: row-reverse;
 }
-#addBtn{
-	cursor: pointer;
-	width: 100px;
-	height: 50px;
-	background-color: var(--mainColor);
+
+#formText{
+	width: 100%;
+	height: 100px;
+	/* margin-bottom: 0.5rem; */
+	padding-left: 0.5rem;
+	background-color: var(--sub2Color);
 	color: white;
+	font-family: 'GimpoGothicBold00';
+	transition: .3s;
+	border: none;
+	outline: none;
+	resize: none;
+	padding: 1rem;
+}
+
+#addBtn{
+	display: block;
+	margin: 0 auto;
 }
 
 

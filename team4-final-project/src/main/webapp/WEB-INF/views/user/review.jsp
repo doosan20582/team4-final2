@@ -63,11 +63,11 @@
 			</div>
 			<!--첨부-->
 			<div class="reviewAttachDiv">
-				<input type="file" name="file">
+				<input type="file" name="file" class="formInputs">
 			</div>
 			<!--저장하기-->
 			<div class="reviewBtnDiv">
-				<input type="submit" value="저장하기" id="reviewBtn">
+				<input type="submit" value="저장하기" id="reviewBtn" class="formBtns">
 			</div>
 		</div>
 	</form>

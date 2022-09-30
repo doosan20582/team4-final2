@@ -51,6 +51,7 @@ public class CommonInterceptor implements HandlerInterceptor{
 		
 		//있다면 리턴 트루
 		else {
+			log.info("로그인 중 , 아이디 : " + session.getAttribute("login_id").toString());
 			return true;
 			
 		}

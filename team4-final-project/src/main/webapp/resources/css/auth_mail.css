@@ -18,7 +18,7 @@ body{
 }
 
 .one{
-	animation: colorChange 1s 1s infinite linear alternate;
+	animation: colorChange 1s infinite linear alternate;
 }	
 
 .oneDot{

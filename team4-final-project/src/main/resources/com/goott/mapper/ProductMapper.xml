@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goott.mapper.ProductMapper">
+	
+	<!-- 상품 비공개 처리  -->
+	<update id="updateDelete" parameterType="_int">
+		<![CDATA[
+			update t_product set product_delete = 'y' where product_id = #{product_id}
+		]]>
+	</update>
 	<!-- 상품 등록 -->
 	<insert id="insert" parameterType="com.goott.domain.ProductVO">
 		<![CDATA[
@@ -57,8 +64,7 @@
 				   product_youtube_url,
 				   product_regdate,
 				   product_delivery_day,
-				   product_delete,
-				   product_public
+				   product_delete
 			from t_product
 		    where product_id = #{product_id}
 		]]>
@@ -70,7 +76,6 @@
 			from t_product
 			where product_limited = '일반'
 			and product_delete = 'n'
-			and product_public = 'y'
 		]]>
 			<if test="category_id != 0">
 				<![CDATA[
@@ -83,7 +88,7 @@
 		]]>
 	</select>
 	<!-- 상품 10개씩 관리자 -->
-	<!-- 한정판, 삭제여부, 비공개 여부 상관 없이 모두 -->
+	<!-- 한정판, 비공개 여부 상관 없이 모두 -->
 	<select id="listAll" parameterType="com.goott.domain.PageShop" resultType="com.goott.domain.ProductVO">
 		<![CDATA[
 			select product_id, product_name, product_img_url1, product_thumbnail_img_url 
@@ -106,8 +111,6 @@
 			from t_product
 			where product_limited = '일반'
 			and product_delete = 'n'
-			and product_public = 'y'
-			
 		]]>
 		<if test="category_id != 0">
 			<![CDATA[
@@ -121,7 +124,6 @@
 		<![CDATA[
 			select count(product_id) as totalPage 
 			from t_product
-			
 		]]>
 		<if test="category_id != 0">
 			<![CDATA[
@@ -141,7 +143,7 @@
 				product_name = #{product_name}, 
 				product_comment = #{product_comment}, 
 				product_price = #{product_price},
-				product_thumbnail_img_url = #{product_thumbnail_img_url} 
+				product_thumbnail_img_url = #{product_thumbnail_img_url},
 				product_img_url1 = #{product_img_url1}, 
 				product_img_url2 = #{product_img_url2}, 
 				product_img_url3 = #{product_img_url3}, 
@@ -149,8 +151,7 @@
 				product_description_img_url2 = #{product_description_img_url2}, 
 				product_youtube_url = #{product_youtube_url}, 
 				product_delivery_day = #{product_delivery_day}, 
-				product_delete = #{product_delete}, 
-				product_public = #{product_public}
+				product_delete = #{product_delete}
 			where product_id = #{product_id}
 			
 		]]>
@@ -206,8 +207,8 @@
 		<![CDATA[
 			select product_id, product_category_id, product_brand_id, product_limited, product_stock, product_name, product_comment, product_price, 
 	   			   product_thumbnail_img_url, product_img_url1, product_img_url2, product_img_url3, product_description_img_url1, 
-       			   product_description_img_url2, product_youtube_url, product_regdate, product_delivery_day, product_delete, product_public 
-			from t_product where product_delete = 'n' and product_public = 'y' order by product_regdate desc limit 0,1
+       			   product_description_img_url2, product_youtube_url, product_regdate, product_delivery_day, product_delete
+			from t_product where product_delete = 'n' order by product_regdate desc limit 0,1
 		]]>
 	</select>
 	

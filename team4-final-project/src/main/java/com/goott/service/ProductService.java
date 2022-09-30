@@ -36,7 +36,7 @@ public interface ProductService {
 	 * @param imgs1 상품 이미지 1, 2, 3
 	 * @param imgs2 상품 설명 이미지 1, 2, 3
 	 */
-	public void updateProduct(ProductVO productVO, MultipartFile[] imgs1, MultipartFile[] imgs2); //상품 입력
+	public int updateProduct(ProductVO productVO, MultipartFile[] imgs1, MultipartFile[] imgs2); //상품 입력
 	
 	/**
 	 * 상품 상세 정보
@@ -112,4 +112,9 @@ public interface ProductService {
 	 * @return (1, 2, 3, 4, 5)
 	 */
 	public List<Map<String, Object>> getGradeAverage(int product_id);
+	/**
+	 * 상품 비공개 처리 하기
+	 * @param product_id 상품 번호(PK)
+	 */
+	public int setProductClosed(int product_id);
 }

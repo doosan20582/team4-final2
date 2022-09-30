@@ -28,9 +28,9 @@
 	<main>
 		<!--상품 이미지, 상품 가격, 상품 설명, 수량, 장바구니 담기, 구매하기-->
 		<form method="get" action="/order">
-			<c:if test="${sessionScope.login_id ne null }">
+			<%-- <c:if test="${sessionScope.login_id ne null }">
 				<input type="hidden" name="member_id" value="${login_id}">
-			</c:if>
+			</c:if> --%>
 
 			<div class="productTop">
 				<input type="hidden" name="product_id" id="product_id" value="${product.product_id }">

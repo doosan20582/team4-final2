@@ -20,19 +20,27 @@ header{
 }
 
 header a{
+	color: white;
+    margin-left: 1rem;
 	text-decoration: none;
 	transition: .3s;
 }
 
+header a:hover{
+	color: red;
+	transform: translateY(-10%);
+}
+
 #loginName:hover{
 	color: red;
+	transform: translateY(-10%);
 }
 
 header .logo{
     width: 30%;
     height: 100%;
     color: var(--fontColor);
-    font-size: 3rem;
+    /* font-size: 3rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,11 +53,16 @@ header .logo{
 
 header .logo h1{
 	color: var(--fontColor);
+	transition: .3s;
 }
 
-header .logo span{
-    color : white;
+header .logo h1:hover{
+	transform: translateY(-10%);
 }
+
+/* header .logo span{
+    color : white;
+} */
 
 header .menu{
     width: 40%;
@@ -61,14 +74,13 @@ header .menu{
 }
 
 header .menu a{
-    color: white;
-    transition: .3s;
+    
     margin-left: 1rem;
 }
 
-header .menu a:hover{
+/* header .menu a:hover{
 	color: red;
-}
+} */
 
 header .login{
     width: 30%;
@@ -81,15 +93,14 @@ header .login{
 }
 
 header .login a{
-    color: white;
-    margin-left: 1rem;
+    
     transition: .3s;
     
 }
-
+/* 
 header .login a:hover{
 	color: red;
-}
+} */
 
 main{
     width: 100%;
@@ -118,18 +129,23 @@ footer .footer_logo{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size : 3rem;
+   /*  font-size : 3rem; */
     border: 3px solid white;
-    color: var(--fontColor);
+    
 }
 
-/* footer .footer_logo h1{
-    color: var(--fontColor);
-} */
+footer .footer_logo h1{
+  	color: var(--fontColor);
+	transition: .3s;
+	cursor: pointer;
+} 
+footer .footer_logo h1:hover{
+  	transform: translateY(-10%);
+} 
 
-footer .footer_logo h1 span{
+/* footer .footer_logo h1 span{
     color: white;
-}
+} */
 
 footer .footer_content{
     width: 70%;

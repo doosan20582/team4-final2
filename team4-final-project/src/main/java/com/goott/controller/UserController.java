@@ -85,4 +85,37 @@ public class UserController {
 		
 		return "redirect:/user";
 	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String deleteUser(@RequestParam String member_id, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		//포스트 아이디 제대로 넘어오는지 확인
+		log.info(member_id);
+		
+		//세션에 로그인 된 상태인제 체크
+		if(session.getAttribute("login_id") != null) {
+			String login_id = session.getAttribute("login_id").toString();
+			
+			//세션에 로그인 된 아이디와 삭제 요청한 아이디가 일치하는지 한번 더 확인
+			if(member_id.equals(login_id)) {
+				model.addAttribute("msg", "올바른 삭제 처리 접근");
+				model.addAttribute("url", "/");
+				return "alert";
+			}
+			//일치하지 않으면 잘못된 요청
+			else {
+				model.addAttribute("msg", "잘못된 방식으로 삭제 요청을 하였습니다. 확인 후 다시 시도해 주세요.");
+				//세션 삭제
+				model.addAttribute("url", "logout");
+				return "alert";
+			}
+		}
+		//아니면 잘못된 요청
+		else {
+			model.addAttribute("msg", "로그인 되지 않은 유저입니다. 로그인 후 탈퇴 신청 해주세요.");
+			model.addAttribute("url", "login");
+			return "alert";
+		}
+		
+	}
 }

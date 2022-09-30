@@ -24,14 +24,14 @@
 					<table>
 						<thead>
 							<tr>
-								<th>컬럼1</th>
-								<th>컬럼2</th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>카테고리 선택</td>
-								<td><select name="product_category_id" id="">
+								<td><select name="product_category_id" id="" class="formInputs">
 										<c:forEach var="item" items="${categoryList }">
 											<option value="${item.product_category_id }">${item.product_category_name }</option>
 
@@ -41,7 +41,7 @@
 							</tr>
 							<tr>
 								<td>브랜드 선택</td>
-								<td><select name="product_brand_id" id="">
+								<td><select name="product_brand_id" id="" class="formInputs">
 										<c:forEach var="item" items="${brandList }">
 											<option value="${item.product_brand_id }">${item.product_brand_name }</option>
 										</c:forEach>
@@ -55,42 +55,42 @@
 							</tr>
 							<tr>
 								<td>상품 재고량</td>
-								<td><input type="number" name="product_stock" id="" required="required" min="1" max="99"> 개</td>
+								<td><input type="number" class="formInputs" name="product_stock" id="" required="required" min="1" max="99"> 개</td>
 							</tr>
 							<tr>
 								<td>상품 이름</td>
-								<td><input type="text" name="product_name" id="" required="required" maxlength="20"></td>
+								<td><input type="text" class="formInputs" name="product_name" id="" required="required" maxlength="20"></td>
 							</tr>
 							<tr>
 								<td>상품 코멘트</td>
-								<td><textarea name="product_comment" id="" placeholder="상품 설명 작성(200자)" maxlength="200"></textarea></td>
+								<td><textarea name="product_comment" id="formText" placeholder="상품 설명 작성(200자)" maxlength="200"></textarea></td>
 							</tr>
 							<tr>
 								<td>상품 가격</td>
-								<td><input type="number" name="product_price" id="" required="required" min="1" max="99999999"> 원</td>
+								<td><input type="number" class="formInputs" name="product_price" id="" required="required" min="1" max="99999999"> 원</td>
 							</tr>
 							<tr>
 								<td>상품 이미지(최대 3개)</td>
 								<!-- <td><input type="file" name="imgs1" multiple></td> -->
-								<td><input type="file" name="imgs1" id="mainFile" multiple>
+								<td><input type="file" class="formInputs" name="imgs1" id="mainFile" multiple>
 									<div class="mainFileListDiv"></div></td>
 							</tr>
 							<tr>
 								<td>상품 설명 이미지(최대 2개)</td>
 								<!-- <td><input type="file" name="imgs2" multiple></td> -->
-								<td><input type="file" name="imgs2" id="subFile" multiple>
+								<td><input type="file" class="formInputs" name="imgs2" id="subFile" multiple>
 									<div class="subFileListDiv"></div></td>
 							</tr>
 							<tr>
 								<td>상품 유튜브 주소</td>
-								<td><input type="text" name="product_youtube_url" id="" maxlength="100"></td>
+								<td><input type="text" class="formInputs" name="product_youtube_url" id="" maxlength="100"></td>
 							</tr>
 							<tr>
-								<td>상품 배송일</td>
-								<td><input type="number" name="product_delivery_day" id="" required="required" min="1" max="10"> 일</td>
+								<td>상품 배송일</td> 
+								<td><input type="number" class="formInputs" name="product_delivery_day" id="" required="required" min="1" max="10"> 일</td>
 							</tr>
 							<tr>
-								<td colspan="2" class="btnDiv"><input type="submit" value="등록" id="addBtn"></td>
+								<td colspan="2" class="btnDiv"><input type="submit" class="formBtns" value="등록" id="addBtn"></td>
 							</tr>
 						</tbody>
 					</table>

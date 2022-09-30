@@ -14,6 +14,18 @@ const orderHistoryModalCon = document.querySelector('.orderHistoryModalCon');
 const userOrderHistoryDiv = document.querySelector('.userOrderHistoryDiv');
 /*리뷰 작성하러 가기 스팬 */
 const writeReviewSpan = document.querySelectorAll('.writeReviewSpan');
+//회원 탈퇴 앵커
+const deleteMemberAnchor = document.querySelector('.deleteMemberAnchor');
+//회원 탈퇴 컨테이너
+const deleteMemberContainer = document.querySelector('.deleteMemberContainer');
+//회원 탈퇴 텍스트 인풋
+const deleteInputs = document.querySelector('.deleteInputs');
+//회원 탈퇴 스팬
+const deleteSpan = document.querySelector('.deleteSpan');
+//회원 탈퇴 컨테이너 닫기 아이콘
+const closeIcon = document.querySelector('.closeIcon');
+//회원 탈퇴 버튼
+const deleteBtns = document.querySelector('.deleteBtns');
 // ==================================================================================================
 writeReviewSpan.forEach((item) => {
     item.addEventListener('click', writeReview);
@@ -29,9 +41,79 @@ confirmBuy.forEach((item) => {
 
 logOutBtn.addEventListener('click' , doLogOut);
 userGradeDiv.addEventListener('click' , showMyGrade);
-userOrderHistoryDiv.addEventListener('click', showSalesDiv)
-orderHistoryModalCon.addEventListener('click', closeSalesDiv)
+userOrderHistoryDiv.addEventListener('click', showSalesDiv);
+orderHistoryModalCon.addEventListener('click', closeSalesDiv);
+deleteMemberAnchor.addEventListener('click', showDeleteMemberCon);
+deleteMemberContainer.addEventListener('click', closeDeleteMemberCon);
+deleteInputs.addEventListener('keyup', checkDeleteText);
+closeIcon.addEventListener('click', closeIconFunc);
+deleteBtns.addEventListener('click', doDeleteMember);
 // =====================================================================================================
+
+
+//삭제 버튼 클릭시 삭제 요청
+function doDeleteMember(){
+	let result = confirm('정말 탈퇴 하시겠습니까?');
+	
+	if(result){
+		//삭제 요청시 폼 생성
+		//인풋 member_id 생성후 로그인 유저 아이디 넣기
+		//post 방식으로 컨트롤러 /user/delete 호출
+		
+		let tempForm = document.createElement('form');
+		
+		tempForm.setAttribute('method', 'post');
+		tempForm.setAttribute('action', '/user/delete');
+		
+		let tempInput = document.createElement('input');
+		
+		tempInput.setAttribute('type', 'hidden');
+		tempInput.setAttribute('name', 'member_id');
+		
+		let tempText = userNameSpan.innerHTML;
+		
+		tempInput.setAttribute('value', tempText);
+		
+		document.body.appendChild(tempForm);
+		tempForm.appendChild(tempInput);
+		
+		
+		
+		tempForm.submit();
+	}
+	
+	
+}
+
+//삭제 텍스트 체크 함수
+function checkDeleteText(){
+	const text = deleteSpan.innerHTML;
+	
+	if(this.value == text){
+		deleteBtns.style.textDecoration = 'none';
+		deleteBtns.disabled = false;
+	}
+	else{
+		deleteBtns.style.textDecoration = 'line-through';
+		deleteBtns.disabled = true;
+		
+	}
+}
+
+//닫기 아이콘 으로 회원탈퇴창 컨테이너 닫기
+function closeIconFunc(){
+	deleteMemberContainer.style.display = 'none';
+}
+
+//회원탈퇴창 컨테이너 닫기
+function closeDeleteMemberCon(e){
+	if(e.target.className == 'deleteMemberContainer')
+		this.style.display = 'none';
+}
+//회원탈퇴창 컨테이너 열기
+function showDeleteMemberCon(){
+	deleteMemberContainer.style.display = 'block';
+}
 
 //구매확정하기 글자 변경 이벤트
 function changeUpText(){

@@ -13,6 +13,9 @@
 
 <!-- Jquery cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- 구글 폰트 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <title>My Page</title>
 </head>
 <body>
@@ -33,7 +36,7 @@
 			<div class="userModifyDiv">
 				<a id="logOutBtn">로그아웃</a>
 				<a class="">회원정보수정</a>
-				<a class="">회원탈퇴</a>
+				<a class="deleteMemberAnchor">회원탈퇴</a>
 			</div>
 		</div>
 		
@@ -120,6 +123,36 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</div>
+	</div>
+	
+	<!-- 회원탈퇴 컨테이너 -->
+	<div class="deleteMemberContainer">
+		<!-- 회원 탈퇴 디비전 -->
+		<div class="deleteMemberDiv">
+			<div class="deleteInner">
+				<span>
+					탈퇴 하시겠어요?
+				</span>
+				<span class="material-symbols-outlined closeIcon">
+					close
+				</span>
+				
+			</div>
+			<div class="deleteInner">
+				만약 이글을 읽지 않으면 엄청난 일이 생길수 있습니다!
+			</div>
+			<div class="deleteInner">
+				<p>탈퇴 신청은 <span class="boldSpan">취소할수 없습니다</span>.</p>
+				<p>탈퇴 완료 후에도 <span class="boldSpan">${sessionScope.login_id }</span>님의 모든 게시글은 삭제되지 않을수 있습니다.</p>
+				<p>동의 하시면  <span class="deleteSpan">${sessionScope.login_id }/탈퇴신청</span> 을 입력해 주세요.</p>
+			</div>
+			<div class="deleteInner">
+				<input type="text" class="deleteInputs">
+				<!-- <input type="button" class="deleteBtns" value="상기 내용에 동의하고, 삭제 신청합니다." disabled="disabled"> -->
+				
+				<button class="deleteBtns" disabled="disabled">상기 내용에 동의하고, 삭제 신청합니다.</button>
+			</div>
 		</div>
 	</div>
 

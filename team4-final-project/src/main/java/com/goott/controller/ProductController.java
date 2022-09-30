@@ -87,7 +87,7 @@ public class ProductController {
 	// 상품 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPost(ProductVO productVO, @RequestParam(value = "imgs1") MultipartFile[] imgs1,
-			@RequestParam(value = "imgs2") MultipartFile[] imgs2) {
+			@RequestParam(value = "imgs2") MultipartFile[] imgs2, Model model) {
 		log.info("상품 수정 post-----------------------------------------");
 		// 코멘트 없으면 초기화
 		if (productVO.getProduct_comment().trim().equals("") || productVO.getProduct_comment().trim() == null
@@ -99,8 +99,19 @@ public class ProductController {
 			productVO.setProduct_youtube_url("no url");
 
 		log.info("컨트롤러로 전달된 정보 : " + productVO);
-		productService.updateProduct(productVO, imgs1, imgs2);
-		return "redirect:/shop/admin";
+		int result = productService.updateProduct(productVO, imgs1, imgs2);
+		int product_id = productVO.getProduct_id();
+		if(result == 1) {
+			model.addAttribute("msg", "수정 되었습니다.");
+			model.addAttribute("url", "/product/detail/admin?product_id=" + Integer.toString( product_id ));
+		}
+		else
+			{
+			model.addAttribute("msg", "죄송합니다. 잠시후 다시 시도해 주세요.");
+			model.addAttribute("url", "/product/detail/admin?product_id=" + Integer.toString( product_id ));
+		}
+		return "/alert";
+		
 	}
 
 	@RequestMapping(value = "/review", method = RequestMethod.POST)
@@ -185,5 +196,23 @@ public class ProductController {
 		model.addAttribute("data", data);
 		model.addAttribute("gradeData", gradeData);
 		return "shop/product/product_detail_admin";
+	}
+	
+	//상품 비공개 처리
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(@RequestParam int product_id, Model model) {
+		log.info("상품 비공개 ============================================");
+		int result = productService.setProductClosed(product_id);
+		if(result == 1) {
+			model.addAttribute("msg", "비공개 처리 되었습니다.");
+			model.addAttribute("url", "/product/detail/admin?product_id=" + Integer.toString( product_id ));
+		}
+		else
+			{
+			model.addAttribute("msg", "죄송합니다. 잠시후 다시 시도해 주세요.");
+			model.addAttribute("url", "/product/detail/admin?product_id=" + Integer.toString( product_id ));
+		}
+		return "/alert";
 	}
 }
