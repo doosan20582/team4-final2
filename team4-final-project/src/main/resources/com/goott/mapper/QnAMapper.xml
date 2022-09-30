@@ -28,6 +28,11 @@
 	<select id="countQnABoard" resultType="int">
 		SELECT COUNT(*) FROM t_qna;
 	</select>
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countQnABoardCategory" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM t_qna
+		where qna_category=#{ckeckcategory};
+	</select>
 	
 	<!-- 페이징 처리 후 게시글 조회 -->
 	<select id="selectQnABoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
@@ -39,13 +44,14 @@
   									SELECT @ROWNUM := 0
   									) R
   			WHERE <choose>
-					<when test="ckeckcategory!=null and ckeckcategory!=''">
-					qna_category = #{ckeckcategory} 
+					<when test="checkcategory!=null and checkcategory!='' and checkcategory != 'all'">
+					qna_category = #{checkcategory} 
 					</when>
 					<otherwise>
-						qna_category like CONCAT('%','','%')
+						qna_category like CONCAT('%','','%') 
 					</otherwise>
 				</choose>
+				
 			) LIST
 			WHERE
 			 rnum between #{vo.start} AND #{vo.end} ;

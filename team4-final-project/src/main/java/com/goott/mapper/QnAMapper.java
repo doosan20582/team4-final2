@@ -25,5 +25,7 @@ public interface QnAMapper {
 	// 페이징 처리 게시글 조회
 	public List<QnAVO> selectQnABoard(Map<String, Object> map);
 
+	public int countQnABoardCategory(String ckeckcategory);
+
 }
 
