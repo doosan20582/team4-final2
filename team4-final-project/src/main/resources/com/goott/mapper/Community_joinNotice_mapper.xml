@@ -10,7 +10,14 @@
   		from t_camping left join t_camping_reply on t_camping.camping_id = t_camping_reply.camping_id where
   		<include refid="search_option" />
   		and camping_deleteYN = 'N'
-  		group by t_camping.camping_id order by t_camping.camping_close DESC, t_camping.camping_id DESC limit 0, 10;
+  		group by t_camping.camping_id order by t_camping.camping_close DESC,
+  		<if test="sort_value == 'desc'">
+  			camping_hit DESC,
+  		</if>
+  		<if test="sort_value == 'asc'">
+  			camping_hit ASC,
+  		</if>
+  		t_camping.camping_id DESC limit 0, 10;
   	</select>
   	
   	<select id="getDetail" resultType="com.goott.domain.T_camping_VO">
@@ -71,7 +78,14 @@
   		from t_camping left join t_camping_reply on t_camping.camping_id = t_camping_reply.camping_id where
   		<include refid="search_option" />
   		and camping_deleteYN = 'N'
-  		group by t_camping.camping_id order by t_camping.camping_close DESC, t_camping.camping_id DESC limit ${page_count}, 10;
+  		group by t_camping.camping_id order by t_camping.camping_close DESC,
+  		<if test="sort_value == 'desc'">
+  			camping_hit DESC,
+  		</if>
+  		<if test="sort_value == 'asc'">
+  			camping_hit ASC,
+  		</if>
+  		t_camping.camping_id DESC limit ${page_count}, 10;
   	</select>
   	
   	<sql id="search_option">

@@ -36,19 +36,19 @@
 			<div class="recommendation_main">
 				<div class="recommendation_main_imgBox">
 					<div class="recommendation_img">
-						<img src="/resources/img/community/recommendation.jpg" alt="">
+						<img src="/community/imgSubmit?uid=67ff1ee8-8ea9-4903-a339-0faee29db899&amp;fileName=캠핑메인.jpg" alt="">
 					</div>
 					<div class="recommendation_img">
-						<img src="/resources/img/community/recommendation.jpg" alt="">
+						<img src="/community/imgSubmit?uid=c77ff10a-3b5e-40e1-b8ac-64a788378aff&fileName=메인img.jpg" alt="">
 					</div>
 					<div class="recommendation_img">
-						<img src="/resources/img/community/recommendation.jpg" alt="">
+						<img src="/community/imgSubmit?uid=add5a0b0-eedd-45c1-92f1-79819b6f79ae&fileName=메인img2.jpg" alt="">
 					</div>
 					<div class="recommendation_img">
-						<img src="/resources/img/community/recommendation.jpg" alt="">
+						<img src="/community/imgSubmit?uid=e30dfbf3-8ea4-42cc-a896-03f494cae303&fileName=메인img3.jpg" alt="">
 					</div>
 					<div class="recommendation_img">
-						<img src="/resources/img/community/recommendation.jpg" alt="">
+						<img src="/community/imgSubmit?uid=ce204025-8ceb-4ade-b01d-d87d3ae912c0&fileName=메인img4.jpg" alt="">
 					</div>
 				</div>
 			</div>

@@ -70,9 +70,19 @@ main{
 }
 .section_header>li:nth-child(6){
     width: 7%;
+    cursor : pointer;
+}
+.section_header>li:nth-child(6)>i{
+    color : rgb(0, 173, 26);
+    font-size : 1rem;
 }
 .section_header>li:nth-child(7){
     width: 7%;
+    cursor : pointer;
+}
+.section_header>li:nth-child(7)>i{
+    color : rgb(0, 173, 26);
+    font-size : 1rem;
 }
 
 .section_notice{
@@ -178,6 +188,7 @@ main{
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	transition: all 0.2s;
 }
 
 .section_notice_footer_page>div{

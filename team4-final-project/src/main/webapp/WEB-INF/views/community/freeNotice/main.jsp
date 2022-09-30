@@ -42,8 +42,24 @@
 				<li>제목</li>
 				<li>글쓴이</li>
 				<li>날짜</li>
-				<li>조회수</li>
-				<li>추천수</li>
+				<c:choose>
+				<c:when test="${sort_value eq 'h_desc'}">
+					<li class="hit_sort">조회수<i class="xi-caret-up"></i></li>
+				</c:when>
+				<c:otherwise>
+					<li class="hit_sort">조회수<i class="xi-caret-down"></i></li>
+				</c:otherwise>
+				</c:choose>
+				
+				<c:choose>
+				<c:when test="${sort_value eq 'r_desc'}">
+					<li class="recommend_sort">추천수<i class="xi-caret-up"></i></li>
+				</c:when>
+				<c:otherwise>
+					<li class="recommend_sort">추천수<i class="xi-caret-down"></i></li>
+				</c:otherwise>
+				</c:choose>
+
 			</div>
 
 			<div class="section_notice">

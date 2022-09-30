@@ -36,7 +36,14 @@
 				<li>모집인원</li>
 				<li>출발일</li>
 				<li>기간</li>
-				<li>조회수</li>
+				<c:choose>
+				<c:when test="${sort_value eq 'desc'}">
+					<li class="sort">조회수<i class="xi-caret-up"></i></li>
+				</c:when>
+				<c:otherwise>
+					<li class="sort">조회수<i class="xi-caret-down"></i></li>
+				</c:otherwise>
+				</c:choose>
 				<li>마감여부</li>
 			</div>
 
@@ -52,6 +59,7 @@
 					let camping_period = '<c:out value="${option.camping_period}"/>';
 					let camping_close = '<c:out value="${option.camping_close}"/>';
 					let keyword = '<c:out value="${option.keyword}"/>';
+					let sort_value = '<c:out value="${sort_value}"/>';
 				</script>
 
 				<div class="section_notice_footer">

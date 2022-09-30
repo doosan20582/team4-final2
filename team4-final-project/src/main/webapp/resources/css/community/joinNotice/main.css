@@ -122,6 +122,11 @@ main{
 }
 .section_header>li:nth-child(8){
     width: 6%;
+    cursor:pointer;
+}
+.section_header>li:nth-child(8)>i{
+    color : rgb(0, 173, 26);
+    font-size : 1rem;
 }
 .section_header>li:nth-child(9){
     width: 6%;
@@ -236,6 +241,7 @@ main{
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	transition: all 0.2s;
 }
 
 .section_notice_footer_page>div{

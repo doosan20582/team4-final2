@@ -5,57 +5,65 @@ let reply_delete = document.querySelectorAll(".xi-close");// 댓글 삭제 버�
 const recommend_btn = document.querySelector(".section_header_info_id_recommend_btn");// 추천 버튼
 const login_id = document.querySelector("#user_id").value;//현재 로그인 아이디
 
-recommend_btn.addEventListener("click",function(){
-	let recommend = {
-			board_id : board_id,
-			member_id : login_id
-	}
-	$.ajax({
-		type : "POST",
-		url : "/community/freeNotice/recommend",
-		dataType : "text",
-		contentType : "application/json",
-		data : JSON.stringify(recommend),
-		success : function(data) {
-			/*if(parseInt(data) == 1){
-				alert("이미 추천한 글입니다.");
-			}*/
-			let check = data;
-			if(check=="false"){
-				alert("이미 추천한 글입니다.");
-			}
-		},
-		error : function(data) {
-			console.log(data);
+
+recommend_btn.addEventListener("click",function(){ // 게시글 추천
+	let user_id = document.querySelector('#user_id').value; // 현재 접속중인 유저 아이디
+	if(user_id==null || user_id==""){
+		if(confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
+			location.href='/login';
 		}
-	});
+	} else {
+		let recommend = {
+				board_id : board_id,
+				member_id : login_id
+		}
+		$.ajax({
+			type : "POST",
+			url : "/community/freeNotice/recommend",
+			contentType : "application/json",
+			data : JSON.stringify(recommend),
+			success : function(data) {
+				if(data=="fail"){
+					alert("이미 추천한 글입니다.");
+				}
+				$('.recommend_count').load(location.href+' .recommend_count');
+			},
+			error : function(data) {
+				console.log(data);
+			}
+		});
+	}
 })
 
-for(let i=0; i<reply_delete.length; i++){ // 댓글 삭제
-	reply_delete[i].addEventListener("click",function(){
-		if (confirm("댓글을 삭제하시겠습니까?")) {
-			let board_reply_id = this.nextElementSibling.value;
-			let reply_box = this.parentNode.parentNode;
-			let reply_id = {
-					board_reply_id : board_reply_id
-			};
-			$.ajax({
-				type : "POST",
-				url : "/community/freeNotice/delete_reply",
-				dataType : "text",
-				contentType : "application/json",
-				data : JSON.stringify(reply_id),
-				success : function(data) {
-					reply_box.style.display="none";
-					get_reply_count.textContent = get_reply_count.textContent-1;
-				},
-				error : function(data) {
-					console.log(data);
-				}
-			});
-		}
-	})
+var delete_reply = function () { //댓글 삭제 함수
+	if (confirm("댓글을 삭제하시겠습니까?")) {
+		let board_reply_id = this.nextElementSibling.value;
+		let reply_box = this.parentNode.parentNode;
+		let reply_id = {
+				board_reply_id : board_reply_id
+		};
+		$.ajax({
+			type : "POST",
+			url : "/community/freeNotice/delete_reply",
+			dataType : "text",
+			contentType : "application/json",
+			data : JSON.stringify(reply_id),
+			success : function(data) {
+				reply_box.style.display="none";
+				$('.reply_count').load(location.href+' .reply_count');
+			},
+			error : function(data) {
+				console.log(data);
+			}
+		});
+	}
 }
+
+for(let i=0; i<reply_delete.length; i++){ // 댓글 삭제
+	reply_delete[i].addEventListener("click",delete_reply)
+}
+
+
 
 //댓글 달기
 $(function() {
@@ -84,7 +92,9 @@ $(function() {
 					data : JSON.stringify(reply_info),
 					success : function(data) {
 						$('.section_footer_commentList').prepend(data);
-						get_reply_count.textContent = parseInt(get_reply_count.textContent)+1;
+						$('.reply_count').load(location.href+' .reply_count');
+						let delete_btn = document.querySelector(".xi-close"); //댓글 추가 후 삭제 버튼
+						delete_btn.addEventListener("click",delete_reply)// 댓글 추가 후 삭제
 					},
 					error : function(data) {
 						console.log(data);

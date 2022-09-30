@@ -53,7 +53,7 @@
 						</p>
 						<p class="section_header_info_id_recommend">
 							추천수 :
-							<span>${data.board_recommend}</span>&nbsp;
+							<span class="recommend_count">${data.board_recommend}</span>&nbsp;
 							<input type="button" value="추천" class="section_header_info_id_recommend_btn">
 						</p>
 					</div>
