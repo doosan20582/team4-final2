@@ -21,5 +21,10 @@ public interface QnAService {
 	public int countQnABoard();
 
 	// 페이징 처리 게시글 조회
-	public List<QnAVO> selectQnABoard(PagingVO vo, String ckeckcategory);
+	public List<QnAVO> selectQnABoard(PagingVO vo, String checkcategory, String QnASearch);
+
+	public int countQnABoardCategory(String checkcategory);
+
+
+	
 }

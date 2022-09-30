@@ -7,8 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,9 +32,26 @@ public class QnAController {
 	public String QnA(PagingVO vo, Model model	
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
-			, @RequestParam(defaultValue = "")String ckeckcategory) {
+			, @RequestParam(defaultValue = "all")String checkcategory
+			, @RequestParam(defaultValue = "all")String QnASearch
+			) {
+		int total =0;
+
+		if(checkcategory.isEmpty() || checkcategory.contentEquals("all") ) {
+			total = qnaservice.countQnABoard();
+		}
+		else if(!checkcategory.isEmpty()){
+
+			total = qnaservice.countQnABoardCategory(checkcategory);
+		}
+//		else if(QnASearch.isEmpty() || QnASearch.contentEquals("all")) {
+//			total = qnaservice.countQnABoard();
+//		}
+//		else if(!QnASearch.isEmpty()) {
+//			total = qnaservice.countQnABoardCategory(checkcategory, QnASearch);
+//		}
+//		
 		
-		int total = qnaservice.countQnABoard();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -44,12 +60,16 @@ public class QnAController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		} 
-		System.out.println(ckeckcategory);
+		
+
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", vo);
-		model.addAttribute("list", qnaservice.selectQnABoard(vo, ckeckcategory));
-		System.out.println(qnaservice.selectQnABoard(vo, ckeckcategory));
-		log.info(vo);
+		model.addAttribute("list", qnaservice.selectQnABoard(vo, checkcategory, QnASearch));
+		model.addAttribute("checkcategory",checkcategory);
+		model.addAttribute("QnASearch", QnASearch);
+		log.info("-------------------------------");
+		log.info(checkcategory);
+		log.info("-------------------------------");
 		return "/shop/QnA";
 	}
 	

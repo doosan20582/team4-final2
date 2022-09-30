@@ -28,23 +28,21 @@
 		
 		<div class="QnA_Title">
 			<h1>QnA</h1>
-			 <%-- <c:if test="${sessionScope.login_id != null}"> --%>
 			<input id="QnA_Title_btn" class="btn" type="button" value="문의하기">
-			<%-- </c:if>  --%>
 		</div>
 		<form action="/shop/QnA" name="sk">
 			<div class="QnA_Search">
-				<input id="QnA_Search_text" type="search" placeholder="제목을 검색하세요.">
+				<input id="QnA_Search_text" name="QnASearch" type="search" placeholder="제목을 검색하세요.">
 				<input id="QnA_Search_btn" type="submit" value="검색">
 			</div>
 		
 		<div class="QnA_Nav">
-			<label for="QnA_Nav_btn6"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn6" value=''>전체</label>
-			<label for="QnA_Nav_btn2"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
-			<label for="QnA_Nav_btn1"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
-			<label for="QnA_Nav_btn3"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
-			<label for="QnA_Nav_btn4"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
-			<label for="QnA_Nav_btn5"><input type="radio" name="ckeckcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
+			<label for="QnA_Nav_btn6"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn6" value="all">전체</label>
+			<label for="QnA_Nav_btn2"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
+			<label for="QnA_Nav_btn1"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
+			<label for="QnA_Nav_btn3"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
+			<label for="QnA_Nav_btn4"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
+			<label for="QnA_Nav_btn5"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
 			<input type="button" id="checkboxbtn" value="정렬하기">
 		</div>
 		</form>
@@ -81,7 +79,7 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<a href="/shop/QnA?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					<a href="/shop/QnA?nowPage=${p }&cntPerPage=${paging.cntPerPage}&checkcategory=${checkcategory}&QnASearch=${QnASearch}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
@@ -104,7 +102,7 @@
     let checkboxbtn = document.querySelector("#checkboxbtn");
     let checktype = document.querySelectorAll(".checktype");
     QnA_Title_btn.addEventListener('click',function(){
-    	if(${sessionScope.login_id == true}){
+    	if(${sessionScope.login_id != null}){
     		location.href="Question";
     	}else{
     		alert("로그인 후 이용해주세요!");
