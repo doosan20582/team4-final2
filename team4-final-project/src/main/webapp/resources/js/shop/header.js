@@ -20,10 +20,11 @@ function goMain(){
 	location.href = '/';
 }
 //로그아웃 함수
-function doLogOut(e){
-	e.preventDefault();
+function doLogOut(){
+	
 	const result = confirm('로그아웃 하시겠습니까?');
-	if(result){
+	
+	if(result == true){
 		location.href = '/logout';
 	}
 }

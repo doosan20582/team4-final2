@@ -16,9 +16,11 @@ public class LogAdvice {
 	@Around("execution(* com.goott.*.*.*(..))")
 	public Object logAround(ProceedingJoinPoint pjp) {
 		
-		log.info("클래스 : " + pjp.getTarget());
-		log.info("메서드 : " + pjp.getSignature().getName());
-		log.info("파마리터 : " + Arrays.toString(pjp.getArgs()));
+		/*
+		 * log.info("클래스 : " + pjp.getTarget()); log.info("메서드 : " +
+		 * pjp.getSignature().getName()); log.info("파마리터 : " +
+		 * Arrays.toString(pjp.getArgs()));
+		 */
 		
 		Object result = null;
 		

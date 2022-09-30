@@ -59,7 +59,7 @@ public interface ProductMapper {
 	 * 상품 수정
 	 * @param productVO 상품 엔티티
 	 */
-	public void update(ProductVO productVO);
+	public int update(ProductVO productVO);
 	/**
 	 * 상품 주문서 작성 정보 가져오기
 	 * @param product_id 상품 번호
@@ -106,4 +106,10 @@ public interface ProductMapper {
 	 * @return 상품 평점 정보 카운트(1, 2, 3, 4, 5)
 	 */
 	public List<Map<String, Object>> selectCountGrade(int product_id);
+	
+	/**
+	 * 상품 비공개 처리
+	 * @param product_id 상품 번호(PK)
+	 */
+	public int updateDelete(int product_id);
 }

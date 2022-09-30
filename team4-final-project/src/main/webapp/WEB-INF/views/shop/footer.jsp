@@ -17,7 +17,7 @@
     <footer>
         <div class="footer_logo">
             <!-- <h1>Camp<span>ing</span></h1> -->
-            Camping
+            <h1>Camping</h1>
         </div>
         <div class="footer_content">
             <!-- <h1>푸터 내용</h1> -->

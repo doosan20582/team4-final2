@@ -1,4 +1,10 @@
 /*주문 상세 컨테이너*/
+
+h2{
+	font-family: 'GimpoGothicBold00';
+	color: var(--subFontColor);
+}
+
 .orderContainer{
     width: 70%;
     margin: 0 auto;
@@ -12,23 +18,42 @@
 }
 
 .addressDiv{
-    height: 300px;
-    background-color: aliceblue;
+    /* height: 300px; */
+    border: 3px solid black;
     padding: 1rem;
+    font-family: 'GimpoGothicBold00';
+    color: white;
+    font-size: 1.2rem;
 }
 
-#requestSelect{
-    width: 100%;
-    padding: 0.7rem;
+.orderInputs{
+	width: 100%;
+	padding: 1rem;
+	background-color: var(--sub2Color);
+	color: white;
+	font-family: 'GimpoGothicBold00';
+	transition: .3s;
+	border: none;
+	outline: none;
 }
 
-#requestTextarea{
-    width: 100%;
-    padding: 1rem;
+.orderSelect{
+	height: 50px;
+}
+
+.orderText{
+	height: 150px;
+	resize: none;
+	font-size: 1.2rem;
+}
+
+
+.orderInputs:focus{
+	background-color: var(--mainColor);
 }
 
 /*상품정보*/
-.orderContainer .orderProductDiv{
+.orderProductDiv{
     width: 100%;
     border: 3px solid blue;
 }
@@ -37,31 +62,40 @@
     display: flex;
     width: 100%;
     height: 300px;
-    background-color: yellow;
+   	border: 3px solid red;
 }
 
 .productImgDiv{
     width: 30%;
     height: 100%;
-    background-color: rebeccapurple;
+    border: 3px solid rebeccapurple;
+    overflow: hidden;
     
 }
-
+/*상품 이미지*/
 .productImg{
     width: 100%;
     height: 100%;
     object-fit: fill;
+    transition: .3s;
+}
+
+.productImg:hover{
+	transform: scale(1.1,1.1);
 }
 
 .productDetail{
-    background-color: red;
+	font-family: 'GimpoGothicBold00';
+    border: 3px solid white;
     width: 70%;
     height: 100%;
     padding: 1rem;
+    font-size: 1.4rem;
+    color: white;
 }
 
 /*결제정보*/
-.orderContainer .orderPriceDiv{
+.orderPriceDiv{
     width: 100%;
     border: 3px solid white;
 }
@@ -76,23 +110,25 @@
 }
 
 .orderPriceBottom table td{
-    border: 1px solid white;
-    padding: 1rem;
+   	
+    padding: 0.2rem;
+    color: white;
+    height: 50px;
 }
 
 .orderPriceBottom table td:first-child{
+	
     width: 70%;
+    font-size: 1.2rem;
+    font-family: 'Black Han Sans';
 }
 
 .orderPriceBottom table td:last-child{
+	font-family: 'GimpoGothicBold00';
     width: 30%;
 }
 
-#insertCouponBtn{
-    background-color: var(--mainColor);
-    color: white;
-    padding: 0.5rem;
-}
+
 
 .productQuantitySpan{
     color: var(--fontColor);
@@ -109,6 +145,7 @@
 
 .orderPaymentBottom{
     display: flex;
+    justify-content: center;
     flex-direction: row-reverse;
 }
 
@@ -153,32 +190,32 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 400px;
+    width: 450px;
     height: 50px;
     background-color: white;
     display: flex;
 }
-#useCouponText{
-    width: 70%;
-    height: 100%;
-}
-#useCouponBtn{
-    width: 30%;
-    height: 100%;
-    background-color: var(--mainColor);
-    color: white;
-}
+
 
 /*쿠폰정보*/
 .couponInfoDiv{
 	display : none;
 	border: 3px solid white;
+	height: 50px;
+	align-items: center;
+	
 }
 
 /*쿠폰취소*/
 .couponCancle{
 	color: red;
 	cursor: pointer;
+	transition: .3s;
+}
+
+.couponCancle:hover{
+	
+	transform: scale(1.1,1.1);
 }
 
 /*등급 이름 스팬 */
@@ -189,4 +226,19 @@
 /*할인 스팬들 */
 .discountSpan{
 	color: var(--fontColor);
+}
+
+#resultPriceSpan{
+	font-family: 'Black Han Sans';
+	color: var(--subFontColor);
+	font-size: 2.5rem;
+}
+
+/*취소아이콘*/
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }

@@ -48,11 +48,9 @@ window.onload = function(){
 
 //최종 가격 화면에 표시하는 함수
 function setTotalPrice(){
-	console.log(order_purchase_amount.value);
-	console.log(discount.value);
-	console.log(couponPriceHidden.value);
-	resultPriceSpan.innerHTML = (parseInt(order_purchase_amount_before.value) - parseInt(discount.value) - parseInt(couponPriceHidden.value));
-	order_purchase_amount.value = resultPriceSpan.innerHTML;
+	
+	resultPriceSpan.innerHTML = priceToString( (parseInt(order_purchase_amount_before.value) - parseInt(discount.value) - parseInt(couponPriceHidden.value)) );
+	order_purchase_amount.value = ((resultPriceSpan.innerHTML).replace(',','')).trim();
 }
 
 //숫자 정규식 변환 함수
@@ -77,7 +75,8 @@ function cancelCouponUse(){
 	};
 	
 	insertCouponBtn.style.display = 'block';
-	
+	//인풋 쿠폰 번호 확인
+	console.log(useCouponNum.value);
 	 	
 }
 
@@ -102,7 +101,7 @@ function useCoupon(){
 		},
 		success: function(data){
 			//서버에서 쿠폰 결과 처리후 텍스트 리턴
-			// 1. 쿠폰이 사용되었습니다.
+			// 1. 사용 가능한 쿠폰입니다.
 			// 2. 이미 사용된 쿠폰입니다.
 			// 3. 사용기한이 만료된 쿠폰입니다.
 			// 4. 쿠폰 번호를 잘못 입력 하였습니다.
@@ -112,7 +111,7 @@ function useCoupon(){
 			//data.result : 쿠폰 사용 결과
 			//data.coupon : 쿠폰 정보
 			alert(data.result);
-			console.log(data);
+			
 			
 			//쿠폰이 존재하면 할인 금액 띄우기
 			if(data.coupon){
@@ -127,7 +126,9 @@ function useCoupon(){
 				couponPrice.innerHTML = priceToString(resultCouponPrice);
 				//사용할 쿠폰 번호 히든인풋 저장
 				useCouponNum.value = data.coupon.coupon_num;
-				couponInfoDiv.style.display = 'block';
+				//인풋 쿠폰 번호 확인
+				console.log(useCouponNum.value);
+				couponInfoDiv.style.display = 'flex';
 				//버튼 숨기기
 				insertCouponBtn.style.display = 'none';
 				setTotalPrice();

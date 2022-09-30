@@ -27,6 +27,13 @@
 			update t_sales set sales_review = 'y' where sales_id = #{sales_id}
 		]]>
 	</update>
+	
+	<!-- 유저 탈퇴 처리 -->
+	<update id="" parameterType="String">
+		<![CDATA[
+			update t_member set member_withdrawal = 'y' where member_id = #{member_id}
+		]]>
+	</update>
 </mapper>
 
 

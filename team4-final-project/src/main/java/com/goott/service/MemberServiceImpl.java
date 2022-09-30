@@ -121,7 +121,7 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	@Override
 	public String loginCheck(String member_id, String member_pw) {
-		
+		//탈퇴 처리한 멤버인지 확인하는 로직 작성해야함
 		
 		//만약 로그인 제한 기한에 걸리면 
 		Date date = this.getUserOffLimitsDate(member_id);

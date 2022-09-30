@@ -25,8 +25,8 @@ public class ProductVO {
 		product_youtube_url varchar(100) not null comment "상품 유튜브 주소",
 		product_regdate datetime default now() comment "상품 등록일",
 		product_delivery_day int unsigned not null comment "상품 배송기간", 
-		product_delete varchar(1) not null default "n" comment  "상품 삭제 여부(y/n)",
-		product_public varchar(1) not null default "y" comment "상품 공개 여부(y/n)",
+		product_delete varchar(1) not null default "n" comment  "상품 공개 여부(y/n)",
+		
 		foreign key (product_category_id) references t_product_category (product_category_id),
 		foreign key (product_brand_id) references t_product_brand (product_brand_id)
 	 * 
@@ -48,8 +48,8 @@ public class ProductVO {
 	private String product_youtube_url; //유튜브 주소
 	private Date product_regdate; //상품 등록일
 	private int product_delivery_day; //상품 배송기간
-	private String product_delete; //상품 삭제 여부(y/n)
-	private String product_public; //상품 공개 여부(y/n)
+	private String product_delete; //상품 공개 여부(y/n)
+	
 	
 	//주소 입력 안했을시 초기화
 	public ProductVO() {

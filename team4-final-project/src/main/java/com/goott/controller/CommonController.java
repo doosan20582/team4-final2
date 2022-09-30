@@ -93,9 +93,14 @@ public class CommonController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginPost(@RequestParam String member_id, @RequestParam String member_pw , Model model, HttpServletRequest request) {
 		log.info("로그인 post ==============================================================");
+		
+		
 		log.info("로그인 시도 아이디 : " + member_id);
+		
 		String msg = memberService.loginCheck(member_id, member_pw);
+		
 		log.info("로그인 시도 결과 : " + msg);
+		
 		//로그인 성공 이라면 세션에 로그인 아이디 추가
 		if(msg.equals("로그인 성공.")) {
 			HttpSession session = request.getSession();
@@ -112,12 +117,20 @@ public class CommonController {
 				session.removeAttribute("prior_uri");
 				session.removeAttribute("query_string");
 				//이전 접속 주소로 이동
-				return  "redirect:" + prior_uri + "?" + query_string;
+				
+				model.addAttribute("msg", member_id + "님 환영합니다.");
+				model.addAttribute("url", prior_uri + "?" + query_string);
+				
+				return "alert";
+//				return  "redirect:" + prior_uri + "?" + query_string;
 
 			}
 			//기존에 접속 시도 했던 주소가 없다면
-			else
-				return "redirect:/";
+			else {
+				model.addAttribute("msg", member_id + "님 환영합니다.");
+				model.addAttribute("url", "/");
+				return "alert";
+			}
 		}
 		else {
 			model.addAttribute("msg", msg);

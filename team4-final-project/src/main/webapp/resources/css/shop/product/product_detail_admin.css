@@ -63,31 +63,33 @@ main .productTop .topRight{
     /* border: 1px solid yellow; */
 }
 /*상단 오른쪽 상품 설명 구역*/
-main .productTop .topRight .descriptionDiv{
+.descriptionDiv{
     width: 100%;
     height: 70%;
     border: 1px solid saddlebrown;
     padding: 1rem;
     font-family: 'GimpoGothicBold00';
 }
-main .productTop .topRight .descriptionDiv .descriptionTable{
+.descriptionTable{
     width: 100%;
     height: 100%;
     border-collapse: collapse;
     color: white;
 }
 .descriptionTable tr{
-    border: 1px solid var(--borderColor);
+    /* border: 1px solid var(--borderColor); */
 }
 .descriptionTable td{
     padding: 1rem;
 }
 /*상단 오른쪽 수량 선택 구역*/
-main .productTop .topRight .quantityDiv{
+.quantityDiv{
     width: 100%;
     height: 15%;
     /* border: 1px solid blanchedalmond; */
     display: flex;
+    font-family: 'GimpoGothicBold00';
+    font-size: 1.3rem;
 }
 main .productTop .topRight .quantityDiv .quantityLeft{
     width: 50%;
@@ -277,25 +279,96 @@ main .productBottom{
 /*리뷰들 반복*/
 .reviews{
     width: 100%;
-    height: 300px;
+    height: 600px;
     border: 3px solid black;
     margin: 2rem 0;
     padding: 1rem;
     color: var(--subFontColor);
-    font-family: 'Black Han Sans';
+    font-family: 'GimpoGothicBold00';
+    display: flex;
+    flex-wrap: wrap;
+}
+/*리뷰 안 공통*/
+.reviewsDiv{
+	border: 3px solid white;
+	padding: 1rem;
 }
 
-.veiwMoreRewviesDiv{
-	font-family: 'Black Han Sans';
-    background-color: var(--mainColor);
-    color: white;
-    width: 200px;
-    height: 30px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.reviewsHeader, .reviewsGrade{
+	width: 100%;
+	height: 20%;	
+}
+
+.reviewsHeader{
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+}
+/*리뷰작성자*/
+.reviewWriterSpan{
+	font-size: 1.4rem;
+	color: var(--fontColor);
+}
+
+.reviewsGrade{
+	display: flex;
+}
+
+.reviewsGradeInner{
+	border: 3px solid blue;
+	width: 50%;
+	height: 100%;
+}
+
+/*별점*/
+.star {
+	color: yellow;
+  	font-variation-settings:
+  	'FILL' 1,
+  	'wght' 400,
+  	'GRAD' 0,
+  	'opsz' 48;
+}
+
+.reviewsGradeInnerThumb{
+	text-align: right;
+}
+
+/*리뷰 도움이되요*/
+.thumb {
+	cursor: pointer;
+	color: rgb(139, 197, 255);
+	transition: .3s;
+  	font-variation-settings:
+  	'FILL' 1,
+  	'wght' 400,
+  	'GRAD' 0,
+  	'opsz' 48;
+}
+.thumb:hover{
+	color: rgb(0, 128, 255);
+}
+
+
+
+.reviewsContent, .reviewsPhoto{
+	width: 50%;
+	height: 60%;
+	font-family: 'GimpoGothicBold00';
+	display: flex;
+}
+
+.reviewsPhotoInner{
+	border: 3px solid red;
+	width: 50%;
+	height: 100%;
+}
+/*리뷰 비디오 커버 디비전*/
+.reviewsPhotoInnerVideo{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .veiwMoreRewviesDiv:hover{

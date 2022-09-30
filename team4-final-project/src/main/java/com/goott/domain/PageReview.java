@@ -16,7 +16,11 @@ public class PageReview {
 		this.searchCount = 10;
 		this.totalNum = totalNum;
 		this.currentPage = currentPage;
-		this.lastPage = (int) Math.ceil( ( (totalNum * 1.0) / searchCount ) );  
+		//전체 게시글 개수가 10개보다 작으면 끝 페이지는 무조건 1
+		if(totalNum < searchCount)
+			this.lastPage = 1;
+		else
+			this.lastPage = (int) Math.ceil( ( (totalNum * 1.0) / searchCount ) );  
 		this.searchStartNum = ( currentPage - 1 ) * 10;
 		
 		//현재 페이지가 끝페이지면 더보기 숨기기

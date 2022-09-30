@@ -21,7 +21,7 @@
             	<h1>Camp<span>ing</span></h1>
             	
             </a> -->
-            Camping
+            <h1>Camping</h1>
         </div>
         <div class="menu">
             <a href="/shop">Shop</a>
@@ -47,7 +47,13 @@
             <c:if test="${sessionScope.login_id ne null}">
             	<a href="/login" class="noneClass">로그인</a>
 	            <a href="/agree" class="noneClass">회원가입</a>
-	            <a id="loginName"  href="/user">${sessionScope.login_id }님</a>
+	            <c:if test="${sessionScope.login_auth eq '관리자' }">
+	            	<a id="loginName"  href="/admin">${sessionScope.login_id }님</a>
+	            </c:if>
+	            <c:if test="${sessionScope.login_auth eq '회원' }">
+	            	<a id="loginName"  href="/user">${sessionScope.login_id }님</a>
+	            </c:if>
+	            
 	            <a id="logOutBtn" >로그아웃</a>
             </c:if>
 	            

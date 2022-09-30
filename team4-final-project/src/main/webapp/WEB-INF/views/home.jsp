@@ -29,11 +29,11 @@
 			<div class="menuDiv">
 				<c:if test="${sessionScope.login_id ne null}">
 					<a href="login" class="noneClass">로그인</a>
-					<a href="logout" id="logOutBtn" >로그아웃</a>
+					<a id="logOutBtn" >로그아웃</a>
 				</c:if>
 				<c:if test="${sessionScope.login_id eq null}">
 					<a href="login">로그인</a>
-					<a href="logout" class="noneClass" id="logOutBtn">로그아웃</a>
+					<a class="noneClass" id="logOutBtn">로그아웃</a>
 				</c:if>
 
 				<a href="agree">회원가입</a>
@@ -42,10 +42,12 @@
 		</div>
 
 		<div class="homeMain">
-			<div class="shopDiv" style="background-image: url(/resources/img/bg-img1.jpg); background-size: cover;">
+			<div class="shopDiv">
+				<img alt="" src="/resources/img/bg-img1.jpg">
 				<h1>쇼핑몰 일반</h1>
 			</div>
-			<div class="communityDiv" style="background-image: url(/resources/img/bg-img2.jpg); background-size: cover;">
+			<div class="communityDiv">
+				<img alt="" src="/resources/img/bg-img2.jpg">
 				<h1>커뮤니티</h1>
 			</div>
 

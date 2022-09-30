@@ -24,6 +24,12 @@ const currentPage = document.querySelector('#currentPage');
 const veiwMoreRewviesDiv = document.querySelector('.veiwMoreRewviesDiv');
 //리뷰 컨테이너
 const reviewBottom = document.querySelector('.reviewBottom');
+//수정하기 버튼
+const modifyBtn = document.querySelector('#modifyBtn');
+//수정하기 버튼
+const deleteBtn = document.querySelector('#deleteBtn');
+//상품 번호
+const product_id = document.querySelector('#product_id');
 
 //==================================================================================================
 window.addEventListener('scroll' , showHideNavigator);
@@ -38,6 +44,8 @@ toTopDiv.addEventListener('click' , scrollToTop);
 toBottomDiv.addEventListener('click' , scrollToBottom);
 toReveiwCon.addEventListener('click' , scrollToReview);
 veiwMoreRewviesDiv.addEventListener('click' , viewMoreReview);
+modifyBtn.addEventListener('click' , goModify);
+deleteBtn.addEventListener('click' , goDelete);
 //==================================================================================================
 
 window.onload = function(){
@@ -45,6 +53,16 @@ window.onload = function(){
 	gradeChart();
 }
 
+//수정
+function goModify(){
+	
+	location.href='/product/modify?product_id=' + product_id.value;
+}
+//비공개
+function goDelete(){
+	
+	location.href='/product/delete?product_id=' + product_id.value;
+}
 //수평 차트 평점 함수
 function gradeChart(){
 	//평점

@@ -17,6 +17,7 @@ a:visited{
 
 a:hover{
 	color: red;
+	transform: translateY(-10%);
 }
 
 #logOutBtn{
@@ -36,13 +37,14 @@ a:hover{
 .homeContainer{
 	height: 100%;
 	font-family: 'Black Han Sans';
+	background-color: var(--mainColor);
 }
 /*상단*/
 .homeTop{
 	height: 10%;
 	border: 3px solid yellow;
 	display: flex;
-	background-color: var(--mainColor);
+	
 }
 /*아이디 구역*/
 .idDiv{
@@ -74,8 +76,26 @@ a:hover{
 	transition: .3s;
 	
 }
+
+h1{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 99;
+	transition: .3s;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+	object-fit : fill;
+	transition: .3s;
+}
+
 /*쇼핑몰*/
 .shopDiv{
+	position: relative;
 	width: 50%;
 	height: 100%;
 	display: flex;
@@ -86,14 +106,22 @@ a:hover{
     border: 3px solid red;
     cursor: pointer;
     transition: .3s;
+    overflow: hidden;
+    
 }
 
-.shopDiv:hover{
-	color: red;
+.shopDiv:hover img{
+	/* transform: scale(1.1,1.1); */
+	opacity: 0.2;
 	
+}
+.shopDiv:hover h1{
+	transform: translate(-50%,-70%);
+	color: red;
 }
 /*커뮤니티*/
 .communityDiv{
+	position: relative;
 	width: 50%;
 	height: 100%;
 	display: flex;
@@ -103,11 +131,19 @@ a:hover{
     background-color: var(--mainColor);
     border: 3px solid blue;
     cursor: pointer;
-    transition: .3s;
+    transition: .2s;
+    overflow: hidden;
 }
 
-.communityDiv:hover{
+.communityDiv:hover img{
+	/* transform: scale(1.1,1.1); */
+	opacity: 0.2;	
+	
+}
+.communityDiv:hover h1{
+	transform: translate(-50%,-70%);
 	color: red;
 	
 }
+
 

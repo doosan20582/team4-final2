@@ -245,7 +245,7 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.totalAll(category_id);
 	}
 	@Override
-	public void updateProduct(ProductVO productVO, MultipartFile[] imgs1, MultipartFile[] imgs2) {
+	public int updateProduct(ProductVO productVO, MultipartFile[] imgs1, MultipartFile[] imgs2) {
 //		ProductVO productVOTemp = getPrdocutDetail(productVO.getProduct_id());
 		//임시 이미지 리스트
 //		List<String> tempList = new ArrayList<>();
@@ -307,8 +307,8 @@ public class ProductServiceImpl implements ProductService {
 		}
 		
 		log.info("이미지 저장 처리 후 : " + productVO);
-		productMapper.update(productVO);
-		log.info("디비 저장 완료");
+		
+		return productMapper.update(productVO);
 		
 	}
 	//주문서 작성시 필요한 상품 정보 가져오는 메서드
@@ -355,6 +355,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Map<String, Object>> getGradeAverage(int product_id) {
 		return productMapper.selectCountGrade(product_id);
+	}
+
+	//상품 비공개 처리
+	@Override
+	public int setProductClosed(int product_id) {
+		return productMapper.updateDelete(product_id);
+		
 	}
 	
 	
