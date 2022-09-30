@@ -55,13 +55,19 @@
 									<h1>[진행 이벤트] 이벤트3</h1>
 									<!--이벤트 제목-->
 									<div class="adminBtnsContainer">
-										<button value="수정" class="adminBtns"><a href="/shop/draw_admin_change">수정</a> </button> 
-										 <input type="button" value="삭제" class="adminBtns">
+										<button value="수정" class="adminBtns"><a href="/shop/draw_admin_change?draw_id=${row.draw_id}">수정</a> </button> 
+										<button value="삭제" class="adminBtns"><a href="/shop/draw_admin_delete?draw_id=${row.draw_id}">삭제</a> </button> 
 									</div>
 								</div>
 								<div class="font_bottom">
 									<table>
 										<tbody>
+										<tr> 
+										<td> 드로우키 </td>
+										<td>${row.draw_id}</td>
+										  
+										</tr>
+										
 											<tr>
 												<td>상품키</td>
 												<td>${row.product_id}</td>

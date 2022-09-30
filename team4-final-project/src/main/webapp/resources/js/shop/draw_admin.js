@@ -6,6 +6,8 @@ let draw_final_button = document.querySelectorAll('.font_top_button_end');
 let modal_final_close = document.querySelectorAll ('.modal_final_bottom_btn');
 let modal_final_middle = document.querySelectorAll('.modal_final_middle');
 
+
+
 //draw_button.addEventListener('click',function(){
    // location.href = 'draw_customer_count.html';
     // draw_modal.style.display = "block";
