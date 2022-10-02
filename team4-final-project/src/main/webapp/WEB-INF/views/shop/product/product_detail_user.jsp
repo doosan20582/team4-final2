@@ -149,7 +149,7 @@
 						</c:forEach>
 
 						<!-- Horizontal bar chart -->
-						<canvas id="bar-chart-horizontal" width="250" height="250"></canvas>
+						<canvas id="bar-chart-horizontal" style="" width="250" height="250"></canvas>
 					</div>
 					<div class="reviewGraph">
 						<h3>배송</h3>
