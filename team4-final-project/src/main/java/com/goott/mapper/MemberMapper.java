@@ -108,4 +108,26 @@ public interface MemberMapper {
 	 * @return 권한
 	 */
 	public String selectAuth(String member_id);
+	
+	/**
+	 * 로그인 시도하는 유저의 탈퇴 여부 확인
+	 * @param member_id 아이디
+	 * @return ( y/n )
+	 */
+	public String selectWithdrawal(String member_id);
+	
+	/**
+	 * 회원 탈퇴 처리
+	 * @param member_id 아이디
+	 * @return ( 1/0 ) 1: 성공 0: 실패
+	 */
+	public int updateWithdrawal(String member_id);
+	
+	/**
+	 * 회원 정보 가저오기
+	 * @param member_id 아이디
+	 * @return
+	 */
+	public MemberVO selectMemberInfo(String member_id);
+	
 }

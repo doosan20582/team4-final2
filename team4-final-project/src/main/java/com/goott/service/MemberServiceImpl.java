@@ -122,6 +122,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String loginCheck(String member_id, String member_pw) {
 		//탈퇴 처리한 멤버인지 확인하는 로직 작성해야함
+		String tempWidhDrawal = this.checkWithDrawal(member_id);
+		//탈퇴 처리한 유저면 리턴
+		if(tempWidhDrawal.equals("y"))
+			return "탈퇴한 회원 입니다.";
 		
 		//만약 로그인 제한 기한에 걸리면 
 		Date date = this.getUserOffLimitsDate(member_id);
@@ -290,6 +294,27 @@ public class MemberServiceImpl implements MemberService {
 	public Map<String, Object> getUserGradeInfo(String member_id) {
 		
 		return memberMapper.selectGradeInfo(member_id);
+	}
+
+	//탈퇴 회원인지 확인
+	@Override
+	public String checkWithDrawal(String member_id) {
+		
+		return memberMapper.selectWithdrawal(member_id);
+	}
+
+	//탈퇴
+	@Override
+	public int doWithDrawal(String member_id) {
+		
+		return memberMapper.updateWithdrawal(member_id);
+	}
+
+	//회원 정보
+	@Override
+	public MemberVO getMemberInfo(String member_id) {
+		
+		return memberMapper.selectMemberInfo(member_id);
 	}
 
 }

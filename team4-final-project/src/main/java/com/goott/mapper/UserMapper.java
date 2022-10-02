@@ -1,6 +1,7 @@
 package com.goott.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,4 +27,16 @@ public interface UserMapper {
 	 * @param sales_id 매출 번호(PK)
 	 */
 	public void updateReviewState(int sales_id);
+	/**
+	 * 회원 프로필 이미지 저장
+	 * @param map 이미지주소, 아이디
+	 */
+	public void updateUserImg(Map<String, Object> map);
+	
+	/**
+	 * 회원 프로필 이미지 저장 주소 가져오기
+	 * @param member_id 아이디
+	 * @return 프로필 이미지 저장 주소
+	 */
+	public String selectUserImg(String member_id);
 }

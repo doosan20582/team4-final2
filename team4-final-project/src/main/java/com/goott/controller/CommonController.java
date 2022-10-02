@@ -57,7 +57,8 @@ public class CommonController {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String joinPost(MemberVO memberVO, Model model) {
 		log.info("이메일 인증 처리 post ===========================================");
-		memberVO.setMember_profile_img_url("no url");
+		//기본 프로필 이미지
+		memberVO.setMember_profile_img_url("/resources/img/user/basic_profile.jpg");
 		log.info(memberVO);
 		model.addAttribute("member" , memberVO);
 		//가입 신청 유저 이메일 주소로 메일 발송 , 생성된 랜덤 코드 리턴
@@ -132,6 +133,7 @@ public class CommonController {
 				return "alert";
 			}
 		}
+		//로그인 시도중 실패했다면 해당 텍스트 리턴
 		else {
 			model.addAttribute("msg", msg);
 			model.addAttribute("url", "/login");

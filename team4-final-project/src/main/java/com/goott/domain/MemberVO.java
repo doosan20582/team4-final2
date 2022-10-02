@@ -40,4 +40,6 @@ public class MemberVO {
 	String member_address;
 	String member_email_agree;
 	String member_profile_img_url;
+	int member_purchase_point;
+	int member_write_point;
 }

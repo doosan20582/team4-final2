@@ -28,10 +28,28 @@
 		</div>
 		<div class="infoTopDiv">
 			<div class="userImgDiv">
-				<img src="" alt="이미지  준비중 입니다." id="userImg">
+				
+				<div class=userImgDivInnerTop>
+						<img src="${memberVO.member_profile_img_url }" alt="프로필 이미지가 없습니다." id="userImg">
+
+						<input type="hidden" value="${memberVO.member_profile_img_url }" name="member_profile_img_url" id="member_profile_img_url">
+					<form id="profileImgForm">
+						<input type="hidden" value="${memberVO.member_id }" name="member_id" id="member_id">
+					
+					
+				</div>
+				<div class=userImgDivInnerBottom>
+					<input type="file" class="file" name="file">
+					<a class="imgSubmit">변경</a>
+					<a class="imgCancel">취소</a>
+				</div>
+					</form>
+				
 			</div>
 			<div class="userInfoDiv">
 				<span class="userNameSpan">${sessionScope.login_id }</span>님
+				<p>Point Of Purchase : ${memberVO.member_purchase_point }</p>
+				<p>Point Of Write : ${memberVO.member_write_point }</p>
 			</div>
 			<div class="userModifyDiv">
 				<a id="logOutBtn">로그아웃</a>

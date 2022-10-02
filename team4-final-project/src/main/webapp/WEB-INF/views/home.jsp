@@ -44,7 +44,7 @@
 		<div class="homeMain">
 			<div class="shopDiv">
 				<img alt="" src="/resources/img/bg-img1.jpg">
-				<h1>쇼핑몰 일반</h1>
+				<h1>쇼핑몰</h1>
 			</div>
 			<div class="communityDiv">
 				<img alt="" src="/resources/img/bg-img2.jpg">
