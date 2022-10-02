@@ -24,7 +24,7 @@
 
 	<!--메인-->
 
-	<!-- 상품 pk -->
+	<!-- 상품 pk -->   
 	<main>
 		<!--상품 이미지, 상품 가격, 상품 설명, 수량, 장바구니 담기, 구매하기-->
 		<form method="get" action="/order">
@@ -149,7 +149,7 @@
 						</c:forEach>
 
 						<!-- Horizontal bar chart -->
-						<canvas id="bar-chart-horizontal" width="250" height="250"></canvas>
+						<canvas id="bar-chart-horizontal" style="" width="250" height="250"></canvas>
 					</div>
 					<div class="reviewGraph">
 						<h3>배송</h3>
