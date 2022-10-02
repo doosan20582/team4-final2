@@ -43,7 +43,7 @@ function addListMain(){
 			if( imgTypeArray.indexOf(mainFile.files[i].type) != -1 )
 				fileArrayMain.push(mainFile.files[i]);
 			else{
-				alert('이미지 파일은 등록할수 없습니다.');
+				alert('이미지 파일만 등록할수 있습니다.');
 				break;
 			}
 		}

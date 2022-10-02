@@ -3,6 +3,8 @@ package com.goott.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
 
@@ -32,4 +34,17 @@ public interface UserService {
 	 * @param sales_id 매출 번호(PK)
 	 */
 	public void setReviewState(int sales_id);
+	/**
+	 * 회원 프로필 이미지 저장
+	 * @param file 이미지
+	 * @param member_id 아이디
+	 */
+	public Map<String, Object> changeProfileImg(MultipartFile file, String member_id);
+	
+	/**
+	 * DB에 저장된 회원의 이미지 저장 주소 가져오기
+	 * @param member_id 아이디
+	 * @return 주소
+	 */
+	public String getUserImgUrl(String member_id);
 }

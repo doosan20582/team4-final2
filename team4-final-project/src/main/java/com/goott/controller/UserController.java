@@ -1,5 +1,6 @@
 package com.goott.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.MemberVO;
 import com.goott.domain.OrderVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
+import com.goott.service.MemberService;
 import com.goott.service.OrderService;
 import com.goott.service.UserService;
 
@@ -31,6 +35,8 @@ public class UserController {
 	OrderService orderService;
 	@Inject
 	UserService userService;
+	@Inject
+	MemberService memberService;
 	
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -45,13 +51,24 @@ public class UserController {
 		List<OrderVO> orderList = orderService.getOrderList(member_id);
 		//구매 확정 리스트 
 		List<SalesVO> salesList = userService.getUserSalesList(member_id);
-		log.info(salesList);
-		
+		//회원 정보
+		MemberVO memberVO = memberService.getMemberInfo(member_id);
+		log.info(memberVO);
 		model.addAttribute("orderList" , orderList);
 		model.addAttribute("salesList" , salesList);
+		model.addAttribute("memberVO" , memberVO);
 		
 		
 		return "/user/mypage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "profile", method = RequestMethod.POST)
+	public Map<String, Object> profile(@RequestParam MultipartFile file, @RequestParam String member_id){
+		log.info("프로필 이미지 변경 =======================================================");
+		
+		
+		return userService.changeProfileImg(file, member_id);
 	}
 	
 	@RequestMapping(value = "review", method = RequestMethod.GET)
@@ -98,15 +115,33 @@ public class UserController {
 			
 			//세션에 로그인 된 아이디와 삭제 요청한 아이디가 일치하는지 한번 더 확인
 			if(member_id.equals(login_id)) {
-				model.addAttribute("msg", "올바른 삭제 처리 접근");
-				model.addAttribute("url", "/");
-				return "alert";
+				//로직 작성
+				int result = memberService.doWithDrawal(member_id);
+				if(result == 1) {
+					model.addAttribute("msg", "탈퇴 완료 되었습니다.");
+					model.addAttribute("url", "/");
+					//세션 삭제
+					session.invalidate();
+					return "alert";
+				}
+				else if(result == 0) {
+					model.addAttribute("msg", "존재하지 않는 아이디 입니다. 확인후 다시 시도해 주세요.");
+					model.addAttribute("url", "/");
+					return "alert";
+				}
+				else {
+					model.addAttribute("msg", "죄송합니다. 잠시후 다시 시도해 주세요.");
+					model.addAttribute("url", "/");
+					return "alert";
+				}
+				
 			}
 			//일치하지 않으면 잘못된 요청
 			else {
 				model.addAttribute("msg", "잘못된 방식으로 삭제 요청을 하였습니다. 확인 후 다시 시도해 주세요.");
 				//세션 삭제
-				model.addAttribute("url", "logout");
+				session.invalidate();
+				model.addAttribute("url", "/");
 				return "alert";
 			}
 		}
