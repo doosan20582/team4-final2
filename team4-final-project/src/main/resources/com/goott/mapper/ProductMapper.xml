@@ -91,7 +91,7 @@
 	<!-- 한정판, 비공개 여부 상관 없이 모두 -->
 	<select id="listAll" parameterType="com.goott.domain.PageShop" resultType="com.goott.domain.ProductVO">
 		<![CDATA[
-			select product_id, product_name, product_img_url1, product_thumbnail_img_url 
+			select product_id, product_name, product_img_url1, product_thumbnail_img_url, product_delete, product_limited
 			from t_product
 		]]>
 			<if test="category_id != 0">
@@ -226,6 +226,24 @@
 		<![CDATA[
 			select product_review_grade, count(*) as count 
 			from t_product_review where product_id = #{product_id} group by product_review_grade order by product_review_grade desc
+		]]>
+	</select>
+	
+	<!-- 리뷰 이미지, 리뷰 영상 정보 가져오기 -->
+	<select id="selectReviewUrl" parameterType="_int" resultType="map">
+		<![CDATA[
+			select product_review_img_url, product_review_video_url from t_product_review where product_review_id = #{product_review_id}
+		]]>
+		
+	</select>
+	
+	<!-- 상품 판매순 탑 10 -->
+	<select id="selectTopProduct" resultType="map">
+		<![CDATA[
+			select p.product_id as product_id, count(p.product_id) as count, p.product_name as product_name, 
+				   p.product_thumbnail_img_url as product_thumbnail_img_url from t_sales s 
+			inner join t_order o on s.order_id = o.order_id inner join t_product p on o.product_id = p.product_id 
+			where p.product_delete = 'n' and p.product_limited = '일반' group by p.product_id limit 0,10;
 		]]>
 	</select>
 </mapper>

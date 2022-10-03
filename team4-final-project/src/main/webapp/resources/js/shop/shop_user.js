@@ -1,9 +1,9 @@
 /*광고 컨테이너 */
 const adContainer = document.querySelector('.adContainer');
 /* 광고 왼쪽 버튼 */
-const carousel_button_L = document.querySelector('.carousel_button_L');
+//const carousel_button_L = document.querySelector('.carousel_button_L');
 /* 광고 오른쪽 버튼 */
-const carousel_button_R = document.querySelector('.carousel_button_R');
+//const carousel_button_R = document.querySelector('.carousel_button_R');
 /* 상품 탑 10 컨테이너 왼쪽 이동 버튼 */
 const best_button_L = document.querySelector('.best_button_L');
 /* 상품 탑 10 컨테이너 오른쪽 이동 버튼 */
@@ -29,9 +29,26 @@ let category = '0';
 window.onload = function(){
     /* 광고 복사 (1 뒤 , 5 앞) */
     let firstAd = adContainer.children[0].cloneNode(true);
-    let lastAd = adContainer.children[4].cloneNode(true);
-    adContainer.insertBefore(lastAd,adContainer.children[0]);
+//    let lastAd = adContainer.children[4].cloneNode(true);
+//    adContainer.insertBefore(lastAd,adContainer.children[0]);
     adContainer.append(firstAd);
+    
+    let count = 1;
+    let interval = setInterval(() => {
+    	adContainer.style.transition = '.2s';
+    	adContainer.style.left = count * -100 + '%';
+    	count++;
+    	
+    	if(count == 6){
+    		setTimeout(() => {
+    			adContainer.style.transition = '0s';
+    			adContainer.style.left = '0%';
+    			count = 1;
+			}, 201);
+    	}
+    	
+	}, 5 * 1000);
+    
     
     /* 탑 10 상품 복사 (1~5 뒤에붙힘 / 6~10 앞에 붙힘) */
     for(let i = 0; i < 5; i++){
@@ -44,18 +61,33 @@ window.onload = function(){
     }
 
     section_best_items.style.left = '-100%';
-    adContainer.style.left = '-100%';
+//    adContainer.style.left = '-100%';
     
     //팝업
-    window.open("/shop/popup", "신상품", "width=500, height=500");
+    //로컬 스토리지 확인, 없으면 null 반환
+    //로컬 스토리지에 key가 있으면 만료시간 체크
+	let text = localStorage.getItem('key');
+	if(text != null || text != undefined){
+		let today = new Date();
+		if(today > text){
+			console.log(today);
+			console.log(text);
+			
+			localStorage.removeItem('key');
+			window.open("/shop/popup", "신상품", "width=500, height=500");
+		}
+		
+	}
+	else
+		window.open("/shop/popup", "신상품", "width=500, height=500");
 }
 
 // ==================================================================================================
 categorySpan.forEach(item => {
 	item.addEventListener('click' , setCategoryLoad);
 })
-carousel_button_L.addEventListener('click', adToLeft);
-carousel_button_R.addEventListener('click', adToRight);
+/*carousel_button_L.addEventListener('click', adToLeft);
+carousel_button_R.addEventListener('click', adToRight);*/
 
 best_button_L.addEventListener('click' , divToleft);
 best_button_R.addEventListener('click' , divToRight);
@@ -145,7 +177,7 @@ function loadMoreItem(){
 
 
 /* 광고 왼쪽 이동 */
-function adToLeft(){
+/*function adToLeft(){
     adContainer.style.transition = '0.2s';
     let currentLeft = adContainer.style.left;
     currentLeft = currentLeft.slice(0,-1);
@@ -158,9 +190,9 @@ function adToLeft(){
         } , 201);
     }
     
-}
+}*/
 /* 광고 오른쪽 이동 */
-function adToRight(){
+/*function adToRight(){
     adContainer.style.transition = '0.2s';
     let currentLeft = adContainer.style.left;
     currentLeft = currentLeft.slice(0,-1);
@@ -173,7 +205,7 @@ function adToRight(){
         } , 201);
     }
    
-}
+}*/
 
 /* 탑 10 오른쪽 이동 함수 */
 function divToRight(){

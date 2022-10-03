@@ -363,6 +363,12 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.updateDelete(product_id);
 		
 	}
+
+	@Override
+	public Map<String, Object> getProductTopSales() {
+		// TODO Auto-generated method stub
+		return productMapper.selectTopProduct();
+	}
 	
 	
 

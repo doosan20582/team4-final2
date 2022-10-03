@@ -24,7 +24,7 @@
 
 	<!--메인-->
 
-	<!-- 상품 pk -->   
+	<!-- 상품 pk -->
 	<main>
 		<!--상품 이미지, 상품 가격, 상품 설명, 수량, 장바구니 담기, 구매하기-->
 		<form method="get" action="/order">
@@ -137,11 +137,13 @@
 			<!--리뷰 통계-->
 			<div class="reviewTop">
 				<div class="reviewTitle">
-					상품리뷰( <span class="colorSpans">${pageReview.totalNum }</span> )
+					상품리뷰(
+					<span class="colorSpans">${pageReview.totalNum }</span>
+					)
 				</div>
 				<div class="reviewGraphDiv">
 					<div class="reviewGrade">
-						<h3>평점</h3>
+						<h3>평점(<span class="averageGradeSpan"></span>)</h3>
 
 						<c:forEach var="item" items="${gradeData }">
 							<input type="hidden" value="${item.count}" data-grade="${item.product_review_grade }점" class="gradeProduct">
@@ -149,7 +151,13 @@
 						</c:forEach>
 
 						<!-- Horizontal bar chart -->
-						<canvas id="bar-chart-horizontal" style="" width="250" height="250"></canvas>
+						<c:if test="${empty gradeData }">
+							<h4>아직 이 상품의 데이터가 없습니다.</h4>
+						</c:if>
+						<c:if test="${!empty gradeData }">
+							<canvas id="bar-chart-horizontal" style="" width="250" height="250"></canvas>
+						</c:if>
+						
 					</div>
 					<div class="reviewGraph">
 						<h3>배송</h3>
@@ -160,7 +168,14 @@
 						</c:forEach>
 
 						<!-- 파이 차트 -->
-						<canvas id="pie-chart" width="250" height="250"></canvas>
+						<c:if test="${empty data }">
+							<h4>아직 이 상품의 데이터가 없습니다.</h4>
+						</c:if>
+						<c:if test="${!empty data }">
+							<canvas id="pie-chart" width="250" height="250"></canvas>
+						</c:if>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -171,29 +186,31 @@
 					<div class="reviews">
 						<!-- 아이디, 날짜 -->
 						<div class="reviewsDiv reviewsHeader">
-							<input type="hidden" value="${item.product_review_id }"> <input type="hidden" value="${item.product_id }"> <span><span class="reviewWriterSpan">${item.member_id }</span> &nbsp;님</span> <span> <fmt:formatDate value="${item.product_review_regdate }" />
+							<input type="hidden" value="${item.product_review_id }"> <input type="hidden" value="${item.product_id }">
+							<span>
+								<span class="reviewWriterSpan">${item.member_id }</span>
+								&nbsp;님
+							</span>
+							<span>
+								<fmt:formatDate value="${item.product_review_regdate }" />
 
 							</span>
 						</div>
 						<!-- 별점 -->
 						<div class="reviewsDiv reviewsGrade">
 							<input type="hidden" value="${item.product_review_speed }">
-							
+
 							<div class="reviewsGradeInner">
 
 								<c:forEach begin="1" end="${item.product_review_grade }">
-									<span class="material-symbols-outlined star">
-										grade
-									</span>
+									<span class="material-symbols-outlined star"> grade </span>
 								</c:forEach>
-								
+
 								<span>${item.product_review_grade }점</span>
 							</div>
 							<div class="reviewsGradeInner reviewsGradeInnerThumb">
-								<span class="material-symbols-outlined thumb">
-									thumb_up
-								</span>
-								
+								<span class="material-symbols-outlined thumb"> thumb_up </span>
+
 								<span class="helpfulSpan">${item.product_review_helpful }</span>
 							</div>
 						</div>
@@ -205,14 +222,28 @@
 						<div class="reviewsDiv reviewsPhoto">
 							<div class="reviewsPhotoInner reviewsPhotoInnerPhoto">
 								<!-- 조건 처리 작업 -->
-								<img alt="이미지 준비중" src="${item.product_review_img_url }">
+								<c:if test="${item.product_review_img_url eq 'no url'}">
+									<p>리뷰 이미지를 업로드 하지 않았습니다.</p>
+								</c:if>
+								<c:if test="${item.product_review_img_url ne 'no url'}">
+									<img alt="이미지 준비중" src="/reviewFiles/${item.product_review_img_url }">
+								</c:if>
+
+
 
 							</div>
 							<div class="reviewsPhotoInner reviewsPhotoInnerVideo">
 								<!-- 조건 처리 작업 -->
-								<video controls width="100%">
-									<source src="${item.product_review_video_url }" type="video/mp4">
-								</video>
+								<c:if test="${item.product_review_video_url eq 'no url' }">
+									<p>리뷰 동영상을 업로드 하지 않았습니다.</p>
+								</c:if>
+								<c:if test="${item.product_review_video_url ne 'no url' }">
+									<video controls width="100%" height="100%">
+										<source src="/reviewFiles/${item.product_review_video_url }" type="video/mp4">
+									</video>
+								</c:if>
+
+
 							</div>
 
 
@@ -241,6 +272,20 @@
 			<div class="toReveiwCon">리뷰</div>
 			<div class="toBottomDiv">하단</div>
 			<div class="youtubeDiv">유튜브광고</div>
+		</div>
+		<!-- 유튜브 광고 컨테이너 -->
+		<div class="youtubeContainer">
+			<div class="youtubeInnerDiv">
+				<c:if test="${product.product_youtube_url eq 'no url'}">
+					<h1>유튜브 광고가 없는 제품 입니다.</h1>
+				</c:if>
+				<c:if test="${product.product_youtube_url ne 'no url'}">
+					<iframe src="${product.product_youtube_url}" width="1280" height="720" allowfullscreen>
+						
+					</iframe>
+				</c:if>
+				
+			</div>
 		</div>
 	</main>
 

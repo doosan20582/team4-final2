@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
@@ -39,4 +40,11 @@ public interface UserMapper {
 	 * @return 프로필 이미지 저장 주소
 	 */
 	public String selectUserImg(String member_id);
+	/**
+	 * 비밀번호 변경
+	 * @param member_id
+	 * @param member_pw
+	 * @return 변경된 레코드 수
+	 */
+	public int updatePw(@Param("member_id") String member_id, @Param("member_pw") String member_pw);
 }

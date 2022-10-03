@@ -43,6 +43,13 @@
 			update t_member set member_profile_img_url = #{member_profile_img_url} where member_id = #{member_id}
 		]]>
 	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePw" parameterType="String">
+		<![CDATA[
+			update t_member set member_pw = #{member_pw} where member_id = #{member_id}
+		]]>
+	</update>
 </mapper>
 
 
