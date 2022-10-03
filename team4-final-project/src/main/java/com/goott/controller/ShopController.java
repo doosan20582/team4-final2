@@ -54,13 +54,18 @@ public class ShopController {
 		List<ProductCategoryVO> categoryList = productCategoryService.getList();
 		PageShop pageShop = new PageShop(1, totalPage);
 		List<ProductVO> productList = productService.getProductList(pageShop);
+		
+		//판매 탑 10 목록
+		Map<String, Object> topProduct = productService.getProductTopSales();
+		log.info("탑 10 : " + topProduct);
 		model.addAttribute("productList", productList);
 		model.addAttribute("pageShop", pageShop);
 		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("topProduct", topProduct);
 		return "shop/shop_user";
 	}
 	
-	//쇼핑몰 메인 관리자
+		//쇼핑몰 메인 관리자
 		@RequestMapping(value = "/admin", method = RequestMethod.GET)
 		public String shopMainAdminGet(Model model) {
 			log.info("shop 관리자 메인 페이지 -----------------------------------------");
@@ -70,9 +75,14 @@ public class ShopController {
 			List<ProductCategoryVO> categoryList = productCategoryService.getList();
 			PageShop pageShop = new PageShop(1, totalPage);
 			List<ProductVO> productList = productService.getProductListAll(pageShop);
+			
+			//판매 탑 10 목록
+			Map<String, Object> topProduct = productService.getProductTopSales();
+			
 			model.addAttribute("productList", productList);
 			model.addAttribute("pageShop", pageShop);
 			model.addAttribute("categoryList", categoryList);
+			model.addAttribute("topProduct", topProduct);
 			return "shop/shop_admin";
 		}
 	

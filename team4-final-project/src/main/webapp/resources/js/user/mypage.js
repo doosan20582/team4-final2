@@ -39,6 +39,16 @@ const imgSubmit = document.querySelector('.imgSubmit');
 const profileImgForm = document.querySelector('#profileImgForm');
 //이미지 타입
 const imgTypeArray = ['image/jpeg','image/png','image/jpg','image/gif'];
+//비밀번호 변경 앵커
+const changePasswordAnchor = document.querySelector('.changePasswordAnchor');
+//비밀번호 변경 컨테이너
+const changePasswordContainer = document.querySelector('.changePasswordContainer');
+//비밀번호 체크 버튼
+const passwordBtn = document.querySelector('#passwordBtn');
+//비밀번호 체크 인풋
+const passwordInput = document.querySelector('#passwordInput');
+//비밀번호 체크 폼
+const passwordCheckForm = document.querySelector('#passwordCheckForm');
 // ==================================================================================================
 writeReviewSpan.forEach((item) => {
     item.addEventListener('click', writeReview);
@@ -64,7 +74,43 @@ deleteBtns.addEventListener('click', doDeleteMember);
 file.addEventListener('change', changeProfileImg);
 imgCancel.addEventListener('click', cancelProfileImg);
 imgSubmit.addEventListener('click', doImgAjax);
+changePasswordAnchor.addEventListener('click', showChangeCon);
+changePasswordContainer.addEventListener('click', closeChangeCon);
+passwordBtn.addEventListener('click', checkPw);
 // =====================================================================================================
+//비밀번호 체크 
+function checkPw(){
+	const pwText = passwordInput.value;
+	const idText = userNameSpan.innerHTML;
+	const param = { member_pw : pwText, member_id : idText}
+	
+	$.ajax({
+		url: '/user/check',
+		type: 'post',
+		contentType : 'application/json; charset=utf-8',
+		data: JSON.stringify(param),
+		dataType: 'text',
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			document.querySelector('.pwCheckSpan').innerHTML = data;
+			if(document.querySelector('.pwCheckSpan').innerHTML == '일치'){
+				location.href = '/user/change_password';
+			}
+		}
+	});
+}
+//비밀번호 변경 컨테이너 보이기
+function showChangeCon(){
+	changePasswordContainer.style.display = 'block';
+}
+//비밀번호 변경 컨테이너 닫기
+function closeChangeCon(e){
+	if(e.target.className == 'changePasswordContainer'){
+		changePasswordContainer.style.display = 'none';
+	}
+}
 //비동기 프로필 이미지 업로드
 function doImgAjax(){
 	let imgForm = profileImgForm;
@@ -112,7 +158,7 @@ function cancelProfileImg(){
 function changeProfileImg(){
 	
 	
-	if( !(imgTypeArray.indexOf(file.files[0].type) != -1) ){
+	if( (imgTypeArray.indexOf(file.files[0].type) == -1) ){
 		alert('프로필 사진은 이미지 파일만 쓸수 있습니다.');
 		let dataTransfer = new DataTransfer();
 		file.files = dataTransfer.files;

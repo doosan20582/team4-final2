@@ -155,4 +155,16 @@ public interface MemberService {
 	 * @return 회원 엔티티
 	 */
 	public MemberVO getMemberInfo(String member_id);
+	/**
+	 * 비밀번호 암호화
+	 * @param password
+	 * @return 암호화된 비밀번호
+	 */
+	public String pwEncode(String password);
+	/**
+	 * 로그인시 비밀번호 초기화 상태인지 확인
+	 * @param member_id 아이디
+	 * @return y/n
+	 */
+	public String getInitPw(String member_id);
 }

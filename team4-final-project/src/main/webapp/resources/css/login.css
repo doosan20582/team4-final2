@@ -7,7 +7,7 @@ body{
 .loginContainer {
 	position: absolute;
 	border: 3px solid black;
-	width: 400px;
+	width: 500px;
 	/* width: 100%; */
 	/* max-width: 1200px; */
 	top: 50%;
@@ -43,8 +43,8 @@ body{
 	padding: 1rem;
 	border: 3px solid green;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	/* justify-content: space-between;
+	align-items: center; */
 }
 
 .btnDiv a{
@@ -55,8 +55,38 @@ body{
 	text-decoration: underline;
 }
 
+
+
 .btnDiv a:hover{
 	color: red;
+}
+
+#forgotAnchor{
+	color: var(--subFontColor)
+}
+
+#forgotAnchor:hover{
+	color: var(--fontColor)
+}
+
+
+.btnDivLeft{
+	width: 30%;
+	border: 3px solid yellow;
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+}
+
+.btnDivRight{
+	width: 70%;
+	min-height: 50px;
+	border: 3px solid white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
 
 

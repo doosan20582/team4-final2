@@ -53,7 +53,7 @@
 			</div>
 			<div class="userModifyDiv">
 				<a id="logOutBtn">로그아웃</a>
-				<a class="">회원정보수정</a>
+				<a class="changePasswordAnchor">비밀번호 변경</a>
 				<a class="deleteMemberAnchor">회원탈퇴</a>
 			</div>
 		</div>
@@ -173,7 +173,23 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- 비밀번호 변경 컨테이너 -->
+	<div class="changePasswordContainer">
+		<!-- 비밀번호 변경 디비전 -->
+		<div class="changePasswordDiv">
+			<div class="changePasswordInnerTop">
+				<p>확인을 위해 다시 한번 비밀번호를 입력해 주세요.</p>	
+			</div>
+			<div class="changePasswordInnerBottom">
+				<input type="password" class="formInputs" id="passwordInput">
+				<button class="formBtns" id="passwordBtn">입력</button>
+			</div>
+			<div class="changePasswordInnerResult">
+				<span class="pwCheckSpan">결과</span>
+			</div>
+		</div>
+	</div>
 	
 	<script src="/resources/js/user/mypage.js"></script>
 </body>

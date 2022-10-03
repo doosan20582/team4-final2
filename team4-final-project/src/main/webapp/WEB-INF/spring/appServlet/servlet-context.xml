@@ -24,6 +24,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/productImg/**" location="file:/C:/uploadtest/productImg/" />
 	<resources mapping="/uploadUserProfileImg/**" location="file:/C:/uploadtest/uploadUserProfileImg/" />
+	<resources mapping="/reviewFiles/**" location="file:/C:/uploadtest/reviewFiles/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -57,6 +58,7 @@
 
 			<mapping path="/user" />
 			<mapping path="/user/*" />
+			
 			<beans:ref bean="commonInterceptor" />
 		</interceptor>
 		<!-- 관리자만 접근 할수 있는 -->
@@ -64,6 +66,8 @@
 			<mapping path="/**/admin" />
 			<mapping path="/product/modify" />
 			<mapping path="/product/register" />
+			<mapping path="/admin/**" />
+			
 			<beans:ref bean="adminInterceptor" />
 		</interceptor>
 	</interceptors>

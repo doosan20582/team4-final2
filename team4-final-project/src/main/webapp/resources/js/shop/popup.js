@@ -17,11 +17,13 @@ todayExit.addEventListener('click', popupTodayClose);
 //=======================================================================
 //오늘하루 닫기
 function popupTodayClose(){
-	//하루 설정
-	/*let todayMaxAge = 1000 * 60 * 60 * 24;*/
-	localStorage.setItem('todayClose', 'test');
-	let text = localStorage.getItem(todayClose);
-	alert(text);
+	
+	
+	let date = new Date();
+	let tomorrow = date.setDate(date.getDate() + 1);
+	let tomorrowDate = new Date(tomorrow);
+	localStorage.setItem('key', tomorrowDate);
+	
 	self.close();
 }
 //팝업창 닫기

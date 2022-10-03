@@ -129,5 +129,27 @@ public interface MemberMapper {
 	 * @return
 	 */
 	public MemberVO selectMemberInfo(String member_id);
+	/**
+	 * 회원 이메일 정보 가져오기
+	 * @param member_id
+	 * @return member_email
+	 */
+	public String selectEmail(String member_id);
+	/**
+	 * 비밀번호 초기화 상태인지 확인
+	 * @param member_id
+	 * @return y/n
+	 */
+	public String selectInitPw(String member_id);
+	/**
+	 * 비밀번호 초기화 신청한 상태로 업데이트
+	 * @param member_email
+	 */
+	public void updateInitPw(String member_email);
+	/**
+	 * 비밀번호 초기화 완료 상태로 업데이트
+	 * @param member_id
+	 */
+	public void updateCompletePw(String member_id);
 	
 }

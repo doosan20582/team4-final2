@@ -27,7 +27,9 @@
 			<!--상품 이름-->
 			<div class="reviewGradeDiv">
 				<div class="gradeTop">
-					<span> 주문 번호 : ${sales_id }</span> <span class="productGradeSpan">별점</span> 
+					<span> 주문 번호 : ${sales_id }</span> 
+					
+					<span class="productGradeSpan">점수를 선택해 주세요.</span>
 					<!--상품 별점-->
 				</div>
 				<div class="gradeBottom">
@@ -63,7 +65,8 @@
 			</div>
 			<!--첨부-->
 			<div class="reviewAttachDiv">
-				<input type="file" name="file" class="formInputs">
+				<input type="file" name="fileImg" id="fileImg" class="formInputs">
+				<input type="file" name="fileVideo" id="fileVideo" class="formInputs">
 			</div>
 			<!--저장하기-->
 			<div class="reviewBtnDiv">
