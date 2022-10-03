@@ -112,4 +112,16 @@ public interface ProductMapper {
 	 * @param product_id 상품 번호(PK)
 	 */
 	public int updateDelete(int product_id);
+	/**
+	 * 리뷰 이미지, 영상 주소 가져오기
+	 * @param product_review_id 리뷰 번호(PK)
+	 * @return 맵(product_review_img_url, product_review_video_url)
+	 */
+	public Map<String, Object> selectReviewUrl(int product_review_id);
+	
+	/**
+	 * 상품 판매량 탑 10 가져오기
+	 * @return map(product_id, count, product_name, product_thumbnail_img_url) 상위 10개
+	 */
+	public Map<String, Object> selectTopProduct();
 }

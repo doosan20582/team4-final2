@@ -30,8 +30,13 @@
 			</div>
 			<!--서브밋-->
 			<div class="btnDiv">
-				<input type="submit" value="로그인" class="formBtns">
-				<a href="/agree" id="joinAnchor">아직 회원이 아니신가요?</a>
+				<div class="btnDivLeft">
+					<input type="submit" value="로그인" class="formBtns">
+				</div>
+				<div class="btnDivRight">
+					<a href="/agree" id="joinAnchor">아직 회원이 아니신가요?</a>
+					<a href="/forgot" id="forgotAnchor">비밀번호 찾기</a>				
+				</div>				
 			</div>
 		</form>
 	</div>

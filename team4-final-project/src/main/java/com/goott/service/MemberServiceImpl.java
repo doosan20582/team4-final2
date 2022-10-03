@@ -317,4 +317,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.selectMemberInfo(member_id);
 	}
 
+	//로그인시 비밀번호 초기화 상태인지 확인
+	@Override
+	public String getInitPw(String member_id) {
+		
+		return memberMapper.selectInitPw(member_id);
+	}
+
 }
