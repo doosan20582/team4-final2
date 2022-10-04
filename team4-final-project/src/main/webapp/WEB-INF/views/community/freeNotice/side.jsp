@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 글로벌 css -->
+<!--글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--쇼핑몰 글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
 <!--쇼핑몰 글로벌 아이콘 cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">

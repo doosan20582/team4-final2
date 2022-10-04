@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.goott.domain.T_camping_VO;
 import com.goott.domain.T_camping_reply_VO;
@@ -95,6 +96,13 @@ public class Community_joinNotice_service_impl implements Community_joinNotice_s
 	@Override
 	public String adminConfirmation(String member_id) {
 		return mapper.adminConfirmation(member_id);
+	}
+
+	@Override
+	@Transactional
+	public void inputPoint(Map<String, Object> map) {
+		mapper.inputPoint(map);
+		mapper.updateGrade(map);
 	}
 
 }

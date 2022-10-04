@@ -20,7 +20,12 @@
 	<li><fmt:formatDate value="${data.camping_departure}" pattern="yy-MM-dd" /></li>
 	<li>${data.camping_period}</li>
 	<li>${data.camping_hit}</li>
-	<li>${data.camping_close}</li>
+	<c:if test="${data.camping_close eq '마감'}">
+		<li style="color:red">${data.camping_close}</li>
+	</c:if>
+	<c:if test="${data.camping_close ne '마감'}">
+		<li>${data.camping_close}</li>
+	</c:if>
 		<c:if test="${member_auth eq '관리자'}">
 			<input class="list_check" type="checkbox">
 		</c:if>
@@ -28,7 +33,7 @@
 			<input class="list_check" type="checkbox" style="display: none">
 		</c:if>
 	</div>
-<form method="POST" class="list_form" action="/community/joinNotice/go_detail">
+		<form method="POST" class="list_form" action="/community/joinNotice/go_detail">
 				<input type="hidden" name="user_id" value="${data.member_id}">
 				<input type="hidden" name="camping_id" value="${data.camping_id}">
 				<input type="hidden" name="login_id" value="${sessionScope.login_id}">
