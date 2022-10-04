@@ -32,7 +32,7 @@
 		<c:if test="${member_auth ne '관리자'}">
 			<input class="list_check" type="checkbox" style="display: none">
 		</c:if>
-	</div>
+	</div> 
 		<form method="POST" class="list_form" action="/community/joinNotice/go_detail">
 				<input type="hidden" name="user_id" value="${data.member_id}">
 				<input type="hidden" name="camping_id" value="${data.camping_id}">
