@@ -397,9 +397,8 @@ $.ajax({
 	 }
 	 
 
-	//====== product_price 가격 가져오기 ====== //
+	//====== product_id  가져오기 ====== //
 	function ajaxproductproductid(){
-		console.log()
 		const param = {
 			product_category_id : this.dataset.productCategoryId,
 			product_brand_name : this.innerHTML

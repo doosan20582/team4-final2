@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goott.domain.DrawEnterVO;
 import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
 
@@ -37,7 +38,6 @@ public interface DrawAdminMapper {
 
 	public void draw_admin_add(DrawVO vo);
  
-	public List<DrawVO> draw_customer();
 
 	public List<Map<String, Object>> admin_title_product_id(Map<String, Object> map);
 
@@ -45,8 +45,17 @@ public interface DrawAdminMapper {
 
 	public void update(DrawVO vo);
 	public void delete(DrawVO vo);
-	public List<DrawResultVO> admin_count(Map<String, Object> map);
+	public List<DrawEnterVO> admin_count(Map<String, Object> map);
+	public List<Map<String, Object>> draw_customer_memberID(Map<String, Object> map);
+	public void draw_admin_count(Map<String, Object> map);
+	public String adminConfirmation(String member_id);
+	public List<DrawVO> draw_customer(Map<String, Object> map);
+	public int draw_customer_button_check(Map<String, Object> map);
+	public void draw_customer_button(Map<String, Object> map);
+	public List<DrawResultVO> getRusultID(Map<String, Object> map);
 
+	
+ 
 	
    
  

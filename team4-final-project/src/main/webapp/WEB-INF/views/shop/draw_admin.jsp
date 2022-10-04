@@ -25,11 +25,13 @@
 
 	<main>
 		<div class="draw_container">
+			<c:if test="${sessionScope.login_auth eq '관리자'}">
 			<div class="">
 				<div class="section1">
 					<h1>
 						Camping <span> Draw</span>
 					</h1>
+				
 					<div class="section1_img">
 						<img src="/resources/img/shop/럭키드로우.png" alt="">
 					</div>
@@ -120,11 +122,12 @@
 									</table>
 
 									<button class="font_top_button">
-										<a href="/shop/draw_admin_count">응모회원 확인</a>
+										<a href="/shop/draw_admin_count?draw_id=${row.draw_id}">응모회원 확인</a>
 									</button>
 								</div>
 							</div>
 						</c:forEach>
+						
 					</div>
 
 
@@ -146,6 +149,7 @@
 					</div>
 				</div>
 			</div>
+			</c:if>
 		</div>
 	</main>
 
