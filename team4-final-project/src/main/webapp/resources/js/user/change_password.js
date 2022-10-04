@@ -18,13 +18,11 @@ const WS_REG = /\s/g;
 
 // ======================================================================
 member_pw.addEventListener('keyup', checkPw);
-member_pw.addEventListener('keydown', test);
+
 member_pw2.addEventListener('keyup', checkPw2);
 cancelBtn.addEventListener('click', cancelChangePw)
 // ======================================================================
-function test(){
-	alert('hihi');
-}
+
 //비밀번호 변경 취소
 function cancelChangePw(){
 	location.href = '/user';

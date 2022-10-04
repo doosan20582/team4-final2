@@ -61,4 +61,10 @@ public interface UserService {
 	 * @return 존재하지 않는 아이디 입니다. / 이메일 정보가 틀립니다. / 입력하신 메일로 초기화 비밀번호를 발송하였습니다. 로그인후 비밀번호를 재설정 해주세요.
 	 */
 	public String forgotPassword(String member_id, String member_email);
+	/**
+	 * 유저 프로필 이미지, 등급 이름 가져오기
+	 * @param member_id
+	 * @return member_profile_img_url, grade_name, grade_color
+	 */
+	public Map<String, Object> getUserProfileImgUrlAndGradeName(String member_id);
 }

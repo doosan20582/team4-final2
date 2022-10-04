@@ -3,6 +3,11 @@ body{
 	background-color: var(--subColor);
 }
 
+h3{
+	color: white;
+	font-family: 'GimpoGothicBold00';
+}
+
 /*내정보*/
 .myInfoCon{
     width: 100%;

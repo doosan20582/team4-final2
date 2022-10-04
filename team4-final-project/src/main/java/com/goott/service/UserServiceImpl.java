@@ -257,6 +257,13 @@ public class UserServiceImpl implements UserService {
 		return "입력하신 메일로 초기화 비밀번호를 발송하였습니다. 로그인후 비밀번호를 재설정 해주세요.";
 	}
 	
+	//유저 등급 이름, 등급 색, 프로필 이미지 가져오기
+	@Override
+	public Map<String, Object> getUserProfileImgUrlAndGradeName(String member_id) {
+		
+		return userMapper.selectUserGradeAndProfileImgUrl(member_id);
+	}
+	
 	
 
 }
