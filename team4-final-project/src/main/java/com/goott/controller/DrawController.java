@@ -37,7 +37,7 @@ public class DrawController {
 
 	@RequestMapping(value = "/shop/draw_admin", method = RequestMethod.GET)
 	public ModelAndView draw_admin() {
-		log.info("draw 목록 관리자 ====================================================");
+		log.info("draw 목록 관리자 =====================================================");
 		List<DrawVO> draw_admin = drawServiceAdmin.draw_admin();
 
 
