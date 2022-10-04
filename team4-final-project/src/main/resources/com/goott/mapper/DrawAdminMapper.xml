@@ -17,7 +17,7 @@
 		  select p.product_name,p.product_price,p.product_id, 
 				  d.draw_reqruit, d.draw_event_start_date, d.draw_event_end_date,
 		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment,d.draw_id from t_draw as 
-	       d join t_product as p on d.product_id = p.product_id and draw_id=#{no};
+	       d join t_product as p on d.product_id = p.product_id and draw_id=#{draw_id};
 		]]>
 	</select>
 	
@@ -30,6 +30,11 @@
 		      from t_draw;
 		]]>
 	</select>
+	
+	   <select id="adminConfirmation" resultType="String">
+    	select member_auth from t_member where member_id = #{member_id}
+    </select>
+	
 		<!--draw_admin_add 에이젝스 브랜드 이름 불러오기  -->
 	<select id="draw_admin_add_plus" parameterType="_int" resultType="hashMap">
 	<![CDATA[
@@ -106,15 +111,44 @@
      ]]>   
    </delete>
    
-  <!--draw_admin_add 드로우 상품 추가하기  -->
-<select id="admin_count"  parameterType="hashMap" resultType="hashMap">
-		 <![CDATA[ 
-		 select draw_id,draw_enter_id, member_id, draw_result_regdate,draw_result_winning from t_draw_result 
-		 where draw_id=#{draw_id} and draw_enter_id=#{draw_enter_id} and member_id=#{member_id};
-	     
-     ]]>   
+   <!--draw_admin_count의 쿼리  -->
+		<select id="admin_count" resultType="hashMap">
+		<![CDATA[
+		 select member_id from t_draw_enter
+		 where draw_id=#{draw_id};
+		]]>
 	</select>  
-   
+	
+	   <!--draw_admin_count_vo의 쿼리  -->
+	<insert id="draw_admin_count" parameterType="hashMap">
+			insert into t_draw_result(draw_id,member_id,draw_result_winning) values (#{draw_id}, #{member_id}, "당첨" )
+	</insert>
+	
+  <select id="draw_customer_button_check" parameterType="hashMap" resultType="int">
+    	select count(*) from t_draw_enter where draw_id = #{draw_id} and member_id = #{member_id}
+    </select>
+    
+     <select id="draw_customer_button" parameterType="hashMap">
+    	insert into t_draw_enter(draw_id, member_id) values(#{draw_id}, #{member_id})
+    </select>
+    
+    	<!-- 진행 주문 정보 가져오기 -->
+	<select id="getRusultID" parameterType="String" resultType="hashMap">
+		<![CDATA[
+			select member_id, draw_id
+			from t_draw_result;
+		]]>
+	</select>
+    
+    
+    
+ 
+			
+		
+	
+
+
+    
    
 	
 	

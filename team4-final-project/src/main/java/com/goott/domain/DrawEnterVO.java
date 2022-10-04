@@ -2,7 +2,7 @@ package com.goott.domain;
 
 import java.util.Date;
 
-public class DrawEnter {
+public class DrawEnterVO {
 	
 	private int draw_enter_id;
 	private int draw_id;

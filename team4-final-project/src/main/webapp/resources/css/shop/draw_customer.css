@@ -273,6 +273,7 @@ table tr td:last-child{
     height: 100px;
     width: 100%;
     font-size: 2.0rem;
+    margin:10px;
 }
 .modal_final_middle>span:nth-child(n){
     margin-left: 25px;

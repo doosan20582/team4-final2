@@ -6,6 +6,7 @@ let modal_close=document.querySelector('.modal_bottom_btn')
 let modal_final_close = document.querySelectorAll ('.modal_final_bottom_btn')
 let modal_final_middle = document.querySelectorAll('.modal_final_middle')
 //응모하기 버튼 클릭
+
 draw_button.addEventListener('click',function(){
     draw_modal.style.display = "block";
     // document.body.style.overflow = "hidden"; 

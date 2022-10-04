@@ -25,7 +25,7 @@
 	<!--메인-->  
 	<main>
 				<form class="admin_container" id="admin_container"
-			name="admin_container" method="POST" action="/shop/draw_admin_change?draw_id=${map.no}">
+			name="admin_container" method="POST" action="/shop/draw_admin_change?draw_id=${map.draw_id}">
 			<div class="draw_container">
 
 				<div class="admin_main"> <!--  input을 줘서 히든을 줘라 -->
