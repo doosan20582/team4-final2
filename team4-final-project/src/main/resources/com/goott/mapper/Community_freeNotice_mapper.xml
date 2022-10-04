@@ -85,7 +85,7 @@
 			and board_tag_id = #{board_tag_id}
 		</if>
 		<if test="keyword != null and keyword != ''">
-			and board_title like CONCAT('%',#{keyword},'%') or board_text like CONCAT('%',#{keyword},'%') or member_id like CONCAT('%',#{keyword},'%')
+			and (board_title like CONCAT('%',#{keyword},'%') or board_text like CONCAT('%',#{keyword},'%') or member_id like CONCAT('%',#{keyword},'%'))
 		</if>
   	</select>
   	
@@ -137,6 +137,12 @@
     
     <update id="inputPoint">
     	update t_member set member_write_point = member_write_point+#{write_point} where member_id = #{member_id}
+    </update>
+    
+    <update id="updateGrade">
+    	update t_member set grade_id = 
+    	(select*from(select grade_id from t_grade where (select member_purchase_point + member_write_point from t_member where member_id = #{member_id}) between grade_start_point and grade_end_point)as a) 
+    	where member_id = #{member_id};
     </update>
   	
   </mapper>

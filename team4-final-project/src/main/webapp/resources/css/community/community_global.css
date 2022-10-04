@@ -41,11 +41,14 @@ header .logo span{
 }
 
 header .menu{
-    width: 60%;
+    width: 57%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 header .menu a{
@@ -54,21 +57,37 @@ header .menu a{
     font-size: 1.1rem;
     margin-left: 3rem;
     cursor:pointer;
+    transition:all 0.1s;
+}
+
+header .menu a:hover{
+	color:var(--fontColor);
 }
 
 header .login{
-    width: 20%;
+    width: 23%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 header .login a{
     color: rgb(209, 209, 209);
     margin-left: 1rem;
     text-decoration: none;
+    transition:all 0.1s;
+}
+
+header .login a:hover{
+	color:var(--fontColor);
+}
+
+#loginName>span{
+	color:var(--fontColor);
 }
 
 #logOutBtn{
@@ -80,22 +99,27 @@ main{
     background-color: var(--subColor);
 }
 
-.side_nav{
+/* .side_nav{
     width: 90%;
     height: 592.5px;
-    border: 3px solid darkorange;
-    margin-top: 20px;
+    margin-top: 40px;
     border-radius: 5px;
     background-color: var(--subColor);
     list-style: none;
     padding-left: 20px;
+    box-shadow : var(--mainColor) 0px 0px 3px 3px;
 }
 
 .side_nav>li{
     color: white;
     font-size: 1.3rem;
-    margin: 20px 0;
+    margin: 35px 0;
     cursor: pointer;
+    transtion : all 0.1s;
+}
+
+.side_nav>li:hover{
+	color:var(--fontColor);	
 }
 
 .side_nav_search{
@@ -105,6 +129,7 @@ main{
     border-style: none;
     border-radius: 3px;
     padding-left: 10px;
+    margin-top : 40px;
 }
 
 .side_nav_search:focus{
@@ -114,9 +139,9 @@ main{
 .side_nav_search_btn{
     color: white;
     font-size: 1.2rem;
-    margin-left: 5px;
+    margin-left: 10px;
     cursor: pointer;
-}
+} */
 
 footer{
     width: 100%;

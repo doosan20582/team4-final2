@@ -11,7 +11,7 @@ main{
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: rgb(24, 24, 24);
+    background-color: var(--mainColor);
 }
 
 .recommendation_header{
@@ -23,7 +23,7 @@ main{
 }
 
 .recommendation_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
     font-size : 1.5rem;
 }
@@ -37,6 +37,11 @@ main{
     right: 80px;
     color: rgb(209, 209, 209);
     cursor : pointer;
+    transition : all 0.1s;
+}
+
+.recommendation_header>h3:hover{
+	color: var(--fontColor);
 }
 
 .recommendation_main{
@@ -54,7 +59,7 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     border-radius: 5px;
     margin-right: 7px;
 }
@@ -82,7 +87,7 @@ section{
 .section1{
     width: 60%;
     height: auto;
-    background-color: rgb(24, 24, 24);
+    background-color: var(--mainColor);
 }
 
 .section1_noticeBoard{
@@ -99,7 +104,7 @@ section{
 }
 
 .section1_noticeBoard_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
 }
 
@@ -112,11 +117,16 @@ section{
     right: 80px;
     color: rgb(209, 209, 209);
     cursor : pointer;
+    transition : all 0.1s;
 }
 
 .section1_noticeBoard_header>h3>a{
     text-decoration: none;
     color:rgb(209, 209, 209);
+}
+
+.section1_noticeBoard_header>h3>a:hover{
+	color : var(--fontColor);
 }
 
 .section1_noticeBoard_main{
@@ -130,7 +140,7 @@ section{
 .section1_noticeBoard_content{
     width: 95%;
     height: 85%;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     margin-bottom: 50px;
     border-radius: 5px;
     display:flex;
@@ -142,16 +152,21 @@ section{
 .section_notice_main_content{
     width: 99%;
     height: 49.5px;
-    border: 1px solid rgb(209, 209, 209, 0.5);
     border-radius: 5px;
     margin: 5px 0;
     color: white;
     list-style: none;
     display: flex;
     flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 1px 2px;
+    transition : all 0.1s;
 }
 
-.section_notice_main_content>li{
+.section_notice_main_content:hover{
+	box-shadow: black 1px 2px 1px 2px;
+}
+
+.section1_noticeBoard_content>.section_notice_main_content>li{
     width: 200px;
     line-height: 50px;
     font-size: 1rem;
@@ -161,30 +176,35 @@ section{
     text-overflow: ellipsis;
 }
 
-.section_notice_main_content>li:nth-child(1){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(1){
     width: 7%;
 }
-.section_notice_main_content>li:nth-child(2){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(2){
     width: 9%;
     font-weight: bolder;
 }
-.section_notice_main_content>li:nth-child(3){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(3){
     width: 49%;
     text-align: left;
     padding-left: 20px;
     cursor:pointer;
+    transition:all 0.1s;
 }
 
-.section_notice_main_content>li:nth-child(4){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(3):hover{
+	color:var(--fontColor);
+}
+
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(4){
     width: 11%;
 }
-.section_notice_main_content>li:nth-child(5){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(5){
     width: 10%;
 }
-.section_notice_main_content>li:nth-child(6){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(6){
     width: 7%;
 }
-.section_notice_main_content>li:nth-child(7){
+.section1_noticeBoard_content>.section_notice_main_content>li:nth-child(7){
     width: 7%;
 }
 /* */
@@ -203,7 +223,7 @@ section{
 }
 
 .section1_notice_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
 }
 
@@ -216,11 +236,16 @@ section{
     right: 80px;
     color: rgb(209, 209, 209);
     cursor : pointer;
+    transition : all 0.1;
 }
 
 .section1_notice_header>h3>a{
     text-decoration: none;
     color:rgb(209, 209, 209);
+}
+
+.section1_notice_header>h3>a:hover{
+	color : var(--fontColor);
 }
 
 .section1_notice_main{
@@ -234,7 +259,7 @@ section{
 .section1_notice_content{
     width: 95%;
     height: 85%;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     margin-bottom: 20px;
     border-radius: 5px;
     display:flex;
@@ -245,7 +270,6 @@ section{
 .section1_notice_content>.section_notice_main_content{
     width: 99%;
     height: 52px;
-    border: 1px solid rgb(209, 209, 209, 0.5);
     margin: 6px 0;
 }
 
@@ -267,6 +291,10 @@ section{
     text-align: left;
     padding-left: 20px;
 	cursor:pointer;
+	transition:all 0.1s;
+}
+.section1_notice_content>.section_notice_main_content>li:nth-child(2):hover{
+    color:var(--fontColor);
 }
 .section1_notice_content>.section_notice_main_content>li:nth-child(3){
     width: 13%;
@@ -294,7 +322,7 @@ section{
 .section2{
     width: 40%;
     height: auto;
-    background-color: rgb(24, 24, 24);
+    background-color: var(--mainColor);
     padding-right: 20px;
 }
 
@@ -312,7 +340,7 @@ section{
 }
 
 .section2_event_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
 }
 
@@ -331,7 +359,7 @@ section{
 .section2_event_content{
     width: 95%;
     height: 85%;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -350,7 +378,7 @@ section{
 }
 
 .section2_map_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
 }
 
@@ -365,7 +393,7 @@ section{
 .section2_map_content{
     width: 95%;
     height: 85%;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     margin-bottom: 50px;
     border-radius: 5px;
 }
@@ -384,7 +412,7 @@ section{
 }
 
 .section2_chat_header>h1{
-    color:rgb(0, 173, 26);
+    color:var(--fontColor);
     margin-left: 65px;
 }
 
@@ -409,7 +437,7 @@ section{
 .section2_chat_content{
     width: 95%;
     height: 85%;
-    background-color: rgb(59, 59, 59);
+    background-color: var(--subColor);
     margin-bottom: 50px;
     border-radius: 5px;
 }

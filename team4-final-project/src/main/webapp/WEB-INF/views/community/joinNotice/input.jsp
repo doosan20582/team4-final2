@@ -110,20 +110,24 @@
 
 			<div class="section_main">
 				<h1>내용</h1>
+				<div>
 				<textarea name="camping_text" id="content" class="section_main_write" placeholder="내용을 입력하세요."></textarea>
 				<!-- 에디터 스크립트 -->
 				<script type="text/javascript">
 					CKEDITOR.replace('content', {
 						filebrowserUploadUrl : "/community/imgUpload",
-						height : 1015
+						height : 1200
 					});
 				</script>
+				</div>
 			</div>
 
 			<div class="section_footer">
 				<input type="hidden" value="${sessionScope.login_id}" name="member_id">
 				<input type="button" value="글 등록" class="section_footer_registrationBtn">
 			</div>
+			
+			<input type="hidden" name="write_point" class="write_point">
 		</form>
 	</main>
 

@@ -7,18 +7,17 @@ main{
 }
 
 .section{
-    width: 82%;
+    width: 90%;
     height: auto;
-    border: 5px solid tomato;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top : 20px;
 }
 
 .section_header{
     width: 97%;
     height: auto;
-    border: 3px solid white;
     border-radius: 5px;
     margin: 12px 0;
     padding: 20px;
@@ -27,6 +26,7 @@ main{
     flex-direction: column;
     background-color: var(--subColor);
     justify-content: center;
+    box-shadow : var(--mainColor) 0px 0px 5px 3px;
 }
 
 .section_header>h1{
@@ -80,7 +80,12 @@ main{
     background-color: var(--mainColor);
     border: none;
     color: white;
-    box-shadow: white 0 0 1px 1px;
+    transition:all 0.1s;
+    cursor:pointer;
+}
+
+.campsite_search:hover{
+	box-shadow : white 0 0 2px 2px;
 }
 
 .section_header_back{
@@ -203,42 +208,50 @@ main{
 
 .section_main{
     width: 97%;
-    height: 69.5%;
-    border: 3px solid white;
+    height: 78%;
     border-radius: 5px;
     margin: 12px 0;
     color: white;
-    background-color: var(--subColor);
     display: flex;
     flex-direction: column;
-    overflow:hidden;
+    box-shadow : var(--mainColor) 0px 0px 5px 3px;
+    padding : 0 20px;
 }
 
 .section_main>h1{
     font-size: 1.3rem;
-    margin: 20px 17px;
+    margin: 30px 0;
+}
+
+.section_main>div{
+	width:100%;
+	height: 90%;
+	overflow:hidden;
 }
 
 .section_footer{
     width: 97%;
     height: 70px;
-    border: 3px solid white;
     border-radius: 5px;
     margin: 12px 0;
     position: relative;
 }
 
 .section_footer_registrationBtn{
-    width: 85px;
-    height: 35px;
+    width: 90px;
+    height: 40px;
     font-size: 1.2rem;
     border-radius: 5px;
     background-color: var(--mainColor);
     border: none;
     color: white;
-    box-shadow: white 0 0 1px 1px;
     position: absolute;
     right: 20px;
     top:16px;
+    cursor:pointer;
+    transition: all 0.1s;
 }
 
+.section_footer_registrationBtn:hover{
+	box-shadow : white 0 0 2px 2px;
+}

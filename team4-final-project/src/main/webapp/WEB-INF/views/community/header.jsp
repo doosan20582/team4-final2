@@ -27,6 +27,9 @@
             <a href="/community/joinNotice/main">캠핑모임게시판</a>
         </div>
         <div class="login">
+            <a href="/community/main">
+                <i class="xi-forum"></i>Community &nbsp;
+            </a>
             <a href="/shop">
                 <i class="xi-shop"></i>Shop &nbsp;&nbsp;&nbsp;
             </a>

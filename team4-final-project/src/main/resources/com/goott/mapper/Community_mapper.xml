@@ -7,7 +7,7 @@
   		t_board.board_id as board_id, count(board_reply_id) as reply_count, t_board.member_id as member_id, board_title, board_hit, board_recommend, board_regdate, board_tag_id,
   		case when(board_tag_id=1) then '잡담' when(board_tag_id=2) then '공지' when(board_tag_id=3) then '캠핑팁' when(board_tag_id=4) then '상품후기' when(board_tag_id=5) then '캠핑후기' end as 'board_tag_name'
   		from t_board left join t_board_reply on t_board.board_id = t_board_reply.board_id
-  		where board_deleteYN = 'N'
+  		where board_deleteYN = 'N' and board_tag_id !=2
   		group by t_board.board_id order by t_board.board_hit DESC limit 0, 10;
   	</select>
   	

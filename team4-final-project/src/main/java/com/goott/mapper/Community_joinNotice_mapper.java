@@ -40,4 +40,8 @@ public interface Community_joinNotice_mapper {
 
 	public String adminConfirmation(String member_id);
 
+	public void inputPoint(Map<String, Object> map);
+
+	public void updateGrade(Map<String, Object> map);
+
 }
