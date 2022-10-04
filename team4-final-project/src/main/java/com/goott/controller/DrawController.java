@@ -19,11 +19,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import com.goott.domain.DrawEnterVO;
 import com.goott.domain.DrawResultVO;
-import com.goott.domain.DrawVO;
-import com.goott.service.DrawServiceAdmin;
+import com.goott.domain.DrawVO; 
+import com.goott.domain.T_board_tag_VO;
 
-import lombok.extern.log4j.Log4j;
+
+
+
+import com.goott.service.DrawServiceAdmin;
+ 
+import lombok.extern.log4j.Log4j; 
 
 @Log4j
 @Controller
@@ -34,7 +40,7 @@ public class DrawController {
 
 	@RequestMapping(value = "/shop/draw_admin", method = RequestMethod.GET)
 	public ModelAndView draw_admin() {
-		log.info("draw 목록 관리자 ====================================================");
+		log.info("draw 목록 관리자 =====================================================");
 		List<DrawVO> draw_admin = drawServiceAdmin.draw_admin();
 
 

@@ -19,7 +19,7 @@
 			<c:if test="${data.board_tag_name ne '공지'}">
 				<li>[<span class="tag_id">${data.board_tag_name}</span>]</li>
 			</c:if>
-			<li class="board_title">
+			<li class="board_title"> 
 				${data.board_title} [${data.reply_count}]
 			</li>
 			<li>${data.member_id}</li>
