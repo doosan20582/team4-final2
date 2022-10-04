@@ -28,27 +28,38 @@
 		<div class="Answer_Header">
 			<h1>문의 답변</h1>
 		</div>
-		<form action="">
+		
 			<div class="Answer_Name">
 				<h3>작성자 아이디</h3>
-				<span>goot1234</span>
+				<input id="user_Name_Text" name="member_id" value="${data.member_id}" type="text"  readonly>
 			</div>
 			<div class="Answer_Date">
 				<h3>작성일</h3>
-				<span>22/07/30</span>
+				<input id="user_Name_Text" name="qna_regdate" value="${data.qna_regdate}" type="text"  readonly>
 			</div>
 			<div class="Answer_Type">
 				<h3>문의유형</h3>
-				<span>주문/결제</span>
+				<select name="qna_category" id="question_Type_Select"  required>
+					<option value="주문/결제">주문/결제</option>
+					<option value="배송">배송</option>
+					<option value="취소/환불/교환">취소/환불/교환</option>
+					<option value="회원">회원</option>
+					<option value="기타">기타</option>
+				</select>
 			</div>
 			<div class="Answer_Title">
 				<h3>게시글 번호</h3>
-				<input type="text" readonly>
-				<input type="hidden" name="">
+				<input id="question_Title_Text" name="qna_id" type="text" value="${data.qna_id}">
 			</div>
 			<div class="Answer_Content">
 				<h3>내용</h3>
-				<textarea name="" id="Answer_Content_Textarea" cols="30" rows="10"></textarea>
+				<input id="question_Title_Text" name="qna_title" type="text" value="${data.qna_title}">
+			</div>
+			<form method="POST" action="/shop/Question_admin">
+			<div>
+				<h3>답변</h3>
+				<input type="text" name="qna_id" value="${data.qna_id}">
+				<input type="text" name="qna_answer_text">
 			</div>
 			<div class="Answer_Check">
 				<input type="submit" value="답변하기">

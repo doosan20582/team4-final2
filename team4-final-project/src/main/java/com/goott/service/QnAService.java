@@ -14,7 +14,7 @@ public interface QnAService {
 
 	public Object QnA_detail(Map<String, Object> map);
 
-	public void QnA_update(QnAVO QnA);
+	public void QnA_update(QnAVO qnA);
 
 	public void delete(QnAVO QnA);
 	// 게시물 총 갯수
@@ -23,8 +23,26 @@ public interface QnAService {
 	// 페이징 처리 게시글 조회
 	public List<QnAVO> selectQnABoard(PagingVO vo, String checkcategory, String QnASearch);
 
-	public int countQnABoardCategory(String checkcategory);
+	public int countQnABoardCategory(String checkcategory, String QnASearch);
+
+	
+
+	public void Question_update(QnAVO qnA);
+
+	public void Question_admin(QnAVO qnA);
+
+	public void Question_admin_answer(QnAVO qnA);
 
 
+
+	
+
+
+
+
+
+	
+
+	
 	
 }

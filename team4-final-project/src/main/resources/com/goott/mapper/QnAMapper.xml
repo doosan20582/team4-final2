@@ -16,45 +16,119 @@
 		where qna_id =#{qna_id};
 	</update>
 	
-	<select id="QnA_detail" parameterType="map" resultType="com.goott.domain.QnAVO">
-		select qna_id, member_id, qna_title, qna_category, qna_regdate, qna_text from t_qna where qna_id =#{qna_id};
+	<insert id="Question_admin" parameterType="com.goott.domain.QnAVO">
+		insert into t_qna_answer (qna_id, qna_answer_text)
+		values(#{qna_id} ,#{qna_answer_text})
+	</insert>
+	
+	<update id="Question_admin_answer" parameterType="com.goott.domain.QnAVO">
+		update t_qna set qna_admin_answer ='Y' where qna_id = #{qna_id};
+	</update>
+	
+	<select id="QnA_detail" parameterType="Map" resultType="com.goott.domain.QnAVO">
+		select
+		<!-- <choose>
+		<when test="qna_answer_text==null"> 
+		qna_id, member_id, qna_title, qna_public,qna_category, qna_regdate, qna_text 
+		from
+		 t_qna where qna_id  
+		</when>
+ 		<otherwise>  -->
+		  Q.qna_id,Q.member_id,Q.qna_category,Q.qna_public,Q.qna_title,Q.qna_text,Q.qna_regdate,A.qna_answer_text
+ 		from t_qna Q left outer join t_qna_answer A on Q.qna_id = A.qna_id where Q.qna_id =#{qna_id}
+		<!--  </otherwise>
+		 </choose>  -->
+	
 	</select>
 	
 	<delete id="delete" parameterType="com.goott.domain.QnAVO">
 		delete from t_qna where qna_id=#{qna_id}
 	</delete>
+	<sql id="">
 	
+	</sql>
 	<!-- 총 게시글 갯수 출력 -->
-	<select id="countQnABoard" resultType="int">
+	<!-- <select id="countQnABoard" resultType="int">
 		SELECT COUNT(*) FROM t_qna;
-	</select>
-	<!-- 총 게시글 갯수 출력 -->
-	<select id="countQnABoardCategory" parameterType="String" resultType="int">
+	</select> -->
+	<!-- 총 게시글 갯수 출력(검색 및 카데고리 ) -->
+	<select id="countQnABoardCategory" parameterType="Map" resultType="int">
 		SELECT COUNT(*) FROM t_qna
-		where qna_category=#{ckeckcategory};
+
+		<if test="QnASearch != 'all' and checkcategory != 'all'">
+		where  qna_title like CONCAT('%',#{QnASearch},'%') and qna_category=#{checkcategory}
+		 </if> 
+		<if test="QnASearch != 'all' and checkcategory =='all'">
+		where  qna_title like CONCAT('%',#{QnASearch},'%')
+		 </if> 
+		<if test="QnASearch =='all' and checkcategory != 'all'">
+		where  qna_category=#{checkcategory}
+		 </if> 
+		<if test="QnASearch =='all' and checkcategory =='all'">
+		
+		 </if> 
+		 
 	</select>
 	
 	<!-- 페이징 처리 후 게시글 조회 -->
+	<!-- <select id="selectQnABoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
+		
+		SELECT *
+			FROM t_qna
+  			<if test="QnASearch != 'all' and checkcategory != 'all'">
+			where  qna_title like CONCAT('%',#{QnASearch},'%') and qna_category=#{checkcategory}
+		 	</if> 	
+			<if test="QnASearch != 'all' and checkcategory =='all'">
+			where  qna_title like CONCAT('%',#{QnASearch},'%')
+			 </if> 
+			<if test="QnASearch =='all' and checkcategory != 'all'">
+			where  qna_category=#{checkcategory}
+			 </if> 
+			<if test="QnASearch =='all' and checkcategory =='all'">
+		
+		 	</if> 
+			
+			limit #{vo.start},#{vo.end} 
+	</select> -->
 	<select id="selectQnABoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
 		
 		SELECT *
 			FROM (
   				SELECT @rownum:=@rownum+1  rnum, A.* 
-  					FROM t_qna A, (
+  					FROM t_qna A, 
+  			
+  				
+  				<if test="QnASearch != 'all' and checkcategory != 'all'">
+				(
   									SELECT @ROWNUM := 0
-  									) R
-  			WHERE <choose>
-					<when test="checkcategory!=null and checkcategory!='' and checkcategory != 'all'">
-					qna_category = #{checkcategory} 
-					</when>
-					<otherwise>
-						qna_category like CONCAT('%','','%') 
-					</otherwise>
-				</choose>
+  									) R where  qna_title like CONCAT('%',#{QnASearch},'%') and qna_category=#{checkcategory} order by qna_id desc
+		 		</if>
+		 		<if test="QnASearch != 'all' and checkcategory =='all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R where  qna_title like CONCAT('%',#{QnASearch},'%') order by qna_id desc
+				 </if> 
+				<if test="QnASearch =='all' and checkcategory != 'all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R where  qna_category=#{checkcategory} order by qna_id desc
+				</if> 
+				<if test="QnASearch =='all' and checkcategory =='all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R order by qna_id desc
+		 		</if> 
 				
 			) LIST
 			WHERE
-			 rnum between #{vo.start} AND #{vo.end} ;
+			 rnum between #{vo.start} AND #{vo.end}
+
+			 ;
 	</select>
+	
+	
+	
+	
+	
 
 </mapper>

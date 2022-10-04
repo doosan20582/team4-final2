@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/resources/css/shop/Question.css">
 <!--ì¼íëª° ê¸ë¡ë² ìì´ì½ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<script type="text/javascript" src="<c:url value="/resources/editor/ckeditor/ckeditor.js"/>"></script>
 <title>Document</title>
 </head>
 
@@ -29,7 +30,7 @@
 		<form method="post" action="Question">
 			<div class="user_Name">
 				<h3>ID</h3>
-				<input id="user_Name_Text"  name="${data.member_id}" type="text" readonly>
+				<input id="user_Name_Text"  name="member_id" value="${login_id}" type="text" readonly>
 			</div>
 			<div class="question_Type">
 				<h3>문의유형</h3>
@@ -48,11 +49,20 @@
 			<div class="question_Content">
 				<h3>내용</h3>
 				<textarea name="qna_text" id="question_Content_Textarea"  cols="30" rows="10"></textarea>
+				<script type="text/javascript">
+               CKEDITOR.replace('question_Content_Textarea', {
+                  filebrowserUploadUrl : "",
+                  height : 100,
+                  width : 500
+                  
+               });
+            </script>
 			</div>
 			<div class="question_Open">
 				<h3>공개여부</h3>
 				<div class="question_Open_Radio">
-					<label for="question_Open_Radio1"><input type="radio" id="question_Open_Radio1" name="qna_public" value="공개" checked>공개</label> <label for="question_Open_Radio2"><input type="radio" id="question_Open_Radio2" name="qna_public" value="비공개">비공개</label>
+					<label for="question_Open_Radio1"><input type="radio" id="question_Open_Radio1" name="qna_public" value="공개" checked>공개</label>
+					<label for="question_Open_Radio2"><input type="radio" id="question_Open_Radio2" name="qna_public" value="비공개">비공개</label>
 				</div>
 			</div>
 			<div class="question_Check">
@@ -63,7 +73,7 @@
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
 	
-	<script src="/resources/js/shop/Question.js"></script>
+	<!-- <script src="/resources/js/shop/Question.js"></script> -->
 </body>
 
 </html>

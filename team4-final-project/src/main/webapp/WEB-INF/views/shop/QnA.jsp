@@ -28,6 +28,7 @@
 		
 		<div class="QnA_Title">
 			<h1>QnA</h1>
+			<input id="QnA_Title_btn1" class="asked" type="button" value="자주묻는질문">
 			<input id="QnA_Title_btn" class="btn" type="button" value="문의하기">
 		</div>
 		<form action="/shop/QnA" name="sk">
@@ -50,19 +51,25 @@
 			<table class="QnA_Admin_Main_Table">
 				<thead>
 					<tr>
-						<input type="hidden" name="">
 						<th>구분</th>
 						<th>제목</th>
 						<th>작성일</th>
 						<th>상태</th>
 					</tr>
 				</thead>
+
 				<c:forEach var="row" items="${list}">
 					<tr class="qna_table">
-						<!-- <input type="hidden" name=""> -->
 						<td>${row.qna_category}</td>
+						<c:if test="${row.qna_public eq '공개' || sessionScope.login_auth eq '관리자' || row.member_id eq sessionScope.login_id}">
 						<td><a href="QnA_detail?qna_id=${row.qna_id}">${row.qna_title}</a></td>
-						<td>${row.qna_regdate}</td>
+						</c:if>
+						<c:if test="${row.qna_public ne '공개' && sessionScope.login_auth ne '관리자' && row.member_id ne sessionScope.login_id}">
+						<td>
+						비공개글입니다.
+						</td>
+						</c:if>
+						<td><fmt:formatDate value="${row.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" /></td>
 						<td>${row.qna_admin_answer}</td>
 					</tr>
 				</c:forEach>
@@ -88,6 +95,8 @@
 		</c:if>
 	
 		</div>
+		
+		<input type="hidden" value="${sessionScope.login_id}" class="sesseionlogin_id">
 	</main>
 
 
@@ -98,17 +107,28 @@
 	<!-- <script src="js/QnA.js"></script> -->
 
 	<script type="text/javascript">
+	let login_id = document.querySelector(".sesseionlogin_id");
     let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
     let checkboxbtn = document.querySelector("#checkboxbtn");
     let checktype = document.querySelectorAll(".checktype");
+    let asked = document.querySelector(".asked");
+    
     QnA_Title_btn.addEventListener('click',function(){
-    	if(${sessionScope.login_id != null}){
+    	if(login_id.value!=null && login_id.value!=''){
+    		console.log(login_id);
     		location.href="Question";
     	}else{
     		alert("로그인 후 이용해주세요!");
+    		location.href="/login";
     	}
     	
     });
+    
+    asked.addEventListener('click', function(){
+    	location.href="asked_Question";
+    }); 
+    
+    
     checkboxbtn.addEventListener('click', function(){
     	for(let i=0; i<checktype.length; i++){
     		if(checktype[i].checked == true){
