@@ -28,8 +28,8 @@
 					</div>
 					<div class="myGradeState_bottom">
 						<div id="circle">등급혜택</div>
-						<div id="text1" >제품 구매 시 전 제품 ${Info.grade_discount}</div>
-						<div id="text2">할인</div>
+						<div id="text1" >제품 구매 시 전 제품 ${Info.grade_accrual_rate*100}% 적립</div>
+						<div id="text2">제품 구매 시 전 제품 ${Info.grade_discount*100}% 할인</div>
 					</div>
 				</div>
 				<div class="NextMonthGrade">
@@ -63,14 +63,14 @@
 				<div class="grade level1">
 					<div class="grade_left">
 						<h3>앰버</h3>
-						<p>한달 누적 금액 0만원 이상</p>
+						<p>누적 포인트  ${Info.grade_start_point}만원 이상</p>
 						<p>
-							구매 시
+							적립 시
 							<span id="l1">기본 0.5% 적립</span>
 						</p>
 					</div>
 					<div class="grade_right">
-						<img src="/resources/img/shop/앰버.PNG">
+						<img src="/resources/img/앰버.PNG">
 					</div>
 				</div>
 				<div class="grade level2">
@@ -83,7 +83,7 @@
 						</p>
 					</div>
 					<div class="grade_right">
-						<img src="/resources/img/shop/에메랄드.PNG">
+						<img src="/resources/img/에메랄드.PNG">
 					</div>
 				</div>
 				<div class="grade level3">
@@ -96,7 +96,7 @@
 						</p>
 					</div>
 					<div class="grade_right">
-						<img src="/resources/img/shop/루비.PNG">
+						<img src="/resources/img/루비.PNG">
 					</div>
 				</div>
 				<div class="grade level4">
@@ -109,7 +109,7 @@
 						</p>
 					</div>
 					<div class="grade_right">
-						<img src="/resources/img/shop/사파이어.PNG">
+						<img src="/resources/img/사파이어.PNG">
 					</div>
 				</div>
 				<div class="grade level5">
@@ -122,7 +122,7 @@
 						</p>
 					</div>
 					<div class="grade_right">
-						<img src="/resources/img/shop/다이아몬드.PNG">
+						<img src="/resources/img/다이아몬드.PNG">
 					</div>
 				</div>
 

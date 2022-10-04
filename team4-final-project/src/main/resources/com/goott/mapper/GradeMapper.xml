@@ -32,4 +32,40 @@
 			where m.member_id = #{member_id}
 		]]>
 	</select>
+	
+	
+	<!-- 관리자 - 등급 정책 리스트 -->
+		<select id="gradePolicy" resultType="com.goott.domain.GradeVO">
+		<![CDATA[
+			select grade_id, grade_start_point, grade_end_point ,grade_name, grade_color, grade_discount,
+				   grade_accrual_rate, grade_comment, grade_img_url,grade_font_color
+			  from t_grade
+			  order by grade_id asc
+		]]>
+	</select>
+	
+	<!-- 관리자- 등급 정책 삭제  -->
+	<delete id="gradePolicyDelete">
+		delete from t_grade
+		where grade_id = #{grade_id}
+	</delete>
+	
+	<insert id="gradePolicyAdd" parameterType="com.goott.domain.GradeVO">
+		<![CDATA[
+		insert into t_grade
+		(grade_start_point, grade_end_point ,grade_name, grade_color, grade_discount,
+				   grade_accrual_rate, grade_comment, grade_font_color, grade_img_url)
+		values (#{grade_start_point}, #{grade_end_point},#{grade_name},#{grade_color},#{grade_discount},
+		#{grade_accrual_rate}, #{ grade_comment},#{grade_font_color},'not url')
+		]]>
+	</insert>
+		<update id="gradePolicyUpdate" >
+		<![CDATA[
+		UPDATE boardtest SET
+		grade_start_point = #{grade_start_point},
+		grade_end_point = #{grade_end_point}
+		WHERE grade_id = #{grade_id}
+		]]>
+	</update>
+	
 </mapper>

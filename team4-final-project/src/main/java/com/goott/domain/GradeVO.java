@@ -25,8 +25,7 @@ public class GradeVO {
 	double grade_accrual_rate;
 	String grade_comment;
 	String grade_img_url;
-	
-	
+	String grade_font_color;
 	
 	
 }
