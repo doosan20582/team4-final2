@@ -1,5 +1,6 @@
 package com.goott.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -24,4 +25,15 @@ public interface GradeMapper {
 	 * @return 회원 등급 정보 + 회원 아이디
 	 */
 	public Map<String, Object> selectUserGradeId(String member_id);
+
+
+	/* 관리자 - 등급 정책 리스트 */
+	public List<GradeVO> gradePolicy();
+	
+	/* 관리자 - 등급 정책 삭제 */
+	public void gradePolicyDelete(GradeVO gradeVO);
+	
+	/* 관리자 - 등급 정책 추가 */
+	public void gradePolicyAdd(GradeVO gradeVO);
+	
 }
