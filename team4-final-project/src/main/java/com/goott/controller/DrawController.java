@@ -1,7 +1,6 @@
 package com.goott.controller;
 
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
-
-
+import com.goott.domain.DrawEnterVO;
 import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
-import com.goott.domain.T_board_tag_VO;
 import com.goott.service.DrawServiceAdmin;
 
 import lombok.extern.log4j.Log4j;
