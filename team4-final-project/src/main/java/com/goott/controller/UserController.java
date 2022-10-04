@@ -214,4 +214,11 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value = "basket", method = RequestMethod.GET)
+	public String basketGet() {
+		log.info("장바구니 ==================================================");
+		
+		return "shop/order/basket";
+	}
+	
 }

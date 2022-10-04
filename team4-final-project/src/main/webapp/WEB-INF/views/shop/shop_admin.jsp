@@ -96,13 +96,17 @@
 				<div class="section_best_items">
 					<c:forEach var="item" items="${productList}" varStatus="status">
 						<div class="section_item">
-							<div class="numberDiv">
-								<span class="numberSpan${status.count }">${status.count }</span>
+							<div class="nameDiv">
+								
 								<a href="/product/detail?product_id=${item.product_id }"> ${item.product_name } </a>
-							
+
 							</div>
 							<div class="thumbnailDiv">
 								<img src="/productImg/${item.product_thumbnail_img_url }" class="thumbnailImg" art="이미지 준비중 입니다.">
+							</div>
+							<!-- 스코어 -->
+							<div class="scoreDiv">
+								<span class="numberSpan${status.count }">${status.count }</span>
 							</div>
 						</div>
 					</c:forEach>

@@ -101,13 +101,17 @@
 
 					<c:forEach var="item" items="${productList}" varStatus="status">
 						<div class="section_item">
-							<div class="numberDiv">
-								<span class="numberSpan${status.count }">${status.count }</span>
+							<div class="nameDiv">
+								
 								<a href="/product/detail?product_id=${item.product_id }"> ${item.product_name } </a>
 
 							</div>
 							<div class="thumbnailDiv">
 								<img src="/productImg/${item.product_thumbnail_img_url }" class="thumbnailImg" art="이미지 준비중 입니다.">
+							</div>
+							<!-- 스코어 -->
+							<div class="scoreDiv">
+								<span class="numberSpan${status.count }">${status.count }</span>
 							</div>
 						</div>
 					</c:forEach>
@@ -164,7 +168,32 @@
 		<div class="side">
 			<div class="side_navBar">
 				<!-- 등급 구역 -->
-				<div class="gradeDiv"></div>
+				<div class="gradeDiv">
+					
+				
+					<div class="gradeInnerTop">
+						<c:if test="${empty userInfo }">
+							<p>로그인후 이용하실수 있습니다.</p>
+						</c:if>
+						<c:if test="${!empty userInfo }">
+							<img alt="" src="${userInfo.member_profile_img_url }" id="userProfileImg">
+						</c:if>
+						
+						
+					</div>
+					<div class="gradeInnerBottom">
+						<c:if test="${empty userInfo }">
+							<p>로그인후 이용하실수 있습니다.</p>
+						</c:if>
+						<c:if test="${!empty userInfo }">
+							<span class="userGradeSpan" style="color: ${userInfo.grade_color}">${userInfo.grade_name }</span>
+							<a href="user/basket" class="basketAnchor">장바구니</a>
+						</c:if>
+						
+					</div>
+					
+					
+				</div>
 				<!-- 카테고리 구역 -->
 				<div class="categoryDiv">
 					<div class="categoryInnerDiv">

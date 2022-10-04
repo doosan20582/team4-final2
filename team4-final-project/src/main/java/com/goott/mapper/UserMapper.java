@@ -47,4 +47,10 @@ public interface UserMapper {
 	 * @return 변경된 레코드 수
 	 */
 	public int updatePw(@Param("member_id") String member_id, @Param("member_pw") String member_pw);
+	/**
+	 * 유저 프로필 이미지, 등급 이름 가져오기
+	 * @param member_id 아이디
+	 * @return member_profile_img_url, grade_name, grade_color
+	 */
+	public Map<String, Object> selectUserGradeAndProfileImgUrl(String member_id);
 }
