@@ -1,11 +1,17 @@
 body{
 	font-family: 'Black Han Sans';
+	background-color: var(--subColor);
+}
+
+h3{
+	color: white;
+	font-family: 'GimpoGothicBold00';
 }
 
 /*내정보*/
 .myInfoCon{
     width: 100%;
-    height: 600px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +54,7 @@ body{
 .infoBottomDiv{
 	background-color: var(--mainColor);
 }
-
+/*이미지*/
 .userImgDiv{
     width: 30%;
     height: 100%;
@@ -56,13 +62,45 @@ body{
     padding: 1rem;
 }
 
-#userImg{
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    border: 3px solid black;
+.userImgDivInnerTop{
+	width: 100%;
+	height: 80%;
+	border: 3px solid red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
+.userImgDivInnerBottom{
+	width: 100%;
+	height: 20%;
+	border: 3px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#userImg{
+    width: 80%;
+    height: 80%;
+    object-fit: fill;
+    border: 3px solid black;
+    border-radius : 10%;
+}
+
+
+
+.imgSubmit, .imgCancel{
+	display: none;
+	text-decoration: none;
+	cursor: pointer;
+	transition: .3s;
+	color: white;
+}
+
+.imgSubmit:hover, .imgCancel:hover{
+	color: var(--fontColor);
+}
 
 
 .userInfoDiv{
@@ -143,6 +181,7 @@ body{
 .deliveryHisroyDiv{
     width: 80%;
     height: 50%;
+    min-height: 300px;
     max-height: 500px;
     overflow-y: scroll;
     border: 3px solid blue;
@@ -286,7 +325,7 @@ body{
 	height: 100%;
 	top: 0;
 	left: 0;
-	background-color: red;
+	
 	background-color: rgba(0, 0, 0, 0.339);
     backdrop-filter: blur(4px);
 }
@@ -374,7 +413,8 @@ body{
 	background-color: var(--sub2Color);
 	transition: .3s;
 	color: var(--subFontColor);
-	cursor: pointer;
+	cursor: not-allowed;
+	
 	font-family: 'GimpoGothicBold00';
 	font-size: 1.1rem;
 	/* margin-bottom: 0.5rem; */
@@ -404,5 +444,55 @@ body{
 	background-color: var(--mainColor);
 }
 
+/*비밀번호 변경 컨테이너*/
+.changePasswordContainer{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	
+	background-color: rgba(0, 0, 0, 0.339);
+    backdrop-filter: blur(4px);
+	
+}
+
+.changePasswordDiv{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 500px;
+	height: 300px;
+	border: 3px solid black;
+	background-color: white;
+	font-family: 'GimpoGothicBold00';
+	
+}
+
+.changePasswordInnerTop{
+	width: 100%;
+	height: 30%;
+	border: 3px solid red;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.changePasswordInnerBottom{
+	width: 100%;
+	height: 40%;
+	border: 3px solid green;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.changePasswordInnerResult{
+	width: 100%;
+	height: 30%;
+	border: 3px solid black;
+	padding: 1rem;
+}
 
 

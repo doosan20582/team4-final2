@@ -26,6 +26,7 @@ public class T_camping_VO {
 	private String campsite_lon;
 	private String campsite_address;
 	private String camping_deleteYN;
+	private int write_point;
 	public int getCamping_id() {
 		return camping_id;
 	}
@@ -146,6 +147,12 @@ public class T_camping_VO {
 	public void setCamping_deleteYN(String camping_deleteYN) {
 		this.camping_deleteYN = camping_deleteYN;
 	}
+	public int getWrite_point() {
+		return write_point;
+	}
+	public void setWrite_point(int write_point) {
+		this.write_point = write_point;
+	}
 	@Override
 	public String toString() {
 		return "T_camping_VO [camping_id=" + camping_id + ", member_id=" + member_id + ", camping_region="
@@ -155,7 +162,8 @@ public class T_camping_VO {
 				+ ", camping_title=" + camping_title + ", camping_applicant=" + camping_applicant + ", camping_count="
 				+ camping_count + ", reply_count=" + reply_count + ", keyword=" + keyword + ", camping_campsite="
 				+ camping_campsite + ", campsite_lat=" + campsite_lat + ", campsite_lon=" + campsite_lon
-				+ ", campsite_address=" + campsite_address + ", camping_deleteYN=" + camping_deleteYN + "]";
+				+ ", campsite_address=" + campsite_address + ", camping_deleteYN=" + camping_deleteYN + ", write_point="
+				+ write_point + "]";
 	}
 	
 	

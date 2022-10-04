@@ -1,5 +1,6 @@
 package com.goott.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,14 +10,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.MemberVO;
 import com.goott.domain.OrderVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
+import com.goott.service.MemberService;
 import com.goott.service.OrderService;
 import com.goott.service.UserService;
 
@@ -31,6 +36,8 @@ public class UserController {
 	OrderService orderService;
 	@Inject
 	UserService userService;
+	@Inject
+	MemberService memberService;
 	
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -45,13 +52,24 @@ public class UserController {
 		List<OrderVO> orderList = orderService.getOrderList(member_id);
 		//구매 확정 리스트 
 		List<SalesVO> salesList = userService.getUserSalesList(member_id);
-		log.info(salesList);
-		
+		//회원 정보
+		MemberVO memberVO = memberService.getMemberInfo(member_id);
+		log.info(memberVO);
 		model.addAttribute("orderList" , orderList);
 		model.addAttribute("salesList" , salesList);
+		model.addAttribute("memberVO" , memberVO);
 		
 		
 		return "/user/mypage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "profile", method = RequestMethod.POST)
+	public Map<String, Object> profile(@RequestParam MultipartFile file, @RequestParam String member_id){
+		log.info("프로필 이미지 변경 =======================================================");
+		
+		
+		return userService.changeProfileImg(file, member_id);
 	}
 	
 	@RequestMapping(value = "review", method = RequestMethod.GET)
@@ -64,26 +82,31 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "review", method = RequestMethod.POST)
-	public String reviewGet(@RequestParam MultipartFile file, ProductReviewVO productReviewVO, @RequestParam int sales_id) {
+	public String reviewGet(@RequestParam MultipartFile fileImg, @RequestParam MultipartFile fileVideo, ProductReviewVO productReviewVO, @RequestParam int sales_id, Model model) {
 		log.info("리뷰작성 post ====================================");
-		log.info("매출 번호 : " + sales_id);
-		log.info(productReviewVO);
-		//파일 업로드 없으면 주소 초기화
-		if(file.isEmpty()) {
-			productReviewVO.setProduct_review_img_url("no url");
-			productReviewVO.setProduct_review_video_url("no url");
-		}
+		
+		//이미지 업로드  주소 초기화
+		productReviewVO.setProduct_review_img_url("no url");
+		//비디오 업로드 주소 초기화
+		productReviewVO.setProduct_review_video_url("no url");
+		//매출 정보 가져오기
 		Map<String, Object> map = userService.getReviewInfo(sales_id);
-		//구매 정보 가져오기
+		
+		//구매자 정보 가져오기
 		String member_id = map.get("member_id").toString();
+		//상품 정보
 		int product_id = Integer.parseInt( map.get("product_id").toString() );
 		//리뷰 엔티티에 리뷰 정보 넣기
 		productReviewVO.setMember_id(member_id);
 		productReviewVO.setProduct_id(product_id);
 		//리뷰 작성 
-		userService.writeReview(productReviewVO, sales_id);
+		String resultText = userService.writeReview(productReviewVO, sales_id, fileImg, fileVideo);
 		
-		return "redirect:/user";
+		
+		model.addAttribute("msg", resultText);
+		model.addAttribute("url", "user");
+		
+		return "alert";
 	}
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
@@ -98,15 +121,33 @@ public class UserController {
 			
 			//세션에 로그인 된 아이디와 삭제 요청한 아이디가 일치하는지 한번 더 확인
 			if(member_id.equals(login_id)) {
-				model.addAttribute("msg", "올바른 삭제 처리 접근");
-				model.addAttribute("url", "/");
-				return "alert";
+				//로직 작성
+				int result = memberService.doWithDrawal(member_id);
+				if(result == 1) {
+					model.addAttribute("msg", "탈퇴 완료 되었습니다.");
+					model.addAttribute("url", "/");
+					//세션 삭제
+					session.invalidate();
+					return "alert";
+				}
+				else if(result == 0) {
+					model.addAttribute("msg", "존재하지 않는 아이디 입니다. 확인후 다시 시도해 주세요.");
+					model.addAttribute("url", "/");
+					return "alert";
+				}
+				else {
+					model.addAttribute("msg", "죄송합니다. 잠시후 다시 시도해 주세요.");
+					model.addAttribute("url", "/");
+					return "alert";
+				}
+				
 			}
 			//일치하지 않으면 잘못된 요청
 			else {
 				model.addAttribute("msg", "잘못된 방식으로 삭제 요청을 하였습니다. 확인 후 다시 시도해 주세요.");
 				//세션 삭제
-				model.addAttribute("url", "logout");
+				session.invalidate();
+				model.addAttribute("url", "/");
 				return "alert";
 			}
 		}
@@ -118,4 +159,66 @@ public class UserController {
 		}
 		
 	}
+	@ResponseBody
+	@RequestMapping(value = "check", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String checkPw(@RequestBody Map<String, Object> param, Model model) {
+		log.info("비밀번호 변경전 체크 =======================================");
+		String member_id = param.get("member_id").toString();
+		String member_pw = param.get("member_pw").toString();
+		
+		boolean result = memberService.checkPw(member_id, member_pw);
+		if(result) {
+			return "일치";
+		}
+		else {
+			return "비밀번호가 일치하지 않습니다.";
+		}
+		
+		
+		
+	}
+	@RequestMapping(value = "change_password", method = RequestMethod.GET)
+	public String changePw() {
+		log.info("비밀번호 변경 페이지 get ==============================================");
+		return "user/change_password";
+	}
+	@RequestMapping(value = "change_password", method = RequestMethod.POST)
+	public String changePwPost(@RequestParam String member_pw, HttpServletRequest request, Model model) {
+		log.info("비밀번호 변경 페이지 post ==============================================");
+		//비밀번호 업데이트 로직 작성
+		HttpSession session = request.getSession();
+		//세션에 로그인 되어 있다면
+		if(session.getAttribute("login_id") != null) {
+			String member_id = session.getAttribute("login_id").toString();
+			
+			String resultText = userService.changeUserPw(member_id, member_pw);
+			//비밀번호 변경 성공
+			if(resultText.equals("비밀번호가 변경 되었습니다.")) {
+				model.addAttribute("url", "/logout");
+				model.addAttribute("msg", resultText + " 다시 로그인 해 주세요.");
+				
+			}
+			//비밀번호 변경 실패
+			else {
+				model.addAttribute("url", "/user");
+				model.addAttribute("msg", resultText);
+			}
+			return "alert";
+		}
+		//세션에 로그인되 있지 않다면
+		else {
+			model.addAttribute("url", "죄송합니다. 잠시후 다시 시도해 주세요.");
+			model.addAttribute("msg", "/user");
+			return "alert";
+		}
+		
+	}
+	
+	@RequestMapping(value = "basket", method = RequestMethod.GET)
+	public String basketGet() {
+		log.info("장바구니 ==================================================");
+		
+		return "shop/order/basket";
+	}
+	
 }

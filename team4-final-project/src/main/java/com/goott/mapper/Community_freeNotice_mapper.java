@@ -49,4 +49,6 @@ public interface Community_freeNotice_mapper {
 
 	public void inputPoint(T_board_VO board);
 
+	public void updateGrade(T_board_VO board);
+
 }

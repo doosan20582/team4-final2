@@ -31,43 +31,60 @@
 		<div class="section">
 			<div class="section_header">
 				<div class="section_header_profile">
-					<img src="" alt="">
+					<img src="/community/imgSubmit?uid=67ff1ee8-8ea9-4903-a339-0faee29db899&amp;fileName=캠핑메인.jpg" alt="">
 				</div>
 				<div class="section_header_info">
 					<div class="section_header_info_title">
+						<div>
 						<p>
-							<span class="section_header_info_title_tag">[${data.board_tag_name}]</span>
+							<c:if test="${data.board_tag_name eq '공지'}">
+								<span class="section_header_info_title_tag" style="color:red">[${data.board_tag_name}]</span>
+							</c:if>
+							<c:if test="${data.board_tag_name ne '공지'}">
+								<span class="section_header_info_title_tag">[${data.board_tag_name}]</span>
+							</c:if>
 							${data.board_title}
 						</p>
+						</div>
+						<div>
 						<p class="section_header_info_title_date">
 							작성일 :
 							<span>
 								<fmt:formatDate value="${data.board_regdate}" pattern="yy-MM-dd" />
 							</span>
 						</p>
+						</div>
 					</div>
 					<div class="section_header_info_id">
+						<div>
 						<p>
 							작성자 :
 							<span>${data.member_id}</span>
 						</p>
+						</div>
+						<div>
 						<p class="section_header_info_id_recommend">
 							추천수 :
 							<span class="recommend_count">${data.board_recommend}</span>&nbsp;
 							<input type="button" value="추천" class="section_header_info_id_recommend_btn">
 						</p>
+						</div>
 					</div>
 					<div class="section_header_info_btns">
+						<div>
 							<c:if test="${sessionScope.login_auth eq '관리자'}">
 								<form class="delete_form" method="POST" action="/community/freeNotice/delete">
 									<input type="hidden" name="board_id" value="${data.board_id}">
 									<input type="button" value="글 삭제 " class="section_header_info_btns_deleteBtn">
 								</form>
 							</c:if>
+						</div>
+						<div>
 						<p class="section_header_info_btns_lookup">
 							조회수 :
 							<span>${data.board_hit}</span>
 						</p>
+						</div>
 					</div>
 				</div>
 			</div>

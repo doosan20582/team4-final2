@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	
+
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -22,8 +22,9 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/productImg/**"
-		location="file:/C:/uploadtest/productImg/" />
+	<resources mapping="/productImg/**" location="file:/C:/uploadtest/productImg/" />
+	<resources mapping="/uploadUserProfileImg/**" location="file:/C:/uploadtest/uploadUserProfileImg/" />
+	<resources mapping="/reviewFiles/**" location="file:/C:/uploadtest/reviewFiles/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -44,25 +45,30 @@
 	<!-- 인터셉터 클래스 빈 등록 -->
 	<beans:bean id="commonInterceptor"
 		class="com.goott.interceptor.CommonInterceptor" />
-	<beans:bean id="adminInterceptor" class="com.goott.interceptor.AdminInterceptor"/>
+	<beans:bean id="adminInterceptor"
+		class="com.goott.interceptor.AdminInterceptor" />
 	<!-- 인터셉터 설정 -->
 	<interceptors>
 		<!-- 로그인 유저만 접근 할수 있는 -->
 		<interceptor>
-			
-		
+
+
 			<mapping path="/order" />
 			<mapping path="/order/*" />
 
-			<mapping path="/user"/>
-			<mapping path="/user/*"/>
+			<mapping path="/user" />
+			<mapping path="/user/*" />
+			
 			<beans:ref bean="commonInterceptor" />
 		</interceptor>
 		<!-- 관리자만 접근 할수 있는 -->
-		<interceptor> 
-			<mapping path="/**/admin"/> 
-			<mapping path="/product/modify"/> 
-			<mapping path="/product/register"/> <beans:ref bean="adminInterceptor"/> 
+		<interceptor>
+			<mapping path="/**/admin" />
+			<mapping path="/product/modify" />
+			<mapping path="/product/register" />
+			<mapping path="/admin/**" />
+			
+			<beans:ref bean="adminInterceptor" />
 		</interceptor>
 	</interceptors>
 
@@ -73,7 +79,7 @@
 		base-package="com.goott.controller" />
 
 
-	
+
 
 
 

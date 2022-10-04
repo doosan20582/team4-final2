@@ -102,10 +102,61 @@
 		]]>
 	</select>
 	
+	<!-- 로그인 시 탈퇴 회원인지 확인 -->
+	<select id="selectWithdrawal" parameterType="String" resultType="String">
+		<![CDATA[
+			select member_withdrawal from t_member where member_id = #{member_id}
+		]]>
+		
+	</select>
 	
+	<!-- 회원 탈퇴 처리 -->
+	<update id="updateWithdrawal" parameterType="String">
+		<![CDATA[
+			update t_member set member_withdrawal = 'y' where member_id = #{member_id}
+		]]>
+		
+	</update>
 	
+	<!-- 회원 정보 가져오기 -->
+	<select id="selectMemberInfo" parameterType="String" resultType="com.goott.domain.MemberVO">
+		<![CDATA[
+			select member_id, member_name, member_phone, member_age, member_gender, member_postal_code, member_address,
+				   member_email_agree, grade_id, member_purchase_point, member_write_point, member_profile_img_url
+			from t_member 
+			where member_id = #{member_id}
+		]]>
+	</select>
 	
+	<!-- 아이디에 해당하는 이메일 가져오기 -->
+	<select id="selectEmail" parameterType="String" resultType="String">
+		<![CDATA[
+			select member_email from t_member where member_id = #{member_id}
+		]]>
+		
+	</select>
 	
+	<!-- 회원  비밀번호 초기화 상태 업데이트-->
+	<update id="updateInitPw" parameterType="String">
+		<![CDATA[
+			update t_member set member_init_pw = 'y', member_off_limits_date = now() where member_email = #{member_email}
+		]]>
+	</update>
 	
+	<!-- 회원 비밀번호 초기화 상태인지 확인  -->
+	<select id="selectInitPw" parameterType="String" resultType="String">
+		<![CDATA[
+			select member_init_pw from t_member where member_id = #{member_id}
+		]]>
+		
+	</select>
+	
+	<!-- 회원 비밀번호 초기화 완료 업데이트 -->
+	<update id="updateCompletePw" parameterType="String">
+		<![CDATA[
+			update t_member set member_init_pw = 'n' where member_id = #{member_id}
+		]]>
+		
+	</update>
 	
 </mapper>

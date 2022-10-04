@@ -117,4 +117,9 @@ public interface ProductService {
 	 * @param product_id 상품 번호(PK)
 	 */
 	public int setProductClosed(int product_id);
+	/**
+	 * 상품 판매 탑 10 가져오기
+	 * @return map(product_id, count, product_name, product_thumbnail_img_url) 상위 10개
+	 */
+	public Map<String, Object> getProductTopSales();
 }

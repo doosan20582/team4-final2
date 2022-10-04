@@ -16,6 +16,8 @@
 
 <!-- Jquery cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 구글 폰트 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <title>Shop_User</title>
 </head>
 
@@ -26,48 +28,48 @@
 
 	<!--광고-->
 	<div class="carousel">
-		<i class="xi-angle-left carousel_button_L"></i>
+		<!-- <i class="xi-angle-left carousel_button_L"></i> -->
 		<!--광고 컨테이너-->
 		<div class="adContainer">
 
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/3ed70dbe5c741730b08d02b2664bd0ad.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 1</div>
+				<!-- <div class="carouselContentDiv">광고 1</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/426036bc4d8e49a589788a2730d3ecf5.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 2</div>
+				<!-- <div class="carouselContentDiv">광고 2</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/56e8f0bd7af5e3fa52f7ac76dd346b8f.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 3</div>
+				<!-- <div class="carouselContentDiv">광고 3</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/ba3b9d639544b7b7e35a1c6173a52fbb.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 4</div>
+				<!-- <div class="carouselContentDiv">광고 4</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/c5a20ba490f33ba0301b5cbc46fbf4b9.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 5</div>
+				<!-- <div class="carouselContentDiv">광고 5</div> -->
 
 			</div>
 
@@ -75,7 +77,7 @@
 
 		</div>
 
-		<i class="xi-angle-right carousel_button_R"></i>
+		<!-- <i class="xi-angle-right carousel_button_R"></i> -->
 	</div>
 	<!--carousel-->
 
@@ -94,10 +96,27 @@
 			<!--상품 탑 10 내용-->
 			<div class="section_best">
 				<i class="xi-angle-left best_button_L"></i>
-
+				
 				<div class="section_best_items">
-					<div class="section_item">1</div>
-					<div class="section_item">2</div>
+
+					<c:forEach var="item" items="${productList}" varStatus="status">
+						<div class="section_item">
+							<div class="nameDiv">
+								
+								<a href="/product/detail?product_id=${item.product_id }"> ${item.product_name } </a>
+
+							</div>
+							<div class="thumbnailDiv">
+								<img src="/productImg/${item.product_thumbnail_img_url }" class="thumbnailImg" art="이미지 준비중 입니다.">
+							</div>
+							<!-- 스코어 -->
+							<div class="scoreDiv">
+								<span class="numberSpan${status.count }">${status.count }</span>
+							</div>
+						</div>
+					</c:forEach>
+
+					<!-- <div class="section_item">2</div>
 					<div class="section_item">3</div>
 					<div class="section_item">4</div>
 					<div class="section_item">5</div>
@@ -105,10 +124,10 @@
 					<div class="section_item">7</div>
 					<div class="section_item">8</div>
 					<div class="section_item">9</div>
-					<div class="section_item">10</div>
+					<div class="section_item">10</div> -->
 				</div>
 
-
+				
 				<i class="xi-angle-right best_button_R"></i>
 			</div>
 			<!--상품 헤더-->
@@ -150,29 +169,52 @@
 			<div class="side_navBar">
 				<!-- 등급 구역 -->
 				<div class="gradeDiv">
+					
 				
+					<div class="gradeInnerTop">
+						<c:if test="${empty userInfo }">
+							<p>로그인후 이용하실수 있습니다.</p>
+						</c:if>
+						<c:if test="${!empty userInfo }">
+							<img alt="" src="${userInfo.member_profile_img_url }" id="userProfileImg">
+						</c:if>
+						
+						
+					</div>
+					<div class="gradeInnerBottom">
+						<c:if test="${empty userInfo }">
+							<p>로그인후 이용하실수 있습니다.</p>
+						</c:if>
+						<c:if test="${!empty userInfo }">
+							<span class="userGradeSpan" style="color: ${userInfo.grade_color}">${userInfo.grade_name }</span>
+							<a href="user/basket" class="basketAnchor">장바구니</a>
+						</c:if>
+						
+					</div>
+					
+					
 				</div>
 				<!-- 카테고리 구역 -->
 				<div class="categoryDiv">
 					<div class="categoryInnerDiv">
-						<span class="categorySpan" data-category-id = "0">All</span>
+						<span class="categorySpan" data-category-id="0">All</span>
 					</div>
-					
+
 					<c:forEach var="item" items="${categoryList }">
 						<div class="categoryInnerDiv">
-							<span class="categorySpan" data-category-id = "${item.product_category_id }">${item.product_category_name }</span>
-						
+							<span class="categorySpan" data-category-id="${item.product_category_id }">${item.product_category_name }</span>
+
 						</div>
 					</c:forEach>
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 	</main>
 	<!-- 푸터 -->
 	<jsp:include page="footer.jsp" />
-	
+
 	<!-- shop js -->
 	<script src="/resources/js/shop/shop_user.js"></script>
 </body>

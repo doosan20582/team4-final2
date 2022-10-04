@@ -81,6 +81,7 @@ public class Community_joinNotice_controller {
 	@PostMapping("/input") // 글 입력 페이지에서 글 등록하기
 	public String inputPost (@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map) {
 		jservice.input(map);
+		jservice.inputPoint(map);
 		return "redirect:/community/joinNotice/main";
 	}
 	

@@ -47,6 +47,7 @@ public class Community_freeNotice_controller {
 			String member_id = session.getAttribute("login_id").toString();
 			member_auth= fservice.adminConfirmation(member_id); // 회원 관리자 여부
 		}
+
 		model.addAttribute("data", fservice.getList(map));
 		model.addAttribute("tag", fservice.getTag());
 		model.addAttribute("count", fservice.listCount(map));
@@ -64,8 +65,8 @@ public class Community_freeNotice_controller {
 	@PostMapping("/input") // 글 입력 페이지에서 글 등록하기
 	public String inputPost (T_board_VO board) {
 		
-		/* fservice.inputPost(board); */
-		  fservice.inputPoint(board);
+		 fservice.inputPost(board); 
+		 fservice.inputPoint(board);
 		 
 		return "redirect:/community/freeNotice/main";
 	}

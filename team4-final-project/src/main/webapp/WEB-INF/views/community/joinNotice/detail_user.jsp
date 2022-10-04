@@ -62,7 +62,7 @@
 							</p>
 							<form method="GET" action=/community/joinNotice/correction>
 								<input type="hidden" name="camping_id" value="${data.camping_id}">
-								<input type="submit" value="글 수정하기 " class="section_header_info_writer_ohterBtn">
+								<input type="submit" value="글 수정" class="section_header_info_writer_ohterBtn">
 							</form>
 
 							<form class="delete_form" method="POST" action="/community/joinNotice/delete">
@@ -81,7 +81,7 @@
 						</div>
 						<div>
 							<p>
-								마감여부:
+								마감여부 :
 								<span>${data.camping_close}</span>
 							</p>
 						</div>

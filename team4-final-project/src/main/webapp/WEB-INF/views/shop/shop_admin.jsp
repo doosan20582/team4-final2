@@ -25,48 +25,48 @@
 
 	<!--광고-->
 	<div class="carousel">
-		<i class="xi-angle-left carousel_button_L"></i>
+		<!-- <i class="xi-angle-left carousel_button_L"></i> -->
 		<!--광고 컨테이너-->
 		<div class="adContainer">
 
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/3ed70dbe5c741730b08d02b2664bd0ad.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 1</div>
+				<!-- <div class="carouselContentDiv">광고 1</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/426036bc4d8e49a589788a2730d3ecf5.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 2</div>
+				<!-- <div class="carouselContentDiv">광고 2</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/56e8f0bd7af5e3fa52f7ac76dd346b8f.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 3</div>
+				<!-- <div class="carouselContentDiv">광고 3</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/ba3b9d639544b7b7e35a1c6173a52fbb.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 4</div>
+				<!-- <div class="carouselContentDiv">광고 4</div> -->
 
 			</div>
 			<div class="adSubCon">
 
 				<div class="carouselImgDiv">
-					<img src="" alt="">
+					<img src="/resources/img/shop/c5a20ba490f33ba0301b5cbc46fbf4b9.jpg" alt="">
 				</div>
-				<div class="carouselContentDiv">광고 5</div>
+				<!-- <div class="carouselContentDiv">광고 5</div> -->
 
 			</div>
 
@@ -74,7 +74,7 @@
 
 		</div>
 
-		<i class="xi-angle-right carousel_button_R"></i>
+		<!-- <i class="xi-angle-right carousel_button_R"></i> -->
 	</div>
 	<!--carousel-->
 
@@ -94,16 +94,22 @@
 				<i class="xi-angle-left best_button_L"></i>
 
 				<div class="section_best_items">
-					<div class="section_item">1</div>
-					<div class="section_item">2</div>
-					<div class="section_item">3</div>
-					<div class="section_item">4</div>
-					<div class="section_item">5</div>
-					<div class="section_item">6</div>
-					<div class="section_item">7</div>
-					<div class="section_item">8</div>
-					<div class="section_item">9</div>
-					<div class="section_item">10</div>
+					<c:forEach var="item" items="${productList}" varStatus="status">
+						<div class="section_item">
+							<div class="nameDiv">
+								
+								<a href="/product/detail?product_id=${item.product_id }"> ${item.product_name } </a>
+
+							</div>
+							<div class="thumbnailDiv">
+								<img src="/productImg/${item.product_thumbnail_img_url }" class="thumbnailImg" art="이미지 준비중 입니다.">
+							</div>
+							<!-- 스코어 -->
+							<div class="scoreDiv">
+								<span class="numberSpan${status.count }">${status.count }</span>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 
 
@@ -131,6 +137,21 @@
 						<div class="section_items">
 							<%-- <input type="hidden" value="${item.product_id }"> --%>
 							<a href="/product/detail/admin?product_id=${item.product_id }"> ${item.product_name } </a>
+							<div class="productInfoDiv">
+								<span class="limitedSpan">
+									${item.product_limited } 상품
+								</span>
+								<span class="deletedSpan">
+									<c:if test="${item.product_delete eq 'y'}">
+										비공개
+									</c:if>
+									<c:if test="${item.product_delete eq 'n'}">
+										공개
+									</c:if>
+									
+									상품
+								</span>
+							</div>
 							<div class="thumbnailDiv">
 								<img src="/productImg/${item.product_thumbnail_img_url}" class="thumbnailImg" art="이미지 준비중 입니다.">
 							</div>

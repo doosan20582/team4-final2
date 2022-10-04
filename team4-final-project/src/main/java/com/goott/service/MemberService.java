@@ -134,4 +134,37 @@ public interface MemberService {
 	 * @return 권한(회원/관리자)
 	 */
 	public String getUserAuth(String member_id);
+	
+	/**
+	 * 탈퇴 회원인지 확인
+	 * @param member_id 아이디
+	 * @return ( y/n )
+	 */
+	public String checkWithDrawal(String member_id);
+	
+	/**
+	 * 탈퇴 처리 메서드
+	 * @param member_id 아이디
+	 * @return ( 1/0 ) 1: 성공 , 0: 실패
+	 */
+	public int doWithDrawal(String member_id);
+	
+	/**
+	 * 회원 정보 가져오기
+	 * @param member_id 아이디
+	 * @return 회원 엔티티
+	 */
+	public MemberVO getMemberInfo(String member_id);
+	/**
+	 * 비밀번호 암호화
+	 * @param password
+	 * @return 암호화된 비밀번호
+	 */
+	public String pwEncode(String password);
+	/**
+	 * 로그인시 비밀번호 초기화 상태인지 확인
+	 * @param member_id 아이디
+	 * @return y/n
+	 */
+	public String getInitPw(String member_id);
 }

@@ -1,6 +1,5 @@
 package com.goott.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.goott.domain.MemberVO;
 import com.goott.service.MailSendService;
 import com.goott.service.MemberService;
+import com.goott.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -28,6 +28,8 @@ public class CommonController {
 	private MailSendService mailSendService;
 	@Inject
 	MemberService memberService;
+	@Inject
+	UserService userService;
 	
 	
 	@RequestMapping(value = "alert", method = RequestMethod.GET)
@@ -57,7 +59,8 @@ public class CommonController {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String joinPost(MemberVO memberVO, Model model) {
 		log.info("이메일 인증 처리 post ===========================================");
-		memberVO.setMember_profile_img_url("no url");
+		//기본 프로필 이미지
+		memberVO.setMember_profile_img_url("/resources/img/user/basic_profile.jpg");
 		log.info(memberVO);
 		model.addAttribute("member" , memberVO);
 		//가입 신청 유저 이메일 주소로 메일 발송 , 생성된 랜덤 코드 리턴
@@ -108,6 +111,16 @@ public class CommonController {
 			String login_auth = memberService.getUserAuth(member_id);
 			//권한 저장
 			session.setAttribute("login_auth", login_auth);
+			
+			//비밀번호 초기화 상태인제 체크
+			String resultText = memberService.getInitPw(member_id);
+			if(resultText.equals("y")) {
+				model.addAttribute("msg", member_id + "님 비밀번호를 재설정 해주세요.");
+				model.addAttribute("url", "user/change_password");
+				
+				return "alert";
+			}
+			
 			//기존에 접속시도했던 주소가 있다면
 			if(session.getAttribute("prior_uri") != null) {
 				String prior_uri = session.getAttribute("prior_uri").toString();
@@ -132,6 +145,7 @@ public class CommonController {
 				return "alert";
 			}
 		}
+		//로그인 시도중 실패했다면 해당 텍스트 리턴
 		else {
 			model.addAttribute("msg", msg);
 			model.addAttribute("url", "/login");
@@ -179,6 +193,31 @@ public class CommonController {
 		
 	}
 
+	@RequestMapping(value = "forgot", method = RequestMethod.GET)
+	public String forgotGet() {
+		log.info("비밀번호 찾기 get ==========================================================");
+		return "/forgot";
+	}
+	
+	@RequestMapping(value = "forgot", method = RequestMethod.POST)
+	public String forgotPost(@RequestParam String member_id, @RequestParam String member_email, Model model) {
+		log.info("비밀번호 찾기 post ==========================================================");
+		
+		String resultText = userService.forgotPassword(member_id, member_email);
+		//비밀번호 초기화 이메일을 발송 하였다면
+		if(resultText.equals("입력하신 메일로 초기화 비밀번호를 발송하였습니다. 로그인후 비밀번호를 재설정 해주세요.")) {
+			model.addAttribute("msg", resultText);
+			model.addAttribute("url", "/login");
+			return "alert";
+		}
+		//아이디나 이메일정보가 올바르지 않다면
+		else {
+			model.addAttribute("msg", resultText);
+			model.addAttribute("url", "/forgot");
+			return "alert";
+		}
+		
+	}
 	
 	
 }

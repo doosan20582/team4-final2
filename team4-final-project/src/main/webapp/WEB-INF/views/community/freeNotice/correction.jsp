@@ -50,7 +50,7 @@
 				<script type="text/javascript">
 					CKEDITOR.replace('content', {
 						filebrowserUploadUrl : "/community/imgUpload",
-						height : 1015
+						height : 1200
 					});
 				</script>
 			</div>

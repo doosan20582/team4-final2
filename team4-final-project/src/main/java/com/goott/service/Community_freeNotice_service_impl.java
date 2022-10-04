@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.goott.domain.T_board_VO;
 import com.goott.domain.T_board_reply_VO;
@@ -113,8 +114,10 @@ public class Community_freeNotice_service_impl implements Community_freeNotice_s
 	}
 
 	@Override
+	@Transactional
 	public void inputPoint(T_board_VO board) {
 		mapper.inputPoint(board);
+		mapper.updateGrade(board);
 	}
 
 }

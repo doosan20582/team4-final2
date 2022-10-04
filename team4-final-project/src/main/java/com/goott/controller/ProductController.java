@@ -116,6 +116,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/review", method = RequestMethod.POST)
 	public String moreReview(@RequestBody Map<String, Object> param, Model model) {
+		log.info("리뷰 더보기 =============================================================");
 		log.info(param);
 		int product_id = Integer.parseInt(param.get("product_id").toString());
 		int currentPage = Integer.parseInt(param.get("currentPage").toString());
@@ -127,7 +128,7 @@ public class ProductController {
 
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
-		log.info(pageReview);
+		log.info("리뷰 페이지 : " + pageReview);
 
 		// 상품 리뷰 목록
 		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);

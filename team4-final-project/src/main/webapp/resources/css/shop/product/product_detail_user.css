@@ -216,6 +216,12 @@ main .productMiddle{
 	color: red;
 }
 
+/*평점*/
+.averageGradeSpan{
+	font-size: 2rem;
+	color: var(--fontColor);
+}
+
 /*하단 상품 리뷰 구역*/
 main .productBottom{
     width: 100%;
@@ -228,12 +234,15 @@ main .productBottom{
 
 .productBottom .reviewTop{
     width: 80%;
-    height: 1000px;
+    height: 1400px;
     border: 3px solid aquamarine;
 }
 
-.reviewTop h3{
+.reviewTop h3{  
 	color: white;
+}
+.reviewTop h4{
+	color: var(--subFontColor);
 }
 
 .reviewTitle{
@@ -357,7 +366,9 @@ main .productBottom{
 	color: rgb(0, 128, 255);
 }
 
-
+.reviewsContent{
+	overflow-y: scroll;
+}
 
 .reviewsContent, .reviewsPhoto{
 	width: 50%;
@@ -370,13 +381,21 @@ main .productBottom{
 	border: 3px solid red;
 	width: 50%;
 	height: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewsPhotoInnerPhoto img{
+	widows: 100%;
+	height: 100%;
 }
 /*리뷰 비디오 커버 디비전*/
 .reviewsPhotoInnerVideo{
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; */
 }
 
 .veiwMoreRewviesDiv{
@@ -386,11 +405,12 @@ main .productBottom{
     width: 200px;
     height: 30px;
     margin: 0 auto;
+    
+    cursor: pointer;
+    transition: .3s;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: .3s;
 }
 
 .veiwMoreRewviesDiv:hover{
@@ -459,4 +479,32 @@ main .productBottom{
     justify-content: center;
     align-items: center;
     transition: .3s;
+}
+
+/*유튜브 광고 컨테이너*/
+.youtubeContainer{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	
+	background-color: rgba(0, 0, 0, 0.339);
+    backdrop-filter: blur(4px);
+}
+
+.youtubeInnerDiv{
+	width: 1280px;
+	height: 720px;
+	border: 3px solid blue;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: 'GimpoGothicBold00';
 }

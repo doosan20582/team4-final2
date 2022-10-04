@@ -15,6 +15,7 @@ const camping_recruitment = document.querySelector(".section_header_select_count
 const camping_campsite = document.querySelector(".camping_campsite")//캠핑장 선택
 const submit_btn = document.querySelector(".section_footer_registrationBtn")//캠핑장 선택
 const input_form = document.querySelector(".section")//input form
+let write_point = document.querySelector(".write_point"); // 글쓰기 포인트 담아줄 input
 
 submit_btn.addEventListener("click",function(){ //글 입력 유효성
 	if(camping_title.value==null || camping_title.value==""){
@@ -30,6 +31,15 @@ submit_btn.addEventListener("click",function(){ //글 입력 유효성
 	} else if(camping_campsite.value==null || camping_campsite.value==""){
 		alert("캠핑장소를 선택해 주세요");
 	} else {
+		let add_point = Math.round(Math.random()*10);
+		write_point.value = add_point;
+		if(add_point==0){
+			alert("글쓰기 포인트 "+add_point+"점 획득(ㅠㅠ 일진이 사납네요)");
+		}else if(add_point==10){
+			alert("글쓰기 포인트 "+add_point+"점 획득(복권 사도 되겠어요!)");
+		}else {
+			alert("글쓰기 포인트 "+add_point+"점 획득");
+		}
 		input_form.submit();
 	}
 })

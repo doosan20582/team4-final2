@@ -30,7 +30,10 @@ const modifyBtn = document.querySelector('#modifyBtn');
 const deleteBtn = document.querySelector('#deleteBtn');
 //상품 번호
 const product_id = document.querySelector('#product_id');
-
+//유튜브 보기 디비전
+const youtubeDiv = document.querySelector('.youtubeDiv');
+//유튜브 컨테이너
+const youtubeContainer = document.querySelector('.youtubeContainer');
 //==================================================================================================
 window.addEventListener('scroll' , showHideNavigator);
 
@@ -46,11 +49,23 @@ toReveiwCon.addEventListener('click' , scrollToReview);
 veiwMoreRewviesDiv.addEventListener('click' , viewMoreReview);
 modifyBtn.addEventListener('click' , goModify);
 deleteBtn.addEventListener('click' , goDelete);
+youtubeDiv.addEventListener('click', showYoutubeCon);
+youtubeContainer.addEventListener('click', closeYoutubeCon);
 //==================================================================================================
 
 window.onload = function(){
 	speedChart();
 	gradeChart();
+}
+
+//유튜브 컨테이너 닫기
+function closeYoutubeCon(e){
+	if(e.target.className == 'youtubeContainer')
+		youtubeContainer.style.display = 'none';
+}
+//유튜브 컨테이너 보이기
+function showYoutubeCon(){
+	youtubeContainer.style.display = 'block';
 }
 
 //수정
@@ -73,14 +88,33 @@ function gradeChart(){
 		labels.push(item.dataset.grade);
 		datas.push(item.value);
 	});
+	console.log(labels);
+	console.log(datas);
+	let totalNum = 0;
+	let totalCount = 0;
+	//리뷰 평균 구하기
+	for(let i = 0; i < labels.length; i++){
+		let tempNum = labels[i].slice(0,-1);
+		
+		totalNum += (tempNum * datas[i]);
+		totalCount += parseInt(datas[i]);
+	}
+	//평점
+	let averageGrade = Math.round((totalNum / totalCount) * 10) / 10;
+	if(isNaN(averageGrade))
+		document.querySelector('.averageGradeSpan').innerHTML = '0';
+	else
+		document.querySelector('.averageGradeSpan').innerHTML = averageGrade;
+	
+	
 	new Chart(document.getElementById("bar-chart-horizontal"), {
 	    type: 'bar',
 	    data: {
 	      labels: labels,
 	      datasets: [
 	        {
-	          label: "평점",
-	          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+	          label: "평점 수",
+	          backgroundColor: ["#3e95cd","#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
 	          data: datas
 	        }
 	      ]

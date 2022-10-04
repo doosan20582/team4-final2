@@ -78,7 +78,7 @@
 						</div>
 						<div>
 							<p>
-								마감여부:
+								마감여부 :
 								<span>${data.camping_close}</span>
 							</p>
 						</div>

@@ -50,13 +50,43 @@
 				<p>내용</p>
 				<p>${data.qna_text}</p>
 			</div>
+			 <div class="name3">
+			 	<p>답변 내용</p>
+			 	
+			 	<p>${data.qna_answer_text}</p>
+			 	
+			 	<p></p>
+			 </div>
 		</div>
 		<div>
-			<a href="Question_update?qna_id=${data.qna_id}">수정</a>
+			<%-- <input type="hidden" name="qna_answer_text" value="${data.qna_answer_text}"> --%>
+			<input type="hidden" name="qna_id" value="${data.qna_id}">
+			<%-- <a href="Question_update?qna_id=${data.qna_id}">수정</a>
+			<a href="Question_modrfy?qna_id=${data.qna_id}">수1정</a>  --%>
+			<%-- <c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
+			<form action="Question_update" method="POST">
+				<input type="hidden" name=qna_id value="${data.qna_id}"/>
+				<input type="submit" value="수정"/>
+			</form>
+			</c:if> --%>
+			<c:if test="${sessionScope.login_auth eq '관리자'}">
+			<form action="Question_admin" method="get">
+   			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
+   			 <input type="submit" value="답변" />
+			</form>
+			</c:if>
+			<c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
+			<form action="Question_update" method="get">
+   			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
+   			 <input type="submit" value="수정" />
+			</form>
+			</c:if>
+			<c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
 			<form method="POST" action="delete">
 				<input type="hidden" name="qna_id" value="${data.qna_id}" />
 				<input type="submit" value="삭제" />
 			</form>
+			</c:if>
 		</div>
 	</main>
 	
@@ -77,5 +107,6 @@
     });
     
 	</script>
+	
 </body>
 </html>

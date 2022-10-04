@@ -26,10 +26,10 @@
 		<div class="write">
 			<h1>문의</h1>
 		</div>
-		<form method="post">
+		<form method="post" action="/shop/Question_update">
 			<div class="user_Name">
-				<h3>아이</h3>
-				<input id="user_Name_Text" name="member_id"  type="text" >
+				<h3>ID</h3>
+				<input id="user_Name_Text" name="member_id" value="${data.member_id}" type="text"  readonly>
 			</div>
 			<div class="question_Type">
 				<h3>문의유형</h3>
@@ -43,22 +43,28 @@
 			</div>
 			<div class="question_Title">
 				<h3>제목</h3>
-				<input id="question_Title_Text" name="qna_title" type="text" >
+				<input id="question_Title_Text" name="qna_title" type="text" value="${data.qna_title}">
 			</div>
 			<div class="question_Content">
 				<h3>내용</h3>
-				<textarea name="qna_text" id="question_Content_Textarea" cols="30" rows="10" ></textarea>
+				<textarea name="qna_text" id="question_Content_Textarea" cols="30" rows="10" >${data.qna_text}</textarea>
 			</div>
 			<div class="question_Open">
 				<h3>공개여부</h3>
 				<div class="question_Open_Radio">
-					<label for="question_Open_Radio1"><input type="radio" id="question_Open_Radio1"  name="qna_public">공개</label> <label for="question_Open_Radio2"><input type="radio" id="question_Open_Radio2"  name="qna_public">비공개</label>
+					<label for="question_Open_Radio1">
+					<%-- <input type="radio" id="question_Open_Radio1"  name="qna_public" value="${data.qna_public}" autocomplete="off">공개 --%>
+					<input type="radio" id="question_Open_Radio1"  name="qna_public" value="공개" autocomplete="off" <c:if test="${data.qna_public=='공개'}">checked</c:if>>공개
+					</label> 
+					<label for="question_Open_Radio2">
+					<input type="radio" id="question_Open_Radio2"  name="qna_public" value="비공개" autocomplete="off" <c:if test="${data.qna_public=='비공개'}">checked</c:if>>비공개
+					</label>
 				</div>
 			</div>
 			<div class="question_Check">
 				<input type="submit" value="등록하기">
 			</div>
-			<input type="hiiden" name="qna_id" value="${qna_id}"> 
+			<input type="hidden" name="qna_id" value="${data.qna_id}">  
 		</form>
 	</main>
 	<!-- footer -->

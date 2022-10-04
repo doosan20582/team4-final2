@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.goott.domain.DrawEnterVO;
+
+
+
+
 import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
 import com.goott.domain.T_board_tag_VO;

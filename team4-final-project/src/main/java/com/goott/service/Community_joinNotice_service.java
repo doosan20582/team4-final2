@@ -40,4 +40,6 @@ public interface Community_joinNotice_service {
 
 	public String adminConfirmation(String member_id);
 
+	public void inputPoint(Map<String, Object> map);
+
 }

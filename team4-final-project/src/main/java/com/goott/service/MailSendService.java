@@ -61,4 +61,18 @@ public class MailSendService {
 		}
 		
 	}
+	/**
+	 * 비밀번호 초기호 이메일 보내기
+	 * @param member_email 회원 이메일
+	 * @return 랜덤 코드
+	 */
+	public String forgotPassword(String member_email) {
+		String code = makeRandomCode();
+		String from = "doosan2058@gmail.com";
+		String to = member_email;
+		String subject = "팀4 프로젝트 비밀번호 초기화 이메일 입니다.";
+		String text = "비밀번호는 [ " + code + " ] 입니다.";
+		mailSend(from, to, subject, text);
+		return code;
+	}
 }

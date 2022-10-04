@@ -1,5 +1,6 @@
 'use strict'
-
+//원본 이미지 주소
+const member_profile_img_url = document.querySelector('#member_profile_img_url');
 //구매 확정 td
 const confirmBuy = document.querySelectorAll('.confirmBuy');
 //회원 아이디 스팬
@@ -26,6 +27,28 @@ const deleteSpan = document.querySelector('.deleteSpan');
 const closeIcon = document.querySelector('.closeIcon');
 //회원 탈퇴 버튼
 const deleteBtns = document.querySelector('.deleteBtns');
+//프로필 이미지
+const userImg = document.querySelector('#userImg');
+//프로필 이미지 파일 인풋
+const file = document.querySelector('.file');
+//이미지 취소
+const imgCancel = document.querySelector('.imgCancel');
+//이미지 에이잭스 서브밋 업로드 앵커
+const imgSubmit = document.querySelector('.imgSubmit');
+//프로필 이미지 폼
+const profileImgForm = document.querySelector('#profileImgForm');
+//이미지 타입
+const imgTypeArray = ['image/jpeg','image/png','image/jpg','image/gif'];
+//비밀번호 변경 앵커
+const changePasswordAnchor = document.querySelector('.changePasswordAnchor');
+//비밀번호 변경 컨테이너
+const changePasswordContainer = document.querySelector('.changePasswordContainer');
+//비밀번호 체크 버튼
+const passwordBtn = document.querySelector('#passwordBtn');
+//비밀번호 체크 인풋
+const passwordInput = document.querySelector('#passwordInput');
+//비밀번호 체크 폼
+const passwordCheckForm = document.querySelector('#passwordCheckForm');
 // ==================================================================================================
 writeReviewSpan.forEach((item) => {
     item.addEventListener('click', writeReview);
@@ -48,8 +71,110 @@ deleteMemberContainer.addEventListener('click', closeDeleteMemberCon);
 deleteInputs.addEventListener('keyup', checkDeleteText);
 closeIcon.addEventListener('click', closeIconFunc);
 deleteBtns.addEventListener('click', doDeleteMember);
+file.addEventListener('change', changeProfileImg);
+imgCancel.addEventListener('click', cancelProfileImg);
+imgSubmit.addEventListener('click', doImgAjax);
+changePasswordAnchor.addEventListener('click', showChangeCon);
+changePasswordContainer.addEventListener('click', closeChangeCon);
+passwordBtn.addEventListener('click', checkPw);
 // =====================================================================================================
+//비밀번호 체크 
+function checkPw(){
+	const pwText = passwordInput.value;
+	const idText = userNameSpan.innerHTML;
+	const param = { member_pw : pwText, member_id : idText}
+	
+	$.ajax({
+		url: '/user/check',
+		type: 'post',
+		contentType : 'application/json; charset=utf-8',
+		data: JSON.stringify(param),
+		dataType: 'text',
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			document.querySelector('.pwCheckSpan').innerHTML = data;
+			if(document.querySelector('.pwCheckSpan').innerHTML == '일치'){
+				location.href = '/user/change_password';
+			}
+		}
+	});
+}
+//비밀번호 변경 컨테이너 보이기
+function showChangeCon(){
+	changePasswordContainer.style.display = 'block';
+}
+//비밀번호 변경 컨테이너 닫기
+function closeChangeCon(e){
+	if(e.target.className == 'changePasswordContainer'){
+		changePasswordContainer.style.display = 'none';
+	}
+}
+//비동기 프로필 이미지 업로드
+function doImgAjax(){
+	let imgForm = profileImgForm;
+	let formData = new FormData(imgForm);
+	//- contentType : false 로 선언 시 content-type 헤더가 multipart/form-data로 전송되게 함
+	//- processData : false로 선언 시 formData를 string으로 변환하지 않음
+	
+	$.ajax({
+		type: 'post',
+		url: '/user/profile',
+		data: formData,
+		dataType: 'json',
+		contentType: false,
+		processData: false,
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			
+			member_profile_img_url.value = data.member_profile_img_url;
+			userImg.src = data.member_profile_img_url;
+			alert('프로필 이미지가 변겅되었습니다.');
+			//앵커들 숨기기
+			imgSubmit.style.display = 'none';
+			imgCancel.style.display = 'none';
+			let dataTransfer = new DataTransfer();
+			file.files = dataTransfer.files;
+		}
+	});
+}
 
+
+
+
+//프로필 이미지 취소 
+function cancelProfileImg(){
+	userImg.src = member_profile_img_url.value;
+	let dataTransfer = new DataTransfer();
+	file.files = dataTransfer.files;
+	//앵커들 숨기기
+	imgSubmit.style.display = 'none';
+	imgCancel.style.display = 'none';
+}
+//프로필 이미지 변경 함수
+function changeProfileImg(){
+	
+	
+	if( (imgTypeArray.indexOf(file.files[0].type) == -1) ){
+		alert('프로필 사진은 이미지 파일만 쓸수 있습니다.');
+		let dataTransfer = new DataTransfer();
+		file.files = dataTransfer.files;
+		return;
+	}
+	//앵커들 보이기
+	imgSubmit.style.display = 'block';
+	imgCancel.style.display = 'block';
+//	console.log(file.files[0]);
+	let fileReader = new FileReader();
+	fileReader.addEventListener('load', function(){
+		userImg.src = fileReader.result;
+	});
+	if(file.files[0])
+		fileReader.readAsDataURL(file.files[0]);
+}
 
 //삭제 버튼 클릭시 삭제 요청
 function doDeleteMember(){
@@ -91,10 +216,12 @@ function checkDeleteText(){
 	
 	if(this.value == text){
 		deleteBtns.style.textDecoration = 'none';
+		deleteBtns.style.cursor = 'pointer';
 		deleteBtns.disabled = false;
 	}
 	else{
 		deleteBtns.style.textDecoration = 'line-through';
+		deleteBtns.style.cursor = 'not-allowed';
 		deleteBtns.disabled = true;
 		
 	}
