@@ -1,6 +1,8 @@
 .draw_container{
     width: 100%;
     background-color: var(--subColor);
+      font-family: 'GimpoGothicBold00';
+	transition: .3s;
 }
 
 .section{
@@ -35,14 +37,14 @@
 /*이벤트*/
 .section2{
     width: 100%;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
 
     /* background-color: red; */
     /* position: relative; */
 } 
 /*이벤트 상단*/
 .section2-top{
-    /* border-top: 1px solid var(--borderColor);
-    border-bottom: 1px solid var(--borderColor); */
     border: 3px solid violet;
     height: 100px;
     /* margin-top: 5px; */
@@ -53,16 +55,28 @@
     justify-content: space-between;
     font-size: 1.5rem;
     padding: 2.5rem;
-}
+    color:white;
+} 
 
 #drawRegistBtn{
+	  border-radius: 10px;
     width: 150px;
-    height: 50px;
-    background-color: var(--mainColor);
-    border-radius: 4px;
-    color: white;
+    height: 60px;
+    padding-left: 0.5rem;
+	background-color: rgb(24, 24, 24);
+	font-family: 'GimpoGothicBold00';
+	outline: none;
+	transition: .3s;
     border: none;
-    text-decoration: none;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color:white;
+    font-weight: bold;  
+    margin-bottom:30px;  
+}
+#drawRegistBtn>a{
+	text-decoration:none;
+	color:white;
 }
 
 .section2-top>span{
@@ -75,18 +89,18 @@
     margin: 0 auto;
     height: auto;
     padding: 2rem;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
-    border: 3px solid ;
+    border: 3px solid dodgerblue;
+   
+    
 }
 /*이벤트 각각 이미지*/
 .section2_img{
     border: 3px solid crimson;
-    width: 100%;
+    width: 80%;
     height: 600px;
-    /* margin-top: 80px; */
+    display:flex;
+   justify-content: center;
+   align-items: center;
 }
 /*.section2-bottom {
     width: 100%;

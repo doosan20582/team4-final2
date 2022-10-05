@@ -6,6 +6,7 @@ import java.util.Map;
 import com.goott.domain.DrawEnterVO;
 import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
+import com.goott.domain.ProductVO;
 import com.goott.domain.T_board_VO;
 
 public interface DrawServiceAdmin {
@@ -23,17 +24,20 @@ public interface DrawServiceAdmin {
 	public void draw_admin_add(DrawVO vo);
 	public Integer set_draw_id(Integer id);
 	public void update(DrawVO vo);
-	public void delete(DrawVO vo);
+	public void delete(DrawVO vo); 
 	public 	List<DrawEnterVO> admin_count(Map<String, Object> map); 
 	/* public void admin_count_vo(DrawResultVO vo); */
 	public List<Map<String, Object>> draw_customer_memberID(Map<String, Object> map);
 	public void draw_admin_count(Map<String, Object> map);
-	public String adminConfirmation(String member_id);
+	
 	public List<DrawVO> draw_customer(Map<String, Object> map);
 	public int draw_customer_button_check(Map<String, Object> map);
 	public void draw_customer_button(Map<String, Object> map);
-	public List<DrawResultVO> getResultList(Map<String, Object> map);
-
+	public List<DrawResultVO> getResultList();
+	public List<Map<String, Object>> admin_title_product_img(Map<String, Object>map);
+	public void getdrawlist(Map<String, Object> map2);
+	 
+	
 
  
   

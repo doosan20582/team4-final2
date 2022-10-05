@@ -24,8 +24,15 @@ public class DrawVO {
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date draw_pur_end_date;
 	public int draw_reqruit;
+	public String product_img_url1;
 	  
 	
+	public String getProduct_img_url1() {
+		return product_img_url1;
+	}
+	public void setProduct_img_url1(String product_img_url1) {
+		this.product_img_url1 = product_img_url1;
+	}
 	public int getDraw_id() {
 		return draw_id;
 	}

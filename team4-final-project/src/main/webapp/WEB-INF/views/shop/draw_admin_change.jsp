@@ -31,12 +31,12 @@
 				<div class="admin_main"> <!--  input을 줘서 히든을 줘라 -->
 					<table class="admin_body">
 					<c:forEach var="data" items="${data}">
-						<!-- <tr class="admin_body_file">
+						<tr class="admin_body_file">
                             <td class="file_top_fir">이벤트 이미지</td>
                             <td>
-                                <input type="file" name="file" class="drawInputs">
+                                <input type="text" name="product_img_url1" class="drawInputs" value="${data.product_img_url1}">
                             </td>
-                        </tr> -->
+                        </tr> 
                           <!-- 상품키 모달 버튼 -->
 						<tr class="admin_title">
 							<td>드로우키 </td>
