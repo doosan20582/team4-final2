@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 
@@ -36,7 +36,6 @@
 		<form class="admin_container" id="admin_container"
 			name="admin_container" method="POST" action="/shop/draw_admin_add">
 			<div class="draw_container">
-
 				<div class="admin_main">
 					<!--  input을 줘서 히든을 줘라 -->
 					<table class="admin_body">
@@ -44,8 +43,8 @@
 						<tr class="admin_title">
 							<td>상품키 <input type="button" value="상품 보기"
 								id="selectDrawBtn"> <span id="selectedDrawName"></span></td>
-							<td class="admin_product_id"><input type="text"
-								id="draw_product_id" name="product_id" readonly></td>
+							<td class="admin_product_id">
+							<input type="text" id="draw_product_id" name="product_id" readonly></td>
 						</tr>
 						<tr class="admin_body_file">
                             <td class="file_top_fir">이벤트 이미지</td>
@@ -68,7 +67,7 @@
 						<!-- 모집인원 -->
 						<tr class="admin_title">
 							<td>인원</td>
-							<td><input type="number" value="1" id="selectDrawBtn"
+							<td><input type="number" value="1" id="selectDrawBtn2"
 								name="draw_reqruit"></td>
 						</tr>
 						<!-- 이벤트 시작일 -->
@@ -97,7 +96,7 @@
 
 						<tr class="admin_title">
 							<td>코멘트</td>
-							<td><textarea name="draw_comment" id="" cols="30" rows="10"></textarea>
+							<td><textarea name="draw_comment" id="draw_comment" cols="55" rows="15"></textarea>
 							</td>
 						</tr>
 					</table>
@@ -105,12 +104,13 @@
 				</div>
 				<input type="submit" value="등록" class="file_submit">
 			</div>
-		</form>
+		</form> 
 		<!--디비에서 한정판 상품 목록 보여주는 디비전 -->
 		<div class="selectDrawProductContainer">
 			<div class="drawList">
+			<i class="fa-solid fa-xmark" id="mark"></i>
 				<div class="drawList_cc">
-					카테고리
+					<h3>카테고리</h3>
 					<div class="drawList_ul">
 						<ul>
 							<li class="drawList_li">
@@ -161,7 +161,7 @@
 				<!-- 브랜드 카테고리 -->
 				<div class="drawList_b">
 					<div class="drawList_title">
-						<h3>브랜드</h3>
+						<h3>브랜드  </h3>
 					</div>
 					<div class="drawList_brand"></div>
 				</div>
@@ -187,6 +187,7 @@
 		</div>
 	</footer>
 	<script src="/resources/js/shop/draw_admin_add.js"></script>
+	  <script src="https://kit.fontawesome.com/7c5c981750.js" crossorigin="anonymous"></script>
 	<script>
 //====== 상품 카테고리를 클릭했을때 ====== //
    const btn = document.querySelectorAll('.btn');
@@ -194,7 +195,13 @@
    let draw_price = document.querySelector("#draw_price");
    let file_submit= document.querySelector(".file_submit");
    let frm1 = document.querySelector('#admin_container');
+   let closeIcon = document.querySelector('#mark');
    
+	
+   closeIcon.addEventListener('click', function(){
+		selectDrawProductContainer.style.display = 'none';
+	}); 
+	
    
    //file_submit.addEventListener('click', function(){
       //console.log(test);

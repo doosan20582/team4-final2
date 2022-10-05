@@ -220,27 +220,54 @@
   
    let draw_button2=document.querySelectorAll('.font_top_button_end'); // 폰트 퍼튼 값
       draw_button2.addEventListener("click",function(){
-    	  let draw_btn = {
+    	  let draw_button2 = {
                   draw_id : draw_id,
-                  member_id : login_id 
+                  console.log(draw_id);
             }
-            $.ajax({
-               type : "POST",
-               url : "/shop/draw_customer_button",
-               contentType : "application/json",
-               data : JSON.stringify(draw_apply),
-               success : function(data) {
-                  if(data=="fail"){
-                     alert("이미 응모했습니다.");
-                  }
-                  $('.draw_customer').load(location.href+' .draw_customer');
-               },
-               error : function(data) {
-                  console.log(data);
-               }
-            });
-      
-      }
+    	  $.ajax({
+    	         //url
+    	         url : '/shop/draw_customer_button_ajax',
+    	         //내가 보낼 거 
+    	         data : param,
+    	         dataType : 'json',
+    	         //method (get/post)
+    	         type : 'get',
+    	         
+    	         //에이잭스 통신 실패 했을시 실행할 함수
+    	         error : function(){
+    	            alert('카테고리 에이잭스 통신 실패');
+    	         },
+    	         success : function(memberId){
+    	            console.log('프로턱트' +memberId);
+    	            const drawList_i = document.querySelector('.drawList_product');
+    	              
+    	            // 반복문을 통해 리무브 차일드 하기
+    	            while(drawList_i.hasChildNodes()){
+    	               drawList_i.removeChild(drawList_i.firstChild);
+    	            }
+    	            for(let i = 0; i < product.length; i++){
+    	               //product 값으로 버튼 생성
+    	               let testBtn = document.createElement('button');
+    	               testBtn.className = 'productBtns';
+    	               //카테고리 구역에 버튼들 추가
+    	               drawList_i.appendChild(testBtn);
+    	               //버튼에 브랜드 이름 추가
+    	               testBtn.innerHTML =product[i].product_name;
+    	               const selectDrawProductContainer = document.querySelector('.selectDrawProductContainer');
+    	               testBtn.addEventListener('click',function b(){
+    	                  selectDrawProductContainer.style.display = 'none';
+    	               })
+    	               
+    	                  
+    	            }
+    	            
+    	         }
+    	         
+    	         
+    	         
+    	      })
+      })
+    	      
    
    
 
