@@ -49,12 +49,14 @@
 						<c:forEach var="row" items="${list}">
 							<div class="section2_img">
 								<!--이벤트 이미지-->
-								<img src="" alt="">
+								<c:if test="${row.product_img_url1 ne 'no url' }">
+							<img src="/productImg/${row.product_img_url1 }" alt="" class="productMainImg">
+							</c:if>
 							</div>
 							<div class="section2_font">
 								<!--이벤트 텍스트-->
 								<div class="font_top">
-									<h1>[진행 이벤트] 이벤트3</h1>
+									<h1>[진행 이벤트] ${row.product_name}</h1>
 									<!--이벤트 제목-->
 									<div class="adminBtnsContainer">
 										<button value="수정" class="adminBtns"><a href="/shop/draw_admin_change?draw_id=${row.draw_id}">수정</a> </button> 

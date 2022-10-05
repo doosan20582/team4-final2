@@ -10,7 +10,7 @@ let modal_final_middle = document.querySelectorAll('.modal_final_middle')
 draw_button.addEventListener('click',function(){
     draw_modal.style.display = "block";
     // document.body.style.overflow = "hidden"; 
-})
+}) 
 
 modal_close.addEventListener('click',function(){
     draw_modal.style.display = "none";
@@ -26,13 +26,5 @@ for(let i=0; i<draw_final_button.length; i++){
     draw_final_button[i].addEventListener('click',function(){
         draw_final_modal.style.display = "block";
         // document.body.style.overflow = "hidden"; 
-    })
-}
-for(let i=0; i<draw_final_button.length; i++){
-    draw_final_button[i].addEventListener('click',function(){
-        let final_font = Json.parse(JSON.stringify(final_first));
-        for(let j=0; j<modal_final_middle.length; j++){
-            modal_final_middle[j].textContent=final_font[j].name;
-        }
-    })
+    }) 
 }
