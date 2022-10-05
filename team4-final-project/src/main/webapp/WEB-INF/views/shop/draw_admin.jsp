@@ -56,7 +56,7 @@
 							<div class="section2_font">
 								<!--이벤트 텍스트-->
 								<div class="font_top">
-									<h1>[진행 이벤트] ${row.product_name}</h1>
+									<h1>[진행 이벤트] <span id="font_top_name"> ${row.product_name}</span></h1>
 									<!--이벤트 제목-->
 									<div class="adminBtnsContainer">
 										<button value="수정" class="adminBtns"><a href="/shop/draw_admin_change?draw_id=${row.draw_id}">수정</a> </button> 
