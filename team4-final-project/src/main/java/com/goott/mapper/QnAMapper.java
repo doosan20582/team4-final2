@@ -43,7 +43,8 @@ public interface QnAMapper {
 		
 		// 카테고리 및 검색으로 게시글 총 개수 조
 		public int countQnAadminBoardCategory(Map<String, Object> map);
-
+	
+		public void Question_admin_update(QnAVO qnA);
 
 
 

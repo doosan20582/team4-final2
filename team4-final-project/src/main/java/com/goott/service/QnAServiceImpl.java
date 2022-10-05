@@ -139,10 +139,16 @@ public class QnAServiceImpl implements QnAService {
 		log.info(map);
 		return qnaMapper.countQnAadminBoardCategory(map);
 	}
+
+	@Override
+	public void Question_admin_update(QnAVO qnA) {
+		// TODO Auto-generated method stub
+		qnaMapper.Question_admin_update(qnA);
+	}
 	
 
 
-
+	
 	
 
 

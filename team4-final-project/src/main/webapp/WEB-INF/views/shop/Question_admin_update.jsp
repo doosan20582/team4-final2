@@ -56,25 +56,25 @@
 				<h3>내용</h3>
 				<input id="question_Title_Text" name="qna_title" type="text" value="${data.qna_title}">
 			</div>
-			<form method="POST" action="/shop/Question_admin">
+			<form method="POST" action="/shop/Question_admin_update">
 			<div>
-				<h3>답변</h3>
+				<h3>답변 내용</h3>
 				<input type="hidden" name="qna_id" value="${data.qna_id}">
-				<textarea id="question_Title_Text4" name="qna_answer_text" cols="30" rows="10"></textarea>
+				<textarea id="question_Title_Text4" name="qna_answer_text" cols="30" rows="10">${data.qna_answer_text}</textarea>
 				<script>
 			        ClassicEditor
 			            .create( document.querySelector( '#question_Title_Text4' ));
-			    </script>
+			    </script> 
 			</div>
 			<div class="Answer_Check">
-				<input type="submit" value="답변하기">
+				<input type="submit" value="답변수정">
 			</div>
-		</form>
+			</form>
 	</main>
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
 	<script src="/resources/js/shop/Question_admin.js"></script>
-	  
+	 
 </body>
 
 </html>

@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/resources/css/shop/Question.css">
 <!--ì¼íëª° ê¸ë¡ë² ìì´ì½ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
-<script type="text/javascript" src="<c:url value="/resources/editor/ckeditor/ckeditor.js"/>"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <title>Document</title>
 </head>
 
@@ -49,14 +49,10 @@
 			<div class="question_Content">
 				<h3>내용</h3>
 				<textarea name="qna_text" id="question_Content_Textarea"  cols="30" rows="10"></textarea>
-				<script type="text/javascript">
-               CKEDITOR.replace('question_Content_Textarea', {
-                  filebrowserUploadUrl : "",
-                  height : 100,
-                  width : 500
-                  
-               });
-            </script>
+				<script>
+			        ClassicEditor
+			            .create( document.querySelector( '#question_Content_Textarea' ));
+			    </script>
 			</div>
 			<div class="question_Open">
 				<h3>공개여부</h3>
