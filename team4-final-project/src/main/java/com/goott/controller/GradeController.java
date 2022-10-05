@@ -43,7 +43,7 @@ public class GradeController {
 	
 	//유저 등급(내 정보) 확인
 	@RequestMapping(value = "/grade")
-	public ModelAndView grade(@RequestParam Map<String,Object> map){
+	public ModelAndView grade(@RequestParam Map<String,Object> map, GradeVO gradeVO){
 		ModelAndView mv = new ModelAndView();
 		
 		String member_id = map.get("member_id").toString();
@@ -53,12 +53,16 @@ public class GradeController {
 		//해당 아이디의 등급 정보 가져와 모델에 저장
 		mv.addObject("Info", Info);
 		
+		
+		  mv.addObject("gradeInfo", gradeVO);
+		  log.info("==============gradeInfo 정보는 "+ gradeVO);
+		 		
 		//다음 등급 정보 가져오기
 		int next_grade_id  = Integer.parseInt( Info.get("grade_id").toString() ) + 1;
 		//다음 등급 정보 가져오기 쿼리
 		GradeVO nextInfo = gradeService.select(next_grade_id);
 		mv.addObject("nextInfo", nextInfo);
-		log.info(nextInfo);
+		log.info("==============다음 등급 정보는 " + nextInfo);
 		
 		//리턴 주소 저장
 		mv.setViewName("/user/grade");
