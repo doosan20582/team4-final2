@@ -23,7 +23,6 @@
         </div>
         <div class="menu">
             <a href="/community/freeNotice/main">자유게시판</a>
-            <a href="">사진게시판</a>
             <a href="/community/joinNotice/main">캠핑모임게시판</a>
         </div>
         <div class="login">

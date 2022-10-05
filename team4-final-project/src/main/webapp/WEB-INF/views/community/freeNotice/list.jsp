@@ -13,26 +13,29 @@
 	<c:forEach var="data" items="${data}">
 		<div class="section_notice_main_content">
 			<li>${data.board_id}</li>
+			
 			<c:if test="${data.board_tag_name eq '공지'}">
 				<li style="color:red">[<span class="tag_id">${data.board_tag_name}</span>]</li>
 			</c:if>
 			<c:if test="${data.board_tag_name ne '공지'}">
 				<li style="color:var(--fontColor)">[<span class="tag_id">${data.board_tag_name}</span>]</li>
 			</c:if>
-			<li class="board_title"> 
-				${data.board_title} [${data.reply_count}]
-			</li>
+			
+			<li class="board_title">${data.board_title} [${data.reply_count}]</li>
 			<li>${data.member_id}</li>
 			<li><fmt:formatDate value="${data.board_regdate}" pattern="yy-MM-dd" /></li>
 			<li>${data.board_hit}</li>
 			<li>${data.board_recommend}</li>
+			
 			<c:if test="${member_auth eq '관리자'}">
 				<input class="list_check" type="checkbox">
 			</c:if>
 			<c:if test="${member_auth ne '관리자'}">
 				<input class="list_check" type="checkbox" style="display:none">
 			</c:if>
+			
 		</div>
+		
 		<form method="POST" class="list_form" action="/community/freeNotice/go_detail">
 				<input type="hidden" name="user_id" value="${data.member_id}">
 				<input type="hidden" name="board_id" value="${data.board_id}">
