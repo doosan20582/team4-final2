@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.BasketVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
 
@@ -67,4 +68,38 @@ public interface UserService {
 	 * @return member_profile_img_url, grade_name, grade_color
 	 */
 	public Map<String, Object> getUserProfileImgUrlAndGradeName(String member_id);
+	/**
+	 * 리뷰 좋아요 눌르기
+	 * @param member_id
+	 * @param product_review_id
+	 * @return
+	 */
+	public String reviewHelpful(String member_id, int product_review_id);
+	/**
+	 * 리뷰 도움이 되요 값 가져오기
+	 * @param product_review_id
+	 * @return
+	 */
+	public int getHelpful(int product_review_id);
+	/**
+	 * 장바구니 담기
+	 * @param basketVO
+	 * @return
+	 */
+	public String setBasket(BasketVO basketVO);
+	/**
+	 * 장바구니 목록 가져오기
+	 * @param member_id
+	 * @return
+	 */
+	public List<BasketVO> getBasketList(String member_id);
+	/**
+	 * 장바구니 삭제
+	 * @param basket_id
+	 * @return
+	 */
+	public int deleteBasket(int basket_id);
+	
+	public Map<String, Object> buyToBasket(int basket_id);
+	
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.goott.domain.BasketVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
 
@@ -53,4 +54,50 @@ public interface UserMapper {
 	 * @return member_profile_img_url, grade_name, grade_color
 	 */
 	public Map<String, Object> selectUserGradeAndProfileImgUrl(String member_id);
+	
+	/**
+	 * 리뷰 좋아요 등록
+	 * @param helpfulVO
+	 * @return
+	 */
+	public int insertHelpful(Map<String, Object> map);
+	/**
+	 * 리뷰 좋아요 개수 업데이트
+	 * @param product_review_id
+	 * @return
+	 */
+	public int updateHelpful(int product_review_id);
+	/**
+	 * 리뷰 좋아요 눌렀는지 확인
+	 * @param map
+	 * @return
+	 */
+	public int selectCountHelpful(Map<String, Object> map);
+	/**
+	 * 리뷰 도움이 되요 가져오기
+	 * @param product_review_id
+	 * @return
+	 */
+	public int selectHelpful(int product_review_id);
+	/**
+	 * 장바구니 담기
+	 * @param basketVO
+	 * @return
+	 */
+	public int insertBasket(BasketVO basketVO);
+	/**
+	 * 장바구니 목록
+	 * @param member_id
+	 * @return
+	 */
+	public List<BasketVO> selectBasketList(String member_id);
+	/**
+	 * 장바구니 삭제
+	 * @param basket_id
+	 * @return
+	 */
+	public int deleteBasket(int basket_id);
+	
+	public Map<String, Object> selectBasketInfo(int basket_id);
+	
 }

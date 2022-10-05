@@ -44,6 +44,7 @@
 		<input type="hidden" name="member_email" value="${member.member_email }">
 		<input type="hidden" name="member_name" value="${member.member_name }">
 		<input type="hidden" name="member_phone" value="${member.member_phone }">
+		<input type="hidden" name="member_age" value="${member.member_age }">
 		<input type="hidden" name="member_gender" value="${member.member_gender }">
 		<input type="hidden" name="member_postal_code" value="${member.member_postal_code }">
 		<input type="hidden" name="member_address" value="${member.member_address }">

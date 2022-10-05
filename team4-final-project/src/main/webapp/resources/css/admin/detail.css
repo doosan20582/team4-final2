@@ -1,0 +1,96 @@
+@charset "UTF-8";
+body{
+	background-color: var(--mainColor);
+}
+.detailCon{
+	width: 100%;
+	max-width: 800px;
+	min-height: 500px;
+	border: 3px solid white;
+	font-family: 'GimpoGothicBold00';
+	margin: 0 auto;
+	background-color: var(--subColor);
+	color: white;
+}
+.innerTop{
+	width: 100%;
+	height: 30%;
+	border: 3px solid blue;
+	padding: 1rem;
+	display: flex;
+}
+.topLeft{
+	width: 50%;
+	height: 300px;
+	border: 3px solid black;
+	padding: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.profileImg{
+	width: 100%;
+	height: 100%;
+	border-radius: 40%;
+	border: 3px solid black;
+}
+.topRight{
+	width: 50%;
+	height: 300px;
+	border: 3px solid red;
+	padding: 1rem;
+}
+.innerBottom{
+	width: 100%;
+	height: 70%;
+	border: 3px solid red;
+	padding: 1rem;
+	display: flex;
+}
+.bottomLeft{
+	width: 20%;
+	height: 100%;
+	
+	padding: 1rem;
+	border: 3px solid white;
+}
+.bottomRight{
+	width: 80%;
+	height: 100%;
+	
+	padding: 1rem;
+	border: 3px solid green;
+}
+.freeBoard{
+	width: 100%;
+	height: 33%;
+	max-height: 500px;
+	overflow-y: scroll;
+	border: 3px solid black;
+}
+.camping{
+	width: 100%;
+	max-height: 500px;
+	height: 33%;
+	overflow-y: scroll;
+	border: 3px solid blue;
+}
+.review{
+	width: 100%;
+	max-height: 500px;
+	height: 33%;
+	overflow-y: scroll;
+	border: 3px solid red;
+}
+.lineDiv{
+	width: 100%;
+	padding: 0.5rem;
+	border-bottom: 3px solid var(--mainColor);
+}
+.idxSpan{
+	color: var(--fontColor);
+	font-size: 1.5rem;
+}
+.titleSpan{
+	color: var(--subFontColor);
+}

@@ -186,7 +186,9 @@
 			<!--리뷰 내용들-->
 			<input type="hidden" name="currentPage" id="currentPage" value="1">
 			<div class="reviewBottom">
-				<c:forEach var="item" items="${reviewList }">
+					<!-- 리뷰 있다면 -->
+				<c:if test="${!empty reviewList }">
+					<c:forEach var="item" items="${reviewList }">
 					<div class="reviews">
 						<!-- 아이디, 날짜 -->
 						<div class="reviewsDiv reviewsHeader">
@@ -260,6 +262,11 @@
 					</div>
 
 				</c:forEach>
+				</c:if>
+				<!-- 리뷰 없다면 -->
+				<c:if test="${empty reviewList }">
+					<p>작성된 리뷰가 없습니다.</p>
+				</c:if>
 
 			</div>
 

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.BasketVO;
 import com.goott.domain.PageReview;
 import com.goott.domain.ProductBrandVO;
 import com.goott.domain.ProductCategoryVO;
@@ -21,6 +23,7 @@ import com.goott.domain.ProductVO;
 import com.goott.service.ProductBrandService;
 import com.goott.service.ProductCategoryService;
 import com.goott.service.ProductService;
+import com.goott.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -35,6 +38,8 @@ public class ProductController {
 	ProductCategoryService productCategoryService;
 	@Inject
 	ProductService productService;
+	@Inject
+	UserService userService;
 
 	// 상품 등록
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -215,5 +220,13 @@ public class ProductController {
 			model.addAttribute("url", "/product/detail/admin?product_id=" + Integer.toString( product_id ));
 		}
 		return "/alert";
+	}
+	@ResponseBody
+	@RequestMapping(value = "basket", method = RequestMethod.POST, produces = "text/html;charset=utf-8")
+	public String basket(@RequestBody BasketVO basketVO) {
+		log.info("장바구니 담기 ========================================");
+		log.info(basketVO);
+		String resultText = userService.setBasket(basketVO);
+		return resultText;
 	}
 }

@@ -105,9 +105,8 @@
 
 		</div>
 		<div class="etcHistoryDiv">
-			<a>리뷰내역</a>
-			<a>문의내역</a>
-			<a>작성글내역</a>
+			<a class="myListAnchor">글 내역</a>
+
 
 		</div>
 	</div>
@@ -209,6 +208,48 @@
 			<div class="changePasswordInnerResult">
 				<span class="pwCheckSpan">결과</span>
 			</div>
+		</div>
+	</div>
+
+	<!-- 내 글 목록 -->
+	<div class="myListContainer">
+		<div class="myListDiv">
+			<div class="myListHeader">
+				<span class="material-symbols-outlined"> close </span>
+			</div>
+
+			<!-- 자유 -->
+			<div class="freeBoard">
+				<h2>자유 게시판 글목록</h2>
+				<c:forEach var="item" items="${freeMapList }">
+					<div class="lineDiv">
+						<span class="idxSpan">${item.board_id }</span>
+						<span class="titleSpan">${item.board_title }</span>
+					</div>
+
+				</c:forEach>
+			</div>
+			<!-- 캠핑 -->
+			<div class="camping">
+				<h2>캠핑 게시판 글목록</h2>
+				<c:forEach var="item" items="${campingMapList }">
+					<div class="lineDiv">
+						<span class="idxSpan">${item.camping_id }</span>
+						<span class="titleSpan">${item.camping_title }</span>
+					</div>
+				</c:forEach>
+			</div>
+			<!-- 리뷰 -->
+			<div class="review">
+				<h2>질문 글목록</h2>
+				<c:forEach var="item" items="${qnaMapList }">
+					<div class="lineDiv">
+						<span class="idxSpan">${item.qna_id }</span>
+						<span class="titleSpan">${item.qna_title }</span>
+					</div>
+				</c:forEach>
+			</div>
+
 		</div>
 	</div>
 

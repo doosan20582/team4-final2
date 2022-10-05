@@ -75,4 +75,12 @@ public class MailSendService {
 		mailSend(from, to, subject, text);
 		return code;
 	}
+	
+	public void promotionMail(String toTemp, String subjectTemp, String textTemp) {
+		String from = "doosan2058@gmail.com";
+		String to = toTemp;
+		String subject = subjectTemp;
+		String text = textTemp;
+		mailSend(from, to, subject, text);
+	}
 }

@@ -58,6 +58,10 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<bean id="sessionService" class="com.goott.service.SessionServiceImpl" />
+	
+	
+	
 	<!-- aop 설정 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<!-- 트랜잭션 어노테이션 드리븐 -->

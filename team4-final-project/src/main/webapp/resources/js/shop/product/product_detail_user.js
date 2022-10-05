@@ -46,6 +46,10 @@ const reviewBottom = document.querySelector('.reviewBottom');
 const youtubeDiv = document.querySelector('.youtubeDiv');
 //유튜브 컨테이너
 const youtubeContainer = document.querySelector('.youtubeContainer');
+
+//리뷰 좋아요 스팬
+const thumbs = document.querySelectorAll('.thumb');
+
 //==================================================================================================
 
 window.onload = function(){
@@ -78,7 +82,45 @@ toReveiwCon.addEventListener('click' , scrollToReview);
 veiwMoreRewviesDiv.addEventListener('click' , viewMoreReview);
 youtubeDiv.addEventListener('click', showYoutubeCon);
 youtubeContainer.addEventListener('click', closeYoutubeCon);
+thumbs.forEach((item) => {
+	item.addEventListener('click', doHelpful);
+});
+
 //==================================================================================================
+
+//리뷰 좋아요 
+function doHelpful(){
+	let loginText = document.querySelector('#loginInput').value;
+	if(loginText == null || loginText == undefined || loginText.length == 0){
+		alert('추천은 로그인 후 이용할수 있습니다.');
+		return;
+	}
+	let thisSpan = this;
+//	alert(this.previousElementSibling.value);
+	const product_review_id = this.previousElementSibling.value;
+	const param = { product_review_id : product_review_id };
+	$.ajax({
+		type: 'post',
+		url: '/user/helpful',
+		dataType: 'json',
+		contentType: 'application/json; charset=utf-8',
+		data: JSON.stringify(param),
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			console.log(data);
+			if(data.msg == '해당 리뷰글을 추천하였습니다.'){
+				thisSpan.classList.add('helpfulAni');
+				thisSpan.nextElementSibling.innerHTML = data.count;
+			}
+			else
+				alert(data.msg);
+			
+		}
+	});
+	
+}
 //유튜브 컨테이너 닫기
 function closeYoutubeCon(e){
 	if(e.target.className == 'youtubeContainer')
@@ -280,7 +322,30 @@ function priceToString(price) {
 /*장바구니 담기 클릭시 실행되는 함수 ajax */
 /*유저 페이지에서만 실행 */
 function basket(){
-  
+	let loginText = document.querySelector('#loginInput').value;
+	let count = quantityText.value;
+	let product = product_id.value;
+	
+	if(loginText == null || loginText == undefined || loginText.length == 0){
+		alert('장바구니 담기는 회원만 이용할 수 있습니다.');
+		return;
+	}
+	
+	let param = {member_id : loginText,product_id : product,basket_amount : count};
+	
+	$.ajax({
+		url: 'basket',
+		type: 'post',
+		contentType: 'application/json;charset=utf-8',
+		dataType: 'text',
+		data: JSON.stringify(param),
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+			alert(data);
+		}
+	});
 }
 
 

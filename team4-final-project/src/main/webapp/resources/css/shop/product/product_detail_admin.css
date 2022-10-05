@@ -282,9 +282,16 @@ main .productBottom{
     align-items: center;
 }
 
-.productBottom .reviewBottom{
+.reviewBottom{
     width: 80%;
     border: 3px solid salmon;
+    padding: 1rem;
+}
+
+.reviewBottom p{
+	font-size: 1.5rem;
+	color: white;
+	font-family: 'GimpoGothicBold00';
 }
 /*리뷰들 반복*/
 .reviews{
