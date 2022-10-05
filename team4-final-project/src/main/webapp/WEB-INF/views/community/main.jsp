@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/community/main.css?ver=1"/>">
 <!--쇼핑몰 글로벌 아이콘 cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Document</title>
 </head>
@@ -128,10 +129,48 @@
 				<div class="section2_map">
 					<div class="section2_map_header">
 						<h1>날씨정보</h1>
+
+						<select name="camping_region" class="section2_map_list">
+							<option class="location_list" value="서울">서울</option>
+							<option class="location_list" value="경기도">경기도</option>
+							<option class="location_list" value="강원도">강원도</option>
+							<option class="location_list" value="전라북도">전라북도</option>
+							<option class="location_list" value="전라남도">전라남도</option>
+							<option class="location_list" value="경상북도">경상북도</option>
+							<option class="location_list" value="경상남도">경상남도</option>
+							<option class="location_list" value="충청북도">충청북도</option>
+							<option class="location_list" value="충청남도">충청남도</option>
+							<option class="location_list" value="제주도">제주도</option>
+						</select>
 					</div>
 
 					<div class="section2_map_main">
-						<div class="section2_map_content"></div>
+						<div class="section2_map_content">
+							<div class="section2_map_content_main">
+								<div class="section2_map_content_main_icon">
+									<img class="section2_map_content_main_icon_img" src="">
+								</div>
+								<div class="section2_map_content_main_info">
+									<p><span class="temp"></span>&deg;C</p>
+									<p class="weather"></p>
+									<p class="location"></p>
+								</div>
+							</div>
+							<div class="section2_map_content_footer">
+								<div class="section2_map_content_footer_wind">
+									<p>Wind speed</p>
+									<p><span class="wind_speed"></span> m/s</p>
+								</div>
+								<div class="section2_map_content_footer_hum">
+									<p>Humidity</p>
+									<p><span class="humidity"></span> %</p>
+								</div>
+								<div class="section2_map_content_footer_cloud">
+									<p>Clouds</p>
+									<p><span class="clouds"></span> %</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- 실시간 채팅 -->

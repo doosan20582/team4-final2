@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goott.domain.MemberVO;
 import com.goott.service.AdminService;
+import com.goott.service.SessionService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -23,6 +25,8 @@ public class AdminController {
 	
 	@Inject
 	AdminService adminService;
+	@Inject
+	SessionService sessionService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String adminGet() {
@@ -72,5 +76,16 @@ public class AdminController {
 		log.info("프로모션 메일 보내기 post ==============================================");
 		adminService.setPromotionEmail(subject, content);
 		return "/admin/admin";
+	}
+	
+	
+	@RequestMapping(value = "count", method = RequestMethod.GET)
+	public String count(Model model){
+		log.info("방문자수 ===============================================");
+		
+		Map<String, Object> countMap = sessionService.countBasic();
+		log.info(countMap);
+		model.addAttribute("countMap", countMap);
+		return "/admin/count";
 	}
 }

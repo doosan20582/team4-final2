@@ -12,4 +12,19 @@ public interface SessionMapper {
 	 * @return
 	 */
 	public int insertSession(SessionVO sessionVO);
+	/**
+	 * 총 방문자수
+	 * @return
+	 */
+	public int selectCountTotal();
+	/**
+	 * 오늘 방문자수
+	 * @return
+	 */
+	public int selectCountToday();
+	/**
+	 * 이번주 방문자수
+	 * @return
+	 */
+	public int selectCountWeek();
 }

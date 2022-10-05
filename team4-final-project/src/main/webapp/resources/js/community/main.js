@@ -1,5 +1,26 @@
 let camping_title = document.querySelectorAll(".camping_title"); // 자유게시글 제목 (상세페이지로 넘어가게)
 let board_title = document.querySelectorAll(".board_title"); // 모임게시글 제목 (상세페이지로 넘어가게)
+let weather_img = document.querySelector(".section2_map_content_main_icon_img");//날씨정보 이미지
+let wind_speed = document.querySelector(".wind_speed");//풍속
+let humidity = document.querySelector(".humidity");//습도
+let clouds = document.querySelector(".clouds");//구름
+let weather = document.querySelector(".weather");//날씨
+let temp = document.querySelector(".temp");//온도
+let country = document.querySelector(".location");//장소
+let location_list = document.querySelectorAll(".location_list");//지역 리스트
+
+let location_info ={ // 날씨 api에 사용할 객체
+		seoul : [37.540705,126.956764],
+		gyunggi : [37.567167,127.190292],
+		gangwon : [37.555837,128.209315],
+		chungnam : [36.557229,126.779757],
+		chungbuk : [36.628503,127.929344],
+		gyungnam : [35.259787,128.664734],
+		gyungbuk : [36.248647,128.664734],
+		jeonnam : [34.819400,126.893113],
+		jeonbuk : [35.716705,127.144185],
+		jeju : [33.364805,126.542671]
+	}
 
 for(let i=0; i<board_title.length; i++){ // 제목 누르면  상세페이지로(자유게시판)
 	board_title[i].addEventListener("click",function(){
@@ -12,3 +33,28 @@ for(let i=0; i<camping_title.length; i++){ // 제목 누르면 상세페이지�
 		this.parentNode.nextElementSibling.submit();
 	})
 }
+
+//날씨 정보 불러올 api 주소
+var apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.seoul[0]+"&lon="+location_info.seoul[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+
+var get_weather = function () { // 날씨 정보 불러오기
+$.ajax({
+    url: apiURI,
+    dataType: "json",
+    type: "GET",
+    async: "false",
+    success: function(resp) {
+        var imgURL = "http://openweathermap.org/img/w/" + resp.weather[0].icon + ".png";
+        weather_img.src = imgURL;
+        temp.textContent = (resp.main.temp- 273.15).toFixed(1);
+        weather.textContent = resp.weather[0].description;
+        wind_speed.textContent = resp.wind.speed;
+        humidity.textContent = resp.main.humidity;
+        clouds.textContent = resp.clouds.all;
+    }
+})
+}
+
+get_weather();
+
+console.log(location_list.length);

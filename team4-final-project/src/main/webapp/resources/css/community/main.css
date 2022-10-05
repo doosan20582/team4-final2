@@ -157,6 +157,9 @@ section{
 
 .section1_noticeBoard_title>li{
 	text-align:center;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .section1_noticeBoard_title>li:nth-child(1){
@@ -315,6 +318,9 @@ section{
 
 .section1_notice_title>li{
 	text-align:center;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .section1_notice_title>li:nth-child(1){
@@ -469,6 +475,23 @@ section{
     font-family: 'Nanum Gothic', sans-serif;
 }
 
+.section2_map_list{
+	position: absolute;
+    right: 20px;
+    color: rgb(209, 209, 209);
+    width: 230px;
+    height: 25px;
+    font-size: 1.1rem;
+    border-style: none;
+    border-radius: 3px;
+    color:white;
+    background-color:var(--subColor);
+}
+
+.section2_map_list:focus{
+	outline: none;
+}
+
 .section2_map_header>h1{
     color:var(--fontColor);
     margin-left: 65px;
@@ -488,6 +511,69 @@ section{
     background-color: var(--subColor);
     margin-bottom: 50px;
     border-radius: 5px;
+    display:flex;
+    flex-direction : column;
+    overflow:hidden;
+    font-size : 1.2rem;
+}
+
+.section2_map_content_main{
+	width:100%;
+	height:70%;
+	background-color:var(--fontColor);
+	display:flex;
+    flex-direction : row;
+}
+
+.section2_map_content_main_icon{
+	width:70%;
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.section2_map_content_main_icon>img{
+	width:100px;
+	height:100px;
+}
+
+.section2_map_content_main_info{
+	width:30%;
+	height:100%;
+	color:white;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	font-weight : bold;
+}
+
+.section2_map_content_main_info>p{
+	margin: 25px 0 ;
+}
+.section2_map_content_main_info>p:nth-child(1){
+	
+}
+
+.section2_map_content_footer{
+	width:100%;
+	height:30%;
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:center;
+	background-color:white;
+	font-weight : bold;
+}
+
+.section2_map_content_footer>div{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	margin:0 60px;
+	color:var(--fontColor);
 }
 
 .section2_chat{
@@ -501,6 +587,7 @@ section{
     display: flex;
     align-items: center;
     position: relative;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .section2_chat_header>h1{

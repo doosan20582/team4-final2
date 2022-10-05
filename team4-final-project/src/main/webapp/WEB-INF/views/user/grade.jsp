@@ -47,7 +47,7 @@
 							다음달 예상등급은 <span id="cus_nextgrade">${naxtInfo.grade_name}</span>
 						</p>
 						<p class="p1">
-							<span id="cus_money">${naxtInfo.grade_start_point-(Info.member_purchase_point+Info.member_write_point)}</span>
+							<span id="cus_money">${(Info.grade_end_point+1-Info.member_purchase_point+Info.member_write_point)}</span>
 							원 더 모으면 레벨업!
 						</p>
 					</div>
@@ -67,7 +67,7 @@
 					</ul>
 				</div>
 
-
+		<%-- 			<c:forEach items="${gradeInfo}" var="Info"> --%>
 					<div class="grade level1">
 						<div class="grade_left">
 							<h3>앰버</h3>
@@ -81,9 +81,10 @@
 							<img src="file:C:/gradeImg/${Info.grade_img_url }">
 						</div>
 					</div>
+				<%-- 	</c:forEach> --%>
 
 
-				 <div class="grade level2">
+				<%-- <div class="grade level2">
 					<div class="grade_left">
 						<h3>에메랄드</h3>
 						<p>누적 포인트 ${Info.grade_start_point}만원 이상</p>
@@ -131,7 +132,7 @@
 					<div class="grade_right">
 						<img src="/resources/img/다이아몬드.PNG">
 					</div>
-				</div>
+				</div>     --%>
 
 			</div>
 		</div>

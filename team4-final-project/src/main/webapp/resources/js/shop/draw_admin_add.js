@@ -10,6 +10,7 @@ const selectDrawBtn = document.querySelector('#selectDrawBtn');
 
 
 
+
  // value 값을 찾아서 
 
 
@@ -24,6 +25,7 @@ var timeOff2 = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초�
 var today2 = new Date(now_utc2-timeOff).toISOString().split("T")[0]; // new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환-
 document.getElementById("Date_event_end").setAttribute("min", today);
 */
+
 
 
 

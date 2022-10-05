@@ -29,6 +29,9 @@
 				<a class="mailAnchor">
 					<span class="material-symbols-outlined"> mail </span>
 				</a>
+				<a class="graphAnchor">
+					<span class="material-symbols-outlined"> monitoring </span>
+				</a>
 
 			</div>
 		</div>
