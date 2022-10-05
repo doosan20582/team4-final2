@@ -31,9 +31,12 @@ public interface GradeMapper {
 	public List<GradeVO> gradePolicy();
 	
 	/* 관리자 - 등급 정책 삭제 */
-	public void gradePolicyDelete(GradeVO gradeVO);
+	public void gradePolicyDelete(int grade_id);
 	
 	/* 관리자 - 등급 정책 추가 */
 	public void gradePolicyAdd(GradeVO gradeVO);
+	
+	/* 관리자 - 등급 정책 수정 */
+	public void gradePolicyModify(GradeVO gradeVO);
 	
 }

@@ -23,14 +23,15 @@
 	<main>
 		<div class="navDiv"></div>
 		<div class="mainDiv">
-			<h2>등급 추가</h2>
+			<h2>등급 수정</h2>
 			<hr>
-			<form method="post" action="/gradePolicyAdd_admin" enctype="multipart/form-data">
+			<form method="post" action="/gradePolicyAler_admin"
+				enctype="multipart/form-data">
 				<table class="board_detail">
 					<tr>
 						<th>단계</th>
 						<td><input type="text" id="grade_comment"
-							name="grade_comment"></td>
+							name="grade_comment" readonly="readonly"></td>
 					</tr>
 					<th>등급명</th>
 					<td><input type="text" id="grade_name" name="grade_name"></td>
@@ -70,7 +71,8 @@
 
 
 				</table>
-				<input type="submit" id="submit" value="저장" class="btn">
+				<input type="submit" value="변경" class="btn add_btn">
+				<input type="submit" value="취소" class="btn rollback_btn">
 
 			</form>
 		</div>

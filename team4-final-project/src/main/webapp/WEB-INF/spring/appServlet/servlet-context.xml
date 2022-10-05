@@ -22,9 +22,13 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/productImg/**" location="file:/C:/uploadtest/productImg/" />
-	<resources mapping="/uploadUserProfileImg/**" location="file:/C:/uploadtest/uploadUserProfileImg/" />
-	<resources mapping="/reviewFiles/**" location="file:/C:/uploadtest/reviewFiles/" />
+	<resources mapping="/productImg/**"
+		location="file:/C:/uploadtest/productImg/" />
+	<resources mapping="/uploadUserProfileImg/**"
+		location="file:/C:/uploadtest/uploadUserProfileImg/" />
+	<resources mapping="/reviewFiles/**"
+		location="file:/C:/uploadtest/reviewFiles/" />
+	<resources location="file:/C:/gradeImg/" mapping="/gradeImg/**"></resources>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -58,7 +62,7 @@
 
 			<mapping path="/user" />
 			<mapping path="/user/*" />
-			
+
 			<beans:ref bean="commonInterceptor" />
 		</interceptor>
 		<!-- 관리자만 접근 할수 있는 -->
@@ -67,7 +71,7 @@
 			<mapping path="/product/modify" />
 			<mapping path="/product/register" />
 			<mapping path="/admin/**" />
-			
+
 			<beans:ref bean="adminInterceptor" />
 		</interceptor>
 	</interceptors>
@@ -77,8 +81,6 @@
 		base-package="com.goott.team4" />
 	<context:component-scan
 		base-package="com.goott.controller" />
-
-
 
 
 

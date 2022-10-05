@@ -26,13 +26,19 @@ public class GradeAdminServiceImpl implements GradeAdminService{
 
 	//관리자 - 등급 정책 삭제(gradePolicy_admin)
 	@Override
-	public void gradePolicyDelete(GradeVO gradeVO) {
-		gradeMapper.gradePolicyDelete(gradeVO);
+	public void gradePolicyDelete(int grade_id) {
+		gradeMapper.gradePolicyDelete(grade_id);
 	}
 
 	@Override
 	public void gradePolicyAdd(GradeVO gradeVO) {
 		gradeMapper.gradePolicyAdd(gradeVO);
+		
+	}
+
+	@Override
+	public void gradePolicyModify(GradeVO gradeVO) {
+		gradeMapper.gradePolicyModify(gradeVO);
 		
 	}
 	

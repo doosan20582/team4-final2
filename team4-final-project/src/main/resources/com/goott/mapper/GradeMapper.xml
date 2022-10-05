@@ -45,7 +45,7 @@
 	</select>
 	
 	<!-- 관리자- 등급 정책 삭제  -->
-	<delete id="gradePolicyDelete">
+	<delete id="gradePolicyDelete" parameterType="_int">
 		delete from t_grade
 		where grade_id = #{grade_id}
 	</delete>
@@ -56,15 +56,22 @@
 		(grade_start_point, grade_end_point ,grade_name, grade_color, grade_discount,
 				   grade_accrual_rate, grade_comment, grade_font_color, grade_img_url)
 		values (#{grade_start_point}, #{grade_end_point},#{grade_name},#{grade_color},#{grade_discount},
-		#{grade_accrual_rate}, #{ grade_comment},#{grade_font_color},'not url')
+		#{grade_accrual_rate}, #{ grade_comment},#{grade_font_color},#{grade_img_url})
 		]]>
 	</insert>
-		<update id="gradePolicyUpdate" >
+		<update id="gradePolicyUpdate" parameterType="com.goott.domain.GradeVO">
 		<![CDATA[
-		UPDATE boardtest SET
+		update t_grade SET
 		grade_start_point = #{grade_start_point},
-		grade_end_point = #{grade_end_point}
-		WHERE grade_id = #{grade_id}
+		grade_end_point = #{grade_end_point},
+		grade_name = #{grade_name},
+		grade_color = #{grade_color},
+		grade_discount = #{grade_discount},
+		grade_accrual_rate = #{grade_accrual_rate},
+		grade_comment = #{grade_comment},
+		grade_font_color = #{grade_font_color},
+		grade_img_url = #{grade_img_url}
+		where grade_id = #{grade_id}
 		]]>
 	</update>
 	
