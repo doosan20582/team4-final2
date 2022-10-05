@@ -59,6 +59,7 @@
 
 			<mapping path="/order" />
 			<mapping path="/order/*" />
+			<mapping path="/shop/draw_customer" />
 
 			<mapping path="/user" />
 			<mapping path="/user/*" />
@@ -71,6 +72,8 @@
 			<mapping path="/product/modify" />
 			<mapping path="/product/register" />
 			<mapping path="/admin/**" />
+			<mapping path="/shop/QnA_admin" />
+			
 
 			<beans:ref bean="adminInterceptor" />
 		</interceptor>

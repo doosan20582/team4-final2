@@ -10,13 +10,15 @@ body {
 .basketMiddle {
 	min-height: 700px;
 	font-family: 'GimpoGothicBold00';
-	border: 3px solid green;
+	/* border: 3px solid green; */
+	padding: 1rem;
 }
 
 /*장바구니 상품 테이블*/
 #basketTable {
 	margin: 3rem auto;
 	border-collapse: collapse;
+	/* background-color: var(--mainColor); */
 }
 
 #basketTable th {

@@ -173,7 +173,26 @@
 			<div class="side_navBar">
 				<!-- 등급 구역 -->
 				<div class="gradeDiv">
+					
 				
+					<div class="gradeInnerTop">
+						
+						<c:if test="${!empty userInfo }">
+							<img alt="" src="${userInfo.member_profile_img_url }" id="userProfileImg">
+						</c:if>
+						
+						
+					</div>
+					<div class="gradeInnerBottom">
+						
+						<c:if test="${!empty userInfo }">
+							<span class="userGradeSpan" style="color: var(--fontColor);">관리자</span>
+							<a href="/gradePolicy_admin" class="gradeAnchor">등급 편집</a>
+						</c:if>
+						
+					</div>
+					
+					
 				</div>
 				<!-- 카테고리 구역 -->
 				<div class="categoryDiv">

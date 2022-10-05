@@ -59,17 +59,15 @@ public class ShopController {
 		// 판매 탑 10 목록
 		Map<String, Object> topProduct = productService.getProductTopSales();
 		log.info("탑 10 : " + topProduct);
-		
-		
-		//로그인 되어 있다면 회원 등급, 프로필 이미지 정보
+
+		// 로그인 되어 있다면 회원 등급, 프로필 이미지 정보
 		Map<String, Object> userInfo = null;
-		//로그인 중이라면
-		if(session.getAttribute("login_id") != null) {
+		// 로그인 중이라면
+		if (session.getAttribute("login_id") != null) {
 			String member_id = session.getAttribute("login_id").toString();
 			userInfo = userService.getUserProfileImgUrlAndGradeName(member_id);
 		}
-		
-		
+
 		model.addAttribute("productList", productList);
 		model.addAttribute("pageShop", pageShop);
 		model.addAttribute("categoryList", categoryList);
@@ -80,8 +78,11 @@ public class ShopController {
 
 	// 쇼핑몰 메인 관리자
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String shopMainAdminGet(Model model) {
+	public String shopMainAdminGet(Model model, HttpServletRequest request) {
 		log.info("shop 관리자 메인 페이지 -----------------------------------------");
+
+		HttpSession session = request.getSession();
+
 		// 전체 페이지 수 조회
 		int totalPage = (int) Math.ceil((productService.getPageTotalNumAll(0) / (double) 10.0));
 		// 카테고리 목록 조회
@@ -92,10 +93,19 @@ public class ShopController {
 		// 판매 탑 10 목록
 		Map<String, Object> topProduct = productService.getProductTopSales();
 
+		// 로그인 되어 있다면 회원 등급, 프로필 이미지 정보
+		Map<String, Object> userInfo = null;
+		// 로그인 중이라면
+		if (session.getAttribute("login_id") != null) {
+			String member_id = session.getAttribute("login_id").toString();
+			userInfo = userService.getUserProfileImgUrlAndGradeName(member_id);
+		}
+
 		model.addAttribute("productList", productList);
 		model.addAttribute("pageShop", pageShop);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("topProduct", topProduct);
+		model.addAttribute("userInfo", userInfo);
 		return "shop/shop_admin";
 	}
 

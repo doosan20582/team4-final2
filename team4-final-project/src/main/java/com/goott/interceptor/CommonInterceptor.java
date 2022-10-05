@@ -28,16 +28,16 @@ public class CommonInterceptor implements HandlerInterceptor{
 		if(session.getAttribute("login_id") == null) {
 			log.info("세션 로그인 여부 체크중 =======================================");
 			//로그인 페이지 리다이렉트 전 보려던 페이지 주소 세션에 저장
-			String prior_uri  = request.getRequestURI();
-			
-			
-			if(request.getQueryString() != null) {
-				String query_string = request.getQueryString();
-				session.setAttribute("query_string", query_string);
-
-			}
-			session.setAttribute("prior_uri", prior_uri);
-			log.info("접속 시도 하였던 주소 : " + prior_uri);
+//			String prior_uri  = request.getRequestURI();
+//			
+//			
+//			if(request.getQueryString() != null) {
+//				String query_string = request.getQueryString();
+//				session.setAttribute("query_string", query_string);
+//
+//			}
+//			session.setAttribute("prior_uri", prior_uri);
+//			log.info("접속 시도 하였던 주소 : " + prior_uri);
 			
 			//없으면 로그인 페이지로 리다이렉트 후 리턴 false
 			//로그인 페이지로 리다이렉트

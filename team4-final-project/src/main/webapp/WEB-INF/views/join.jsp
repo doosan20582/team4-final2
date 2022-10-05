@@ -37,7 +37,7 @@
 					<input type="text" name="" id="emailName" class="formInputs" placeholder="Enter Your Email" required> <span class="EmphasisSpan at">@</span> <input type="text" name="" id="domain" class="formInputs" placeholder="Select Your Domain" required readonly> <select name="" id="emailSelect" class="formInputs">
 						<option value="init">선택하세요</option>
 						<option value="naver.com">naver.com</option>
-						<option value="google.com">google.com</option>
+						<option value="gmail.com">gmail.com</option>
 						<option value="daum.net">daum.net</option>
 						<option value="nate.com">nate.com</option>
 						<option value="self">직접 입력</option>
