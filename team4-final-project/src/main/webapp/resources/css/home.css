@@ -42,7 +42,7 @@ a:hover{
 /*상단*/
 .homeTop{
 	height: 10%;
-	border: 3px solid yellow;
+	/* border: 3px solid yellow; */
 	display: flex;
 	
 }
@@ -70,7 +70,7 @@ a:hover{
 }
 /*메인*/
 .homeMain{
-	border: 3px solid black;
+	/* border: 3px solid black; */
 	height: 90%;
 	display: flex;
 	transition: .3s;
@@ -103,7 +103,7 @@ img{
     align-items: center;
     color: white;
     background-color: var(--mainColor);
-    border: 3px solid red;
+    border: 1px solid black;
     cursor: pointer;
     transition: .3s;
     overflow: hidden;
@@ -129,7 +129,7 @@ img{
     align-items: center;
     color: white;
     background-color: var(--mainColor);
-    border: 3px solid blue;
+    border: 1px solid black;
     cursor: pointer;
     transition: .2s;
     overflow: hidden;

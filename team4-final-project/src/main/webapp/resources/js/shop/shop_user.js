@@ -66,13 +66,18 @@ window.onload = function(){
     //팝업
     //로컬 스토리지 확인, 없으면 null 반환
     //로컬 스토리지에 key가 있으면 만료시간 체크
+    
 	let text = localStorage.getItem('key');
-	if(text != null || text != undefined){
-		let today = new Date();
-		if(today > text){
-			console.log(today);
-			console.log(text);
-			
+	let date = new Date(text);
+	let today = new Date();
+	
+	if(text != null){
+		
+		console.log("오늘 : " + today);
+		console.log("팝업창 쿠키날짜 : " + date);
+		
+		if(today > date){
+
 			localStorage.removeItem('key');
 			window.open("/shop/popup", "신상품", "width=500, height=500");
 		}

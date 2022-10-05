@@ -15,7 +15,7 @@ h3{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     background-color: var(--subColor);
     color: white;
 }
@@ -23,12 +23,12 @@ h3{
 .navDiv{
 	width: 80%;
 	height: 10%;
-	border: 3px solid green;
+	/* border-bottom: 3px solid var(); */
 	display: flex;
 	justify-content: space-around;
     align-items: center;
     
-    background-color: var(--mainColor);
+    border-bottom: 3px solid var(--borderColor);
 }
 
 .navDiv a{
@@ -36,6 +36,7 @@ h3{
 	text-decoration: none;
 	transition: .3s;
 	font-size: 1.5rem;
+	
 }
 
 .navDiv a:hover{
@@ -46,26 +47,26 @@ h3{
 .infoTopDiv{
     width: 80%;
     height: 50%;
-    border: 3px solid violet;
+    /* border: 3px solid violet; */
     display: flex;    
-    background-color: var(--mainColor);
+    background-color: var(--subColor);
 }
 
 .infoBottomDiv{
-	background-color: var(--mainColor);
+	background-color: var(--subColor);
 }
 /*이미지*/
 .userImgDiv{
     width: 30%;
     height: 100%;
-    border: 3px solid blue;
+   /*  border: 3px solid blue; */
     padding: 1rem;
 }
 
 .userImgDivInnerTop{
 	width: 100%;
 	height: 80%;
-	border: 3px solid red;
+	border-bottom: 3px solid var(--borderColor);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -74,7 +75,7 @@ h3{
 .userImgDivInnerBottom{
 	width: 100%;
 	height: 20%;
-	border: 3px solid white;
+	/* border: 3px solid white; */
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -84,7 +85,7 @@ h3{
     width: 80%;
     height: 80%;
     object-fit: fill;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     border-radius : 10%;
 }
 
@@ -106,7 +107,7 @@ h3{
 .userInfoDiv{
     width: 60%;
     height: 100%;
-    border: 3px solid saddlebrown;
+    /* border: 3px solid saddlebrown; */
     padding: 1rem;
     font-family: 'Black Han Sans';
 }
@@ -117,7 +118,7 @@ h3{
 }
 
 .userModifyDiv{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     width: 10%;
     height: 100%;
     padding: 1rem;
@@ -132,7 +133,7 @@ h3{
 .infoBottomDiv{
     width: 80%;
     height: 40%;
-    border: 3px solid chocolate;
+    /* border: 3px solid chocolate; */
     display: flex;
     justify-content: space-around;
     padding: 1rem;
@@ -142,10 +143,11 @@ h3{
 .userGradeDiv, .userQuoponHistoryDiv, .userOrderHistoryDiv{
     width: 33%;
     height: 100%;
-    border: 3px solid green;
+    /* border: 3px solid green; */
     padding: 1rem;
 	cursor: pointer;
 	transition: .3s;
+	background-color: var(--sub2Color);
 }
 
 .userGradeDiv:hover{
@@ -160,7 +162,7 @@ h3{
 .userHistoryCon{
     width: 100%;
     
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,6 +174,7 @@ h3{
 	transition: .3s;
 	cursor: pointer;
 	margin-bottom: 0.5rem;
+	text-decoration: underline;
 }
 
 .userModifyDiv a:hover{
@@ -184,11 +187,11 @@ h3{
     min-height: 300px;
     max-height: 500px;
     overflow-y: scroll;
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     padding: 1rem;
     display: flex;
     justify-content: center;
-    background-color: var(--mainColor);
+    background-color: var(--subColor);
     
 }
 /*진행주문내역 테이블*/
@@ -212,11 +215,11 @@ h3{
 .etcHistoryDiv{
     width: 80%;
     height: 50%;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: var(--mainColor);
+    background-color: var(--subColor);
     
 }
 
@@ -465,8 +468,8 @@ h3{
 	transform: translate(-50%,-50%);
 	width: 500px;
 	height: 300px;
-	border: 3px solid black;
-	background-color: white;
+	/* border: 3px solid black; */
+	background-color: var(--subFontColor);
 	font-family: 'GimpoGothicBold00';
 	
 }
@@ -474,7 +477,7 @@ h3{
 .changePasswordInnerTop{
 	width: 100%;
 	height: 30%;
-	border: 3px solid red;
+	/* border: 3px solid red; */
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -483,7 +486,7 @@ h3{
 .changePasswordInnerBottom{
 	width: 100%;
 	height: 40%;
-	border: 3px solid green;
+	/* border: 3px solid green; */
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -491,7 +494,7 @@ h3{
 .changePasswordInnerResult{
 	width: 100%;
 	height: 30%;
-	border: 3px solid black;
+	border-top: 3px solid var(--borderColor);
 	padding: 1rem;
 }
 
@@ -514,7 +517,7 @@ h3{
 	transform: translate(-50%,-50%);
 	width: 80%;
 	height: 80%;
-	border: 3px solid black;
+	/* border: 3px solid black; */
 	background-color: white;
 	font-family: 'GimpoGothicBold00';
 	position: relative;
@@ -546,7 +549,7 @@ h3{
 .freeBoard, .camping, .review{
 	width: 33%;
 	height: 100%;
-	border: 3px solid white;
+	/* border: 3px solid white; */
 	overflow-y: scroll;
 	
 }

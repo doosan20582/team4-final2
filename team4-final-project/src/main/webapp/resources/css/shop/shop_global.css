@@ -45,7 +45,7 @@ header .logo{
     justify-content: center;
     align-items: center;
     justify-content: center;
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     cursor: pointer;
 }
 
@@ -70,7 +70,7 @@ header .menu{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid white;
+    /* border: 3px solid white; */
 }
 
 header .menu a{
@@ -88,7 +88,7 @@ header .login{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid crimson;
+    /* border: 3px solid crimson; */
     
 }
 
@@ -130,7 +130,7 @@ footer .footer_logo{
     align-items: center;
     justify-content: center;
    /*  font-size : 3rem; */
-    border: 3px solid white;
+    /* border: 3px solid white; */
     
 }
 
@@ -156,6 +156,6 @@ footer .footer_content{
     /* align-items: center; */
     /* justify-content: space-around; */
     color: var(--subFontColor);
-    border:3px solid red;
+    /* border:3px solid red; */
 }
 

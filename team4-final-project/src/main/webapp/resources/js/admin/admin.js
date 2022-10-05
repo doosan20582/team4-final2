@@ -15,12 +15,30 @@ const navIcon = document.querySelector('.navIcon');
 const allMemberAnchor = document.querySelector('.allMemberAnchor');
 //프로모션 메일 보내기
 const mailAnchor = document.querySelector('.mailAnchor');
+//모니터링
+const graphAnchor = document.querySelector('.graphAnchor');
 // =====================================================================================================
 navIcon.addEventListener('click', navInOut);
 allMemberAnchor.addEventListener('click', showMemberList);
 mailAnchor.addEventListener('click', showSend);
+graphAnchor.addEventListener('click', monitoringFunc);
 
 // =====================================================================================================
+//모니터링 정보
+function monitoringFunc(){
+	$.ajax({
+		type: 'get',
+		url: '/admin/count',
+		error: function(){
+			alert('죄송합니다. 잠시후 다시 시도해 주세요.');
+		},
+		success: function(data){
+		
+			$('.mainBottom').html(data);
+		}
+	});
+}
+
 //메일 보내기 폼
 function showSend(){
 	$.ajax({
@@ -59,6 +77,7 @@ function navInOut(){
 		navIcon.style.transform = 'rotateZ(90deg)';
 		allMemberAnchor.innerHTML = '전체 회원 보기';
 		mailAnchor.innerHTML = '프로모션 메일 보내기';
+		graphAnchor.innerHTML = '모니터링 하기';
 	}
 	else{
 		nav.style.width = '5%';
@@ -67,6 +86,7 @@ function navInOut(){
 		navIcon.style.transform = 'rotateZ(0)';
 		allMemberAnchor.innerHTML = '<span class="material-symbols-outlined"> group </span>';
 		mailAnchor.innerHTML = '<span class="material-symbols-outlined"> mail </span>';
+		graphAnchor.innerHTML = '<span class="material-symbols-outlined"> monitoring </span>';
 		
 	}
 }

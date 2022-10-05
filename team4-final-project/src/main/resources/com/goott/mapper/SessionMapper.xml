@@ -8,4 +8,28 @@
 		]]>
 		
 	</insert>
+	
+	<!-- 총 방문자수 검색 -->
+	<select id="selectCountTotal" resultType="_int">
+		<![CDATA[
+			select count(idx) as count from t_session
+		]]>
+	</select>
+	
+	<!-- 오늘 방문자수 검색 -->
+	<select id="selectCountToday" resultType="_int">
+		<![CDATA[
+			select count(idx) from t_session where create_time > CURRENT_DATE()
+		]]>
+		
+	</select>
+	
+	<!-- 이번주 방문자수 검색 -->
+	<select id="selectCountWeek" resultType="_int">
+		<![CDATA[
+			select count(idx) from t_session where create_time between date_add(now(), interval -1 week) and now()
+		]]>
+	</select>
+	
+	
 </mapper>

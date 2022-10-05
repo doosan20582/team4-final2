@@ -206,7 +206,7 @@
 				<button class="formBtns" id="passwordBtn">입력</button>
 			</div>
 			<div class="changePasswordInnerResult">
-				<span class="pwCheckSpan">결과</span>
+				<span class="pwCheckSpan"></span>
 			</div>
 		</div>
 	</div>

@@ -50,7 +50,7 @@
 .carousel .adContainer .adSubCon .carouselImgDiv{
     width: 100%;
     height: 100%;
-    border: 3px solid white;
+    
     padding: 1rem;
 }
 
@@ -63,7 +63,7 @@
 .carousel .adContainer .adSubCon .carouselContentDiv{
     width: 50%;
     height: 100%;
-    border: 3px solid cyan;
+    /* border: 3px solid cyan; */
     padding: 1rem;
     color: white;
 }
@@ -83,7 +83,7 @@ main{
 main .section{
     width: 81%;
     background-color: var(--subColor);
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
 }
 /*상품 탑 10 헤드 */
 main .section .section_best_header{
@@ -95,7 +95,7 @@ main .section .section_best_header{
    /*  background-color: red; */
     font-family: 'GimpoGothicBold00'; 
     font-size: 2rem;
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     
 }
 main .section .section_best_header h1{
@@ -115,7 +115,7 @@ main .section .section_best{
 
 /*이름 디비전*/
 .nameDiv{
-	border: 3px solid black;
+	/* border: 3px solid black; */
 	display: flex;
 	height: 20%;
 	padding: 0.5rem;
@@ -196,7 +196,7 @@ main .section .section_best{
 .section_item{
     width: 20%;
     height: 100%;
-    border: 3px solid dodgerblue;
+    /* border: 3px solid dodgerblue; */
     padding: 1rem;
     position: relative;
 }
@@ -207,7 +207,7 @@ main .section .section_best{
 	height: 200px;
 	bottom: -10%;
 	left: 0;
-	border: 3px solid blue;
+	/* border: 3px solid blue; */
 	display: flex;
 	/* align-items: end; */
 }
@@ -215,7 +215,7 @@ main .section .section_best{
 /*순위 스팬*/
 .numberSpan1, .numberSpan2, .numberSpan3{
 	font-size: 9rem;
-	color: rgba(0, 173, 26, 0.817); 
+	color: var(--fontColor);
 	font-family: 'Black Han Sans';
 }
 .numberSpan4, .numberSpan5, .numberSpan6, .numberSpan7, .numberSpan8, .numberSpan9, .numberSpan10{
@@ -241,7 +241,7 @@ main .section .section_items_header{
     /* background-color: orangered; */
     font-family: 'GimpoGothicBold00'; 
     font-size: 2rem;
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
 }
 
 main .section .section_items_header h1{
@@ -265,7 +265,7 @@ main .section .section_items_main .productDiv{
 .section_items{
     width: 20%;
     height: 435px;
-    border: 3px solid green;
+    /* border: 3px solid green; */
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -289,7 +289,7 @@ main .section .section_items_main .productDiv{
 .thumbnailDiv{
 	width: 100%;
 	height: 80%;
-	border: 3px solid red;
+	border: 1px solid black;
 	overflow: hidden;
 }
 /*상품 썸네일 이미지 */
@@ -335,7 +335,7 @@ main .section .section_items_main .productDiv{
 main .side{
     width: 19%;
     background-color: rgb(59, 59, 59);
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     padding: 1rem;
     position: relative;
     
@@ -355,13 +355,13 @@ main .side{
 /*등급 구역 */
 .gradeDiv{
 	height: 30%;
-	border: 3px solid white;
+	/* border: 3px solid white; */
 	padding: 1rem;
 }
 
 .gradeInnerTop{
 	height: 80%;
-	border: 3px solid red;
+	/* border: 3px solid red; */
 	color: white;
 	display: flex;
 	align-items: center;
@@ -373,11 +373,12 @@ main .side{
 	width: 100%;
 	height: 100%;
 	border-radius: 40%;
+	border: 1px solid white;
 }
 
 .gradeInnerBottom{
 	height: 20%;
-	border: 3px solid yellow;
+	border-top: 1px solid var(--borderColor);
 	color: white;
 	display: flex;
 	align-items: center;
@@ -402,7 +403,7 @@ main .side{
 /*카테고리 구역 */
 .categoryDiv{
 	height: 70%;
-	border: 3px solid red;
+	/* border: 3px solid red; */
 	padding: 1rem;
 	display: flex;
 	flex-wrap: wrap;
@@ -413,10 +414,12 @@ main .side{
 
 .categoryInnerDiv{
 	width: 50%;
-	border: 3px solid white;
+	border: 1px solid white;
+	
 	display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 /*카테고리 */
 .categorySpan{

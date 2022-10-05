@@ -135,7 +135,7 @@ public class CommonController {
 				model.addAttribute("url", prior_uri + "?" + query_string);
 				
 				return "alert";
-//				return  "redirect:" + prior_uri + "?" + query_string;
+
 
 			}
 			//기존에 접속 시도 했던 주소가 없다면

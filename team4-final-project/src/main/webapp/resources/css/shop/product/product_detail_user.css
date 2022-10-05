@@ -23,20 +23,21 @@ main .productTop .topLeft{
 main .productTop .topLeft .mainImgDiv{
     width: 100%;
     height: 80%;
-    border: 1px solid orangered;
+    /* border: 1px solid orangered; */
     padding: 1rem;
 }
 main .productTop .topLeft .mainImgDiv .productMainImg{
     width: 100%;
     height: 100%;
     object-fit: fill;
+    /* border: 1px solid black; */
 }
 
 /*서브이미지*/
 main .productTop .topLeft .subImgDiv{
     width: 100%;
     height: 20%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     padding: 1rem;
 }
@@ -48,7 +49,7 @@ main .productTop .topLeft .subImgDiv .productSubImg{
 }
 
 .subImgDiv img{
-	border: 3px solid black;
+	/* border: 1px solid black; */
 	transition: .3s;
 }
 
@@ -66,7 +67,7 @@ main .productTop .topRight{
 main .productTop .topRight .descriptionDiv{
     width: 100%;
     height: 70%;
-    border: 1px solid saddlebrown;
+    /* border: 1px solid saddlebrown; */
     padding: 1rem;
    /*  font-family: 'GimpoGothicRegular00'; */
     font-family: 'GimpoGothicBold00';
@@ -78,7 +79,7 @@ main .productTop .topRight .descriptionDiv .descriptionTable{
     color: white;
 }
 .descriptionTable tr{
-    border: 1px solid var(--borderColor);
+    /* border: 1px solid var(--borderColor); */
 }
 .descriptionTable td{
     padding: 1rem;
@@ -93,7 +94,7 @@ main .productTop .topRight .quantityDiv{
 main .productTop .topRight .quantityDiv .quantityLeft{
     width: 50%;
     height: 100%;
-    border: 1px solid blanchedalmond;
+    /* border: 1px solid blanchedalmond; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +103,7 @@ main .productTop .topRight .quantityDiv .quantityLeft{
 main .productTop .topRight .quantityDiv .quantityLeft .quantityCon{
     width: 40%;
     height: 70%;
-    border: 3px solid seagreen;
+    /* border: 3px solid seagreen; */
     display: flex;
 }
 .quantityConLeft{
@@ -148,7 +149,7 @@ main .productTop .topRight .quantityDiv .quantityLeft .quantityCon{
 main .productTop .topRight .quantityDiv .quantityRight{
     width: 50%;
     height: 100%;
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +160,7 @@ main .productTop .topRight .quantityDiv .quantityRight{
 main .productTop .topRight .btnDiv{
     width: 100%;
     height: 15%;
-    border: 1px solid cornflowerblue;
+    /* border: 1px solid cornflowerblue; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -176,7 +177,7 @@ main .productTop .topRight .btnDiv .productBtn{
 /*중단*/
 main .productMiddle{
     width: 100%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     position: relative;
 }
 
@@ -193,7 +194,7 @@ main .productMiddle{
 
 .mainImgs{
     width: 800px;
-    border: 5px solid crimson;
+    /* border: 5px solid crimson; */
     object-fit: fill;
 }
 
@@ -235,7 +236,7 @@ main .productBottom{
 .productBottom .reviewTop{
     width: 80%;
     height: 1400px;
-    border: 3px solid aquamarine;
+    /* border: 3px solid aquamarine; */
 }
 
 .reviewTop h3{  
@@ -270,7 +271,7 @@ main .productBottom{
 .reviewGrade{
     width: 50%;
     height: 100%;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -281,7 +282,7 @@ main .productBottom{
 .reviewGraph{
     width: 50%;
     height: 100%;
-    border: 3px solid white;
+    /* border: 3px solid white; */
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -291,7 +292,7 @@ main .productBottom{
 
 .reviewBottom{
     width: 80%;
-    border: 3px solid salmon;
+    /* border: 3px solid salmon; */
     padding: 1rem;
 }
 
@@ -304,7 +305,8 @@ main .productBottom{
 .reviews{
     width: 100%;
     height: 600px;
-    border: 3px solid black;
+    border-bottom: 3px solid var(--borderColor);
+    background-color: var(--mainColor);
     margin: 2rem 0;
     padding: 1rem;
     color: var(--subFontColor);
@@ -314,7 +316,7 @@ main .productBottom{
 }
 /*리뷰 안 공통*/
 .reviewsDiv{
-	border: 3px solid white;
+	/* border: 3px solid white; */
 	padding: 1rem;
 }
 
@@ -339,7 +341,7 @@ main .productBottom{
 }
 
 .reviewsGradeInner{
-	border: 3px solid blue;
+	/* border: 3px solid blue; */
 	width: 50%;
 	height: 100%;
 }
@@ -378,6 +380,7 @@ main .productBottom{
 }
 
 .reviewsContent, .reviewsPhoto{
+	
 	width: 50%;
 	height: 60%;
 	font-family: 'GimpoGothicBold00';
@@ -385,16 +388,17 @@ main .productBottom{
 }
 
 .reviewsPhotoInner{
-	border: 3px solid red;
+	/* border: 3px solid red; */
 	width: 50%;
 	height: 100%;
 	display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .reviewsPhotoInnerPhoto img{
-	widows: 100%;
+	width: 100%;
 	height: 100%;
 }
 /*리뷰 비디오 커버 디비전*/
@@ -447,7 +451,7 @@ main .productBottom{
 .toTopDiv{
     width: 100%;
     height: 20%;
-    border:3px solid white;
+    border:1px solid white;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -458,7 +462,7 @@ main .productBottom{
 .toReveiwCon{
     width: 100%;
     height: 20%;
-    border:3px solid white;
+    border:1px solid white;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -469,7 +473,7 @@ main .productBottom{
 .toBottomDiv{
     width: 100%;
     height: 20%;
-    border:3px solid white;
+    border:1px solid white;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -480,7 +484,7 @@ main .productBottom{
 .youtubeDiv{
 	width: 100%;
     height: 40%;
-    border:3px solid white;
+    border:1px solid white;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -504,7 +508,7 @@ main .productBottom{
 .youtubeInnerDiv{
 	width: 1280px;
 	height: 720px;
-	border: 3px solid blue;
+	/* border: 3px solid blue; */
 	position: relative;
 	top: 50%;
 	left: 50%;
