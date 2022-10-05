@@ -38,7 +38,11 @@ public interface QnAMapper {
 	public void Question_admin_answer(QnAVO qnA);
 
 	
-
+	// 페이징 처리 게시글 조회
+		public List<QnAVO> selectQnAadminBoard(Map<String, Object> map);
+		
+		// 카테고리 및 검색으로 게시글 총 개수 조
+		public int countQnAadminBoardCategory(Map<String, Object> map);
 
 
 

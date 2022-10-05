@@ -41,21 +41,16 @@
 				</div>
 				<div class="name2_1">
 					<p>작성일자</p>
-					<p>
-						<fmt:formatDate value="${data.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" />
-					</p>
+					<p><fmt:formatDate value="${data.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" /></p>
 				</div>
 			</div>
 			<div class="name3">
 				<p>내용</p>
-				<p>${data.qna_text}</p>
+				${data.qna_text}
 			</div>
 			 <div class="name3">
 			 	<p>답변 내용</p>
-			 	
-			 	<p>${data.qna_answer_text}</p>
-			 	
-			 	<p></p>
+			 	${data.qna_answer_text}
 			 </div>
 		</div>
 		<div>
@@ -95,16 +90,16 @@
 	<%@include file="./footer.jsp" %>
 
 	<script type="text/javascript">
-    let update_btn = document.querySelector(".update_btn");
+    /* let update_btn = document.querySelector(".update_btn"); */
     let list_btn = document.querySelector(".list_btn");
     
     list_btn.addEventListener('click',function(){
     	location.href="QnA"
     });
     
-    update_btn.addEventListener('click',function(){
+    /* update_btn.addEventListener('click',function(){
     	location.href="Question_update?qna_id=${data.qna_id}"
-    });
+    }); */
     
 	</script>
 	

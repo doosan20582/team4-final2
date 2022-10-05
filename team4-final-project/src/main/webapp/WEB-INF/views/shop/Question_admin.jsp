@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="/resources/css/shop/Question_admin.css">
 <!--ì¼íëª° ê¸ë¡ë² ìì´ì½ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <title>Document</title>
 </head>
 
@@ -58,8 +59,9 @@
 			<form method="POST" action="/shop/Question_admin">
 			<div>
 				<h3>답변</h3>
-				<input type="text" name="qna_id" value="${data.qna_id}">
-				<input type="text" name="qna_answer_text">
+				<input type="hidden" name="qna_id" value="${data.qna_id}">
+				<textarea id="question_Title_Text4" name="qna_answer_text" cols="30" rows="10"></textarea>
+				
 			</div>
 			<div class="Answer_Check">
 				<input type="submit" value="답변하기">
@@ -69,6 +71,10 @@
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
 	<script src="/resources/js/shop/Question_admin.js"></script>
+	 <script>
+			        ClassicEditor
+			            .create( document.querySelector( '#question_Title_Text4' ));
+			    </script> 
 </body>
 
 </html>

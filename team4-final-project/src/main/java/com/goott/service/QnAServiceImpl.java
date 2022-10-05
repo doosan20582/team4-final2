@@ -95,9 +95,50 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 
-
+//	// 관리자
+//	@Override
+//	public List<QnAVO> selectQnAadminBoard(PagingVO vo, String checkcategory, String QnASearch, String checkadmin) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("vo", vo);
+//		map.put("checkcategory", checkcategory);
+//		map.put("checkadmin", checkadmin);
+//		map.put("QnASearch", QnASearch);
+//		return qnaMapper.selectQnAadminBoard(map);
+//	}
+//
+//	@Override
+//	public int countQnAadminBoardCategory(String checkcategory, String QnASearch, String checkadmin) {
+//		// TODO Auto-generated method stub
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("checkcategory", checkcategory);
+//		map.put("checkadmin", checkadmin);
+//		map.put("QnASearch", QnASearch);
+//		log.info(map);
+//		return qnaMapper.countQnAadminBoardCategory(map);
+//	}
 	
+	// 관리자
+	@Override
+	public List<QnAVO> selectQnAadminBoard(PagingVO vo, String checkadmin, String QnASearch) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vo", vo);
+//		map.put("checkcategory", checkcategory);
+		map.put("checkadmin", checkadmin);
+		map.put("QnASearch", QnASearch);
+		return qnaMapper.selectQnAadminBoard(map);
+	}
 
+	@Override
+	public int countQnAadminBoardCategory(String checkadmin,  String QnASearch) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("checkcategory", checkcategory);
+		map.put("checkadmin", checkadmin);
+		map.put("QnASearch", QnASearch);
+		log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		log.info(map);
+		return qnaMapper.countQnAadminBoardCategory(map);
+	}
 	
 
 

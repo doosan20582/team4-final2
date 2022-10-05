@@ -8,151 +8,154 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- 폰트, 색상 공통 -->
 <link rel="stylesheet" href="/resources/css/global.css">
 
-
-<!--ì¼íëª° QnA_admin css-->
-<link rel="stylesheet" href="/resources/css/shop/QnA_admin.css">
+<!--ì¼íëª° QnA css-->
+<link rel="stylesheet" href="/resources/css/shop/QnA.css?after">
 <!--ì¼íëª° ê¸ë¡ë² ìì´ì½ cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Document</title>
-</head>
 
+</head>
+<!-- header -->
+<%@include file="./header.jsp"%>
+
+<!--메인-->
 <body>
-	<!-- header -->
-	<%@include file="./header.jsp" %>
-	
-	
-	
-	<!--메인-->
 	<main>
-		<div class="QnA_Admin_Title">
+		
+		<div class="QnA_Title">
 			<h1>QnA</h1>
-			<button id="QnA_Admin_Title_btn">문의하기</button>
+			<input id="QnA_Title_btn1" class="asked" type="button" value="자주묻는질문">
 		</div>
-		<form action="">
-			<div class="QnA_Admin_Search">
-				<input id="QnA_Admin_Search_text" type="search" placeholder="무엇을 도와드릴까요?">
-				<input type="submit" value="검색">
-			</div>
+		<form action="/shop/QnA_admin" name="sk">
+			<div class="QnA_Search">
+				<input id="QnA_Search_text" name="QnASearch" type="search" placeholder="제목을 검색하세요.">
+				<input id="QnA_Search_btn" type="submit" value="검색">
+			</div> 
+		
+		<!-- <div class="QnA_Nav">
+			<label for="QnA_Nav_btn6"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn6" value="all">전체</label>
+			<label for="QnA_Nav_btn2"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
+			<label for="QnA_Nav_btn1"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
+			<label for="QnA_Nav_btn3"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
+			<label for="QnA_Nav_btn4"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
+			<label for="QnA_Nav_btn5"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
+			<input type="button" id="checkboxbtn" value="정렬하기">
+		</div> -->
+		<div class="QnA_Nav">
+			<label for="QnA_Nav_btn7"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn7" value="all">전체</label> 
+			<label for="QnA_Nav_btn8"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn8" value='Y'>Y</label>
+			<label for="QnA_Nav_btn9"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn9" value='n'>n</label>
+			<input type="button" id="checkadminboxbtn" value="정렬하기">
+		</div> 
 		</form>
-		<div class="QnA_Admin_Nav">
-			<label for="QnA_Admin_Nav_btn1"><input type="checkbox" name="" id="QnA_Admin_Nav_btn1">주문/결제</label> <label for="QnA_Admin_Nav_btn2"><input type="checkbox" name="" id="QnA_Admin_Nav_btn2">배송</label> <label for="QnA_Admin_Nav_btn3"><input type="checkbox" name="" id="QnA_Admin_Nav_btn3">취소/교환/환불</label> <label for="QnA_Admin_Nav_btn4"><input type="checkbox" name="" id="QnA_Admin_Nav_btn4">회원</label> <label for="QnA_Admin_Nav_btn5"><input type="checkbox" name="" id="QnA_Admin_Nav_btn5">기타</label>
-			<input type="button" value="정렬하기">
-		</div>
-		<div class="QnA_Admin_Check">
-			<select name="" id="">
-				<option value="">답변 완료 보기</option>
-				<option value="">답변 대기중 보기</option>
-			</select>
-		</div>
 		<div class="QnA_Admin_Main">
 			<table class="QnA_Admin_Main_Table">
 				<thead>
 					<tr>
-						<input type="hidden" name="">
 						<th>구분</th>
 						<th>제목</th>
 						<th>작성일</th>
-						<th>상태</th>
+						<th>답변여부</th>
 					</tr>
 				</thead>
-				<tr>
-					<input type="hidden" name="">
-					<td>주문/결제</td>
-					<td>결제 방식 변경 방법</td>
-					<td>22.08.13</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>주문/결제</td>
-					<td>비회원 주문하는 방법</td>
-					<td>22.08.11</td>
-					<td>답변 완료</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>주문/결제</td>
-					<td>비공개 질문 입니다</td>
-					<td>22.09.01</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>배송</td>
-					<td>배송지 변경하는 방법</td>
-					<td>22.09.11</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>배송</td>
-					<td>운송장 번호 조회하는 방법</td>
-					<td>22.08.09</td>
-					<td>답변 완료</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>취소/교환/환불</td>
-					<td>비공개 질문 입니다</td>
-					<td>22.08.08</td>
-					<td>답변 완료</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>취소/교환/환불</td>
-					<td>반품 신청 방법</td>
-					<td>22.08.13</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>취소/교환/환불</td>
-					<td>교환 신청 방법</td>
-					<td>22.08.13</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>회원</td>
-					<td>비밀번호 변경 방법</td>
-					<td>22.08.20</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>회원</td>
-					<td>회원 탈퇴 방법</td>
-					<td>22.09.29</td>
-					<td>답변 대기중</td>
-				</tr>
-				<tr>
-					<input type="hidden" name="">
-					<td>기타</td>
-					<td>A/S 신청 방법</td>
-					<td>22.07.01</td>
-					<td>답변 완료</td>
-				</tr>
+
+				<c:forEach var="row" items="${list}">
+					<tr class="qna_table">
+						<td>${row.qna_category}</td>
+						<c:if test="${row.qna_public eq '공개' || sessionScope.login_auth eq '관리자' || row.member_id eq sessionScope.login_id}">
+						<td><a href="QnA_detail?qna_id=${row.qna_id}">${row.qna_title}</a></td>
+						</c:if>
+						<c:if test="${row.qna_public ne '공개' && sessionScope.login_auth ne '관리자' && row.member_id ne sessionScope.login_id}">
+						<td>
+						비공개글입니다.
+						</td>
+						</c:if>
+						<td><fmt:formatDate value="${row.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" /></td>
+						<td>${row.qna_admin_answer}</td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
-		<div class="QnA_Admin_Paging">
-			<ol>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-			</ol>
+		<div class="QnA_Paging">
+					
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/shop/QnA_admin?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/shop/QnA_admin?nowPage=${p }&cntPerPage=${paging.cntPerPage}&checkadmin=${checkadmin}&QnASearch=${QnASearch}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/shop/QnA_admin?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	
 		</div>
+		
+		<input type="hidden" value="${sessionScope.login_id}" class="sesseionlogin_id">
 	</main>
-	
-	
-	<!-- footer -->
-	<%@include file="./footer.jsp" %>
-	
-	
-	<script src="/resources/js/shop/QnA_admin.js"></script>
-</body>
 
+
+	<!-- footer -->
+	<%@include file="./footer.jsp"%>
+
+
+	<!-- <script src="js/QnA.js"></script> -->
+
+	<script type="text/javascript">
+	let login_id = document.querySelector(".sesseionlogin_id");
+    let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
+    let checkboxbtn = document.querySelector("#checkboxbtn");
+    let checktype = document.querySelectorAll(".checktype");
+    let checkadminboxbtn = document.querySelector("#checkadminboxbtn");
+    let checkadmintype = document.querySelectorAll(".checkadmintype");
+    let asked = document.querySelector(".asked");
+    
+    /* QnA_Title_btn.addEventListener('click',function(){
+    	if(login_id.value!=null && login_id.value!=''){
+    		console.log(login_id);
+    		location.href="Question";
+    	}else{
+    		alert("로그인 후 이용해주세요!");
+    		location.href="/login";
+    	}
+    	
+    }); */
+    
+    asked.addEventListener('click', function(){
+    	location.href="asked_Question";
+    }); 
+    
+    
+    /* checkboxbtn.addEventListener('click', function(){
+    	for(let i=0; i<checktype.length; i++){
+    		if(checktype[i].checked == true){
+    			console.log(checktype[i].value);
+    			document.sk.submit();
+    		}
+    	}
+    		
+    }); */
+    
+    checkadminboxbtn.addEventListener('click', function(){
+    	for(let i=0; i<checkadmintype.length; i++){
+    		if(checkadmintype[i].checked == true){
+    			console.log(checkadmintype[i].value);
+    			document.sk.submit();
+    		}
+    	}
+    		
+    });
+  
+	</script> 
+</body>
 </html>
