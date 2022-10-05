@@ -33,7 +33,7 @@
 		<div class="section">
 			<div class="section_header">
 				<div class="section_header_profile">
-					<img src="" alt="">
+					<img src="${profile}" alt="">
 				</div>
 				<div class="section_header_info">
 					<div class="section_header_info_title">
@@ -108,13 +108,14 @@
 
 			<div class="section_main">${data.camping_text}</div>
 			<div class="section_address">
-				<p>장소 : ${data.camping_campsite}</p>
+				<p class="section_address_place">장소 : ${data.camping_campsite}</p>
 				<p>주소 : ${data.campsite_address}</p>
 			</div>
 			<div class="section_map">
 				<script>
             		let latitude = ${data.campsite_lat}; // 위도
             		let longitude = ${data.campsite_lon}; // 경도
+            		let place = '<c:out value="${data.camping_campsite}"/>'; // 캠핑장
             	</script>
 			</div>
 

@@ -141,6 +141,12 @@ main{
     color: white;
     margin: 10px;
     margin-left:35px;
+    cursor:pointer;
+    transition: all 0.1s;
+}
+
+.modal_search:hover{
+	box-shadow : white 0 0 2px 2px;
 }
 
 .section_header_modal_result{
@@ -204,6 +210,12 @@ main{
     color: white;
 	margin: 10px 0;
     margin-left:15px;
+    cursor:pointer;
+    transition: all 0.1s;
+}
+
+.modal_submit:hover, .modal_close:hover{
+	box-shadow : white 0 0 2px 2px;
 }
 
 .section_main{

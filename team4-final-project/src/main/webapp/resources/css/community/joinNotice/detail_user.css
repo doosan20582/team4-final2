@@ -132,6 +132,33 @@ main{
     margin-bottom:12px;
 }
 
+.section_map .info_window{
+	width : 200px;
+	height : 60px;
+	background-color : rgb(0,0,0,0.8);
+	box-shadow : var(--mainColor) 0px 0px 5px 3px;
+	border-radius: 3px;
+	color:white;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size:1.2rem;
+}
+
+.section_map .info_window>a{
+	text-decoration : none;
+	color: white;
+	transition:all 0.1s;
+	margin-top : 10px;
+	font-size:1rem;
+}
+
+.section_map .info_window>a:hover{
+	color:var(--fontColor);
+}
+
 .section_list{
 	width: 97%;
 	display:flex;

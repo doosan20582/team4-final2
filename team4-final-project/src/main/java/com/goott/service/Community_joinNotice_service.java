@@ -42,4 +42,6 @@ public interface Community_joinNotice_service {
 
 	public void inputPoint(Map<String, Object> map);
 
+	public String getImg(String member_id);
+
 }

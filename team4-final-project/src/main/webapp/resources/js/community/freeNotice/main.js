@@ -94,7 +94,7 @@
 	}
 	
 	var tag_color = function(){ //태그 누르면 색 변하게
-		document.querySelector(".side_nav").children[tag_id].style.color = "rgb(0, 173, 26)";
+		document.querySelector(".side_nav").children[tag_id].style.color = "rgb(142, 206, 231)";
 	}
 	
 	tag_color();
@@ -115,7 +115,7 @@
 		page_area.append(page_div);// 페이지 표시
 		
 		if(i==0){
-			page_btn.style.color = "rgb(0, 173, 26)"; // 처음 페이지 번호 색상 지정
+			page_btn.style.color = "rgb(142, 206, 231)"; // 처음 페이지 번호 색상 지정
 		}
 		
 		page_btn.addEventListener("click",function(){
@@ -126,7 +126,7 @@
 			}
 			
 			$(page_area).children().children().css("color","white");
-			this.style.color="rgb(0, 173, 26)"; // 선택한 페이지 번호 색성 변경
+			this.style.color="rgb(142, 206, 231)"; // 선택한 페이지 번호 색성 변경
 			
 			let change_page = {
 					page_count : i*10,
@@ -162,7 +162,7 @@
 	first_btn.addEventListener("click",function(){
 		page_area.style.left = 0;
 		$(page_area).children().children().css("color","white");
-		$(page_area).children().first().children().css("color","rgb(0, 173, 26)");
+		$(page_area).children().first().children().css("color","rgb(142, 206, 231)");
 		
 		let change_page = {
 				page_count : 0,
@@ -198,7 +198,7 @@
 			page_area.style.left = -(page-3)*60+"px";
 		}
 		$(page_area).children().children().css("color","white");
-		$(page_area).children().last().children().css("color","rgb(0, 173, 26)");
+		$(page_area).children().last().children().css("color","rgb(142, 206, 231)");
 		
 		let change_page = {
 				page_count : (page-1)*10,

@@ -44,4 +44,6 @@ public interface Community_joinNotice_mapper {
 
 	public void updateGrade(Map<String, Object> map);
 
+	public String getImg(String member_id);
+
 }

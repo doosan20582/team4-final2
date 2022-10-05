@@ -1,16 +1,7 @@
-/* :root{
-    --mainColor : rgb(24, 24, 24);
-    --subColor : rgb(59, 59, 59);
-    --borderColor : rgba(209, 209, 209, 0.486);
-    --fontColor : rgb(0, 173, 26); 
-}
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
- */
+/* 폰트 url */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Raleway:wght@200&display=swap');
+ 
 header{
     width: 100%;
     height: 100px;
@@ -23,11 +14,12 @@ header .logo{
     width: 20%;
     height: 100%;
     color: var(--fontColor);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: center;
+    font-family: 'Raleway', sans-serif;
 }
 
 header .logo a{
@@ -99,81 +91,51 @@ main{
     background-color: var(--subColor);
 }
 
-/* .side_nav{
-    width: 90%;
-    height: 592.5px;
-    margin-top: 40px;
-    border-radius: 5px;
-    background-color: var(--subColor);
-    list-style: none;
-    padding-left: 20px;
-    box-shadow : var(--mainColor) 0px 0px 3px 3px;
-}
-
-.side_nav>li{
-    color: white;
-    font-size: 1.3rem;
-    margin: 35px 0;
-    cursor: pointer;
-    transtion : all 0.1s;
-}
-
-.side_nav>li:hover{
-	color:var(--fontColor);	
-}
-
-.side_nav_search{
-    width: 230px;
-    height: 25px;
-    font-size: 1.2rem;
-    border-style: none;
-    border-radius: 3px;
-    padding-left: 10px;
-    margin-top : 40px;
-}
-
-.side_nav_search:focus{
-    outline: none;
-}
-
-.side_nav_search_btn{
-    color: white;
-    font-size: 1.2rem;
-    margin-left: 10px;
-    cursor: pointer;
-} */
 
 footer{
     width: 100%;
-    height: 300px;
+    min-width: 1200px;
+    height: 200px;
     border-top: 0.5px solid var(--borderColor);
     background-color: var(--subColor);
     display: flex;
     flex-direction: row;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+footer p{
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 footer .footer_logo{
-    width: 15%;
+    width: 30%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-size : 1.5rem;
 }
 
 footer .footer_logo h1{
-    color: var(--fontColor);
+  	color: var(--fontColor);
+	transition: .3s;
+	cursor: pointer;
 }
+/* footer .footer_logo h1:hover{
+  	transform: translateY(-10%);
+}  */
 
 footer .footer_logo h1 span{
     color: white;
 }
 
 footer .footer_content{
-    width: 85%;
+    width: 70%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(209, 209, 209);
+    flex-direction: column;
+    padding: 2.5rem;
+    padding-left:30rem;
+    color: var(--subFontColor);
 }
-

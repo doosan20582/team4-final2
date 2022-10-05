@@ -86,19 +86,23 @@ public class Community_freeNotice_controller {
 	@GetMapping("/detail") // 게시판 상세 페이지
 	public void detailPage (int board_id, Model model) {
 		fservice.increase(board_id);
+		String member_id = fservice.getDetail(board_id).getMember_id();
 		model.addAttribute("tag", fservice.getTag());
 		model.addAttribute("data", fservice.getDetail(board_id));
 		model.addAttribute("reply_data", fservice.replyList(board_id));
 		model.addAttribute("reply_count", fservice.replyCount(board_id));
+		model.addAttribute("profile", fservice.getImg(member_id));
 	}
 	
 	@GetMapping("/detail_user") // 게시판 유저 페이지
 	public void detailUserPage (int board_id, Model model) {
+		String member_id = fservice.getDetail(board_id).getMember_id();
 		fservice.increase(board_id);
 		model.addAttribute("tag", fservice.getTag());
 		model.addAttribute("data", fservice.getDetail(board_id));
 		model.addAttribute("reply_data", fservice.replyList(board_id));
 		model.addAttribute("reply_count", fservice.replyCount(board_id));
+		model.addAttribute("profile", fservice.getImg(member_id));
 	}
 	
 	@GetMapping("/correction") // 게시글 수정 페이지

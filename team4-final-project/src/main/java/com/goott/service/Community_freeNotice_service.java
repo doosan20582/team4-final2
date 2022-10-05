@@ -49,4 +49,6 @@ public interface Community_freeNotice_service {
 
 	public void inputPoint(T_board_VO board);
 
+	public String getImg(String member_id);
+
 }
