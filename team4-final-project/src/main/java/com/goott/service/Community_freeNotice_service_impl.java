@@ -120,4 +120,9 @@ public class Community_freeNotice_service_impl implements Community_freeNotice_s
 		mapper.updateGrade(board);
 	}
 
+	@Override
+	public String getImg(String member_id) {
+		return mapper.getImg(member_id);
+	}
+
 }

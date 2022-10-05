@@ -144,5 +144,9 @@
     	(select*from(select grade_id from t_grade where (select member_purchase_point + member_write_point from t_member where member_id = #{member_id}) between grade_start_point and grade_end_point)as a) 
     	where member_id = #{member_id};
     </update>
+    
+    <select id="getImg" resultType="String">
+    	select member_profile_img_url from t_member where member_id = #{member_id}
+    </select>
   	
   </mapper>

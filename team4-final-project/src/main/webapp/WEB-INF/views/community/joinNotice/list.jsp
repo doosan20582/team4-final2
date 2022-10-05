@@ -24,7 +24,7 @@
 		<li style="color:red">${data.camping_close}</li>
 	</c:if>
 	<c:if test="${data.camping_close ne '마감'}">
-		<li>${data.camping_close}</li>
+		<li style="color:rgb(142, 206, 231)">${data.camping_close}</li>
 	</c:if>
 		<c:if test="${member_auth eq '관리자'}">
 			<input class="list_check" type="checkbox">

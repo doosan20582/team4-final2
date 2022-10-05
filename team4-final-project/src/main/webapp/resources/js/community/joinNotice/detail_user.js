@@ -97,6 +97,17 @@ var marker = new kakao.maps.Marker({
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
+var iwContent = '<div class="info_window">'+ place + '<br><a href="https://map.kakao.com/link/to/'+place+','+latitude+','+longitude+'"target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+iwPosition = new kakao.maps.LatLng(latitude, longitude); //인포윈도우 표시 위치입니다
+
+//커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+map: map,
+position: iwPosition,
+content: iwContent,
+yAnchor: 1.8
+});
+
 // 댓글 view more
 $(function() {
 	$('.section_footer_commentList_viewMore_btn').click(function() {

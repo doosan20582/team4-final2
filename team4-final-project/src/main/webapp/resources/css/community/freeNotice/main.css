@@ -18,6 +18,7 @@ main{
 
 .side>h1{
     color:var(--fontColor);
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .side>h1>span{

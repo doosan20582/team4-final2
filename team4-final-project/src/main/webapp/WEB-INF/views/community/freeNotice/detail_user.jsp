@@ -30,7 +30,7 @@
 		<div class="section">
 			<div class="section_header">
 				<div class="section_header_profile">
-					<img src="/community/imgSubmit?uid=67ff1ee8-8ea9-4903-a339-0faee29db899&amp;fileName=캠핑메인.jpg" alt="">
+					<img src="${profile}" alt="">
 				</div>
 				<div class="section_header_info">
 					<div class="section_header_info_title">

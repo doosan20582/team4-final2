@@ -68,6 +68,16 @@
 					</div>
 
 					<div class="section1_noticeBoard_main">
+						<div class="section1_noticeBoard_title">
+							<li>글번호</li>
+							<li>말머리</li>
+							<li>제목</li>
+							<li>글쓴이</li>
+							<li>날짜</li>
+							<li>조회수</li>
+							<li>추천수</li>
+						</div>
+
 						<div class="section1_noticeBoard_content">
 							<%@ include file="freeNotice/list.jsp"%>
 						</div>
@@ -79,8 +89,20 @@
 						<h1>현재 모집중인 <span>캠핑모임</span></h1>
 						<h3><a href="/community/joinNotice/main">+ 더보기</a></h3>
 					</div>
-
+					
 					<div class="section1_notice_main">
+						<div class="section1_notice_title">
+							<li>글번호</li>
+							<li>제목</li>
+							<li>글쓴이</li>
+							<li>지역</li>
+							<li>인원</li>
+							<li>출발일</li>
+							<li>기간</li>
+							<li>조회수</li>
+							<li>마감여부</li>
+						</div>
+
 						<div class="section1_notice_content">
 							<%@ include file="joinNotice/list.jsp"%>
 						</div>

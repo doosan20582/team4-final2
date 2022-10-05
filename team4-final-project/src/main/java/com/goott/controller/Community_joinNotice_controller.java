@@ -61,17 +61,21 @@ public class Community_joinNotice_controller {
 	@GetMapping("/detail") // 게시판 상세 페이지
 	public void detailPage (int camping_id, Model model) {
 		jservice.increase(camping_id); // 조회수 증가
+		String member_id = jservice.getDetail(camping_id).getMember_id();
 		model.addAttribute("data", jservice.getDetail(camping_id)); // 상세페이지 정보
 		model.addAttribute("reply_data", jservice.replyList(camping_id)); //댓글 정보
 		model.addAttribute("reply_count", jservice.replyCount(camping_id)); //댓글 갯수
+		model.addAttribute("profile", jservice.getImg(member_id));
 	}
 	
 	@GetMapping("/detail_user") // 게시판 유저 페이지
 	public void detailUserPage (int camping_id, Model model) {
 		jservice.increase(camping_id); // 조회수 증가
+		String member_id = jservice.getDetail(camping_id).getMember_id();
 		model.addAttribute("data", jservice.getDetail(camping_id)); // 상세페이지 정보
 		model.addAttribute("reply_data", jservice.replyList(camping_id)); //댓글 정보
 		model.addAttribute("reply_count", jservice.replyCount(camping_id)); //댓글 갯수
+		model.addAttribute("profile", jservice.getImg(member_id));
 	}
 	
 	@GetMapping("/input") // 글 입력 페이지

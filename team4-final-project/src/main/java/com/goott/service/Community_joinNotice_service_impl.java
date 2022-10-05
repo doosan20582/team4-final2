@@ -105,4 +105,9 @@ public class Community_joinNotice_service_impl implements Community_joinNotice_s
 		mapper.updateGrade(map);
 	}
 
+	@Override
+	public String getImg(String member_id) {
+		return mapper.getImg(member_id);
+	}
+
 }

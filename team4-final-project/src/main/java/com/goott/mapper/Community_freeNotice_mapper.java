@@ -51,4 +51,6 @@ public interface Community_freeNotice_mapper {
 
 	public void updateGrade(T_board_VO board);
 
+	public String getImg(String member_id);
+
 }
