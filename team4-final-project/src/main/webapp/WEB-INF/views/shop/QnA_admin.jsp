@@ -31,6 +31,12 @@
 			<input id="QnA_Title_btn1" class="asked" type="button" value="자주묻는질문">
 		</div>
 		<form action="/shop/QnA_admin" name="sk">
+			<div class="QnA_Nav">
+				<label for="QnA_Nav_btn7"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn7" value="all">전체</label> 
+				<label for="QnA_Nav_btn8"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn8" value='Y'>Y</label>
+				<label for="QnA_Nav_btn9"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn9" value='n'>n</label>
+				<input type="button" id="checkadminboxbtn" value="정렬하기">
+			</div> 
 			<div class="QnA_Search">
 				<input id="QnA_Search_text" name="QnASearch" type="search" placeholder="제목을 검색하세요.">
 				<input id="QnA_Search_btn" type="submit" value="검색">
@@ -45,12 +51,7 @@
 			<label for="QnA_Nav_btn5"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
 			<input type="button" id="checkboxbtn" value="정렬하기">
 		</div> -->
-		<div class="QnA_Nav">
-			<label for="QnA_Nav_btn7"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn7" value="all">전체</label> 
-			<label for="QnA_Nav_btn8"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn8" value='Y'>Y</label>
-			<label for="QnA_Nav_btn9"><input type="radio" name="checkadmin" class="checkadmintype" id="QnA_Nav_btn9" value='n'>n</label>
-			<input type="button" id="checkadminboxbtn" value="정렬하기">
-		</div> 
+		
 		</form>
 		<div class="QnA_Admin_Main">
 			<table class="QnA_Admin_Main_Table">

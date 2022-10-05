@@ -46,7 +46,7 @@ public interface QnAService {
 	public int countQnAadminBoardCategory(String checkadmin, String QnASearch);
 
 	
-
+	public void Question_admin_update(QnAVO qnA);
 
 
 

@@ -32,20 +32,19 @@
 			<input id="QnA_Title_btn" class="btn" type="button" value="문의하기">
 		</div>
 		<form action="/shop/QnA" name="sk">
+			<div class="QnA_Nav">
+				<label for="QnA_Nav_btn6"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn6" value="all">전체</label>
+				<label for="QnA_Nav_btn2"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
+				<label for="QnA_Nav_btn1"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
+				<label for="QnA_Nav_btn3"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
+				<label for="QnA_Nav_btn4"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
+				<label for="QnA_Nav_btn5"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
+				<input type="button" id="checkboxbtn" value="정렬하기">
+			</div>
 			<div class="QnA_Search">
 				<input id="QnA_Search_text" name="QnASearch" type="search" placeholder="제목을 검색하세요.">
 				<input id="QnA_Search_btn" type="submit" value="검색">
 			</div>
-		
-		<div class="QnA_Nav">
-			<label for="QnA_Nav_btn6"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn6" value="all">전체</label>
-			<label for="QnA_Nav_btn2"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn2" value='배송'>배송</label> 
-			<label for="QnA_Nav_btn1"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn1" value='주문/결제' >주문/결제</label> 
-			<label for="QnA_Nav_btn3"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn3" value='취소/교환/환불'>취소/교환/환불</label> 
-			<label for="QnA_Nav_btn4"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn4" value='회원'>회원</label> 
-			<label for="QnA_Nav_btn5"><input type="radio" name="checkcategory" class="checktype" id="QnA_Nav_btn5" value='기타'>기타</label>
-			<input type="button" id="checkboxbtn" value="정렬하기">
-		</div>
 		</form>
 		<div class="QnA_Admin_Main">
 			<table class="QnA_Admin_Main_Table">

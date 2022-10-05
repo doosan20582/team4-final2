@@ -24,7 +24,7 @@
 	<main>
 		<div class="name1">
 			<div class="btn">
-				<button class="list_btn">목록</button>
+				<button class="list_btn4">목록</button>
 			</div>
 			<div class="name2">
 				<div class="name2_1">
@@ -52,6 +52,7 @@
 			 	<p>답변 내용</p>
 			 	${data.qna_answer_text}
 			 </div>
+			 <input type="text" value="${data.qna_admin_answer}">
 		</div>
 		<div>
 			<%-- <input type="hidden" name="qna_answer_text" value="${data.qna_answer_text}"> --%>
@@ -64,13 +65,19 @@
 				<input type="submit" value="수정"/>
 			</form>
 			</c:if> --%>
-			<c:if test="${sessionScope.login_auth eq '관리자'}">
+			<c:if test="${sessionScope.login_auth eq '관리자' && data.qna_answer_text eq null}">
 			<form action="Question_admin" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
    			 <input type="submit" value="답변" />
 			</form>
+			<c:if test="${sessionScope.login_auth eq '관리자'}">
+			<form action="Question_admin_update" method="get">
+   			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
+   			 <input type="submit" value="답변수정" />
+			</form>
 			</c:if>
-			<c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
+			</c:if>
+			<c:if test="${sessionScope.login_id eq data.member_id}">
 			<form action="Question_update" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
    			 <input type="submit" value="수정" />
@@ -91,10 +98,20 @@
 
 	<script type="text/javascript">
     /* let update_btn = document.querySelector(".update_btn"); */
-    let list_btn = document.querySelector(".list_btn");
+    console.log('<c:out value="${data.qna_admin_answer}"/>')
+    let list_btnn = document.querySelector(".list_btn4");
     
-    list_btn.addEventListener('click',function(){
-    	location.href="QnA"
+    list_btnn.addEventListener('click',function(){
+    	if(${sessionScope.login_id == 'admin'}){
+    		location.href="QnA_admin"
+    	}
+    		
+    	else{
+    		location.href="QnA" 
+    	}
+    	
+    	
+    	
     });
     
     /* update_btn.addEventListener('click',function(){

@@ -12,6 +12,10 @@
 		where qna_id =#{qna_id};
 	</update>
 	
+	<update id="Question_admin_update" parameterType="com.goott.domain.QnAVO">
+		update t_qna_answer set  qna_answer_text=#{qna_answer_text}  
+		where qna_id =#{qna_id};
+	</update>
 	<insert id="Question_admin" parameterType="com.goott.domain.QnAVO">
 		insert into t_qna_answer (qna_id, qna_answer_text)
 		values(#{qna_id} ,#{qna_answer_text})
@@ -23,7 +27,7 @@
 	
 	<select id="QnA_detail" parameterType="Map" resultType="com.goott.domain.QnAVO">
 		select
-		  Q.qna_id,Q.member_id,Q.qna_category,Q.qna_public,Q.qna_title,Q.qna_text,Q.qna_regdate,A.qna_answer_text
+		  Q.qna_id,Q.member_id,Q.qna_category,Q.qna_public,Q.qna_title,Q.qna_text,Q.qna_admin_answer,Q.qna_regdate,A.qna_answer_text
  		from t_qna Q left outer join t_qna_answer A on Q.qna_id = A.qna_id where Q.qna_id =#{qna_id}
 	</select>
 	

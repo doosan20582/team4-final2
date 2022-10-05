@@ -205,4 +205,31 @@ public class QnAController {
 		return "/shop/QnA_admin";
 	}
 
+  
+	  // 게시물 수정
+	  @RequestMapping(value="/Question_admin_update", method =RequestMethod.GET)
+	  public String Question_admin_update(@RequestParam Map<String,Object> map, Model model) {
+		  model.addAttribute("data",qnaservice.QnA_detail(map));
+	   return "/shop/Question_admin_update";
+	}
+	  // 게시물 수정
+	  @RequestMapping(value="/Question_admin_update", method =RequestMethod.POST)
+	  public ModelAndView Question_admin_update(@RequestParam Map<String,Object> map,  QnAVO QnA) {
+		 System.out.println(map);
+		 ModelAndView mv = new ModelAndView();
+		  qnaservice.Question_admin_update(QnA);
+	//	 mv.addObject("data", qnaservice.Question_update(map));
+		 mv.setViewName("redirect:/shop/QnA_admin");
+		 log.info(mv);
+		 return mv;
+	}
+  
+  
+  
+  
+  
+  
+  
+  
+
 }
