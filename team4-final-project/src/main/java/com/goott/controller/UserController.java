@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.BasketVO;
 import com.goott.domain.MemberVO;
 import com.goott.domain.OrderVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
+import com.goott.mapper.UserMapper;
+import com.goott.service.AdminService;
 import com.goott.service.MemberService;
 import com.goott.service.OrderService;
 import com.goott.service.UserService;
@@ -38,7 +41,10 @@ public class UserController {
 	UserService userService;
 	@Inject
 	MemberService memberService;
-	
+	@Inject
+	UserMapper userMapper;
+	@Inject
+	AdminService adminService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String userGet(HttpServletRequest request, Model model) {
@@ -58,6 +64,19 @@ public class UserController {
 		model.addAttribute("orderList" , orderList);
 		model.addAttribute("salesList" , salesList);
 		model.addAttribute("memberVO" , memberVO);
+		
+		
+		
+		List<Map<String, Object>> freeMapList = adminService.getFreeList(member_id);
+		List<Map<String, Object>> campingMapList = adminService.getCampingList(member_id);
+		List<Map<String, Object>> qnaMapList = adminService.getQnaList(member_id);
+		
+		
+		
+		model.addAttribute("freeMapList", freeMapList);
+		model.addAttribute("campingMapList", campingMapList);
+		model.addAttribute("qnaMapList", qnaMapList);
+		
 		
 		
 		return "/user/mypage";
@@ -215,10 +234,56 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "basket", method = RequestMethod.GET)
-	public String basketGet() {
+	public String basketGet(HttpServletRequest request, Model model) {
 		log.info("장바구니 ==================================================");
+		HttpSession session = request.getSession();
 		
-		return "shop/order/basket";
+		String member_id = session.getAttribute("login_id").toString();
+		List<BasketVO> list = userMapper.selectBasketList(member_id);
+		model.addAttribute("list", list);
+		
+		return "/user/basket";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "helpful", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public Map<String, Object> helpful(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+		log.info("도움되요 ===========================================");
+		HttpSession session = request.getSession();
+		
+		String member_id = session.getAttribute("login_id").toString();
+		int product_review_id = Integer.parseInt( param.get("product_review_id").toString() );
+		
+		//도움되요 로직 작성
+		String resultText = userService.reviewHelpful(member_id, product_review_id);
+		//업데이트 된 도움이되요 값
+		int count = userService.getHelpful(product_review_id);
+		Map<String, Object> returnMap = new HashMap<>();
+		returnMap.put("msg", resultText);
+		returnMap.put("count", count);
+		return returnMap;
+	}
+	@ResponseBody
+	@RequestMapping(value = "deleteBasket", method = RequestMethod.POST, produces = "text/html;charset=utf-8")
+	public String deleteBasket(@RequestBody Map<String, Object> param) {
+		log.info("장바구니 삭제 ================================");
+		log.info(param);
+		int basket_id = Integer.parseInt( param.get("basket_id").toString() );
+		int result = userMapper.deleteBasket(basket_id);
+		
+		if(result == 1)
+			return "삭제되었습니다.";
+		else
+			return "죄송합니다. 잠시후 다시 시도해 주세요";
+	}
+	@ResponseBody
+	@RequestMapping(value = "buyBasket", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public Map<String, Object> buyBasket(@RequestBody Map<String, Object> param) {
+		log.info("장바구니 구매 ================================");
+		log.info(param);
+		int basket_id = Integer.parseInt( param.get("basket_id").toString() );
+		Map<String, Object> returnMap = userService.buyToBasket(basket_id);
+		return returnMap;
 	}
 	
 }

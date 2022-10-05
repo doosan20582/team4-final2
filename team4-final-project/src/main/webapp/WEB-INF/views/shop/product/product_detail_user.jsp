@@ -21,16 +21,16 @@
 <body>
 	<!-- 헤더 -->
 	<jsp:include page="../header.jsp" />
-
+	<input type="hidden" name="member_id" id="loginInput" value="${sessionScope.login_id}">
 	<!--메인-->
 
 	<!-- 상품 pk -->
 	<main>
 		<!--상품 이미지, 상품 가격, 상품 설명, 수량, 장바구니 담기, 구매하기-->
 		<form method="get" action="/order">
-			<%-- <c:if test="${sessionScope.login_id ne null }">
-				<input type="hidden" name="member_id" value="${login_id}">
-			</c:if> --%>
+			
+			
+			
 
 			<div class="productTop">
 				<input type="hidden" name="product_id" id="product_id" value="${product.product_id }">
@@ -182,11 +182,13 @@
 			<!--리뷰 내용들-->
 			<input type="hidden" name="currentPage" id="currentPage" value="1">
 			<div class="reviewBottom">
-				<c:forEach var="item" items="${reviewList }">
+				<!-- 리뷰 있다면 -->
+				<c:if test="${!empty reviewList }">
+					<c:forEach var="item" items="${reviewList }">
 					<div class="reviews">
 						<!-- 아이디, 날짜 -->
 						<div class="reviewsDiv reviewsHeader">
-							<input type="hidden" value="${item.product_review_id }"> <input type="hidden" value="${item.product_id }">
+							 <input type="hidden" value="${item.product_id }">
 							<span>
 								<span class="reviewWriterSpan">${item.member_id }</span>
 								&nbsp;님
@@ -209,6 +211,7 @@
 								<span>${item.product_review_grade }점</span>
 							</div>
 							<div class="reviewsGradeInner reviewsGradeInnerThumb">
+								<input type="hidden" value="${item.product_review_id }">
 								<span class="material-symbols-outlined thumb"> thumb_up </span>
 
 								<span class="helpfulSpan">${item.product_review_helpful }</span>
@@ -256,6 +259,13 @@
 					</div>
 
 				</c:forEach>
+				</c:if>
+				<!-- 리뷰 없다면 -->
+				<c:if test="${empty reviewList }">
+					<p>작성된 리뷰가 없습니다.</p>
+					
+					
+				</c:if>
 
 			</div>
 

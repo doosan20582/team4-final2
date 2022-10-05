@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goott.domain.BasketVO;
 import com.goott.domain.ProductReviewVO;
 import com.goott.domain.SalesVO;
 import com.goott.mapper.MemberMapper;
@@ -263,6 +264,70 @@ public class UserServiceImpl implements UserService {
 		
 		return userMapper.selectUserGradeAndProfileImgUrl(member_id);
 	}
+	
+	//리뷰 좋아요 누르기
+	@Transactional
+	@Override
+	public String reviewHelpful(String member_id, int product_review_id) {
+		//좋아요 눌렀는지 확인
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("product_review_id", product_review_id);
+		int count = userMapper.selectCountHelpful(map);
+		//count가 0보다 크면 해당 리뷰에 좋아요 누른상태
+		if(count > 0) {
+			return "해당 리뷰글을 이미 추천 하셨습니다.";
+		}
+		
+		//좋아요 테이블에 내용 넣기
+		int countInsert = userMapper.insertHelpful(map);
+		//만약 countInsert의 숫자가 1이 아니라면 에러
+		if(countInsert != 1) {
+			return "죄송합니다. 잠시후 다시 시도해 주세요.";
+		}
+		//리뷰의 helpful 숫자 업데이트
+		int countUpdate = userMapper.updateHelpful(product_review_id);
+		//만약 countUpdate의 숫자가 1이 아니라면 에러
+		if(countUpdate != 1) {
+			return "죄송합니다. 잠시후 다시 시도해 주세요.";
+		}
+		return "해당 리뷰글을 추천하였습니다.";
+	}
+	//리뷰 도움이 되요 가져오기
+	@Override
+	public int getHelpful(int product_review_id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectHelpful(product_review_id);
+	}
+	@Override
+	public String setBasket(BasketVO basketVO) {
+		int result = userMapper.insertBasket(basketVO);
+		
+		if(result == 1) {
+			return "장바구니에 담았습니다.";
+		}
+		else
+			return "죄송합니다. 잠시후 다시 시도해 주세요.";
+	}
+	
+	@Override
+	public List<BasketVO> getBasketList(String member_id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectBasketList(member_id);
+	}
+	@Override
+	public int deleteBasket(int basket_id) {
+		int count = userMapper.deleteBasket(basket_id);
+		return count;
+	}
+	@Override
+	public Map<String, Object> buyToBasket(int basket_id) {
+		Map<String, Object> map = userMapper.selectBasketInfo(basket_id);
+		userMapper.deleteBasket(basket_id);
+		
+		return map;
+	}
+	
 	
 	
 

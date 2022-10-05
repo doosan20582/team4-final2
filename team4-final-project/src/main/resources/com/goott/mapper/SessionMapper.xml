@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goott.mapper.SessionMapper">
+	<!-- 세션 생성시 테이블에 저장 -->
+	<insert id="insertSession" parameterType="com.goott.domain.SessionVO">
+		<![CDATA[
+			insert into t_session(browser, ip) values(#{browser}, #{ip})
+		]]>
+		
+	</insert>
+</mapper>

@@ -49,6 +49,12 @@ const passwordBtn = document.querySelector('#passwordBtn');
 const passwordInput = document.querySelector('#passwordInput');
 //비밀번호 체크 폼
 const passwordCheckForm = document.querySelector('#passwordCheckForm');
+//내글보기 앵커
+const myListAnchor = document.querySelector('.myListAnchor');
+//내글보기 컨테이너
+const myListContainer = document.querySelector('.myListContainer');
+//내글보기 닫기
+const myListHeader = document.querySelector('.myListHeader');
 // ==================================================================================================
 writeReviewSpan.forEach((item) => {
     item.addEventListener('click', writeReview);
@@ -77,7 +83,19 @@ imgSubmit.addEventListener('click', doImgAjax);
 changePasswordAnchor.addEventListener('click', showChangeCon);
 changePasswordContainer.addEventListener('click', closeChangeCon);
 passwordBtn.addEventListener('click', checkPw);
+myListAnchor.addEventListener('click', showList);
+myListHeader.addEventListener('click', closeList);
 // =====================================================================================================
+
+function closeList(){
+	myListContainer.style.display = 'none';
+}
+
+function showList(){
+	
+	myListContainer.style.display = 'block';
+}
+
 //비밀번호 체크 
 function checkPw(){
 	const pwText = passwordInput.value;

@@ -11,7 +11,7 @@
 		<div class="reviews">
 			<!-- 아이디, 날짜 -->
 			<div class="reviewsDiv reviewsHeader">
-				<input type="hidden" value="${item.product_review_id }"> <input type="hidden" value="${item.product_id }">
+				 <input type="hidden" value="${item.product_id }">
 				<span>
 					<span class="reviewWriterSpan">${item.member_id }</span>
 					&nbsp;님
@@ -34,6 +34,7 @@
 					<span>${item.product_review_grade }점</span>
 				</div>
 				<div class="reviewsGradeInner reviewsGradeInnerThumb">
+					<input type="hidden" value="${item.product_review_id }">
 					<span class="material-symbols-outlined thumb"> thumb_up </span>
 
 					<span class="helpfulSpan">${item.product_review_helpful }</span>
