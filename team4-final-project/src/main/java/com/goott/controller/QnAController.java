@@ -44,41 +44,6 @@ public class QnAController {
 		log.info("내가 검색하고싶은거는"+QnASearch);
 		int total = qnaservice.countQnABoardCategory(checkcategory, QnASearch);
 		
-//		// 문의글 총 개수 조회
-//		if( (checkcategory.isEmpty() || checkcategory.contentEquals("all") ) && (QnASearch.isEmpty() || QnASearch.contentEquals("")) ){
-//			total = qnaservice.countQnABoard();
-//		}
-//		// 카테고리 값은 있고 검색 값은 없는경우 조회
-//		else if( (!checkcategory.isEmpty() || !checkcategory.contentEquals("all") ) && (QnASearch.isEmpty() || QnASearch.contentEquals("")) ){
-//			total = qnaservice.countQnABoard();
-//		}
-//		// 카테고리 값은 없고 검색 값은 있는경우 조회
-//		else if( (checkcategory.isEmpty() || checkcategory.contentEquals("all") ) && (!QnASearch.isEmpty() || !QnASearch.contentEquals("")) ){
-//			return null;
-//		}
-//		// 카테고리 값 없고 검색 값 없는 경우 조회
-//		else{
-//			return null;
-//		}
-		
-		
-		
-		
-//		if(checkcategory.isEmpty() || checkcategory.contentEquals("all") ) {
-//			total = qnaservice.countQnABoard();
-//		}
-//		// 카테고리 별 문의글 총 개수 
-//		else if(!checkcategory.isEmpty()){
-//
-//			total = qnaservice.countQnABoardCategory(checkcategory, QnASearch);
-//		}
-//		else if(QnASearch.isEmpty() || QnASearch.contentEquals("all")) {
-//			total = qnaservice.countQnABoard();
-//		}
-//		else if(!QnASearch.isEmpty()) {
-//			total = qnaservice.countQnABoardCategory(checkcategory, QnASearch);
-//		}
-//		
 		log.info(" 게시글 총 개수     " +total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -179,9 +144,56 @@ public class QnAController {
 	  return mv;
   }
   
+  // 자주 묻는 질문
   @RequestMapping(value="/asked_Question", method =RequestMethod.GET)
   public String asked_Question() {
 	     return "/shop/asked_Question";
 	  }
+  
+  // 관리자 페이지
+  @RequestMapping(value = "/QnA_admin")
+	public String QnA_admin(PagingVO vo, Model model	
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
+			, @RequestParam(defaultValue = "all")String checkadmin 
+			, @RequestParam(defaultValue = "all")String QnASearch, QnAVO qna
+			) {
+		log.info("게시글페이지 보기------------------------------------");
+//		log.info("카테고리 "+checkcategory);
+//		log.info("검색어 "+QnASearch);
+		log.info("현재페이지 "+nowPage);
+		log.info("페이지개수 "+cntPerPage);
+//		log.info("내가 검색하고싶은거는"+QnASearch);
+		log.info("내가 검색하고싶은거는================"+checkadmin);
+//		int total = qnaservice.countQnAadminBoardCategory(checkcategory,checkadmin, QnASearch);
+		int total = qnaservice.countQnAadminBoardCategory(checkadmin, QnASearch);
+		
+
+		log.info(" 게시글 총 개수     " +total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		} 
+		
+
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		log.info("-------------------------------");
+		log.info("vo는 " +vo);
+		List<QnAVO> data = qnaservice.selectQnAadminBoard(vo,checkadmin,QnASearch);
+		model.addAttribute("paging", vo);
+		model.addAttribute("list", data);
+		model.addAttribute("checkadmin",checkadmin);
+//		model.addAttribute("checkcategory",checkcategory);
+		model.addAttribute("QnASearch", QnASearch);
+		log.info("-------------------------------");
+		log.info(data);
+		log.info("-------------------------------");
+		
+		return "/shop/QnA_admin";
+	}
   
 }

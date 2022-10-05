@@ -33,7 +33,17 @@ public interface QnAService {
 
 	public void Question_admin_answer(QnAVO qnA);
 
+	// 페이징 처리 게시글 조회
+	// 관리자
+//	public List<QnAVO> selectQnAadminBoard(PagingVO vo, String checkcategory, String QnASearch, String checkadmin);
+//
+//	public int countQnAadminBoardCategory(String checkcategory, String QnASearch, String checkadmin);
+	
+	// 페이징 처리 게시글 조회
+	// 관리자
+	public List<QnAVO> selectQnAadminBoard(PagingVO vo, String checkadmin, String QnASearch);
 
+	public int countQnAadminBoardCategory(String checkadmin, String QnASearch);
 
 	
 

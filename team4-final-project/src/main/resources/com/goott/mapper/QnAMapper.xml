@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goott.mapper.QnAMapper">
-	<!-- <select id="list" resultType="com.goott.domain.QnAVO">
-		select qna_id, qna_category, qna_title, qna_regdate, qna_admin_answer from t_qna
-		;
-	</select> -->
 	
 	<insert id="Question" parameterType="com.goott.domain.QnAVO">
 		insert into t_qna ( member_id, qna_category, qna_public, qna_title, qna_text) 
@@ -27,30 +23,14 @@
 	
 	<select id="QnA_detail" parameterType="Map" resultType="com.goott.domain.QnAVO">
 		select
-		<!-- <choose>
-		<when test="qna_answer_text==null"> 
-		qna_id, member_id, qna_title, qna_public,qna_category, qna_regdate, qna_text 
-		from
-		 t_qna where qna_id  
-		</when>
- 		<otherwise>  -->
 		  Q.qna_id,Q.member_id,Q.qna_category,Q.qna_public,Q.qna_title,Q.qna_text,Q.qna_regdate,A.qna_answer_text
  		from t_qna Q left outer join t_qna_answer A on Q.qna_id = A.qna_id where Q.qna_id =#{qna_id}
-		<!--  </otherwise>
-		 </choose>  -->
-	
 	</select>
 	
 	<delete id="delete" parameterType="com.goott.domain.QnAVO">
 		delete from t_qna where qna_id=#{qna_id}
 	</delete>
-	<sql id="">
 	
-	</sql>
-	<!-- 총 게시글 갯수 출력 -->
-	<!-- <select id="countQnABoard" resultType="int">
-		SELECT COUNT(*) FROM t_qna;
-	</select> -->
 	<!-- 총 게시글 갯수 출력(검색 및 카데고리 ) -->
 	<select id="countQnABoardCategory" parameterType="Map" resultType="int">
 		SELECT COUNT(*) FROM t_qna
@@ -68,10 +48,10 @@
 		
 		 </if> 
 		 
-	</select>
+	</select> 
 	
 	<!-- 페이징 처리 후 게시글 조회 -->
-	<!-- <select id="selectQnABoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
+	<!-- <select id="countQnABoardCategory" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
 		
 		SELECT *
 			FROM t_qna
@@ -89,7 +69,7 @@
 		 	</if> 
 			
 			limit #{vo.start},#{vo.end} 
-	</select> -->
+	</select> --> 
 	<select id="selectQnABoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
 		
 		SELECT *
@@ -124,11 +104,75 @@
 			 rnum between #{vo.start} AND #{vo.end}
 
 			 ;
+	</select> 
+	
+	<!-- 관리자 페이지 -->
+	<select id="countQnAadminBoardCategory" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM t_qna
+
+		<!-- <if test="checkadmin != 'all'">
+		where qna_admin_answer like CONCAT('%',#{checkadmin},'%')
+		 </if> 
+		<if test="checkadmin =='all'">
+		where qna_title like CONCAT('%',#{QnASearch},'%')
+		 </if> 
+		<if test="checkadmin != 'all'">
+		where qna_admin_answer like CONCAT('%',#{checkadmin},'%')
+		 </if>  -->
+		 
+		 
+		 <if test="QnASearch != 'all' and checkadmin != 'all'">
+		where  qna_title like CONCAT('%',#{QnASearch},'%') and qna_admin_answer =#{checkadmin}
+		 </if> 
+		<if test="QnASearch != 'all' and checkadmin =='all'">
+		where  qna_title like CONCAT('%',#{QnASearch},'%')
+		 </if> 
+		<if test="QnASearch =='all' and checkadmin != 'all'">
+		where  qna_admin_answer =#{checkadmin}
+		 </if> 
+		<if test="QnASearch =='all' and checkadmin =='all'">
+		
+		 </if> 
+		 
+		 
+		 
 	</select>
-	
-	
-	
-	
+	<select id="selectQnAadminBoard" parameterType="com.goott.domain.PagingVO" resultType="com.goott.domain.QnAVO">
+		
+		SELECT *
+			FROM (
+  				SELECT @rownum:=@rownum+1  rnum, A.* 
+  					FROM t_qna A, 
+  			
+  				
+  				<if test="QnASearch != 'all' and checkadmin != 'all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R where qna_admin_answer like CONCAT('%',#{checkadmin},'%') and qna_title like CONCAT('%',#{QnASearch},'%') order by qna_regdate desc
+		 		</if>
+		 		<if test="QnASearch != 'all' and checkadmin =='all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R where qna_title like CONCAT('%',#{QnASearch},'%') order by qna_regdate desc
+				 </if> 
+				 <if test="QnASearch == 'all' and checkadmin != 'all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R where qna_admin_answer like CONCAT('%',#{checkadmin},'%') order by qna_regdate desc
+		 		</if>
+				 <if test="QnASearch == 'all' and checkadmin == 'all'">
+				(
+  									SELECT @ROWNUM := 0
+  									) R order by qna_regdate desc
+		 		</if>
+				 
+				
+			) LIST
+			WHERE
+			 rnum between #{vo.start} AND #{vo.end}
+
+			 ;
+	</select>
 	
 
 </mapper>
