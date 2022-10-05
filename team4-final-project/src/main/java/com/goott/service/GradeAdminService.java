@@ -10,7 +10,9 @@ public interface GradeAdminService {
 	public List<GradeVO> gradePolicy();
 	
 	//관리자 - 등급 정책 삭제
-	public void gradePolicyDelete(GradeVO gradeVO);
+	public void gradePolicyDelete(int temp);
 	
 	public void gradePolicyAdd(GradeVO gradeVO);
+	
+	public void gradePolicyModify(GradeVO gradeVO);
 }

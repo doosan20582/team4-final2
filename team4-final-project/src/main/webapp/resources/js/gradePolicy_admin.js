@@ -45,9 +45,10 @@ function selectDelete(){
 				for(let i=0; i<list.length; i++){
 					if(list[i].checked){
 						valueArr.push(list[i].value);
-						console.log(valueArr);
 					}
 				}
+				console.log(valueArr);
+				
 				//삭제 
 				$.ajax({
 					url : "/gradePolicy_adminDelete", 
@@ -64,3 +65,6 @@ function selectDelete(){
 		}
 	}
 };
+
+
+//수정 버튼 클릭 시 

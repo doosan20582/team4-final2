@@ -30,7 +30,7 @@
 				</p>
 				<div class="btn">
 					<input type="submit" value="추가" class="btn  insert_btn" onclick="location.href='/gradePolicyAdd_admin'"/>
-					 <input type="submit" value="수정" class="btn  update_btn" onclick="location.href='/gradePolicyUpdate_admin'" />
+<!-- 					 <input type="submit" value="수정" class="btn  update_btn" onclick="location.href='/gradePolicyUpdate_admin'" /> -->
 					<input type="button" value="삭제" class="btn  delete_btn" onclick="selectDelete();"/>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 									<td>${row.grade_accrual_rate*100}%</td>
 									<td style = "background-color:${row.grade_color}"></td>
 									<td style = "background-color:${row.grade_font_color}"></td>
-									<td><img src="/resources/img/${row.grade_img_url}"
+									<td><img src="/gradeImg/${row.grade_img_url}"
 										width="80%" height="100%"></td>
 								</tr>
 							</c:forEach>
