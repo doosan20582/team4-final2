@@ -28,8 +28,10 @@
 		
 		<div class="QnA_Title">
 			<h1>QnA</h1>
-			<input id="QnA_Title_btn1" class="asked" type="button" value="자주묻는질문">
-			<input id="QnA_Title_btn" class="btn" type="button" value="문의하기">
+			<div class="QnA_Title_btnContainer">
+			<input id="QnA_Title_btnAsked" class="asked" type="button" value="자주묻는질문">
+			<input id="QnA_Title_btn"  type="button" value="문의하기">
+			</div>
 		</div>
 		<form action="/shop/QnA" name="sk">
 			<div class="QnA_Nav">
@@ -110,7 +112,7 @@
     let QnA_Title_btn = document.querySelector("#QnA_Title_btn");
     let checkboxbtn = document.querySelector("#checkboxbtn");
     let checktype = document.querySelectorAll(".checktype");
-    let asked = document.querySelector(".asked");
+    let asked = document.querySelector("#QnA_Title_btnAsked");
     
     QnA_Title_btn.addEventListener('click',function(){
     	if(login_id.value!=null && login_id.value!=''){
