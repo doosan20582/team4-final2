@@ -503,6 +503,9 @@ main .productBottom{
 	
 	background-color: rgba(0, 0, 0, 0.339);
     backdrop-filter: blur(4px);
+    
+    
+    
 }
 
 .youtubeInnerDiv{
@@ -522,6 +525,16 @@ main .productBottom{
 
 .helpfulAni{
 	animation: aniThumb 0.5s 1 linear alternate;
+}
+
+
+.youtubeInnerTop{
+	border: 3px solid white;
+	display: flex;
+	
+}
+.youtubeCloseIcon{
+	color: white;
 }
 
 @keyframes aniThumb{
