@@ -33,25 +33,20 @@
 					<div class="myGradeState_bottom">
 						<div id="circle">등급혜택</div>
 						<div id="text1">
-							제품 구매 시 전 제품 <b> ${Info.grade_accrual_rate*100}% 적립</b>
+							제품 구매 시 전 제품 <b ${Info.grade_font_color}> ${Info.grade_accrual_rate*100}% 적립</b>
 						</div>
-						<div id="text2">
-							제품 구매 시 전 제품 <b> ${Info.grade_discount*100}% 할인</b>
-						</div>
+<%-- 						<div id="text2">
+							제품 구매 시 전 제품 <b ${Info.grade_font_color}> ${Info.grade_discount*100}% 할인</b>
+						</div> --%>
 					</div>
 				</div>
-				<div class="NextMonthGrade">
 					<div class="NextMonthGrade"
 						style="background-color: ${nextInfo.grade_color}">
-						<p class="p1">
-							다음달 예상등급은 <span id="cus_nextgrade">${naxtInfo.grade_name}</span>
-						</p>
 						<p class="p1">
 							<span id="cus_money">${(Info.grade_end_point+1-Info.member_purchase_point+Info.member_write_point)}</span>
 							원 더 모으면 레벨업!
 						</p>
 					</div>
-				</div>
 			</div>
 
 
@@ -67,72 +62,25 @@
 					</ul>
 				</div>
 
-		<%-- 			<c:forEach items="${gradeInfo}" var="Info"> --%>
-					<div class="grade level1">
+			
+					<c:forEach var="Info" items="${map.InfoAll}" >
+					
+					<div class="grade level1" style="background-color: ${Info.grade_color}" >
 						<div class="grade_left">
-							<h3>앰버</h3>
-							<p>누적 포인트 ${Info.grade_start_point}만원 이상</p>
+							<h3 style="color: ${Info.grade_font_color}">${Info.grade_name }</h3>
+							<p>누적 포인트 ${Info.grade_end_point}원 이상</p>
 							<p>
-								적립 시 <span id="l1">${Info.grade_discount*100}% 할인</span> <span
-									id="l1">${Info.grade_accrual_rate*100}% 적립 </span>
+								적립 시 <span style="color: ${Info.grade_font_color}">${Info.grade_discount*100}% 할인</span>
+								<span style="color: ${Info.grade_font_color}">${Info.grade_accrual_rate*100}% 적립 </span>
 							</p>
 						</div>
 						<div class="grade_right">
-							<img src="file:C:/gradeImg/${Info.grade_img_url }">
+							<img src="/gradeImg/${Info.grade_img_url }">
 						</div>
 					</div>
-				<%-- 	</c:forEach> --%>
+					</c:forEach>
 
 
-				<%-- <div class="grade level2">
-					<div class="grade_left">
-						<h3>에메랄드</h3>
-						<p>누적 포인트 ${Info.grade_start_point}만원 이상</p>
-						<p>
-							구매 시 <span id="l1">${Info.grade_discount*100}% 할인</span> <span
-								id="l1">${Info.grade_accrual_rate*100}% 적립 </span>
-						</p>
-					</div>
-					<div class="grade_right">
-						<img src="/gradeImg/에메랄드.PNG">
-					</div>
-				</div>
-				<div class="grade level3">
-					<div class="grade_left">
-						<h3>루비</h3>
-						<p>한달 누적 금액 0만원 이상</p>
-						<p>
-							구매 시 <span id="l3">전 품목 8% 할인</span>
-						</p>
-					</div>
-					<div class="grade_right">
-						<img src="/resources/img/루비.PNG">
-					</div>
-				</div>
-				<div class="grade level4">
-					<div class="grade_left">
-						<h3>사파이어</h3>
-						<p>한달 누적 금액 0만원 이상</p>
-						<p>
-							구매 시 <span id="l4">전 품목 12% 할인</span>
-						</p>
-					</div>
-					<div class="grade_right">
-						<img src="/resources/img/사파이어.PNG">
-					</div>
-				</div>
-				<div class="grade level5">
-					<div class="grade_left">
-						<h3>다이아몬드</h3>
-						<p>한달 누적 금액 0만원 이상</p>
-						<p>
-							구매 시 <span id="l5">전 품목 16% 할인</span>
-						</p>
-					</div>
-					<div class="grade_right">
-						<img src="/resources/img/다이아몬드.PNG">
-					</div>
-				</div>     --%>
 
 			</div>
 		</div>

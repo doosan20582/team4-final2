@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class GradeController {
 	
 	//유저 등급(내 정보) 확인
 	@RequestMapping(value = "/grade")
-	public ModelAndView grade(@RequestParam Map<String,Object> map, GradeVO gradeVO){
+	public ModelAndView grade(@RequestParam Map<String,Object> map){
 		ModelAndView mv = new ModelAndView();
 		
 		String member_id = map.get("member_id").toString();
@@ -53,9 +54,7 @@ public class GradeController {
 		//해당 아이디의 등급 정보 가져와 모델에 저장
 		mv.addObject("Info", Info);
 		
-		
-		  mv.addObject("gradeInfo", gradeVO);
-		  log.info("==============gradeInfo 정보는 "+ gradeVO);
+		  log.info("==============gradeInfo 정보는 "+ Info);
 		 		
 		//다음 등급 정보 가져오기
 		int next_grade_id  = Integer.parseInt( Info.get("grade_id").toString() ) + 1;
@@ -63,6 +62,16 @@ public class GradeController {
 		GradeVO nextInfo = gradeService.select(next_grade_id);
 		mv.addObject("nextInfo", nextInfo);
 		log.info("==============다음 등급 정보는 " + nextInfo);
+		
+
+		
+		List<GradeVO> gradeList = gradeService.gradePolicyInfo();
+		
+		Map<String, Object> mav = new HashMap<>();
+		mav.put("InfoAll", gradeList);
+		
+		log.info("등급 전체 정보는 " + gradeList);
+		mv.addObject("map", mav);
 		
 		//리턴 주소 저장
 		mv.setViewName("/user/grade");

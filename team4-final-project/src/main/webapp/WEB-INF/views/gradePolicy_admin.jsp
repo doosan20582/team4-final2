@@ -26,7 +26,7 @@
 			<h1>등급 정책</h1>
 			<div class="subnav">
 				<p>
-					총 개의 등급이 있습니다.
+				<%-- 	총 ${gradePolicy.count}개의 등급이 있습니다. --%>
 				</p>
 				<div class="btn">
 					<input type="submit" value="추가" class="btn  insert_btn" onclick="location.href='/gradePolicyAdd_admin'"/>
@@ -41,6 +41,7 @@
 								<th><input type="checkbox" name="selectall" 
 								value="all" onclick="selectAll(this)"></th>
 								<th>번호</th>
+								
 								<th>등급명</th>
 								<th>시작 포인트</th>
 								<th>끝 포인트</th>
@@ -53,16 +54,16 @@
 						</thead>
 
 						<tbody>
-							<c:forEach items="${gradePolicy}" var="row">
+							<c:forEach items="${gradePolicy}" var="row" varStatus="count">
 								<tr>
 									<td><input type="checkbox" name="grade" 
 									value="${row.grade_id}"  onclick="checkSelectAll()"></td>
-									<td>${row.grade_id}</td>
+									<td>${count.count}</td>
 									<td>${row.grade_name}</td>
-									<td>${row.grade_start_point}</td>
-									<td>${row.grade_end_point}</td>
-									<td>${row.grade_discount*100}%</td>
-									<td>${row.grade_accrual_rate*100}%</td>
+									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_start_point}" />원</td>
+									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_end_point}" />원</td>
+									<td><fmt:formatNumber type="percent"  value="${row.grade_discount}" /></td>
+									<td><fmt:formatNumber type="percent"  value="${row.grade_accrual_rate}" /></td>
 									<td style = "background-color:${row.grade_color}"></td>
 									<td style = "background-color:${row.grade_font_color}"></td>
 									<td><img src="/gradeImg/${row.grade_img_url}"
