@@ -21,14 +21,13 @@
 	<%@include file="shop/header.jsp" %>
 	<!--메인-->
 	<main>
-		<div class="navDiv"></div>
 		<div class="mainDiv">
 			<h1>등급 정책</h1>
 			<div class="subnav">
 				<p>
-				<%-- 	총 ${gradePolicy.count}개의 등급이 있습니다. --%>
+					확인 사항 : 총  ${gradeCount}개의 등급이 있습니다.
 				</p>
-				<div class="btn">
+				<div class="btns">
 					<input type="submit" value="추가" class="btn  insert_btn" onclick="location.href='/gradePolicyAdd_admin'"/>
 <!-- 					 <input type="submit" value="수정" class="btn  update_btn" onclick="location.href='/gradePolicyUpdate_admin'" /> -->
 					<input type="button" value="삭제" class="btn  delete_btn" onclick="selectDelete();"/>
@@ -60,14 +59,14 @@
 									value="${row.grade_id}"  onclick="checkSelectAll()"></td>
 									<td>${count.count}</td>
 									<td>${row.grade_name}</td>
-									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_start_point}" />원</td>
-									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_end_point}" />원</td>
+									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_start_point}" />P</td>
+									<td><fmt:formatNumber type="Number" pattern = "#,###"  value="${row.grade_end_point}" />P</td>
 									<td><fmt:formatNumber type="percent"  value="${row.grade_discount}" /></td>
 									<td><fmt:formatNumber type="percent"  value="${row.grade_accrual_rate}" /></td>
 									<td style = "background-color:${row.grade_color}"></td>
 									<td style = "background-color:${row.grade_font_color}"></td>
 									<td><img src="/gradeImg/${row.grade_img_url}"
-										width="80%" height="100%"></td>
+										width="119" height="119"></td>
 								</tr>
 							</c:forEach>
 						</tbody>

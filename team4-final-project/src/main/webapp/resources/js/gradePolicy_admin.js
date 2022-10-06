@@ -53,9 +53,10 @@ function selectDelete(){
 				$.ajax({
 					url : "/gradePolicy_adminDelete", 
 					type :"post",
+					dataType : "text",
 					data : { valueArr : valueArr},	//보내고자 하는 데이터 변수 설정
-					success : function(){
-						alert('삭제됐습니다.');
+					success : function(data){
+						alert(data);
 						location.replace("/gradePolicy_admin"); //해당 페이지로 새로고침
 					},
 					error : function(){
@@ -67,4 +68,6 @@ function selectDelete(){
 };
 
 
-//수정 버튼 클릭 시 
+//추가 버튼 클릭 시 단계 다음 정보 가져오기
+
+

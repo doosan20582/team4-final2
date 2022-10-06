@@ -7,33 +7,19 @@ main{
 }
 .mainDiv{
 	margin: 0 auto;
-    width:60%;
+    width:50%;
     height: 100%;
-/*     border: solid 2px yellowgreen; */
     color:white;
 }
 .mainDiv>h1{
+	width:75%;
 	padding: 26px 26px 15px 26px;
+	margin:auto;
 	text-align: center;
 	border-bottom: 2px solid #A8A8A8;
 }
-.subnav{
-  /*   border: solid 2px yellowgreen; */
-    display: flex;
-    flex-direction: row;
-    margin: 15px 0px;
-    padding: 6px 4px;
-    width: 100%;
-    height:60px;
-    position: relative;
-}
-.subnav>p{
-/* 	border: solid 2px blue; */
-    width:55%;
-    padding-left: 5px;
-}
+
 .btns{
-/* 	border: solid 2px red;	 */
 	position: absolute;
 	top:13px;
 	right:30px;
@@ -51,6 +37,7 @@ main{
         color:white;
         transition:all 0.9s, color 0.3;
         border-radius: 3.3px;  
+        display: block;
 }
 .btn:hover {
 	       box-shadow: 0 80px 0 0  rgba(0,0,0,0.25) inset, 
@@ -58,22 +45,32 @@ main{
 }
 
 
-.form{
-	width:100%;
-}
 table{
-	width:90%;
+	/* border: solid 2px yellowgreen; */
+	width:70%;
 	margin: auto;
-	border-color: #5E7291;
-}
-th, td{
-	text-align: center;
-}
-.background{
-	width:80%;
-	height:80%;
-	boarder : solid 1px black;
+	padding: 15px;
 	
 }
+th, td{
+	/* border: solid 2px yellowgreen; */
+	text-align: center;
+	margin : 30px 0px;
+	padding : 23px 0px;
+	
+}
+input{
+	border-radius : 3px;
+	height: 30px;
+	width: 370px;
+	text-align: center;
+}
+input:focus{
+	outline: none;
+}
+.grade_comment{
+	width: 220px;
+}
+
 
 

@@ -20,6 +20,8 @@
 </head>
 <body>
 
+
+
 	<!--메인-->
 	<main>
 		<div class="mainDiv">
@@ -30,10 +32,10 @@
 					<div class="myGradeState_top">
 						<h3>${Info.member_id}님의등급은 ${Info.grade_name}</h3>
 					</div>
-					<div class="myGradeState_bottom">
+					<div class="myGradeState_bottom" style= "border: solid 1px ${Info.grade_font_color}">
 						<div id="circle">등급혜택</div>
 						<div id="text1">
-							제품 구매 시 전 제품 <b ${Info.grade_font_color}> ${Info.grade_accrual_rate*100}% 적립</b>
+							제품 구매 시 전 제품 <b ${Info.grade_font_color}> <fmt:formatNumber type="percent"  value="${Info.grade_accrual_rate}" /> 적립</b>
 						</div>
 <%-- 						<div id="text2">
 							제품 구매 시 전 제품 <b ${Info.grade_font_color}> ${Info.grade_discount*100}% 할인</b>
@@ -43,8 +45,8 @@
 					<div class="NextMonthGrade"
 						style="background-color: ${nextInfo.grade_color}">
 						<p class="p1">
-							<span id="cus_money">${(Info.grade_end_point+1-Info.member_purchase_point+Info.member_write_point)}</span>
-							원 더 모으면 레벨업!
+							<span id="cus_money"><fmt:formatNumber type="Number" pattern = "#,###"  value="${Info.grade_end_point+1-Info.grade_start_point}" /></span>
+							P 더 모으면 레벨업!
 						</p>
 					</div>
 			</div>
@@ -65,13 +67,13 @@
 			
 					<c:forEach var="Info" items="${map.InfoAll}" >
 					
-					<div class="grade level1" style="background-color: ${Info.grade_color}" >
+					<div class="grade" style="background-color: ${Info.grade_color}; border:solid 2px ${Info.grade_font_color};" >
 						<div class="grade_left">
 							<h3 style="color: ${Info.grade_font_color}">${Info.grade_name }</h3>
-							<p>누적 포인트 ${Info.grade_end_point}원 이상</p>
+							<p>누적 포인트 <fmt:formatNumber type="Number" pattern = "#,###"  value="${Info.grade_start_point}" />P 이상</p>
 							<p>
-								적립 시 <span style="color: ${Info.grade_font_color}">${Info.grade_discount*100}% 할인</span>
-								<span style="color: ${Info.grade_font_color}">${Info.grade_accrual_rate*100}% 적립 </span>
+								적립 시 <span style="color: ${Info.grade_font_color}"><fmt:formatNumber type="percent"  value="${Info.grade_discount}" /> 할인</span>
+								<span style="color: ${Info.grade_font_color}"><fmt:formatNumber type="percent"  value="${Info.grade_accrual_rate}" /> 적립 </span>
 							</p>
 						</div>
 						<div class="grade_right">
@@ -86,7 +88,6 @@
 		</div>
 		</div>
 	</main>
-
 
 </body>
 </html>

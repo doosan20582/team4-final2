@@ -26,6 +26,7 @@ public class GradeVO {
 	String grade_comment;
 	String grade_img_url;
 	String grade_font_color;
+	int gradeCount;
 	
 	
 }

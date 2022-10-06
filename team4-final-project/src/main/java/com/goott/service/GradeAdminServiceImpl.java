@@ -23,11 +23,23 @@ public class GradeAdminServiceImpl implements GradeAdminService{
 		
 		return gradeMapper.gradePolicy();
 	}
+	
+	// 등급 개수 가져오기
+	@Override
+	public int gradeCount() {
+		return gradeMapper.gradeCount();
+	}
 
 	//관리자 - 등급 정책 삭제(gradePolicy_admin)
 	@Override
-	public void gradePolicyDelete(int grade_id) {
-		gradeMapper.gradePolicyDelete(grade_id);
+	public String gradePolicyDelete(int grade_id) {
+		int result = gradeMapper.gradePolicyDelete(grade_id);
+		if(result==1) {
+			return "삭제됐습니다.";
+		}else {
+			return "에러났음";
+		}
+	
 	}
 
 	@Override
@@ -41,6 +53,10 @@ public class GradeAdminServiceImpl implements GradeAdminService{
 		gradeMapper.gradePolicyModify(gradeVO);
 		
 	}
+
+
+
+
 	
 	
 	
