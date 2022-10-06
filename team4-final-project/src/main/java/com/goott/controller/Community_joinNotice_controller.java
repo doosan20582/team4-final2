@@ -30,7 +30,7 @@ public class Community_joinNotice_controller {
 	
 	@GetMapping("/main") // 캠핑모임게시판 메인
 	public void getList(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map , Model model, HttpServletRequest request) {
-		String sort_value = (String) map.get("sort_value");
+		String sort_value = (String) map.get("sort_value"); //정렬 조건
 		
 		HttpSession session = request.getSession();
 		String member_auth = " ";
@@ -48,13 +48,13 @@ public class Community_joinNotice_controller {
 	
 	@PostMapping("/go_detail")// 상세페이지 조건
 	public String goDetail (@RequestParam Map<String, Object> map) {
-		String user_id = map.get("user_id").toString();
-		String login_id = map.get("login_id").toString();
-		String camping_id = map.get("camping_id").toString();
+		String user_id = map.get("user_id").toString(); //글쓴이
+		String login_id = map.get("login_id").toString(); // 현재 로그인중인 아이디
+		String camping_id = map.get("camping_id").toString();// 게시글 번호
 		if(user_id.equals(login_id)) {
-			return "redirect:/community/joinNotice/detail_user?camping_id="+camping_id;
+			return "redirect:/community/joinNotice/detail_user?camping_id="+camping_id; //글쓴이와 로그인 아이디가 일치하면 detail user 페이지로
 		} else {
-			return "redirect:/community/joinNotice/detail?camping_id="+camping_id;
+			return "redirect:/community/joinNotice/detail?camping_id="+camping_id;// 아니면 일반 페이지로
 		}
 	}
 	
@@ -65,7 +65,7 @@ public class Community_joinNotice_controller {
 		model.addAttribute("data", jservice.getDetail(camping_id)); // 상세페이지 정보
 		model.addAttribute("reply_data", jservice.replyList(camping_id)); //댓글 정보
 		model.addAttribute("reply_count", jservice.replyCount(camping_id)); //댓글 갯수
-		model.addAttribute("profile", jservice.getImg(member_id));
+		model.addAttribute("profile", jservice.getImg(member_id));// 글쓴이 프로필 이미지
 	}
 	
 	@GetMapping("/detail_user") // 게시판 유저 페이지
@@ -75,7 +75,7 @@ public class Community_joinNotice_controller {
 		model.addAttribute("data", jservice.getDetail(camping_id)); // 상세페이지 정보
 		model.addAttribute("reply_data", jservice.replyList(camping_id)); //댓글 정보
 		model.addAttribute("reply_count", jservice.replyCount(camping_id)); //댓글 갯수
-		model.addAttribute("profile", jservice.getImg(member_id));
+		model.addAttribute("profile", jservice.getImg(member_id));// 글쓴이 프로필 이미지
 	}
 	
 	@GetMapping("/input") // 글 입력 페이지
@@ -84,8 +84,8 @@ public class Community_joinNotice_controller {
 	
 	@PostMapping("/input") // 글 입력 페이지에서 글 등록하기
 	public String inputPost (@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map) {
-		jservice.input(map);
-		jservice.inputPoint(map);
+		jservice.input(map); // 글 등록
+		jservice.inputPoint(map); // 글 등록하면 포인트 증가
 		return "redirect:/community/joinNotice/main";
 	}
 	
@@ -95,16 +95,14 @@ public class Community_joinNotice_controller {
 	}
 	
 	@PostMapping("/correction") // 게시글 수정하기 
-	public String correction(T_camping_VO camping, RedirectAttributes rttr) {
+	public String correction(T_camping_VO camping) {
 		jservice.correct(camping);
-		rttr.addFlashAttribute("result", "correction complete");
 		return "redirect:/community/joinNotice/detail_user?camping_id="+camping.getCamping_id();
 	}
 	
 	@PostMapping("/delete") // 게시글 삭제하기
-	public String delete(int camping_id, RedirectAttributes rttr)	{
+	public String delete(int camping_id)	{
 		jservice.delete(camping_id);
-		rttr.addFlashAttribute("result", "delete success");
 		return "redirect:/community/joinNotice/main";
 	}
 	
@@ -112,11 +110,11 @@ public class Community_joinNotice_controller {
 	public ModelAndView reply_input(@RequestBody Map<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		this.jservice.reply_input(map);
-		String reply_id = map.get("camping_reply_id").toString();
+		String reply_id = map.get("camping_reply_id").toString(); // 댓글 쓴 아이디
 		String id_cast = map.get("camping_id").toString();
-		int camping_id = Integer.parseInt(id_cast);
-		mv.addObject("data", jservice.getReply(reply_id)); 
-		mv.addObject("reply_count", jservice.replyCount(camping_id));
+		int camping_id = Integer.parseInt(id_cast); // 댓글 달린 게시글 번호
+		mv.addObject("data", jservice.getReply(reply_id)); // 방금 달린 댓글 정보
+		mv.addObject("reply_count", jservice.replyCount(camping_id)); // 댓글 개수
 		mv.setViewName("community/joinNotice/reply");
 		return mv;
 	}
@@ -162,9 +160,9 @@ public class Community_joinNotice_controller {
 	@PostMapping("admin_delete") // 관리자 계정 글 삭제 기능
 	@ResponseBody
 	public void admin_delete(HttpServletRequest request) {
-		String[] delete_list = request.getParameterValues("delete_list");
+		String[] delete_list = request.getParameterValues("delete_list"); // 삭제시킬 게시글 번호를 배열로 받음
 		int size = delete_list.length;
-		for(int i = 0; i<size; i++) {
+		for(int i = 0; i<size; i++) { // 삭제시킬 게시글 개수만큼 삭제 진행
 			int camping_id = Integer.parseInt(delete_list[i]);
 			jservice.delete(camping_id);
 		}

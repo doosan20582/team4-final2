@@ -8,13 +8,13 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--쇼핑몰 글로벌 css-->
+<!--detail user css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/freeNotice/detail_user.css?ver=1"/>">
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--쇼핑몰 글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <!-- 제이쿼리 스크립트 -->
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -101,7 +101,7 @@
 			<div class="section_footer">
 				<h1>
 					<c:set var="reply_count" value="${reply_count.board_reply_count}" />
-					<script>
+					<script>/* view more 처리에 사용할 변수 */
 						let reply_count = '<c:out value="${reply_count}"/>';
 					</script>
 					댓글(

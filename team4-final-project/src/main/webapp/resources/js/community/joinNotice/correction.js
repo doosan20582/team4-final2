@@ -82,7 +82,6 @@ modal_submit.addEventListener("click",function(){ //모달 창 확인
 			document.getElementsByName("camping_campsite")[0].value = list[i].id;
 		}
 	}
-	console.log(list);
 	modal.style.display = "none";
 	document.body.style= "overflow: auto";
 })

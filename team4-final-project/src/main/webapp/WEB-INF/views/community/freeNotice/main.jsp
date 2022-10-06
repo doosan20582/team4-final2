@@ -12,10 +12,11 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/community/freeNotice/main.css?ver=3"/>">
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=1"/>">
-<!--글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<!-- 제이쿼리 -->
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Document</title>
@@ -68,7 +69,7 @@
 					<%@ include file="list.jsp"%>
 				</div>
 
-				<script>
+				<script>/* 검색 옵션을 담는 변수들 */
 					let searching_keyword = '<c:out value="${keyword}"/>';
 					let tag_id = '<c:out value="${tag_id}"/>';
 				</script>

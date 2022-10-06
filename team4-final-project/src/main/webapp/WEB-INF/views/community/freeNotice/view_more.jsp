@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<!-- view more 하면 추가될 요소 -->
 	<c:forEach var="data" items="${data}">
 		<div class="section_footer_commentList_comment">
 			<div class="section_footer_commentList_comment_count">
