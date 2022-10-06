@@ -17,6 +17,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <title>Document</title>
+<style>
+	.ck.ck-editor{ width: 500px; }
+	.ck-editor__editable { height: 360px; }	
+</style>
+
 </head>
 
 <body>
@@ -30,7 +35,7 @@
 		<form method="post" action="Question">
 			<div class="user_Name">
 				<h3>ID</h3>
-				<input id="user_Name_Text"  name="member_id" value="${login_id}" type="text" readonly>
+				<input id="user_Name_Text"  name="member_id" value="${login_id}" type="text"  readonly>
 			</div>
 			<div class="question_Type">
 				<h3>문의유형</h3>
@@ -44,7 +49,7 @@
 			</div>
 			<div class="question_Title">
 				<h3>제목</h3>
-				<input id="question_Title_Text"  name="qna_title" type="text">
+				<input id="question_Title_Text"  name="qna_title" type="text" maxlength="49" required>
 			</div>
 			<div class="question_Content">
 				<h3>내용</h3>
@@ -68,8 +73,6 @@
 	</main>
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
-	
-	<!-- <script src="/resources/js/shop/Question.js"></script> -->
 </body>
 
 </html>

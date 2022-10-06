@@ -79,6 +79,8 @@
 				<p>(3) 상품분실 : 분실했다는 택배사 연락을 받았다면 해당 문자를 캡처 후 1:1문의로 사진과 함께 접수해 주세요.</p>
 			</div>
 		</div>
+		<div class="null">
+		</div>
 	</main>
 	
 	<%@include file="./footer.jsp" %>

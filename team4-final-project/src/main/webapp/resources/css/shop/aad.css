@@ -1,57 +1,98 @@
-.name1{
+main{
+	height:800px;
+	color: white;
+	font-family: 'GimpoGothicBold00';
+	transition: .3s;
+}
+.Container{
     width: 100%;
-    border: 1px solid saddlebrown;
+    /* border: 1px solid black; */
     height: 700px;
-}
-.btn{
-    width: 100%;
-    border: 1px solid palegoldenrod;
-    height: 50px;
-}
-.btn > button{
-    width: 150px;
-    height: 50px;
-    margin: 0 10px;
-    float: right;
-}
-.name2{
-    width: 100%;
-    height: 200px;
-    border: 1px solid violet;
+    display: flex;
     
+    align-items: center;
+    flex-direction: column;
+    
+	
 }
-.name2 > div{
-    display: flex;
-    flex-direction: row;
-}
-.name2_1{
-    width: 100%;
+.list{
+    width: 90%;
     height: 50px;
-    border: 1px solid red;
+   /*  display:fles;
+    justify-content: left;
+    align-items: center; */
 }
-.name2_1 :nth-child(1){
-    width: 20%;
-    height: 100%;
-    border: 1px solid seagreen;
+.list_btn{
+	width: 100px;
+    height: 40px;
+    font-size: 1.0rem;
+    border-style: none;
+    border-radius: 5px;
+    color: white;
+    cursor:pointer;
+    background-color : var(--mainColor);
+    transition : all 0.1s;
+     margin: 5px; 
+     float: right; 
 }
-.name2_1 :nth-child(2){
-    width: 80%;
-    height: 100%;
-    border: 1px solid blue;
+.list_btn:hover{
+	box-shadow : white 0 0 2px 2px;
 }
-.name3{
+.box{
+	width: 90%;
+	height: 640px;
+	border-radius: 5px;
+	box-shadow : var(--mainColor) 0 0 2px 2px;
+}
+.member_idBox, .qna_titleBox, .qna_categoryBox, .qna_regdate, .qna_textBox, .qna_answer_textBox{
+	display: flex;
+    flex-direction: row;
     width: 100%;
-    height: 450px;
+}
+.qna_textBox, .qna_answer_textBox{
+	height: 200px;
+}
+.qna_textBox > div, .qna_answer_textBox > div{
+	height: 200px;
+	width: 90%;
+	padding: 15px 0px 0px 10px;
+	border: 1px solid black;
+}
+.qna_textBox > p, .qna_answer_textBox > p{
+	height: 200px;
+	width: 10%;
+	padding: 15px 0px 0px 10px;
+	border: 1px solid black;
+}
+.boxtext{
+	width: 10%;
+    height: 60px;
+    padding: 15px 0px 0px 10px;
+    border: 1px solid black;
+}
+.boxData{
+	width: 90%;
+    height: 60px;
+    padding: 15px 0px 0px 10px;
+    border: 1px solid black;
+}
+.btnContainer{
+	width: 100%;
+    height: 50px;
     display: flex;
-    border: 1px solid salmon;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
 }
-.name3 :nth-child(1){
-    width: 20%;
-    height: 100%;
-    border: 1px solid red;
-}
-.name3 :nth-child(2){
-    width: 80%;
-    height: 100%;
-    border: 1px solid blue;
+.btn_ask, .btn_update, .btn_delete{
+	width: 100px;
+    height: 40px;
+    /* font-size: 1.0rem; */
+    border-style: none;
+    border-radius: 5px;
+    color: white;
+    margin:10px;
+    cursor:pointer;
+    background-color : var(--mainColor);
+    transition : all 0.1s;
 }
