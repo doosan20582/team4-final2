@@ -46,8 +46,6 @@ public class QnAController {
 			return "redirect:/shop/QnA_admin";
 		}
 			
-			
-			
 		log.info("게시글페이지 보기------------------------------------");
 		log.info("카테고리 " + checkcategory);
 		log.info("검색어 " + QnASearch);
@@ -91,8 +89,13 @@ public class QnAController {
 	@RequestMapping(value = "/Question", method = RequestMethod.POST)
 	public ModelAndView Question(QnAVO QnA) {
 		log.info(QnA);
+		if(QnA.getQna_text().equals("")) {
+			QnA.setQna_text("내용이 없습니다.");
+		}
 		qnaservice.Question(QnA);
 		log.info("작업끝");
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:/shop/QnA");
 		return mv;
@@ -123,7 +126,6 @@ public class QnAController {
 		System.out.println(map);
 		ModelAndView mv = new ModelAndView();
 		qnaservice.Question_update(QnA);
-//	 mv.addObject("data", qnaservice.Question_update(map));
 		mv.setViewName("redirect:/shop/QnA");
 		return mv;
 	}
@@ -150,6 +152,9 @@ public class QnAController {
 	@RequestMapping(value = "/Question_admin", method = RequestMethod.POST)
 	public ModelAndView Question_admin(@RequestParam Map<String, Object> map, QnAVO QnA) {
 		ModelAndView mv = new ModelAndView();
+		if(QnA.getQna_answer_text().equals("")) {
+			QnA.setQna_answer_text("이용해주셔서 감사합니다.");
+		}
 		qnaservice.Question_admin(QnA);
 		qnaservice.Question_admin_answer(QnA);
 
@@ -170,23 +175,19 @@ public class QnAController {
 			@RequestParam(defaultValue = "all") String checkadmin, @RequestParam(defaultValue = "all") String QnASearch,
 			QnAVO qna) {
 		log.info("게시글페이지 보기------------------------------------");
-//		log.info("카테고리 "+checkcategory);
-//		log.info("검색어 "+QnASearch);
 		log.info("현재페이지 " + nowPage);
 		log.info("페이지개수 " + cntPerPage);
-//		log.info("내가 검색하고싶은거는"+QnASearch);
 		log.info("내가 검색하고싶은거는================" + checkadmin);
-//		int total = qnaservice.countQnAadminBoardCategory(checkcategory,checkadmin, QnASearch);
 		int total = qnaservice.countQnAadminBoardCategory(checkadmin, QnASearch);
 
 		log.info(" 게시글 총 개수     " + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "5";
+			cntPerPage = "10";
 		}
 
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -196,7 +197,6 @@ public class QnAController {
 		model.addAttribute("paging", vo);
 		model.addAttribute("list", data);
 		model.addAttribute("checkadmin", checkadmin);
-//		model.addAttribute("checkcategory",checkcategory);
 		model.addAttribute("QnASearch", QnASearch);
 		log.info("-------------------------------");
 		log.info(data);
@@ -206,30 +206,25 @@ public class QnAController {
 	}
 
   
-	  // 게시물 수정
+	  // 게시물 답변 수정
 	  @RequestMapping(value="/Question_admin_update", method =RequestMethod.GET)
 	  public String Question_admin_update(@RequestParam Map<String,Object> map, Model model) {
 		  model.addAttribute("data",qnaservice.QnA_detail(map));
 	   return "/shop/Question_admin_update";
 	}
-	  // 게시물 수정
+	  // 게시물 답변 수정
 	  @RequestMapping(value="/Question_admin_update", method =RequestMethod.POST)
 	  public ModelAndView Question_admin_update(@RequestParam Map<String,Object> map,  QnAVO QnA) {
 		 System.out.println(map);
 		 ModelAndView mv = new ModelAndView();
+		 if(QnA.getQna_answer_text().equals("")) {
+				QnA.setQna_answer_text("이용해주셔서 감사합니다.");
+			}
 		  qnaservice.Question_admin_update(QnA);
-	//	 mv.addObject("data", qnaservice.Question_update(map));
 		 mv.setViewName("redirect:/shop/QnA_admin");
 		 log.info(mv);
 		 return mv;
 	}
-  
-  
-  
-  
-  
-  
-  
-  
+
 
 }

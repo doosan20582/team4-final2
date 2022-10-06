@@ -22,71 +22,65 @@
 	
 	<!--메인-->
 	<main>
-		<div class="name1">
-			<div class="btn">
-				<button class="list_btn4">목록</button>
+		<div class="Container">
+			<div class="list">
+				<button class="list_btn">목록</button>
 			</div>
-			<div class="name2">
-				<div class="name2_1">
-					<p>아이디</p>
-					<p>${data.member_id}</p>
+			<div class="box">
+				<div class="member_idBox">
+					<p class="boxtext">아이디</p>
+					<p class="boxData">${data.member_id}</p>
 				</div>
-				<div class="name2_1">
-					<p>제목</p>
-					<p>${data.qna_title}</p>
+				<div class="qna_titleBox">
+					<p class="boxtext">제목</p>
+					<p class="boxData">${data.qna_title}</p>
 				</div>
-				<div class="name2_1">
-					<p>문의유형</p>
-					<p>${data.qna_category}</p>
+				<div class="qna_categoryBox">
+					<p class="boxtext">문의유형</p>
+					<p class="boxData">${data.qna_category}</p>
 				</div>
-				<div class="name2_1">
-					<p>작성일자</p>
-					<p><fmt:formatDate value="${data.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" /></p>
+				<div class="qna_regdate">
+					<p class="boxtext">작성일자</p>
+					<p class="boxData"><fmt:formatDate value="${data.qna_regdate}" pattern="yyyy-MM-dd ,a, HH:mm:ss" /></p>
 				</div>
+				<div class="qna_textBox">
+					<p>내용</p>
+					<div>
+					${data.qna_text}
+					</div>
+				</div>
+				<div class="qna_answer_textBox">
+			 		<p>답변 내용</p>
+			 		<div>
+			 		${data.qna_answer_text}
+			 		</div>
+			 	</div>
 			</div>
-			<div class="name3">
-				<p>내용</p>
-				${data.qna_text}
-			</div>
-			 <div class="name3">
-			 	<p>답변 내용</p>
-			 	${data.qna_answer_text}
-			 </div>
-			 <input type="text" value="${data.qna_admin_answer}">
 		</div>
-		<div>
-			<%-- <input type="hidden" name="qna_answer_text" value="${data.qna_answer_text}"> --%>
+		<div class="btnContainer">
 			<input type="hidden" name="qna_id" value="${data.qna_id}">
-			<%-- <a href="Question_update?qna_id=${data.qna_id}">수정</a>
-			<a href="Question_modrfy?qna_id=${data.qna_id}">수1정</a>  --%>
-			<%-- <c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
-			<form action="Question_update" method="POST">
-				<input type="hidden" name=qna_id value="${data.qna_id}"/>
-				<input type="submit" value="수정"/>
-			</form>
-			</c:if> --%>
 			<c:if test="${sessionScope.login_auth eq '관리자' && data.qna_answer_text eq null}">
 			<form action="Question_admin" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
-   			 <input type="submit" value="답변" />
+   			 <input type="submit" class="btn_ask" value="답변" />
 			</form>
 			</c:if>
 			<c:if test="${sessionScope.login_auth eq '관리자' && data.qna_answer_text ne null}">
 			<form action="Question_admin_update" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
-   			 <input type="submit" value="답변수정" />
+   			 <input type="submit" class="btn_update" value="답변수정" />
 			</form>
 			</c:if>
 			<c:if test="${sessionScope.login_id eq data.member_id}">
 			<form action="Question_update" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
-   			 <input type="submit" value="수정" />
+   			 <input type="submit" class="btn_update" value="수정" />
 			</form>
 			</c:if>
 			<c:if test="${sessionScope.login_id eq data.member_id || sessionScope.login_auth eq '관리자'}">
 			<form method="POST" action="delete">
 				<input type="hidden" name="qna_id" value="${data.qna_id}" />
-				<input type="submit" value="삭제" />
+				<input type="submit" class="btn_delete" value="삭제" />
 			</form>
 			</c:if>
 		</div>
@@ -96,29 +90,7 @@
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
 
-	<script type="text/javascript">
-    /* let update_btn = document.querySelector(".update_btn"); */
-    console.log('<c:out value="${data.qna_admin_answer}"/>')
-    let list_btnn = document.querySelector(".list_btn4");
-    
-    list_btnn.addEventListener('click',function(){
-    	if('${sessionScope.login_id}'== 'admin'){
-    		location.href="QnA_admin"
-    	}
-    		
-    	else{
-    		location.href="QnA" 
-    	}
-    	
-    	
-    	
-    });
-    
-    /* update_btn.addEventListener('click',function(){
-    	location.href="Question_update?qna_id=${data.qna_id}"
-    }); */
-    
-	</script>
+	<script src="/resources/js/shop/QnA_detail.js"></script>
 	
 </body>
 </html>

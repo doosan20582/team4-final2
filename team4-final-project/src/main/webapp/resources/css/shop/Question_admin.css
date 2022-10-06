@@ -4,9 +4,12 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
+    
 }
 main > form{
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,60 +17,85 @@ main > form{
 }
 h3 {
     width: 20%;
+    color:white;
 }
-span{
+#user_Name_Text, #question_Type_Select{
     width: 80%; 
+    height: 80%;
 }
 .Answer_Header{
     width: 50%;
     height: 50px;
     display: flex;
     align-items: center;
+    color:white;
     justify-content: center;
-    border: 1px solid red;
+    
 }
 .Answer_Name{
     width: 50%;
     height: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    
 }
 .Answer_Date{
     width: 50%;
     height: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    
 }
 .Answer_Type{
     width: 50%;
     height: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    
 }
 .Answer_Title{
     width: 50%;
     height: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    
 }
 .Answer_Title > input{
     width: 80%;
+	height: 100%;
 }
 .Answer_Content{
     width: 50%;
-    height: 400px;
+    height: 150px;
     display: flex;
-    justify-content: center;
-    border: 1px solid red;
+    align-items: center;
+    
 }
-.Answer_Content > textarea{
+/* .Answer_Content > textarea{
+    height: 80%;
+    width: 100%;
+} */
+#question_Title_Text{
+	height: 80%;
+	width: 80%;
+}
+/* .Answer_Content > textarea{
     width: 80%;
     height: 100%;
     border: 1px solid red;
+} */
+
+.admin_Content{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.admin_Content >h3 {
+	width: 20%;
+    height: 100%;
 }
 .Answer_Check{
     width: 50%;
@@ -75,10 +103,19 @@ span{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
+    
 }
 .Answer_Check > input{
-    width: 80px;
-    height: 50px;
-    margin: 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 1.0rem;
+    border-style: none;
+    border-radius: 5px;
+    color: white;
+    cursor:pointer;
+    background-color : var(--mainColor);
+    transition : all 0.1s;
+}
+.Answer_Check > input:hover{
+	box-shadow : white 0 0 2px 2px;
 }

@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <title>Document</title>
+<style>
+	.ck.ck-editor{ width: 700px; }
+	.ck-editor__editable { height: 340px; }	
+</style>
 </head>
 
 <body>
@@ -40,7 +44,7 @@
 			</div>
 			<div class="Answer_Type">
 				<h3>문의유형</h3>
-				<select name="qna_category" id="question_Type_Select"  required>
+				<select name="qna_category" id="question_Type_Select" readonly>
 					<option value="주문/결제">주문/결제</option>
 					<option value="배송">배송</option>
 					<option value="취소/환불/교환">취소/환불/교환</option>
@@ -50,14 +54,15 @@
 			</div>
 			<div class="Answer_Title">
 				<h3>게시글 번호</h3>
-				<input id="question_Title_Text" name="qna_id" type="text" value="${data.qna_id}">
+				<input id="question_Title_Text" name="qna_id" type="text" value="${data.qna_id}" readonly>
 			</div>
 			<div class="Answer_Content">
 				<h3>내용</h3>
-				<input id="question_Title_Text" name="qna_title" type="text" value="${data.qna_title}">
+				<textarea id="question_Title_Text" name="qna_title" readonly>${data.qna_title}</textarea>
+				<%-- <input id="question_Title_Text" name="qna_title" type="text" value="${data.qna_title}" readonly> --%>
 			</div>
 			<form method="POST" action="/shop/Question_admin">
-			<div>
+			<div class="admin_Content">
 				<h3>답변</h3>
 				<input type="hidden" name="qna_id" value="${data.qna_id}">
 				<textarea id="question_Title_Text4" name="qna_answer_text" cols="30" rows="10"></textarea>
@@ -65,15 +70,15 @@
 			        ClassicEditor
 			            .create( document.querySelector( '#question_Title_Text4' ));
 			    </script>
-			</div>
+			</div> 
 			<div class="Answer_Check">
 				<input type="submit" value="답변하기">
 			</div>
-		</form>
+			</form>
 	</main>
 	<!-- footer -->
 	<%@include file="./footer.jsp" %>
-	<script src="/resources/js/shop/Question_admin.js"></script>
+	<!-- <script src="/resources/js/shop/Question_admin.js"></script> -->
 	  
 </body>
 
