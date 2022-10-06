@@ -1,13 +1,50 @@
 let camping_title = document.querySelectorAll(".camping_title"); // 자유게시글 제목 (상세페이지로 넘어가게)
 let board_title = document.querySelectorAll(".board_title"); // 모임게시글 제목 (상세페이지로 넘어가게)
-let weather_img = document.querySelector(".section2_map_content_main_icon_img");//날씨정보 이미지
+let weather_img = document.querySelector(".weather_img");//날씨정보 이미지
 let wind_speed = document.querySelector(".wind_speed");//풍속
 let humidity = document.querySelector(".humidity");//습도
 let clouds = document.querySelector(".clouds");//구름
 let weather = document.querySelector(".weather");//날씨
 let temp = document.querySelector(".temp");//온도
 let country = document.querySelector(".location");//장소
-let location_list = document.querySelectorAll(".location_list");//지역 리스트
+let location_select = document.querySelector(".section2_map_list");// 지역 선택
+let weather_area = document.querySelector(".section2_map_content");// 날씨 표시 영역
+
+var change_weather = function(){
+	if(weather.textContent == 'clear sky'){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455017.mp4";
+	
+	} else if(weather.textContent == 'few clouds' || weather.textContent == "overcast clouds"){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455053.mp4";
+	
+	} else if(weather.textContent == 'scattered clouds'){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455024.mp4";
+	
+	} else if(weather.textContent == 'broken clouds'){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455054.mp4";
+	
+	} else if(weather.textContent == 'shower rain'||weather.textContent == "light rain"||weather.textContent == "moderate rain"||weather.textContent == "ligth intensity shower rain"||weather.textContent == "heavy intensity shower rain"||weather.textContent == "ragged shower rain"
+			||weather.textContent == "light intensity drizzle"||weather.textContent == "drizzle"||weather.textContent == "heavy intensity drizzle"||weather.textContent == "light intensity drizzle rain"||weather.textContent == "shower rain and drizzle"
+			 ||weather.textContent == "shower drizzle"){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455057.mp4";
+	
+	} else if(weather.textContent == 'rain'||weather.textContent == "heavy intensity rain"||weather.textContent == "very heavy rain"||weather.textContent == "extreme rain"||weather.textContent == "freezing rain"
+			||weather.textContent == "heavy shower rain and drizzle"){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455055.mp4";
+	
+	} else if(weather.textContent == 'thunder storm'||weather.textContent == "thunderstorm with light rain"||weather.textContent == "thunderstorm with rain"||weather.textContent == "thunderstorm with heavy rain"||weather.textContent == "light thunderstorm"
+			||weather.textContent == "heavy thunderstorm"||weather.textContent == "ragged thunderstorm"||weather.textContent == "thunderstorm with light drizzle"||weather.textContent == "thunderstorm with drizzle"||weather.textContent == "thunderstorm with heavy drizzle"){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455012.mp4";
+	
+	} else if(weather.textContent == 'snow'||weather.textContent == 'light snow'||weather.textContent == 'heavy snow'||weather.textContent == 'sleet'||weather.textContent == 'shower sleet'||weather.textContent == 'light rain and snow'
+			||weather.textContent == 'rain and snow'||weather.textContent == 'light shower snow'||weather.textContent == 'shower snow'||weather.textContent == 'heavy shower snow'){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455058.mp4";
+	
+	} else if(weather.textContent == 'mist'||weather.textContent == 'smoke'||weather.textContent == 'haze'||weather.textContent == 'sand, dust whirls'||weather.textContent == 'fog'||weather.textContent == 'sand'||weather.textContent == 'dust'||weather.textContent == 'volcanic ash'
+			||weather.textContent == 'squalls'){
+		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6454/6454995.mp4";
+	}
+}
 
 let location_info ={ // 날씨 api에 사용할 객체
 		seoul : [37.540705,126.956764],
@@ -51,10 +88,52 @@ $.ajax({
         wind_speed.textContent = resp.wind.speed;
         humidity.textContent = resp.main.humidity;
         clouds.textContent = resp.clouds.all;
+        country.textContent = location_select.value;
+        change_weather();
     }
 })
 }
 
 get_weather();
 
-console.log(location_list.length);
+location_select.addEventListener("change",function(){ //지역 선택 시 날씨 바뀌게
+	if(this.value == '서울'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.seoul[0]+"&lon="+location_info.seoul[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '경기도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.gyunggi[0]+"&lon="+location_info.gyunggi[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '강원도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.gangwon[0]+"&lon="+location_info.gangwon[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '전라북도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.jeonbuk[0]+"&lon="+location_info.jeonbuk[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '전라남도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.jeonnam[0]+"&lon="+location_info.jeonnam[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '경상북도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.gyungbuk[0]+"&lon="+location_info.gyungbuk[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '경상남도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.gyungnam[0]+"&lon="+location_info.gyungnam[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '충청북도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.chungbuk[0]+"&lon="+location_info.chungbuk[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '충청남도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.chungnam[0]+"&lon="+location_info.chungnam[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}else if(this.value == '제주도'){
+		apiURI = "https://api.openweathermap.org/data/2.5/weather?lat="+location_info.jeju[0]+"&lon="+location_info.jeju[1]+"&appid=3f7f94f1b2b4c677113b0861b730afff";
+	}
+	
+	$.ajax({
+	    url: apiURI,
+	    dataType: "json",
+	    type: "GET",
+	    async: "false",
+	    success: function(resp) {
+	        var imgURL = "http://openweathermap.org/img/w/" + resp.weather[0].icon + ".png";
+	        weather_img.src = imgURL;
+	        temp.textContent = (resp.main.temp- 273.15).toFixed(1);
+	        weather.textContent = resp.weather[0].description;
+	        wind_speed.textContent = resp.wind.speed;
+	        humidity.textContent = resp.main.humidity;
+	        clouds.textContent = resp.clouds.all;
+	        country.textContent = location_select.value;
+	        change_weather();
+	    }
+	})
+})
