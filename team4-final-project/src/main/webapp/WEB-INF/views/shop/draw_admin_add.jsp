@@ -44,12 +44,12 @@
 							<td>상품키 <input type="button" value="상품 보기"
 								id="selectDrawBtn"> <span id="selectedDrawName"></span></td>
 							<td class="admin_product_id">
-							<input type="text" id="draw_product_id" name="product_id" readonly></td>
+							<input type="text" id="draw_product_id" name="product_id" readonly required> </td>
 						</tr>
 						<tr class="admin_body_file">
                             <td class="file_top_fir">이벤트 이미지</td>
                             <td class="admin_product_img">
-                                <input type="text" name="product_img_url1" id="draw_product_img" class="drawInputs">
+                                <input type="text" name="product_img_url1" id="draw_product_img" class="drawInputs" required>
                             </td>
                         </tr>
 						<!-- 상품이름 -->
@@ -57,48 +57,55 @@
 							<td>상품 이름</td>
 							<td class="admin_title_name">
 							<input type="text"
-								id="draw_title" name="draw_title" readonly></td>
+								id="draw_title" name="draw_title" readonly required></td>
 							<!-- 상품가격 -->
 						<tr class=" admin_title">
 							<td>상품 가격</td>
 							<td class="admin_title_price"><input type="text"
-								id="draw_price" name="draw_price" readonly></td>
+								id="draw_price" name="draw_price" readonly required></td>
 						</tr>
 						<!-- 모집인원 -->
 						<tr class="admin_title">
 							<td>인원</td>
 							<td><input type="number" value="1" id="selectDrawBtn2"
-								name="draw_reqruit"></td>
+								name="draw_reqruit" required min="1" max="99"></td>
 						</tr>
 						<!-- 이벤트 시작일 -->
 						<tr class="admin_title">
 							<td>이벤트 시작일</td>
 							<td><input type="date" class="drawInputs" id="Date"
-								name="draw_event_start_date"></td>
+								name="draw_event_start_date" required></td>
 						</tr>
 						<tr class="admin_title">
 							<td>이벤트 종료일</td>
 							<td><input type="date" class="drawInputs"
-								id="Date_event_end" name="draw_event_end_date"></td>
+								id="Date_event_end" name="draw_event_end_date" required></td>
 						</tr>
 
 						<tr class="admin_title">
 							<td>구매 시작일</td>
 							<td><input type="date" class="drawInputs"
-								id="Date_pur_start" name="draw_pur_start_date"></td>
+								id="Date_pur_start" name="draw_pur_start_date" required></td>
 						</tr>
 
 						<tr class="admin_title">
 							<td>구매 종료일</td>
 							<td><input type="date" class="drawInputs"
-								name="draw_pur_end_date" id="Date_start"></td>
+								name="draw_pur_end_date" id="Date_start" required></td>
 						</tr>
 
 						<tr class="admin_title">
 							<td>코멘트</td>
-							<td><textarea name="draw_comment" id="draw_comment" cols="55" rows="15"></textarea>
+							<td><textarea name="draw_comment" id="draw_comment" required cols="55" rows="15" placeholder="이벤트 설명해주세요" maxlength="20"></textarea>
 							</td>
 						</tr>
+						<tr>
+								<td>상품 공개 여부</td>
+								<td>
+								<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트  진행"><h3 class="open">공개</h3>
+								<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트 마감" checked="checked"><h3 class="open">비공개</h3>
+								</td>
+							</tr>
 					</table>
 
 				</div>
@@ -193,7 +200,6 @@
    const btn = document.querySelectorAll('.btn');
    let draw_title2 = document.querySelector("#draw_title");
    let draw_price = document.querySelector("#draw_price");
-   let file_submit= document.querySelector(".file_submit");
    let frm1 = document.querySelector('#admin_container');
    let closeIcon = document.querySelector('#mark');
    
@@ -201,23 +207,6 @@
    closeIcon.addEventListener('click', function(){
 		selectDrawProductContainer.style.display = 'none';
 	}); 
-	
-   
-   //file_submit.addEventListener('click', function(){
-      //console.log(test);
-      //console.log(draw_price.childNodes[0].data);
-      //console.log(draw_title2.childNodes[0].data);
-      //let form_data= $("#admin_container").serialize();
-      //form_data += '&draw_title='+draw_title2.childNodes[0].data;
-      //form_data += '&draw_price='+draw_price.childNodes[0].data;
-      //console.log(form_data);
-      
-      //$("#admin_container").submit();
-
-   //});
-   
-   
-   
    btn.forEach( function(item) {
       item.addEventListener('click' , ajaxCategory);
    });

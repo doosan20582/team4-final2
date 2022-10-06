@@ -25,6 +25,7 @@ public class DrawVO {
 	public Date draw_pur_end_date;
 	public int draw_reqruit;
 	public String product_img_url1;
+	public String draw_deadline;
 	  
 	
 	public String getProduct_img_url1() {
@@ -102,6 +103,12 @@ public class DrawVO {
 				+ ", draw_event_end_date=" + draw_event_end_date + ", draw_comment=" + draw_comment
 				+ ", draw_pur_start_date=" + draw_pur_start_date + ", draw_pur_end_date=" + draw_pur_end_date
 				+ ", draw_reqruit=" + draw_reqruit + "]";
+	}
+	public String getDraw_deadline() {
+		return draw_deadline;
+	}
+	public void setDraw_deadline(String draw_deadline) {
+		this.draw_deadline = draw_deadline;
 	}
 	
 	

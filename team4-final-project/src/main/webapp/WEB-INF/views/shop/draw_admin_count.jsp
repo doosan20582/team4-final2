@@ -32,24 +32,26 @@
 				<div class="count_main">
 					<table class="count_body">
 						<thead>
-							<tr class="count_Title_title">
-								<th><label class="checkbox-inline"> <input
-										type="checkbox" id="allCheckBox" onclick="allChecked()">
-								</label></th>
-								<th colspan="4">이벤트 1 응모회원 목록</th>
-							</tr>
-						</thead>
+							<tr id="count_Title_title">
+								<th class="title_th_head">
+								<label class="checkbox-inline"> 
+								<input type="checkbox" id="allCheckBox" onclick="allChecked()">
+								</label>
+								</th>
+								<th class="title_td">이벤트 1 응모회원 목록</th>
+							</tr> 
+						</thead> 
 						<tbody>
-
+						<c:forEach var="row" items="${data}">
 							<tr class="count_Title">
-								<c:forEach var="row" items="${data}">
-									<td><label class="all-chckbox"> 
+									<td>
+									<label class="all-chckbox"> 
 									<input type="checkbox" name="chk" class="chk" onclick="chkClicked()" value=${row.member_id}>
 									</label>
-									
-									<td> ${row.member_id}</td>
-								</c:forEach>
+									</td>
+									<td class="member_id_td">${row.member_id}</td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					<input type="hidden" name="draw_id" id="hidden" value="${map.draw_id}">
@@ -83,7 +85,9 @@
 				valueArrTest:checkArray
 			},
 			success : function(){
-		alert("응모가 완료되었습니다");
+				alert("응모 추첨이 완료되었습니다");
+				  
+				 location.href = '/shop/draw_admin';
 		
 				 
 		     }

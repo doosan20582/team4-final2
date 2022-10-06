@@ -35,7 +35,7 @@
 						Camping <span> Draw</span>
 					</h1>
 					<div class="section1_img">
-						<img src="/resources/img/shop/럭키드로우.png" alt="">
+						<img src="/resources/img/shop/캠핑2.jpg" alt="" id=section1_img_img>
 					</div>
 				</div>
 				<div class="section2">
@@ -56,7 +56,7 @@
 							<div class="section2_font">
 								<!--이벤트 텍스트-->
 								<div class="font_top">
-									<h1>[진행 이벤트] <span>${row.draw_title}</span> </h1>
+									<h3>[진행 이벤트] <span>${row.draw_title}</span> </h3>
 									<!--이벤트 제목-->
 									<div class="adminBtnsContainer">
 										<input type="hidden" value="수정" class="adminBtns"> <input
@@ -66,10 +66,6 @@
 								<div class="font_bottom">
 									<table>
 										<tbody>
-											<tr>
-												<td class="font_bottom_td">상품키</td>
-												<td>${row.product_id}</td>
-											</tr>
 											<tr>
 												<td class="font_bottom_td">상품 제목</td>
 												<td>${row.draw_title}</td>
@@ -101,11 +97,7 @@
 												</td>
 											<tr>
 												<td class="font_bottom_td">구매 종료일</td>
-												<td><fmt:formatDate value="${row.draw_pur_end_date}" />
-													<%-- <fmt:parseDate value="${row.draw_pur_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date1" type="both" />
-                                     <fmt:formatDate value="${date1}" pattern="yyyy-MM-dd a HH:mm:ss" /> --%>
-												</td>
-
+												<td><fmt:formatDate value="${row.draw_pur_end_date}" /></td>
 											</tr>
 
 											<tr>
@@ -116,9 +108,13 @@
 										</tbody>
 									</table>
 									<div class="button_container">
-										<input type="button" value="응모하기" class="font_top_button"
+										<input type="button" value="${row.draw_deadline }" name="draw_deadline" class="font_top_button"
 											id="font_top_button">
-										<button class="font_top_button_end">응모 결과 보기</button>
+											<input type="hidden"
+												name="draw_id" id="draw_id" value="${row.draw_id}">
+											 &nbsp;  &nbsp;
+										<input type="button" value="응모결과보기" class="font_top_button_end"
+											id="font_top_button_end"> 
 									</div>
 
 								</div>
@@ -126,8 +122,8 @@
 							<form method="POST" class="list_form"
 								action="shop/draw_customer_draw" class="draw_modal_form">
 								<input type="hidden" name="member_id" id="user_id"
-									value="${sessionScope.member_id}"> <input type="hidden"
-									name="draw_id" id="draw_id" value="${row.draw_id}"> <input
+									value="${sessionScope.member_id}"> 
+									 <input
 									type="hidden" name="login_id" id="login_id"
 									value="${sessionScope.login_id}">
 							</form>
@@ -146,11 +142,13 @@
 					<div class="modal_final_container">
 						<div class="modal_final_body">
 							<div class="modal_final_top">추첨결과</div>
-							<c:forEach var="row" items="${draw_resultList}">
 								<div class="modal_final_middle">
-									<span class="modal_fianl_middle_modal">${row.member_id}</span>
-								</div>
+							<c:forEach var="row" items="${draw_customer_button}">
+							<div class="modal_final_middle_ajax"></div>
 							</c:forEach> 
+								</div>
+									
+							
 						</div>
 						<div class="modal_final_bottom">
 							<c:if test="${member_id eq sessinScope.login_id}">
@@ -175,9 +173,9 @@
 	<!-- 푸터 -->
 	<jsp:include page="footer.jsp" />
 	<script src="/resources/js/shop/draw_customer.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
-   let draw_id = $('#draw_id').val(); // ajax 통신에 이용할 드로우 번호
+	
+   //let draw_id = $('#draw_id').val(); // ajax 통신에 이용할 드로우 번호
    let user_id = $('#user_id').val();
    //let user_id = document.querySelector('#user_id').value; // 현재 접속중인 유저 아이디
    console.log(user_id);
@@ -185,8 +183,9 @@
     const draw_btn = document.querySelectorAll(".font_top_button");// 응모 버튼
     for(let i=0; i<draw_btn.length; i++){
  	   draw_btn[i].addEventListener("click",function(){ // 응모
- 		     console.log(draw_btn[i]);
-      
+ 		   let draw_id = draw_btn[i].nextElementSibling.defaultValue;
+ 		    console.log(draw_id);
+ 		   console.log(login_id);
       if(user_id==null || user_id==""){
          if(confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
             location.href='/login';
@@ -196,6 +195,7 @@
                draw_id : draw_id,
                member_id : login_id 
          }
+         console.log("들어오냐"+draw_apply);
          $.ajax({
             type : "POST",
             url : "/shop/draw_customer_button",
@@ -205,6 +205,9 @@
                if(data=="fail"){
                   alert("이미 응모했습니다.");
                }
+               else if(data=="success"){
+                   alert("응모 하셨습니다.");
+                }
                $('.draw_customer').load(location.href+' .draw_customer');
             },
             error : function(data) {
@@ -218,55 +221,52 @@
    
    
   
-   let draw_button2=document.querySelectorAll('.font_top_button_end'); // 폰트 퍼튼 값
-      draw_button2.addEventListener("click",function(){
-    	  let draw_button2 = {
-                  draw_id : draw_id,
-                  console.log(draw_id);
-            }
-    	  $.ajax({
-    	         //url
-    	         url : '/shop/draw_customer_button_ajax',
-    	         //내가 보낼 거 
-    	         data : param,
-    	         dataType : 'json',
-    	         //method (get/post)
-    	         type : 'get',
-    	         
-    	         //에이잭스 통신 실패 했을시 실행할 함수
-    	         error : function(){
-    	            alert('카테고리 에이잭스 통신 실패');
-    	         },
-    	         success : function(memberId){
-    	            console.log('프로턱트' +memberId);
-    	            const drawList_i = document.querySelector('.drawList_product');
-    	              
-    	            // 반복문을 통해 리무브 차일드 하기
-    	            while(drawList_i.hasChildNodes()){
-    	               drawList_i.removeChild(drawList_i.firstChild);
-    	            }
-    	            for(let i = 0; i < product.length; i++){
-    	               //product 값으로 버튼 생성
-    	               let testBtn = document.createElement('button');
-    	               testBtn.className = 'productBtns';
-    	               //카테고리 구역에 버튼들 추가
-    	               drawList_i.appendChild(testBtn);
-    	               //버튼에 브랜드 이름 추가
-    	               testBtn.innerHTML =product[i].product_name;
-    	               const selectDrawProductContainer = document.querySelector('.selectDrawProductContainer');
-    	               testBtn.addEventListener('click',function b(){
-    	                  selectDrawProductContainer.style.display = 'none';
-    	               })
-    	               
-    	                  
-    	            }
-    	            
-    	         }
-    	         
-    	         
-    	         
-    	      })
-      })
+   let draw_button2=document.querySelector('#font_top_button_end'); // 폰트 퍼튼 값
+   draw_button2.addEventListener("click", function(){
+	     alert("경고");
+	    	  let draw_button3 = {
+	                  draw_id : draw_id
+	            }
+
+	    	  $.ajax({
+	    	         //url
+	    	         url : '/shop/draw_customer_button_ajax',
+	    	         //내가 보낼 거 
+	    	         data : draw_button3,
+	    	         dataType : 'json',
+	    	         //method (get/post)
+	    	         type : 'get',
+	    	         
+	    	         //에이잭스 통신 실패 했을시 실행할 함수
+	    	         error : function(){
+	    	            alert('카테고리 에이잭스 통신 실패');
+	    	         },
+	    	         success : function(success){
+	    	        	console.log(success);
+	    	        	alert("들어오니?");
+	    	            const modal_final_middle = document.querySelector('.modal_final_middle_ajax');
+	    	            for(let i = 0; i <success.length; i++){
+	    	            	console.log(success[i]);
+	    	               //product 값으로 버튼 생성
+	    	               let testdiv = document.createElement('div');
+	    	              testdiv.className = 'memberIds';
+	    	              modal_final_middle.appendChild(testdiv);
+	    	               //버튼에 브랜드 이름 추가
+	    	             testdiv.innerText =success[i].member_id;
+	    	               console.log(testdiv);
+	    	            }
+	    	            
+	    	         }
+	    	          
+	    	         
+	    	         
+	    	      })
+	   
+	 
+	   
+   }); 
+ 
+   
     	      
    
    
