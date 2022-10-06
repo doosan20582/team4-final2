@@ -153,14 +153,21 @@
 			from t_draw_result where draw_id = #{draw_id};
 	</select>
 	
-	<select id="customer_draw_event" parameterType="String" resultType="hashMap">
+	<select id="customer_draw_event" parameterType="_int" resultType="hashMap">
 			select member_id
-			from t_draw_result where draw_id = #{draw_id};
+			from t_draw_result where draw_id = #{draw_id}
 	</select>
 	
-	 
-    
-    
+	 <!-- 당첨시킨 회원 응모 테이블에서 삭제 -->
+	 <delete id="deleteWinningMember" parameterType="map">
+	 	<![CDATA[
+	 		delete from t_draw_enter where draw_id = #{draw_id} and member_id = #{member_id}
+	 	]]>
+	 </delete>
+    <!-- 당첨 구매 대기중인 회원 알아내기 -->
+    <select id="winningCustomerCheck" parameterType="hashMap" resultType="int">
+    	select count(*) from t_draw_result where draw_id = #{draw_id} and member_id = #{member_id}
+    </select>
  
 			
 		

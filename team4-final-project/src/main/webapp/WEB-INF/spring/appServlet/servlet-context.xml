@@ -59,7 +59,7 @@
 
 			<mapping path="/order" />
 			<mapping path="/order/*" />
-			<mapping path="/shop/draw_customer" />
+			<!-- <mapping path="/shop/draw_customer" /> -->
 
 			<mapping path="/user" />
 			<mapping path="/user/*" />

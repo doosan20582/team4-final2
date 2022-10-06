@@ -30,16 +30,18 @@ public interface DrawServiceAdmin {
 	public List<Map<String, Object>> draw_customer_memberID(Map<String, Object> map);
 	public void draw_admin_count(Map<String, Object> map);
 	
-	public List<DrawVO> draw_customer(Map<String, Object> map);
+	public List<DrawVO> draw_customer();
 	public int draw_customer_button_check(Map<String, Object> map);
 	public void draw_customer_button(Map<String, Object> map);
 	public List<DrawResultVO> getResultList();
 	public List<Map<String, Object>> admin_title_product_img(Map<String, Object>map);
 	public void getdrawlist(Map<String, Object> map2);
-	public List<Map<String, Object>> customer_draw_event(String temp_draw_id);
+	public List<Map<String, Object>> customer_draw_event(int draw_id);
 	public int draw_admin_button_check(Map<String, Object> map);
+	
+	public void deleteWinningMember(Map<String, Object> map);
 
-
+	public int winningCustomerCheck(Map<String, Object> map);
 	 
 	
 

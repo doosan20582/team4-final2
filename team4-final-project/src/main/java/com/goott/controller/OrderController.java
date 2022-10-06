@@ -42,7 +42,7 @@ public class OrderController {
 
 	@RequestMapping(value = "order", method = RequestMethod.GET)
 	public String orderGet(HttpServletRequest request, @RequestParam String product_id,
-			@RequestParam String order_quantity, Model model) {
+			@RequestParam(defaultValue = "1") String order_quantity, Model model) {
 		log.info("order ============================================================");
 		HttpSession session = request.getSession();
 		// 세션에 저장된 아이디

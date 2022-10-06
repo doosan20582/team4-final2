@@ -1,4 +1,3 @@
-
 /*한정판 상품 목록 컨테이너 */
 const selectDrawProductContainer = document.querySelector('.selectDrawProductContainer');
 /*한정판 상품 */
@@ -68,7 +67,3 @@ selectDrawBtn.addEventListener('click' , showDrawContainer);
 function showDrawContainer(){
     selectDrawProductContainer.style.display = 'block';
 }
-
-
-
-
