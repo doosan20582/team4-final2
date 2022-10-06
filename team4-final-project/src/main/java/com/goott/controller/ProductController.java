@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -145,8 +147,16 @@ public class ProductController {
 	// 상품 상세
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detailGet(@RequestParam(value = "product_id") int product_id,
-			@RequestParam(defaultValue = "1") int currentPage, Model model) {
+			@RequestParam(defaultValue = "1") int currentPage, Model model, HttpServletRequest request) {
 		log.info("상품 상세 get ------------------------------------------------");
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("login_id") != null && session.getAttribute("login_auth").toString().equals("관리자")) {
+			String temp_product_id = Integer.toString(product_id);
+			return "redirect:/product/detail/admin?product_id=" + temp_product_id;
+		}
+		
+		
 		// 상품 상세 정보
 		ProductVO productVO = productService.getPrdocutDetail(product_id);
 
