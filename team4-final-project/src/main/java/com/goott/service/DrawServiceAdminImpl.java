@@ -13,6 +13,9 @@ import com.goott.domain.DrawVO;
 import com.goott.domain.ProductVO;
 import com.goott.mapper.DrawAdminMapper;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Service
 public class DrawServiceAdminImpl implements DrawServiceAdmin {
 
@@ -113,9 +116,9 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 	}
 
 	@Override
-	public List<DrawVO> draw_customer(Map<String, Object> map) {
+	public List<DrawVO> draw_customer() {
 		// TODO Auto-generated method stub
-		return drawAdminMapper.draw_customer(map);
+		return drawAdminMapper.draw_customer();
 	}
 
 	@Override
@@ -150,15 +153,28 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 	}
 
 	@Override
-	public List<Map<String, Object>> customer_draw_event(String temp_draw_id) {
+	public List<Map<String, Object>> customer_draw_event(int draw_id) {
 		// TODO Auto-generated method stub
-		return drawAdminMapper.customer_draw_event(temp_draw_id);
+		return drawAdminMapper.customer_draw_event(draw_id);
 	}
 
 	@Override
 	public int draw_admin_button_check(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return drawAdminMapper.draw_admin_button_check(map);
+	}
+
+	@Override
+	public void deleteWinningMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		int result = drawAdminMapper.deleteWinningMember(map);
+		log.info("삭제 결과 : " + result);
+	}
+
+	@Override
+	public int winningCustomerCheck(Map<String, Object> map) {
+		
+		return drawAdminMapper.winningCustomerCheck(map);
 	}
 
 	 

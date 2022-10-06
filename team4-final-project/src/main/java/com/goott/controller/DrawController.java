@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import com.goott.domain.DrawEnterVO;
-import com.goott.domain.DrawResultVO;
 import com.goott.domain.DrawVO;
-import com.goott.domain.ProductVO;
-
-
-
-
 import com.goott.service.DrawServiceAdmin;
- 
+
 import lombok.extern.log4j.Log4j; 
 
 @Log4j
@@ -212,9 +204,9 @@ public class DrawController {
 
 	@RequestMapping(value = "/shop/draw_admin_change", method = RequestMethod.POST)
 	public ModelAndView update(DrawVO vo) {
-		//log.info(vo);
+		log.info("이벤트 업데이트 내용 : " + vo);
 		ModelAndView mv = new ModelAndView();
-		drawServiceAdmin.update(vo);
+		drawServiceAdmin.update(vo); 
 		mv.setViewName("redirect:/shop/draw_admin");
 		return mv;
 	}
@@ -252,34 +244,34 @@ public class DrawController {
 			  String member_id = valueArrTest.get(i);
 			  map.put("draw_id", draw_id);
 			  map.put("member_id", member_id);
+			  log.info(map);
 			  if(drawServiceAdmin.draw_admin_button_check(map)!=0) {
 					
 				} else {
-					  drawServiceAdmin.draw_admin_count(map);		
+					  drawServiceAdmin.draw_admin_count(map);
+					  drawServiceAdmin.deleteWinningMember(map);
 				}
 			
 		  }
 	} 
 	
   @ResponseBody // === 상품이미지 (product) (ajax) === //
-	  @RequestMapping(value = "/shop/draw_customer_button_ajax")
-  public List<Map<String, Object>> customer_draw_event(HttpServletRequest request) {
-	  	System.out.println(request.getParameter("draw_id"));
-		  String temp_draw_id = request.getParameter("draw_id");
-		  System.out.println(temp_draw_id);
-			List<Map<String, Object>> list = new ArrayList<>();
-			// 디비에서 넘어온 상품 리스트 저장
-			//Map<String, Object> map = new HashMap<>();
-			//map.put("temp_draw_id", temp_draw_id);
-			list = drawServiceAdmin.customer_draw_event(temp_draw_id);
-			System.out.println(list.toString());
-			return list;
+  @RequestMapping(value = "/shop/draw_customer_button_ajax", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+  public List<Map<String, Object>> customer_draw_event(@RequestBody Map<String, Object> draw_button3) {
+		int draw_id = Integer.parseInt( draw_button3.get("draw_id").toString() );
+		log.info("검색 이벤트 번호 : " + draw_id);
+		  
+		List<Map<String, Object>> list = new ArrayList<>();
+			
+		list = drawServiceAdmin.customer_draw_event(draw_id);
+		log.info(list);
+		return list;
 	  }
 	
 	@ResponseBody
 	@RequestMapping(value = "/shop/draw_customer_button" , method = RequestMethod.POST)
 	public String draw_customer_button(@RequestBody Map<String, Object> map) {
-		if(drawServiceAdmin.draw_customer_button_check(map)!=0) {
+		if(drawServiceAdmin.draw_customer_button_check(map)!=0 || drawServiceAdmin.winningCustomerCheck(map) != 0) {
 			return "fail";
 		} else {
 			drawServiceAdmin.draw_customer_button(map);
@@ -293,32 +285,34 @@ public class DrawController {
 	
 	
 	 @RequestMapping(value = "/shop/draw_customer", method = RequestMethod.GET)
-	   public void draw_customer(@RequestParam Map<String, Object> map , DrawVO vo, Model model, HttpServletRequest request) {
-	      HttpSession session = request.getSession();
+	   public void draw_customer(Model model) {
+//	      HttpSession session = request.getSession();
 	      //if문을써라
-	      String member_id = session.getAttribute("login_id").toString();
 	      
-	      session.setAttribute("member_id", member_id);
-	      log.info(member_id);
-	      List<DrawResultVO> draw_resultList =drawServiceAdmin.getResultList();
+//	      String member_id = session.getAttribute("login_id").toString();
 	      
-	      for( int i=0; i<draw_resultList.size(); i++) { 
-		  Map<String, Object> map2 = new HashMap<String, Object>();
-		  int draw_id = draw_resultList.get(i).getDraw_id();
-		  String member_id2 = draw_resultList.get(i).getMember_id();
-		  log.info("테이블아이디 가져오니"+draw_id);
-		  log.info("멤버아이디 가져오니"+member_id2);
-		  map2.put("draw_id", draw_id);
-		  map2.put("member_id", member_id2);
-		  drawServiceAdmin.getdrawlist(map2);
-		log.info("테이블 아이디와 멤버 아이디값"+map2);
-		model.addAttribute("draw_resultList", draw_resultList);
+//	      session.setAttribute("member_id", member_id);
+//	      log.info(member_id);
+	     
+//	      List<DrawResultVO> draw_resultList =drawServiceAdmin.getResultList();
+	      
+//	      for( int i=0; i<draw_resultList.size(); i++) { 
+//		  Map<String, Object> map2 = new HashMap<String, Object>();
+//		  int draw_id = draw_resultList.get(i).getDraw_id();
+//		  String member_id2 = draw_resultList.get(i).getMember_id();
+//		  log.info("테이블아이디 가져오니"+draw_id);
+//		  log.info("멤버아이디 가져오니"+member_id2);
+//		  map2.put("draw_id", draw_id);
+//		  map2.put("member_id", member_id2);
+//		  drawServiceAdmin.getdrawlist(map2);
+//		  log.info("테이블 아이디와 멤버 아이디값"+map2);
 		
-	      }
-	      log.info("안들어오나"+draw_resultList);
+//	      }
+//	      model.addAttribute("draw_resultList", draw_resultList);
+//	      log.info("안들어오나"+draw_resultList);
 
-	      
-	      model.addAttribute("data", drawServiceAdmin.draw_customer(map));
+	      //이벤트 정보
+	      model.addAttribute("data", drawServiceAdmin.draw_customer());
 	      //model.addAttribute("member_auth", member_auth);
 	     // model.addAttribute("draw_resultList", draw_resultList);
 

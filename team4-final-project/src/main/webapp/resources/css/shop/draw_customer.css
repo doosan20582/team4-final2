@@ -1,7 +1,7 @@
 .draw_container{
     width: 100%;
     background-color: var(--subColor);
-      font-family: 'GimpoGothicBold00';
+    font-family: 'GimpoGothicBold00';
 	transition: .3s;	
 }
 
@@ -99,7 +99,7 @@
 .font_top>h1 {
 	color: var(--fontColor);
 }
-.font_top>h3>span{
+.font_top>h3{
 	color:white;
 }
 
@@ -160,6 +160,11 @@ table tr td:last-child{
     font-weight: bold;  
     margin-bottom:30px;
     margin-left: 50px; 
+    cursor: pointer;
+}
+
+.font_top_button:hover{
+	color: var(--fontColor);
 }
 
 .font_top_button_end{
@@ -177,6 +182,11 @@ table tr td:last-child{
     font-weight: bold;
     margin-top: 30px;
     margin-right:50px;
+    cursor: pointer;
+}
+
+.font_top_button_end:hover{
+	color: var(--fontColor);
 }
 /* 모달 css */
 .modal_container{
@@ -218,12 +228,26 @@ table tr td:last-child{
     font-size: 2.0rem;
 }
 /*응모 닫기 버튼*/
-.modal_bottom_btn, .modal_final_bottom_btn{
-    width: 100px;
-    height: 50px;
-    border: 4px;
-    background-color: var(--mainColor);
-    color: white;
+.modal_final_bottom_btn{
+    border-radius: 10px;
+    width: 300px;
+    height: 70px;
+    padding-left: 0.5rem;
+	background-color: rgb(24, 24, 24);
+	font-family: 'GimpoGothicBold00';
+	outline: none;
+	transition: .3s;
+    border: none;
+    font-size: 2.0rem;
+    color:white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-right:50px;
+    cursor: pointer;
+}
+
+.modal_final_bottom_btn:hover{
+	color: var(--fontColor);
 }
 
 .modal_final_container{
@@ -246,6 +270,9 @@ table tr td:last-child{
     border-radius: 4px;
     width: 1000px;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .modal_final_top{
     width: 100%;
@@ -264,31 +291,46 @@ table tr td:last-child{
     /* background-color: white; */
     width: 100%;
     height: 300px;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     display: flex;
-    flex-direction: row;
-    
+    flex-wrap : wrap;
+    border-bottom: 1px solid black;
+   /*  background-color: blue;
+     */
      
     
     /* padding-top: 20px; */
     /* line-height: 80px; */
 }
-.modal_fianl_middle_modal{
+
+.winnerSpan{
+	margin: 0.5rem;
+}
+/* .modal_fianl_middle_modal{
 	display: flex;
 	 flex-direction:row; 
-}
+} */
 
 .modal_final_bottom{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 100px;
     width: 100%;
-    font-size: 2.0rem;
-    margin:10px;
+    /* font-size: 2.0rem; */
+    
+    
 }
-.modal_final_middle>span:nth-child(n){
+/* .modal_final_middle>span:nth-child(n){
     margin-left: 25px;
     background-color: white;
     color: black;
+} */
+
+#limitedBtns{
+	display: none;
+}
+
+.deadlineSpan{
+	color: var(--fontColor);
 }

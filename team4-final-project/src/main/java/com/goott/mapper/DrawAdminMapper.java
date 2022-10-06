@@ -51,16 +51,20 @@ public interface DrawAdminMapper {
 	public List<Map<String, Object>> draw_customer_memberID(Map<String, Object> map);
 	public void draw_admin_count(Map<String, Object> map);
 
-	public List<DrawVO> draw_customer(Map<String, Object> map);
+	public List<DrawVO> draw_customer();
 	public int draw_customer_button_check(Map<String, Object> map);
 	public void draw_customer_button(Map<String, Object> map);
 	public List<DrawResultVO> getRusultID();
 	public List<Map<String, Object>> admin_title_product_img(Map<String, Object>map);
 	public void getdrawlist(Map<String, Object> map2);
-	public List<Map<String, Object>> customer_draw_event(String temp_draw_id);
+	public List<Map<String, Object>> customer_draw_event(int draw_id);
 	public int draw_admin_button_check(Map<String, Object> map);
-	 
-
+	/**
+	 * 당첨된 회원 이벤트 테이블에서 삭제
+	 * @param map draw_id, member_id
+	 */
+	public int deleteWinningMember(Map<String, Object> map);
+	public int winningCustomerCheck(Map<String, Object> map);
 	
  
 	

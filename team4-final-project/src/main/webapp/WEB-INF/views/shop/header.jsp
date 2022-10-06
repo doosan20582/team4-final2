@@ -26,10 +26,10 @@
         <div class="menu">
             <a href="/shop">Shop</a>
             <c:if test="${sessionScope.login_auth eq '관리자'}">
-            <a href="/shop/draw_admin">Draw</a>
+            	<a href="/shop/draw_admin">Draw</a>
             </c:if>
              <c:if test="${sessionScope.login_auth eq '회원' || sessionScope.login_auth eq null}">
-            <a href="/shop/draw_customer">Draw</a>
+            	<a href="/shop/draw_customer">Draw</a>
             </c:if>
             <a href="/shop/QnA">Q&A</a>
         </div>
