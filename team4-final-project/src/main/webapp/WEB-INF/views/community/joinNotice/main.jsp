@@ -9,15 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--쇼핑몰 글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/community/joinNotice/main.css?ver=1"/>">
 
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<!-- 제이쿼리 -->
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <title>Document</title>
+
 </head>
+
 <body>
 	<!--헤더-->
 	<%@ include file="../header.jsp"%>
@@ -49,10 +53,11 @@
 
 			<div class="section_notice">
 				<div class="section_notice_main">
+					<!-- 게시글 목록 -->
 					<%@ include file="list.jsp"%>
 				</div>
 
-				<script>
+				<script>/* 현재 검색중인 옵션을 담는 변수들 */
 					let camping_region = '<c:out value="${option.camping_region}"/>';
 					let camping_recruitment = '<c:out value="${option.camping_recruitment}"/>';
 					let camping_departure = '<c:out value="${option.camping_departure}"/>';
@@ -75,10 +80,10 @@
 					<script>
 						let camping_count = '<c:out value="${camping_count}"/>';
 					</script>
-					<c:if test="${member_auth eq '관리자'}">
+					<c:if test="${member_auth eq '관리자'}"><!-- 관리자라면 글삭제 버튼이 보이게 -->
 						<input type="button" value="글삭제" class="delete_btn">
 					</c:if>
-					<c:if test="${member_auth ne '관리자'}">
+					<c:if test="${member_auth ne '관리자'}"><!-- 관리자가 아니면 글삭제 버튼이 안 보이게 -->
 						<input type="button" value="글삭제" class="delete_btn" style="display: none">
 					</c:if>
 					<input type="button" value="글쓰기" class="write_btn">

@@ -21,6 +21,7 @@
         <div class="footer_logo">
             <h1>Camp<span>ing</span></h1>
         </div>
+        
         <div class="footer_content">
             <h1>GOOTT IT Developer Class</h1>
 			<p>상호 : 구트아카데미</p>

@@ -9,11 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--쇼핑몰 글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/community/joinNotice/input.css?ver=1"/>">
 
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 
 <!-- 에디터 스크립트 -->

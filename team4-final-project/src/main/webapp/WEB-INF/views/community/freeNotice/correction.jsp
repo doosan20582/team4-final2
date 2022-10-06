@@ -64,7 +64,7 @@
 	<!--푸터-->
 	<%@ include file="../footer.jsp"%>
 	
-	<script src="<c:url value="/resources/js/community/freeNotice/input.js?ver=1"/>"></script>
+	<script src="<c:url value="/resources/js/community/freeNotice/correction.js?ver=1"/>"></script>
 </body>
 
 </html>

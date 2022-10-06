@@ -37,6 +37,7 @@ public class Community_controller {
 	public void mainPage(Model model) {
 		model.addAttribute("data", mservice.getList());//자유게시판 정보
 		model.addAttribute("list", mservice.getData());//캠핑모임게시판 정보
+		model.addAttribute("draw", mservice.getDraw());//이벤트 정보
 	}
 	
 	// 이미지 업로드

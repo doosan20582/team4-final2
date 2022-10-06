@@ -9,11 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 글로벌 css -->
 <link rel="stylesheet" href="/resources/css/global.css">
-<!--쇼핑몰 글로벌 css-->
+<!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/community/joinNotice/input.css?ver=1"/>">
 
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 
 <!-- 에디터 스크립트 -->
@@ -23,7 +23,9 @@
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Document</title>
+
 </head>
+
 <body>
 	<!--헤더-->
 	<%@ include file="../header.jsp"%>
@@ -71,7 +73,7 @@
 						<option value="8" <c:out value="${data.camping_recruitment == '8' ? 'selected' : ''}"/>>8</option>
 					</select>
 
-					<script>
+					<script>/* 현재 참여인원 select박스 option 갯수 설정에 사용할 변수들 */
                     	let camping_recruitment = '<c:out value="${data.camping_recruitment}"/>'; // 총 모집 인원
                     	let applicant_count = '<c:out value="${data.camping_applicant}"/>'; // 현재 참여 인원
                     </script>

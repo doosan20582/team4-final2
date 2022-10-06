@@ -12,8 +12,9 @@
 <link rel="stylesheet" href="/resources/css/global.css">
 <!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=2"/>">
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xeicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<!-- 제이쿼리 -->
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <title>Document</title>
 </head>
@@ -46,7 +47,7 @@
 			<input name="keyword" class="rec_keyword" type="hidden" value="${keyword}">
 			<input name="sort_value" class="rec_value" type="hidden" value="r_desc">
 		</form>
-		<script>
+		<script>/* 조회순 추천순에 사용될 변수 */
 			let sort_value = '<c:out value="${sort_value}"/>';
 		</script>
 	</div>

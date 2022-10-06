@@ -9,18 +9,48 @@ let temp = document.querySelector(".temp");//온도
 let country = document.querySelector(".location");//장소
 let location_select = document.querySelector(".section2_map_list");// 지역 선택
 let weather_area = document.querySelector(".section2_map_content");// 날씨 표시 영역
+let right_btn = document.querySelector(".right_btn"); // 캐러셀 오른쪽 버튼
+let left_btn = document.querySelector(".left_btn"); // 캐러셀 왼쪽 버튼
+let carousel = document.querySelector(".section2_event_content_carousel"); // 캐러셀
+let carousel_count = document.querySelectorAll(".section2_event_content_info").length; // 캐러셀 갯수
+let carousel_num=0;// 캐러셀에 사용할 변수
 
+//캐러셀 오른쪽 버튼
+right_btn.addEventListener("click",function(){
+	if(carousel_num<carousel_count-1){
+		carousel_num ++;
+		left_btn.style.display = "block";
+		carousel.style.left = -(740*carousel_num)+"px";
+		if(carousel_num == carousel_count-1){
+			this.style.display = "none";
+		}
+	}
+})
+
+//캐러셀 왼쪽 버튼
+left_btn.addEventListener("click",function(){
+	if(carousel_num>=0){
+		carousel_num --;
+		right_btn.style.display = "block";
+		carousel.style.left = -(740*carousel_num)+"px";
+		if(carousel_num == 0){
+			this.style.display = "none";
+		}
+	}
+})
+
+//날씨 상태에 따른 날씨 이미지 바뀌게
 var change_weather = function(){
 	if(weather.textContent == 'clear sky'){
 		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455017.mp4";
 	
-	} else if(weather.textContent == 'few clouds' || weather.textContent == "overcast clouds"){
+	} else if(weather.textContent == 'few clouds' || weather.textContent == 'scattered clouds'){
 		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455053.mp4";
 	
-	} else if(weather.textContent == 'scattered clouds'){
+	} else if(weather.textContent == 'broken clouds'){
 		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455024.mp4";
 	
-	} else if(weather.textContent == 'broken clouds'){
+	} else if(weather.textContent == "overcast clouds"){
 		weather_img.src = "https://cdn-icons-mp4.flaticon.com/512/6455/6455054.mp4";
 	
 	} else if(weather.textContent == 'shower rain'||weather.textContent == "light rain"||weather.textContent == "moderate rain"||weather.textContent == "ligth intensity shower rain"||weather.textContent == "heavy intensity shower rain"||weather.textContent == "ragged shower rain"

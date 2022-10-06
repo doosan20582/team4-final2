@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+	<!-- 검색 결과가 없으면 보이는 요소 -->
 	<c:if test="${empty data}">
 		<div class=not_found>
 			<i class="xi-search side_nav_search_btn"></i>
@@ -14,7 +15,7 @@
 		<div class="section_notice_main_content">
 			<li>${data.board_id}</li>
 			
-			<c:if test="${data.board_tag_name eq '공지'}">
+			<c:if test="${data.board_tag_name eq '공지'}"> <!-- 태그명이 공지면 빨간색으로 보이게 -->
 				<li style="color:red">[<span class="tag_id">${data.board_tag_name}</span>]</li>
 			</c:if>
 			<c:if test="${data.board_tag_name ne '공지'}">
@@ -36,6 +37,7 @@
 			
 		</div>
 		
+		<!-- 게시글 제목 누르면 submit할 폼 -->
 		<form method="POST" class="list_form" action="/community/freeNotice/go_detail">
 				<input type="hidden" name="user_id" value="${data.member_id}">
 				<input type="hidden" name="board_id" value="${data.board_id}">

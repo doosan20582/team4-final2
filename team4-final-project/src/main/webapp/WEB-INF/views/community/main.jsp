@@ -12,8 +12,9 @@
 <!--커뮤니티 글로벌 css-->
 <link rel="stylesheet" href="<c:url value="/resources/css/community/community_global.css?ver=1"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/community/main.css?ver=1"/>">
-<!--쇼핑몰 글로벌 아이콘 cdn-->
+<!--xicon cdn-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
+<!--제이쿼리 -->
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Document</title>
@@ -53,11 +54,12 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 		<section>
+		
 			<div class="section1">
+			
 				<!-- 자유게시판 -->
 				<div class="section1_noticeBoard">
 					<div class="section1_noticeBoard_header">
@@ -84,7 +86,8 @@
 						</div>
 					</div>
 				</div>
-				<!-- 공지사항 -->
+				
+				<!-- 캠핑모임 -->
 				<div class="section1_notice">
 					<div class="section1_notice_header">
 						<h1>현재 모집중인 <span>캠핑모임</span></h1>
@@ -112,6 +115,7 @@
 			</div>
 
 			<div class="section2">
+			
 				<!-- 이벤트,프로모션 -->
 				<div class="section2_event">
 					<div class="section2_event_header">
@@ -119,12 +123,31 @@
 							이벤트
 							<span>& 프로모션</span>
 						</h1>
+						<h3><a href="/shop/draw_customer">+ 더보기</a></h3>
 					</div>
 
 					<div class="section2_event_main">
-						<div class="section2_event_content"></div>
+						<div class="section2_event_content">
+							<i class="xi-angle-left left_btn"></i>
+							<i class="xi-angle-right right_btn"></i>
+							<div class="section2_event_content_carousel">
+								<c:forEach var="data" items="${draw}">
+								<div class="section2_event_content_img">
+									<img src="/productImg/${data.product_img_url1}">
+								</div>
+								<div class="section2_event_content_info">
+									<p><span>특가</span> 판매<p>
+									<p>${data.draw_title}</p>
+									<fmt:parseDate value="${data.draw_event_end_date}" pattern="yyyy-MM-dd'T'HH:mm" var="date" type="both" />
+									<p>기간 ~<span><fmt:formatDate value="${date}" pattern="yy-MM-dd" /></span></p>
+									<a href="/shop/draw_customer">이벤트 바로가기</a>
+								</div>
+								</c:forEach>
+							</div>
+						</div>
 					</div>
 				</div>
+				
 				<!-- 날씨 정보 -->
 				<div class="section2_map">
 					<div class="section2_map_header">
@@ -147,17 +170,21 @@
 					<div class="section2_map_main">
 						<div class="section2_map_content">
 							<div class="section2_map_content_main">
+								
 								<div class="section2_map_content_main_icon">
 									<video autoplay loop muted class="weather_img">
-										<source src="https://cdn-icons-mp4.flaticon.com/512/6455/6455017.mp4">
+										<source src="https://cdn-icons-mp4.flaticon.com/512/6455/6455017.mp4"> <!-- 날씨 아이콘 -->
 									</video>
 								</div>
+								
 								<div class="section2_map_content_main_info">
 									<p><span class="temp"></span>&deg;C</p>
 									<p class="weather"></p>
 									<p class="location"></p>
 								</div>
+								
 							</div>
+							
 							<div class="section2_map_content_footer">
 								<div class="section2_map_content_footer_wind">
 									<p>Wind speed</p>
@@ -172,9 +199,11 @@
 									<p><span class="clouds"></span> %</p>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>
+				
 				<!-- 실시간 채팅 -->
 				<div class="section2_chat">
 					<div class="section2_chat_header">
