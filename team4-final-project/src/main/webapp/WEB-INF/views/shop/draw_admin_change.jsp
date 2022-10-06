@@ -34,14 +34,14 @@
 						<tr class="admin_body_file">
                             <td class="file_top_fir">이벤트 이미지</td>
                             <td>
-                                <input type="text" name="product_img_url1" class="drawInputs" value="${data.product_img_url1}">
+                                <input type="text" name="product_img_url1" class="drawInputs" value="${data.product_img_url1}" disabled>
                             </td>
                         </tr> 
                           <!-- 상품키 모달 버튼 -->
 						<tr class="admin_title">
 							<td>드로우키 </td>
 							<td class="admin_product_id">
-							<input type="text" name="draw_id" value=" ${data.draw_id}" />
+							<input type="text" name="draw_id" value=" ${data.draw_id}" disabled />
 							
 								</td>
 						</tr>
@@ -49,7 +49,7 @@
 						<tr class="admin_title">
 							<td>상품 이름</td>
 							<td class="admin_title_name">
-							<input type="text" name="draw_title" value="${data.product_name}" />
+							<input type="text" name="draw_title" value="${data.product_name}" disabled />
 								 
 							</td> 
 						<!-- 상품가격 -->
@@ -57,7 +57,7 @@
 						<tr class=" admin_title">
 							<td>상품 가격</td> 
 							<td class="admin_title_price"> 
-								<input type="text" name="draw_price" value="${data.product_price}" />
+								<input type="text" name="draw_price" value="${data.product_price}" disabled />
 							</td>
 						</tr>
 						
@@ -104,12 +104,25 @@
 					
 						<tr class="admin_title">
 							<td>코멘트</td>
-							<td><textarea name="draw_comment" id="" cols="30" rows="10" >
+							<td><textarea name="draw_comment" id="draw_comment" cols="55" rows="15" >
 							${data.draw_comment}
 							 </textarea>
 							
 							</td>
 						</tr>
+						<tr>
+								<td>상품 공개 여부</td>
+								<td>
+									<c:if test="${data.draw_deadline eq '이벤트 진행' }">
+										<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트  진행"><h3 class="open">공개</h3>
+										<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트 마감" checked="checked"><h3 class="open">비공개</h3>
+									</c:if>
+									<c:if test="${data.draw_deadline eq '이벤트 마감' }">
+										<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트 마감" checked="checked"><h3 class="open">공개</h3>
+										<input type="radio" name="draw_deadline" id="draw_dealine" value="이벤트  진행"><h3 class="open">비공개</h3>
+									</c:if>
+								</td>
+							</tr>
 						</c:forEach>
 					</table>
 

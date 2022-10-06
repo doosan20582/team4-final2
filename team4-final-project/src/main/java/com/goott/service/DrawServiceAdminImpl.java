@@ -148,7 +148,19 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 		// TODO Auto-generated method stub
 		drawAdminMapper.getdrawlist(map2);
 	}
-	   
+
+	@Override
+	public List<Map<String, Object>> customer_draw_event(String temp_draw_id) {
+		// TODO Auto-generated method stub
+		return drawAdminMapper.customer_draw_event(temp_draw_id);
+	}
+
+	@Override
+	public int draw_admin_button_check(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return drawAdminMapper.draw_admin_button_check(map);
+	}
+
 	 
 
 }

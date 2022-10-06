@@ -17,7 +17,6 @@
     align-items: center;
     flex-direction: column; 
     padding: 1rem;
-    border: 3px solid bisque;
 }
 
 .section1>h1{
@@ -31,8 +30,10 @@
 }
 
 .section1_img>img{
-    width: 1000px;
-    height: 700px;
+    width: 1200px;
+    height: 850px;
+    border-radius:10px;
+    box-shadow : var(--sub2Color) 0px 0px 5px 3px;
 } 
 
 /*이벤트*/
@@ -55,7 +56,8 @@
     font-size: 1.5rem;
     padding: 2.5rem;
     color:white;
-       border-bottom: 2px solid var(--subFontColor) ;
+    border-bottom: 2px solid var(--subFontColor) ;
+    margin-top:10px;
 } 
 #drawRegistBtn{
 	  border-radius: 10px;
@@ -134,7 +136,7 @@
     border: none;
     font-weight: 600;
     border-radius: 10px;
-    font-size: 2.0rem;
+    font-size: 1.5rem;
     padding-left: 0.5rem;
 	font-family: 'GimpoGothicBold00';
 	outline: none;

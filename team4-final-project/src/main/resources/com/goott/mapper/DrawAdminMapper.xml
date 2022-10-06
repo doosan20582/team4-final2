@@ -7,8 +7,8 @@
 		<![CDATA[
 		  select p.product_name,p.product_price,p.product_id,
 				  d.draw_reqruit, d.draw_event_start_date, d.draw_event_end_date,
-		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment,d.draw_id,d.product_img_url1 from t_draw as 
-	       d join t_product as p on d.product_id = p.product_id;
+		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment,d.draw_id,d.product_img_url1,d.draw_deadline from t_draw as 
+	       d join t_product as p on d.product_id = p.product_id order by d.draw_id desc;
 		]]>
 	</select>
 	<!--draw_admin_chage의 쿼리  -->
@@ -16,7 +16,7 @@
 		<![CDATA[
 		  select p.product_name,p.product_price,p.product_id,p.product_img_url1, 
 				  d.draw_reqruit, d.draw_event_start_date, d.draw_event_end_date,
-		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment,d.draw_id from t_draw as 
+		           d.draw_pur_start_date, d.draw_pur_end_date, d.draw_comment,d.draw_id,d.draw_deadline from t_draw as 
 	       d join t_product as p on d.product_id = p.product_id and draw_id=#{draw_id};
 		]]>
 	</select>
@@ -26,8 +26,8 @@
 		<![CDATA[
 			select product_img_url1,draw_id, draw_title, draw_price, product_id,
 				   draw_reqruit, draw_event_start_date, draw_event_end_date,
-		           draw_pur_start_date, draw_pur_end_date, draw_comment 
-		      from t_draw;
+		           draw_pur_start_date, draw_pur_end_date, draw_comment,draw_deadline 
+		      from t_draw order by draw_id desc;
 		]]>
 	</select>
 		<!--draw_admin_add 에이젝스 브랜드 이름 불러오기  -->
@@ -92,8 +92,8 @@
    		<insert id="draw_admin_add" parameterType="com.goott.domain.DrawVO">
    		<![CDATA[
 		insert into t_draw(draw_title, product_id, draw_price,draw_event_start_date, draw_event_end_date,
-		 draw_comment,draw_pur_start_date, draw_pur_end_date, draw_reqruit,product_img_url1) values (#{draw_title}, #{product_id}, #{draw_price}, #{draw_event_start_date},  #{draw_event_end_date},  #{draw_comment},  #{draw_pur_start_date},
-		 #{draw_pur_end_date},#{draw_reqruit},#{product_img_url1});
+		 draw_comment,draw_pur_start_date, draw_pur_end_date, draw_reqruit,product_img_url1,draw_deadline ) values (#{draw_title}, #{product_id}, #{draw_price}, #{draw_event_start_date},  #{draw_event_end_date},  #{draw_comment},  #{draw_pur_start_date},
+		 #{draw_pur_end_date},#{draw_reqruit},#{product_img_url1},#{draw_deadline});
 		 ]]>
 	</insert>
 	<!--draw_admin_change 상품이름값 불러오기  -->
@@ -106,7 +106,7 @@
    <update id="update" parameterType="com.goott.domain.DrawVO">
 		update t_draw
 		set product_img_url1=#{product_img_url1}, draw_id=#{draw_id}, draw_title=#{draw_title},draw_price=#{draw_price}, draw_event_start_date=#{draw_event_start_date}, draw_event_end_date=#{draw_event_end_date}, 
-		draw_comment=#{draw_comment}, draw_pur_start_date=#{draw_pur_start_date},draw_pur_end_date=#{draw_pur_end_date},draw_reqruit=#{draw_reqruit}
+		draw_comment=#{draw_comment}, draw_pur_start_date=#{draw_pur_start_date},draw_pur_end_date=#{draw_pur_end_date},draw_reqruit=#{draw_reqruit},draw_deadline=#{draw_deadline}
 		where draw_id=#{draw_id};
 	</update> 
    
@@ -130,6 +130,10 @@
 			insert into t_draw_result(draw_id,member_id,draw_result_winning) values (#{draw_id}, #{member_id}, "당첨" );
 	</insert>
 	
+	 <select id="draw_admin_button_check" parameterType="hashMap" resultType="int">
+    	select count(*) from t_draw_result where draw_id = #{draw_id} and member_id = #{member_id}
+    </select>
+	
   <select id="draw_customer_button_check" parameterType="hashMap" resultType="int">
     	select count(*) from t_draw_enter where draw_id = #{draw_id} and member_id = #{member_id}
     </select>
@@ -148,6 +152,13 @@
 			select member_id
 			from t_draw_result where draw_id = #{draw_id};
 	</select>
+	
+	<select id="customer_draw_event" parameterType="String" resultType="hashMap">
+			select member_id
+			from t_draw_result where draw_id = #{draw_id};
+	</select>
+	
+	 
     
     
  

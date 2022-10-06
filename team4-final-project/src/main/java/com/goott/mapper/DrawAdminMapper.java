@@ -57,6 +57,8 @@ public interface DrawAdminMapper {
 	public List<DrawResultVO> getRusultID();
 	public List<Map<String, Object>> admin_title_product_img(Map<String, Object>map);
 	public void getdrawlist(Map<String, Object> map2);
+	public List<Map<String, Object>> customer_draw_event(String temp_draw_id);
+	public int draw_admin_button_check(Map<String, Object> map);
 	 
 
 	

@@ -1,6 +1,9 @@
 .draw_container{
     width: 100%;
+    height:100%;
     background-color: var(--subColor);
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
 }
 
 /* .count_container{
@@ -13,6 +16,7 @@
 
 .count_main{
     width: 100%;
+    heigt:100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -21,45 +25,40 @@
 /*테이블*/
 .count_body{
     width: 50%;
-    /* height: 700px; */
+    height: 700px;
     /* margin: 0 auto; */
     border-collapse: collapse;
 }
-/* .count_Title_title{
-    width: 100%;
-    height: 15%;
-    font-size: 1.5rem;
-    
-    background-color: white;   
-} */
-/* .count_Title{
-    width: 100%;
-    height: 15%;
-    font-size: 1.5rem;
-   
-} */
+thead{
+	height:200px;
+}
+tbody{
+	height:200px;
+}
+.title_td{
+	width:90%;
+}
 thead th{
-    background-color: rgb(119, 213, 119);
+     background-color: var(--mainColor);
     font-size: 2.3rem;
     color: white;
-    /* border-right: white; */
     font-weight: bold;
-    padding: 1rem;
-    
+    padding: 1rem;  
 }
 tbody td{
     background-color: white;
-    border: 1px solid black;
     text-align: center;
     padding: 1rem;
+    font-size: 2.0rem;
     
 }
-.box{
-    /* width: 20px;
-    height: 20px; */
-    /* margin-left: 10px; */
-    background-color: white;
+
+.chk,#allCheckBox{
+	width:25px;
+	height:25px;
+	border-radius:10px;
 }
+
 .file_submit{
     /* width: 300px;
     height: 70px;
