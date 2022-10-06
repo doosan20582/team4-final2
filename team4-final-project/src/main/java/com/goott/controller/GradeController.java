@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,31 +85,41 @@ public class GradeController {
 	//관리자 - 등급 정책 리스트(gradePolicy_admin)
 	@RequestMapping(value="/gradePolicy_admin")
 	public ModelAndView gradePolicy(ModelAndView mav) {
+		
+		int gradeCount = gradeAdminService.gradeCount();
 		mav.setViewName("/gradePolicy_admin");
 		mav.addObject("gradePolicy", gradeAdminService.gradePolicy());
+		mav.addObject("gradeCount", gradeCount);
 		return mav;
 	}
 	
 	//관리자 - 등급 정책 삭제
-	@RequestMapping(value = "/gradePolicy_adminDelete")
+	@RequestMapping(value = "/gradePolicy_adminDelete", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
 	@ResponseBody
 	public String gradePolicyDelete(@RequestParam(value="valueArr[]") List<String> valueArr) {
 		
 		Iterator it = valueArr.iterator();
-		
+		String resultInfo = "삭제됐습니다.";
 		while (it.hasNext()) {
 			int temp = Integer.parseInt( it.next().toString() );
-			gradeAdminService.gradePolicyDelete(temp);	
+			String result = gradeAdminService.gradePolicyDelete(temp);	
+			if(result.equals("에러났음")) {
+				resultInfo="삭제되지 않았습니다. 다시 확인해주세요.";
+				break;
+			}
+			
 		}
 //			
-//		}
-		
-		return "/gradePolicy_admin";
+		return resultInfo;
 	}
 
 	//관리자 - 등급 정책 추가
 	@RequestMapping(value="/gradePolicyAdd_admin", method =RequestMethod.GET)
-    public String gradePolicyAdd() {
+    public String gradePolicyAdd(Model model) {
+	
+	
+	int gradeCount = gradeAdminService.gradeCount()+1;
+	model.addAttribute("gradeCount", gradeCount);
      return "/gradePolicyAdd_admin";
   }
 	

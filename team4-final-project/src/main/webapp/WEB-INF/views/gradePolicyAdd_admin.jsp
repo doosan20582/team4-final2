@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--쇼핑몰 글로벌 css-->
 <link rel="stylesheet" href="/resources/css/global.css">
-<link rel="stylesheet" href="/resources/css/gradePolicy_admin.css">
+<link rel="stylesheet" href="/resources/css/gradePolicyAdd_admin.css">
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <title>등급 정책</title>
@@ -23,40 +23,43 @@
 	<main>
 		<div class="navDiv"></div>
 		<div class="mainDiv">
-			<h2>등급 추가</h2>
-			<hr>
-			<form method="post" action="/gradePolicyAdd_admin" enctype="multipart/form-data">
+			<h1>등급 추가</h1>
+			<form method="post" action="/gradePolicyAdd_admin"
+				enctype="multipart/form-data">
 				<table class="board_detail">
 					<tr>
 						<th>단계</th>
 						<td><input type="text" id="grade_comment"
-							name="grade_comment"></td>
+							name="grade_comment" value="${gradeCount}단계" readonly="readonly">
+						</td>
 					</tr>
+					<tr>
 					<th>등급명</th>
-					<td><input type="text" id="grade_name" name="grade_name"></td>
+					<td><input type="text" id="grade_name" name="grade_name" required="required"></td>
 					</tr>
 					<tr>
 						<th>시작 포인트</th>
 						<td><input type="text" id="grade_start_point"
-							name="grade_start_point"></td>
+							name="grade_start_point" required="required"></td>
 					</tr>
 					<tr>
 						<th>끝 포인트</th>
 						<td><input type="text" id="grade_end_point"
-							name="grade_end_point"></td>
+							name="grade_end_point" required="required"></td>
 					</tr>
 					<tr>
 						<th>할인율</th>
 						<td><input type="text" id="grade_discount"
-							name="grade_discount"></td>
+							name="grade_discount" required="required"></td>
 					</tr>
+					<tr>
 					<th>적립율</th>
 					<td><input type="text" id="grade_accrual_rate"
-						name="grade_accrual_rate"></td>
+						name="grade_accrual_rate" required="required"></td>
 					</tr>
 					<tr>
 						<th>배경색</th>
-						<td><input type="color" id="grade_color" name="grade_color"></td>
+						<td><input type="color" id="grade_color" name="grade_color" required="required"></td>
 					</tr>
 					<tr>
 						<th>글자색</th>
@@ -65,10 +68,8 @@
 					</tr>
 					<tr>
 						<th>대표 이미지</th>
-						<td><input type="file" id="grade_img_url" name="img_url"></td>
+						<td><input type="file" id="grade_img_url" name="img_url" required="required"></td>
 					</tr>
-
-
 				</table>
 				<input type="submit" id="submit" value="저장" class="btn">
 
