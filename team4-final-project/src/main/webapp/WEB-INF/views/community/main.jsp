@@ -148,7 +148,9 @@
 						<div class="section2_map_content">
 							<div class="section2_map_content_main">
 								<div class="section2_map_content_main_icon">
-									<img class="section2_map_content_main_icon_img" src="">
+									<video autoplay loop muted class="weather_img">
+										<source src="https://cdn-icons-mp4.flaticon.com/512/6455/6455017.mp4">
+									</video>
 								</div>
 								<div class="section2_map_content_main_info">
 									<p><span class="temp"></span>&deg;C</p>
