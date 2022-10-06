@@ -70,12 +70,12 @@
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
    			 <input type="submit" value="답변" />
 			</form>
-			<c:if test="${sessionScope.login_auth eq '관리자'}">
+			</c:if>
+			<c:if test="${sessionScope.login_auth eq '관리자' && data.qna_answer_text ne null}">
 			<form action="Question_admin_update" method="get">
    			 <input type="hidden" id="qna_id" name="qna_id" value='${data.qna_id}'/>
    			 <input type="submit" value="답변수정" />
 			</form>
-			</c:if>
 			</c:if>
 			<c:if test="${sessionScope.login_id eq data.member_id}">
 			<form action="Question_update" method="get">
@@ -102,7 +102,7 @@
     let list_btnn = document.querySelector(".list_btn4");
     
     list_btnn.addEventListener('click',function(){
-    	if(${sessionScope.login_id == 'admin'}){
+    	if('${sessionScope.login_id}'== 'admin'){
     		location.href="QnA_admin"
     	}
     		
