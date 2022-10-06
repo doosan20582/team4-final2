@@ -25,7 +25,10 @@ public interface GradeMapper {
 	 * @return 회원 등급 정보 + 회원 아이디
 	 */
 	public Map<String, Object> selectUserGradeId(String member_id);
-
+	
+	/* 등급 정보 전체 가져오기 */
+	public List<GradeVO> gradePolicyInfo();
+	
 
 	/* 관리자 - 등급 정책 리스트 */
 	public List<GradeVO> gradePolicy();

@@ -1,5 +1,6 @@
 package com.goott.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.goott.domain.GradeVO;
@@ -19,4 +20,10 @@ public interface GradeService {
 	 * @return 등급 엔티티 + 회원 아이디
 	 */
 	public Map<String, Object> getUserGradeInfo(String member_id);
+
+	/**
+	 * 등급 전체 정보 가져오기
+	 * @return
+	 */
+	public List<GradeVO> gradePolicyInfo();
 }
