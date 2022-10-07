@@ -55,14 +55,14 @@ public class GradeController {
 		//해당 아이디의 등급 정보 가져와 모델에 저장
 		mv.addObject("Info", Info);
 		
-		  log.info("==============gradeInfo 정보는 "+ Info);
+//		  log.info("==============gradeInfo 정보는 "+ Info);
 		 		
 		//다음 등급 정보 가져오기
 		int next_grade_id  = Integer.parseInt( Info.get("grade_id").toString() ) + 1;
 		//다음 등급 정보 가져오기 쿼리
 		GradeVO nextInfo = gradeService.select(next_grade_id);
 		mv.addObject("nextInfo", nextInfo);
-		log.info("==============다음 등급 정보는 " + nextInfo);
+//		log.info("==============다음 등급 정보는 " + nextInfo);
 		
 
 		
@@ -71,7 +71,7 @@ public class GradeController {
 		Map<String, Object> mav = new HashMap<>();
 		mav.put("InfoAll", gradeList);
 		
-		log.info("등급 전체 정보는 " + gradeList);
+//		log.info("등급 전체 정보는 " + gradeList);
 		mv.addObject("map", mav);
 		
 		//리턴 주소 저장
@@ -126,21 +126,21 @@ public class GradeController {
 	//관리자 - 등급 정책 추가
 	@RequestMapping(value="/gradePolicyAdd_admin", method =RequestMethod.POST)
 	public String gradePolicyAdd(@RequestParam MultipartFile img_url, GradeVO gradeVO, HttpServletRequest request) {
-		log.info(gradeVO);
+//		log.info(gradeVO);
 		String fileRealName = img_url.getOriginalFilename();
 		//잘 받아오는지 확인 - 삭제 예정
-		System.out.println("파일명 : " + fileRealName);
+//		System.out.println("파일명 : " + fileRealName);
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
 		String uploadFolder = "C:\\gradeImg";
 		UUID uuid = UUID.randomUUID();
 		//어떻게 찍히는지 확인 - 삭제 예정
-		System.out.println(uuid.toString());
+//		System.out.println(uuid.toString());
 		String[] uuids = uuid.toString().split("-");
 		String uniqueName = uuids[0];
 
 		//체크용 - 삭제예쩡
-		System.out.println("생성된 고유문자열" + uniqueName);
-		System.out.println("확장자명" + fileExtension);
+//		System.out.println("생성된 고유문자열" + uniqueName);
+//		System.out.println("확장자명" + fileExtension);
 		
 		File saveFile = new File(uploadFolder+"\\"+uniqueName+fileExtension); //uuid 적용
 		try {
@@ -153,7 +153,7 @@ public class GradeController {
 		
 		gradeVO.setGrade_img_url(uniqueName+fileExtension);
 		gradeAdminService.gradePolicyAdd(gradeVO);
-		log.info(gradeVO);
+//		log.info(gradeVO);
    return "redirect:/gradePolicy_admin";
 }
 	

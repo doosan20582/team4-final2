@@ -68,8 +68,8 @@ window.onload = function(){
 	if(text != null || text != undefined){
 		let today = new Date();
 		if(today > text){
-			console.log(today);
-			console.log(text);
+//			console.log(today);
+//			console.log(text);
 			
 			localStorage.removeItem('key');
 			window.open("/shop/popup", "신상품", "width=500, height=500");

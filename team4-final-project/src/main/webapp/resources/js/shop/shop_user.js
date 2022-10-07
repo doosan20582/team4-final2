@@ -73,8 +73,8 @@ window.onload = function(){
 	
 	if(text != null){
 		
-		console.log("오늘 : " + today);
-		console.log("팝업창 쿠키날짜 : " + date);
+//		console.log("오늘 : " + today);
+//		console.log("팝업창 쿠키날짜 : " + date);
 		
 		if(today > date){
 
@@ -118,7 +118,7 @@ function setCategoryLoad(){
 			const totalPageTemp = $('.totalPageTemp').val();
 			currentPageInput.value = currentPageTemp;
 			totalPageInput.value = totalPageTemp;
-			console.log(`카테고리 : ${category} , 현재 페이지 : ${currentPageInput.value} , 전체 페이지  : ${totalPageInput.value}`);
+//			console.log(`카테고리 : ${category} , 현재 페이지 : ${currentPageInput.value} , 전체 페이지  : ${totalPageInput.value}`);
 			if(currentPageInput.value == totalPageInput.value){
 				section_view_more.style.display = 'none';
 			}
@@ -162,7 +162,7 @@ function loadMoreItem(){
 				const totalPageTemp = $('.totalPageTemp').val();
 				currentPageInput.value = currentPageTemp;
 				totalPageInput.value = totalPageTemp;
-				console.log(`카테고리 : ${category} , 현재 페이지 : ${currentPageInput.value} , 전체 페이지  : ${totalPageInput.value}`);
+//				console.log(`카테고리 : ${category} , 현재 페이지 : ${currentPageInput.value} , 전체 페이지  : ${totalPageInput.value}`);
 				if(currentPageInput.value == totalPageInput.value){
 					section_view_more.style.display = 'none';
 				}

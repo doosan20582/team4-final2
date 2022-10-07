@@ -33,7 +33,7 @@ function addListMain(){
 	// 만약 기존 이미지 선택 개수와 현재 선택 개수의 합이 3을 넘는다면
 	if((mainFile.files.length + fileArrayMain.length) > 3){
 		alert('이미지는 4개 이상 업로드 할수 없습니다.');
-		console.log('이미지는 4개 이상 업로드 할수 없습니다.');
+//		console.log('이미지는 4개 이상 업로드 할수 없습니다.');
 
 
 
@@ -59,7 +59,7 @@ function addListSub(){
 	// 만약 기존 이미지 선택 개수와 현재 선택 개수의 합이 3을 넘는다면
 	if((subFile.files.length + fileArraySub.length) > 2){
 		alert('이미지는 3개 이상 업로드 할수 없습니다.');
-		console.log('이미지는 3개 이상 업로드 할수 없습니다.');
+//		console.log('이미지는 3개 이상 업로드 할수 없습니다.');
 
 
 
@@ -90,7 +90,7 @@ function drawListMain(){
 	mainFile.files = dataTransfer.files;
 	const deleteBtns = document.querySelectorAll('.deleteBtn');
 	deleteBtns.forEach(item => item.addEventListener('click' , deleteListMain));
-	console.log(fileArrayMain);
+//	console.log(fileArrayMain);
 	preMainImgs();
 	// 상품이미지 개수에 따른 시각화
 	switch(fileArrayMain.length){
@@ -147,7 +147,7 @@ function drawListSub(){
 	subFile.files = dataTransfer.files;
 	const deleteSubBtns = document.querySelectorAll('.deleteSubBtn');
 	deleteSubBtns.forEach(item => item.addEventListener('click' , deleteListSub));
-	console.log(fileArraySub);
+//	console.log(fileArraySub);
 	preSubImgs();
 	// 상품이미지 개수에 따른 시각화
 	switch(fileArraySub.length){

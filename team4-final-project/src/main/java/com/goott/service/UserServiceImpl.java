@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String today = sdf.format(date);
 		today.replace("/", File.separator);
-		log.info("저장 위치 : " + today);
+//		log.info("저장 위치 : " + today);
 		//폴더 생성
 		File folder = new File(filePath + today);
 		folder.mkdirs();
@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService {
 		String exImgUrl = this.getUserImgUrl(member_id);
 		//만약 기본 프로필 주소라면 삭제처리 생략
 		if(exImgUrl.equals(basicImgUrl)) {
-			log.info("기본 프로필 이미지여서 프로필 이미지 삭제 처리를 넘어갑니다.");
+//			log.info("기본 프로필 이미지여서 프로필 이미지 삭제 처리를 넘어갑니다.");
 		}
 		else {
 			exImgUrl = "C:/uploadtest" + exImgUrl;
@@ -172,9 +172,9 @@ public class UserServiceImpl implements UserService {
 			
 			
 			String exImgUrlFileName = exImgUrl.substring(exImgUrl.lastIndexOf(File.separator) + 1);
-			log.info(exImgUrlFileName);
+//			log.info(exImgUrlFileName);
 			String exImgUrlFile = exImgUrl.substring(0, exImgUrl.lastIndexOf(File.separator) + 1);
-			log.info(exImgUrlFile);
+//			log.info(exImgUrlFile);
 			
 			File oldImg = new File(exImgUrlFile, exImgUrlFileName);
 			
@@ -232,8 +232,8 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public String forgotPassword(String member_id, String member_email) {
-		log.info("입력한 아이디 : " + member_id);
-		log.info("입력한 이메일 : " + member_email);
+//		log.info("입력한 아이디 : " + member_id);
+//		log.info("입력한 이메일 : " + member_email);
 		//아이디 존재하는지 확인
 		int idCount = memberMapper.countId(member_id);
 		//아이디가 존재하지 않는다면
@@ -252,7 +252,7 @@ public class UserServiceImpl implements UserService {
 		String member_pw = memberService.pwEncode(code);
 		//암호화된 비밀번호 해당 아이디의 컬럼으로 업데이트
 		int resultCount = userMapper.updatePw(member_id, member_pw);
-		log.info("비밀번호 초기화로 변경 디비에 저장 여부 : " + resultCount);
+//		log.info("비밀번호 초기화로 변경 디비에 저장 여부 : " + resultCount);
 		//비밀번호 초기화 컬럼 업데이트
 		memberMapper.updateInitPw(member_email);
 		return "입력하신 메일로 초기화 비밀번호를 발송하였습니다. 로그인후 비밀번호를 재설정 해주세요.";
@@ -296,7 +296,7 @@ public class UserServiceImpl implements UserService {
 	//리뷰 도움이 되요 가져오기
 	@Override
 	public int getHelpful(int product_review_id) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.selectHelpful(product_review_id);
 	}
 	@Override
@@ -312,7 +312,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public List<BasketVO> getBasketList(String member_id) {
-		// TODO Auto-generated method stub
+	
 		return userMapper.selectBasketList(member_id);
 	}
 	@Override

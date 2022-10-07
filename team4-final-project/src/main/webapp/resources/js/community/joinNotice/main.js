@@ -44,7 +44,7 @@ delete_btn.addEventListener("click",function(){ // 관리자 글 삭제하기
 				document.location.reload();
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	}
@@ -125,7 +125,7 @@ for(let i=0; i<page; i++){
 				}
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	})
@@ -164,7 +164,7 @@ for(let i=0; i<page; i++){
 				}
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	})
@@ -205,7 +205,7 @@ for(let i=0; i<page; i++){
 				}
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	})

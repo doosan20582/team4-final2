@@ -34,22 +34,22 @@ public class AdminServiceImpl implements AdminService {
 	}
 	@Override
 	public List<Map<String, Object>> getFreeList(String member_id) {
-		// TODO Auto-generated method stub
+		
 		return adminMapper.selectFreeList(member_id);
 	}
 	@Override
 	public List<Map<String, Object>> getCampingList(String member_id) {
-		// TODO Auto-generated method stub
+	
 		return adminMapper.selectCampingList(member_id);
 	}
 	@Override
 	public List<Map<String, Object>> getQnaList(String member_id) {
-		// TODO Auto-generated method stub
+	
 		return adminMapper.selectQnaList(member_id);
 	}
 	@Override
 	public List<Map<String, Object>> getOrderList(String member_id) {
-		// TODO Auto-generated method stub
+		
 		return adminMapper.selectOrderList(member_id);
 	}
 	@Override

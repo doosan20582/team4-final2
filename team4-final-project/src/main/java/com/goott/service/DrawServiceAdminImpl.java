@@ -24,56 +24,56 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 
 	@Override
 	public List<DrawVO> draw_admin() {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_admin();
 	}
 
 	@Override
 	public List<DrawVO> draw_admin_change(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_admin_change(map);
 	}
 
 	@Override
 	public List<Map<String, Object>> admin_add_plus_product(Map<String, Object> map) {
 
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_admin_add_plus_product(map);
 	}
 
 	@Override
 	public List<Map<String, Object>> admin_add_plus(int product_category_id) {
-		// TODO Auto-generated method stub
+	
 		return drawAdminMapper.draw_admin_add_plus(product_category_id);
 	}
 
 	@Override
 	public List<Map<String, Object>> admin_add_plus_product_name(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.admin_add_plus_product_name(map);
 	}
 
 	@Override
 	public List<Map<String, Object>> admin_add_plus_product_price(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.admin_add_plus_product_price(map);
 	}
 
 	@Override
 	public List<Map<String, Object>> admin_title_product_id(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.admin_title_product_id(map);
 	}
 
 	@Override
 	public void draw_admin_add(DrawVO vo) {
-		// TODO Auto-generated method stub
+	
 		drawAdminMapper.draw_admin_add(vo);
 	}
 
 	@Override
 	public Integer set_draw_id(Integer id) {
-		// TODO Auto-generated method stub
+		
 		// System.out.println("service"+vo.toString());
 
 		return drawAdminMapper.set_draw_id(id);
@@ -81,19 +81,19 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 
 	@Override
 	public void update(DrawVO vo) {
-		// TODO Auto-generated method stub
+		
 		drawAdminMapper.update(vo);
 	}
 
 	@Override
 	public void delete(DrawVO vo) {
-		// TODO Auto-generated method stub
+	
 		drawAdminMapper.delete(vo);
 	}
 
 	@Override
 	public List<DrawEnterVO> admin_count(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+	
 		System.out.println("이건 서비스야" + map);
 		return drawAdminMapper.admin_count(map);
 
@@ -105,70 +105,70 @@ public class DrawServiceAdminImpl implements DrawServiceAdmin {
 	 */
 	@Override
 	public List<Map<String, Object>> draw_customer_memberID(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_customer_memberID(map);
 	}
 
 	@Override
 	public void draw_admin_count(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		drawAdminMapper.draw_admin_count(map);
 	}
 
 	@Override
 	public List<DrawVO> draw_customer() {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_customer();
 	}
 
 	@Override
 	public int draw_customer_button_check(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+	
 		return drawAdminMapper.draw_customer_button_check(map);
 	}
 
 	@Override
 	public void draw_customer_button(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+	
 		drawAdminMapper.draw_customer_button(map);
 	}
 
 	@Override
 	public List<DrawResultVO> getResultList() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("서비스 아이디 체크" );
 		return drawAdminMapper.getRusultID(); 
 	} 
 	
 	  @Override public List<Map<String, Object>>
 	  admin_title_product_img(Map<String, Object> map) { 
-		  // TODO Auto-generatedmethod stub 
+		  
 		  return drawAdminMapper.admin_title_product_img(map); 
 		  }
 
 	@Override
 	public void getdrawlist(Map<String, Object> map2) {
-		// TODO Auto-generated method stub
+		
 		drawAdminMapper.getdrawlist(map2);
 	}
 
 	@Override
 	public List<Map<String, Object>> customer_draw_event(int draw_id) {
-		// TODO Auto-generated method stub
+	
 		return drawAdminMapper.customer_draw_event(draw_id);
 	}
 
 	@Override
 	public int draw_admin_button_check(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return drawAdminMapper.draw_admin_button_check(map);
 	}
 
 	@Override
 	public void deleteWinningMember(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		int result = drawAdminMapper.deleteWinningMember(map);
-		log.info("삭제 결과 : " + result);
+//		log.info("삭제 결과 : " + result);
 	}
 
 	@Override

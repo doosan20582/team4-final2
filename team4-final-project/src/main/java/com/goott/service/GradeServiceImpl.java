@@ -26,14 +26,14 @@ public class GradeServiceImpl implements GradeService {
 	//회원 등급 정보 + 회원 아이디 가져오기
 	@Override
 	public Map<String, Object> getUserGradeInfo(String member_id) {
-		// TODO Auto-generated method stub
+	
 		return gradeMapper.selectUserGradeId(member_id);
 	}
 
 	//등급 정보 전체 가져오기
 	@Override
 	public List<GradeVO> gradePolicyInfo() {
-		// TODO Auto-generated method stub
+	
 		return gradeMapper.gradePolicyInfo();
 	}
 

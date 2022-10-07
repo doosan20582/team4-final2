@@ -59,7 +59,7 @@
 	<!-- 유저 등급, 프로필 이미지 가져오기 -->
 	<select id="selectUserGradeAndProfileImgUrl" parameterType="String" resultType="map">
 		<![CDATA[
-			select m.member_profile_img_url as member_profile_img_url, g.grade_name as grade_name, g.grade_color as grade_color 
+			select m.member_profile_img_url as member_profile_img_url, g.grade_name as grade_name, g.grade_color as grade_color , g.grade_font_color as grade_font_color 
 			from t_member m 
 			inner join t_grade g on m.grade_id = g.grade_id where m.member_id = #{member_id}
 		]]>

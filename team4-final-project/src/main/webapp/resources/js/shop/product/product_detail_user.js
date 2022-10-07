@@ -163,12 +163,12 @@ function gradeChart(){
 	new Chart(document.getElementById("bar-chart-horizontal"), {
 	    type: 'bar',
 	    data: {
-	      labels: labels,
+	      labels: labels.reverse(),
 	      datasets: [
 	        {
 	          label: "평점 수",
 	          backgroundColor: ["#3e95cd","#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-	          data: datas
+	          data: datas.reverse()
 	        }
 	      ]
 	    },
@@ -274,7 +274,7 @@ function scrollToBottom(){
 /*네비게이터 화면 출력 함수 */
 function showHideNavigator(){
     let evHeight = window.scrollY;
-    if(evHeight > 1000){
+    if(evHeight > 700){
         navigatorContainer.style.opacity = '1';
         navigatorContainer.style.pointerEvents = 'auto';
     }

@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		//구매하였을시 재고가 음수가 된다면 구매할수 없음
 		if( (product_stock - order_quantity) < 0 ) {
-			log.info("상품 재고 부족");
+//			log.info("상품 재고 부족");
 			return false;
 		}
 		else
@@ -63,12 +63,12 @@ public class OrderServiceImpl implements OrderService {
 		
 		orderMapper.buy(buyMap);
 		
-		log.info("상품 구매 프로시저 실행 후 리턴 맵 : " + buyMap);
+//		log.info("상품 구매 프로시저 실행 후 리턴 맵 : " + buyMap);
 		
 		//result : 프로시저 결과 out 파라미터, 성공 0 / 실패 -1
 		int resultNum = Integer.parseInt(buyMap.get("result").toString());
 		
-		log.info("상품 구매 프로시저 결과 : " + resultNum);
+//		log.info("상품 구매 프로시저 결과 : " + resultNum);
 		return resultNum;
 	}
 
@@ -93,18 +93,18 @@ public class OrderServiceImpl implements OrderService {
 
 		// 쿠폰을 사용하지 않았으면
 		if (result.equals("쿠폰을 사용하지 않았습니다.")) {
-			log.info(result);
+//			log.info(result);
 			int resultNum = doBuyProcedure(orderVO, member_purchase_point);
 
 			if (resultNum == 0)
 				return "상품을 구매하였습니다.";
 			else if (resultNum == -1) {
-				log.info("상품 구매 프로시저 실행중 오류 발생, 롤백합니다.");
+//				log.info("상품 구매 프로시저 실행중 오류 발생, 롤백합니다.");
 				return "죄송합니다. 상품 구매중 오류가 발생하였습니다. 잠시후 다시 시도해 주세요.";
 				
 			}
 			else if(resultNum == -2) {
-				log.info("상품 구매 프로시저 실행중 상품 재고 부족, 롤백합니다.");
+//				log.info("상품 구매 프로시저 실행중 상품 재고 부족, 롤백합니다.");
 				return "죄송합니다. 상품의 재고가 부족합니다. 관리자에게 문의해 주세요.";
 			}
 			else
@@ -113,7 +113,7 @@ public class OrderServiceImpl implements OrderService {
 
 		// 사용가능 한 쿠폰이면 쿠폰 사용하기
 		else if (result.equals("사용 가능한 쿠폰 입니다.")) {
-			log.info(result);
+//			log.info(result);
 			// 쿠폰 사용 : 쿠폰 live 미사용 -> 사용 으로 업데이트
 			couponService.useCoupon(coupon_num);
 
@@ -122,12 +122,12 @@ public class OrderServiceImpl implements OrderService {
 			if (resultNum == 0)
 				return "상품을 구매하였습니다.";
 			else if (resultNum == -1) {
-				log.info("상품 구매 프로시저 실행중 오류 발생, 롤백합니다.");
+//				log.info("상품 구매 프로시저 실행중 오류 발생, 롤백합니다.");
 				return "죄송합니다. 상품 구매중 오류가 발생하였습니다. 잠시후 다시 시도해 주세요.";
 				
 			}
 			else if(resultNum == -2) {
-				log.info("상품 구매 프로시저 실행중 상품 재고 부족, 롤백합니다.");
+//				log.info("상품 구매 프로시저 실행중 상품 재고 부족, 롤백합니다.");
 				return "죄송합니다. 상품의 재고가 부족합니다. 관리자에게 문의해 주세요.";
 			}
 			else
@@ -135,7 +135,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		// 사용 가능 쿠폰이 아니면 리턴
 		else {
-			log.info(result);
+//			log.info(result);
 			return result;
 		}
 
@@ -161,7 +161,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		int result = Integer.parseInt( confirmMap.get("result").toString() );
 		
-		log.info("구매 확정 처리 결과 result : " + result );
+//		log.info("구매 확정 처리 결과 result : " + result );
 		
 		/*
 		 *  0, 정상, "주문확정 하였습니다. 리뷰를 작성해 보세요."

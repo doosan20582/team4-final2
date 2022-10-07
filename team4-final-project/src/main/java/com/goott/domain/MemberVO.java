@@ -31,6 +31,7 @@ public class MemberVO {
 	int member_login_count;
 	Date member_off_limits_date;
 	String member_init_pw;
+	String grade_name;
 	
 	
 }

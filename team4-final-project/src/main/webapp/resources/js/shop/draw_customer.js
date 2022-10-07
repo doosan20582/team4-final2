@@ -49,8 +49,8 @@ for(let i=0; i<draw_final_button.length; i++){
 for(let i = 0; i < draw_btn.length; i++) {
     draw_btn[i].addEventListener("click", function () {
         let draw_id = draw_btn[i].nextElementSibling.defaultValue;
-        console.log("응모 이벤트 번호 : " + draw_id);
-        console.log("현재 로그인 유저 아이디 : " + login_id);
+//        console.log("응모 이벤트 번호 : " + draw_id);
+//        console.log("현재 로그인 유저 아이디 : " + login_id);
         if (login_id == null || login_id == "" || login_id.legnth == 0 || login_id == undefined) {
             if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
                 location.href = '/login';

@@ -76,7 +76,7 @@ function cancelCouponUse(){
 	
 	insertCouponBtn.style.display = 'block';
 	//인풋 쿠폰 번호 확인
-	console.log(useCouponNum.value);
+//	console.log(useCouponNum.value);
 	 	
 }
 
@@ -127,7 +127,7 @@ function useCoupon(){
 				//사용할 쿠폰 번호 히든인풋 저장
 				useCouponNum.value = data.coupon.coupon_num;
 				//인풋 쿠폰 번호 확인
-				console.log(useCouponNum.value);
+//				console.log(useCouponNum.value);
 				couponInfoDiv.style.display = 'flex';
 				//버튼 숨기기
 				insertCouponBtn.style.display = 'none';

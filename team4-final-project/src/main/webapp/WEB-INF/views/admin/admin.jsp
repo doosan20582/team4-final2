@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <!-- Jquery cdn -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<!-- chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -31,6 +32,9 @@
 				</a>
 				<a class="graphAnchor">
 					<span class="material-symbols-outlined"> monitoring </span>
+				</a>
+				<a class="homeAnchor">
+					<span class="material-symbols-outlined"> home </span>
 				</a>
 
 			</div>

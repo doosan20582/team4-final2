@@ -50,7 +50,7 @@ var delete_reply = function(){ //댓글 삭제 함수
 				get_reply_count.textContent = get_reply_count.textContent-1;
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	}
@@ -91,7 +91,7 @@ $(function() {
 						delete_btn.addEventListener("click",delete_reply)// 댓글 추가 후 삭제
 					},
 					error : function(data) {
-						console.log(data);
+//						console.log(data);
 					}
 				});
 				document.querySelector(".section_footer_commentInput").value = "";
@@ -117,7 +117,7 @@ $(function() {
 				$('.section_footer_commentList').append(data);
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 		s_count = s_count+5;

@@ -84,7 +84,7 @@ function placesSearchCB(data, status, pagination) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         let bounds = new kakao.maps.LatLngBounds();
-        console.log(data);
+//        console.log(data);
         for (let i = 0; i < data.length; i++) {
             displayMarker(data[i]);
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
@@ -117,7 +117,7 @@ function displayMarker(place) {
         //캠핑장 이름 클릭시 이벤트 등록
         for (let item of placeDivs) {
             item.addEventListener('click', function () {
-                console.log(this.innerHTML);
+//                console.log(this.innerHTML);
             })
         }
     });
@@ -138,7 +138,7 @@ function moveMap(data) {
             let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             let message = 'latlng: new kakao.maps.LatLng(' + result[0].y + ', ';
             message += result[0].x + ')';
-            console.log(message);
+//            console.log(message);
             // 이동
             map.setCenter(coords);
             

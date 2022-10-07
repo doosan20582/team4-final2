@@ -70,7 +70,7 @@ modal_search.addEventListener("click",function(){ // 캠핑장 검색
 				$(search_result).html(data);
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 })

@@ -38,7 +38,7 @@ public class ShopController {
 	// 쇼핑몰 메인
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String shopMainGet(Model model, HttpServletRequest request) {
-		log.info("shop 메인 페이지 -----------------------------------------");
+//		log.info("shop 메인 페이지 -----------------------------------------");
 
 		// 관리자면 관리자 전용 메인 페이지로 이동
 		HttpSession session = request.getSession();
@@ -48,6 +48,10 @@ public class ShopController {
 				return "redirect:/shop/admin";
 			}
 		}
+		
+		//로그인 했을시 광고창
+		//구매 이력 불러와서 제일 많이 구매한 상품 카테고리 알아내기
+		//해당 카테고리 인기사품 노출
 
 		// 전체 페이지 수 조회
 		int totalPage = (int) Math.ceil((productService.getPageTotalNum(0) / (double) 10.0));
@@ -57,8 +61,8 @@ public class ShopController {
 		List<ProductVO> productList = productService.getProductList(pageShop);
 
 		// 판매 탑 10 목록
-		Map<String, Object> topProduct = productService.getProductTopSales();
-		log.info("탑 10 : " + topProduct);
+		List<Map<String, Object>> topProduct = productService.getProductTopSales();
+//		log.info("탑 10 : " + topProduct);
 
 		// 로그인 되어 있다면 회원 등급, 프로필 이미지 정보
 		Map<String, Object> userInfo = null;
@@ -79,7 +83,7 @@ public class ShopController {
 	// 쇼핑몰 메인 관리자
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String shopMainAdminGet(Model model, HttpServletRequest request) {
-		log.info("shop 관리자 메인 페이지 -----------------------------------------");
+//		log.info("shop 관리자 메인 페이지 -----------------------------------------");
 
 		HttpSession session = request.getSession();
 
@@ -91,7 +95,7 @@ public class ShopController {
 		List<ProductVO> productList = productService.getProductListAll(pageShop);
 
 		// 판매 탑 10 목록
-		Map<String, Object> topProduct = productService.getProductTopSales();
+		List<Map<String, Object>> topProduct = productService.getProductTopSales();
 
 		// 로그인 되어 있다면 회원 등급, 프로필 이미지 정보
 		Map<String, Object> userInfo = null;
@@ -111,7 +115,7 @@ public class ShopController {
 
 	@RequestMapping(value = "/list/category", method = RequestMethod.POST)
 	public String getTotalNumWithCategory(@RequestBody Map<String, Integer> map, Model model) {
-		log.info("카테고리   =================================================");
+//		log.info("카테고리   =================================================");
 
 		int category_id = map.get("category_id");
 		int totalPage = (int) Math.ceil((productService.getPageTotalNum(category_id) / (double) 10.0));
@@ -129,7 +133,7 @@ public class ShopController {
 
 	@RequestMapping(value = "/list/category/admin", method = RequestMethod.POST)
 	public String getTotalNumWithCategoryAdmin(@RequestBody Map<String, Integer> map, Model model) {
-		log.info("카테고리 관리자  =================================================");
+//		log.info("카테고리 관리자  =================================================");
 
 		int category_id = map.get("category_id");
 		int totalPage = (int) Math.ceil((productService.getPageTotalNumAll(category_id) / (double) 10.0));
@@ -148,7 +152,7 @@ public class ShopController {
 	// 상품 더보기
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public String listAjaxPost(@RequestBody PageShop pageShop, Model model) {
-		log.info("ajax 상품 더보기 요청 ---------------------------------------");
+//		log.info("ajax 상품 더보기 요청 ---------------------------------------");
 		int category_id = pageShop.getCategory_id();
 
 		// pageShop 초기화
@@ -160,7 +164,7 @@ public class ShopController {
 
 		// 공개 상품 리스트
 		List<ProductVO> productList = productService.getProductList(pageShop);
-		log.info(productList);
+//		log.info(productList);
 		model.addAttribute("productList", productList);
 		model.addAttribute("pageShop", pageShop);
 		return "shop/productDivUser";
@@ -169,7 +173,7 @@ public class ShopController {
 	// 상품 더보기 관리자
 	@RequestMapping(value = "/list/admin", method = RequestMethod.POST)
 	public String listAjaxAdminPost(@RequestBody PageShop pageShop, Model model) {
-		log.info("ajax 관리자 상품 더보기 요청 ---------------------------------------");
+//		log.info("ajax 관리자 상품 더보기 요청 ---------------------------------------");
 		int category_id = pageShop.getCategory_id();
 		// pageShop 초기화
 		int totalPage = (int) Math.ceil((productService.getPageTotalNumAll(category_id) / (double) 10.0));
@@ -178,7 +182,7 @@ public class ShopController {
 		pageShop.setEndNum(10);
 		// 전체 상품 리스트
 		List<ProductVO> productList = productService.getProductListAll(pageShop);
-		log.info(productList);
+//		log.info(productList);
 		model.addAttribute("productList", productList);
 		model.addAttribute("pageShop", pageShop);
 		return "shop/productDivAdmin";

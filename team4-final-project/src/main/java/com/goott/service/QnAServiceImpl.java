@@ -98,8 +98,8 @@ public class QnAServiceImpl implements QnAService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("checkadmin", checkadmin);
 		map.put("QnASearch", QnASearch);
-		log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		log.info(map);
+//		log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//		log.info(map);
 		return qnaMapper.countQnAadminBoardCategory(map);
 	}
 
