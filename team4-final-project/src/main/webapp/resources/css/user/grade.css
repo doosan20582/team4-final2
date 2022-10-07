@@ -1,28 +1,34 @@
 /* ���̵� cus_ : DB���� ��� */
 
+body{
+	background-color: var(--subColor);
+}
 /* ���� ��ü */
 .mainDiv{
-    border:solid 3px red;
+   /*  border:solid 3px red; */
+    background-color: transparent;
     margin: 0 auto;
     width: 60%;
     max-width: 700px;
     height: 140vh;
+
 }
 /* ���� ���κ�  */
-.myGrade{
+/* .myGrade{
     border:solid 3px blueviolet;
-    background-color: white;
+    background-color: transparent;
     width:100%;
     height:37%;
-    padding:1rem;
-}
+    margin-top :1rem;
+   
+} */
 /* -�������κ� : �̹��� �� ���*/
 .myGradeState{
     width:100%;
-    height:40%;
+    height:15%;
     padding:0.7rem;
-    margin-bottom: 17px;
-    border-radius: 2.5px;
+    margin: 17px 0px;
+    border-radius: 7px;
 }
 .myGradeState_top{
     width: 100%;
@@ -35,13 +41,13 @@
     top:25px;
 }
 .myGradeState_bottom{
-    border: solid 1px green;
+  /*   border: solid 1px green; */
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
     height: 37%;
     margin-top: 5px;
-    box-shadow: 3px 3px gainsboro;
+    box-shadow: 3px 3px gray;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -78,7 +84,7 @@ b{
 
 /* -�������κ� : ������ ������ */
 .NextMonthGrade{
-    border:solid 1px gray;
+    /* border:solid 1px gray; */
     width:100%;
     height:50%;
     padding: 0.5rem;
@@ -98,14 +104,15 @@ b{
 
 /* ���� �Ʒ��κ�  */
 .gradeAdventage{
-    border:solid 3px blueviolet;
+   /*  border:solid 3px blueviolet; */
     background-color: white;
     width:100%;
-    height:70%;
+    height:80%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content:space-evenly ;
+    border-radius: 5px;
 }
 .grade_info{
     border:solid 2px black;
@@ -131,8 +138,9 @@ b{
     margin:0 auto;
     display: flex;
     flex-direction: row;
-    transition:all 0.9s, color 0.3;
+    transition: 0.1s;
 }
+
 
 .grade_left{
     width: 70%;
