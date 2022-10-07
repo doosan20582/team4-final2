@@ -727,4 +727,13 @@ section{
     background-color: var(--subColor);
     margin-bottom: 50px;
     border-radius: 5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.section2_chat_content>p{
+	font-size:1.5rem;
+	font-weight:bold;
+	color: rgb(209, 209, 209);
 }

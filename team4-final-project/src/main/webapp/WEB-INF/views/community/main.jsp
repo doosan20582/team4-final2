@@ -215,7 +215,9 @@
 					</div>
 
 					<div class="section2_chat_main">
-						<div class="section2_chat_content"></div>
+						<div class="section2_chat_content">
+							<p>업데이트 예정입니다.</p>
+						</div>
 					</div>
 				</div>
 			</div>

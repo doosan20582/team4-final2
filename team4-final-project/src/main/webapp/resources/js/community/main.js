@@ -111,8 +111,6 @@ $.ajax({
     type: "GET",
     async: "false",
     success: function(resp) {
-        var imgURL = "http://openweathermap.org/img/w/" + resp.weather[0].icon + ".png";
-        weather_img.src = imgURL;
         temp.textContent = (resp.main.temp- 273.15).toFixed(1);
         weather.textContent = resp.weather[0].description;
         wind_speed.textContent = resp.wind.speed;
@@ -155,8 +153,6 @@ location_select.addEventListener("change",function(){ //지역 선택 시 날씨
 	    type: "GET",
 	    async: "false",
 	    success: function(resp) {
-	        var imgURL = "http://openweathermap.org/img/w/" + resp.weather[0].icon + ".png";
-	        weather_img.src = imgURL;
 	        temp.textContent = (resp.main.temp- 273.15).toFixed(1);
 	        weather.textContent = resp.weather[0].description;
 	        wind_speed.textContent = resp.wind.speed;
