@@ -23,7 +23,7 @@
 <!--메인-->
 <body>
 	<main>
-		
+		 
 		<div class="QnA_Title">
 			<h1>QnA</h1>
 			<div class="QnA_Title_btnContainer">
