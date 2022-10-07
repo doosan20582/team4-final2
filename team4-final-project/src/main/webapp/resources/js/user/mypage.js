@@ -280,7 +280,7 @@ function closeSalesDiv(e){
 //구매 확정하기 버튼
 function purchaseProduct(){
 	const order_id = this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
-	console.log(order_id);
+//	console.log(order_id);
 	
 	const result = confirm('구매확정 하시겠습니까?');
 	if(result){

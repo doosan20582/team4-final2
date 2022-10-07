@@ -29,7 +29,7 @@ recommend_btn.addEventListener("click",function(){ // 게시글 추천
 				$('.recommend_count').load(location.href+' .recommend_count');
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	}
@@ -53,7 +53,7 @@ var delete_reply = function () { //댓글 삭제 함수
 				$('.reply_count').load(location.href+' .reply_count');
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 	}
@@ -97,7 +97,7 @@ $(function() {
 						delete_btn.addEventListener("click",delete_reply)// 댓글 추가 후 삭제
 					},
 					error : function(data) {
-						console.log(data);
+//						console.log(data);
 					}
 				});
 				document.querySelector(".section_footer_commentInput").value = "";
@@ -123,7 +123,7 @@ $(function() {
 				$('.section_footer_commentList').append(data);
 			},
 			error : function(data) {
-				console.log(data);
+//				console.log(data);
 			}
 		});
 		s_count = s_count+5;

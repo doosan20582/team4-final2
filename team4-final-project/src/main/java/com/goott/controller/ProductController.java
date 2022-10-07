@@ -46,7 +46,7 @@ public class ProductController {
 	// 상품 등록
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGet(Model model) {
-		log.info("상품 등록 get  -----------------------------------");
+//		log.info("상품 등록 get  -----------------------------------");
 
 		List<ProductBrandVO> brandList = productBrandService.getList();
 		List<ProductCategoryVO> categoryList = productCategoryService.getList();
@@ -60,7 +60,7 @@ public class ProductController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPost(ProductVO productVO, @RequestParam(value = "imgs1") MultipartFile[] imgs1,
 			@RequestParam(value = "imgs2") MultipartFile[] imgs2) {
-		log.info("상품 등록 post ------------------------------------");
+//		log.info("상품 등록 post ------------------------------------");
 		// 코멘트 없으면 초기화
 		if (productVO.getProduct_comment().trim().equals("") || productVO.getProduct_comment().trim() == null
 				|| productVO.getProduct_comment().trim().length() == 0)
@@ -70,7 +70,7 @@ public class ProductController {
 				|| productVO.getProduct_youtube_url().trim().length() == 0)
 			productVO.setProduct_youtube_url("no url");
 
-		log.info("컨트롤러로 전달된 정보 : " + productVO);
+//		log.info("컨트롤러로 전달된 정보 : " + productVO);
 		productService.saveProduct(productVO, imgs1, imgs2);
 
 		return "redirect:/shop/admin";
@@ -79,14 +79,14 @@ public class ProductController {
 	// 상품 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modifyGet(@RequestParam String product_id, Model model) {
-		log.info("상품 수정 get ------------------------------------");
+//		log.info("상품 수정 get ------------------------------------");
 		ProductVO productVO = productService.getPrdocutDetail(Integer.parseInt(product_id));
 		List<ProductBrandVO> brandList = productBrandService.getList();
 		List<ProductCategoryVO> categoryList = productCategoryService.getList();
 		model.addAttribute("brandList", brandList);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("product", productVO);
-		log.info(productVO);
+//		log.info(productVO);
 
 		return "shop/product/product_modify";
 	}
@@ -95,7 +95,7 @@ public class ProductController {
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPost(ProductVO productVO, @RequestParam(value = "imgs1") MultipartFile[] imgs1,
 			@RequestParam(value = "imgs2") MultipartFile[] imgs2, Model model) {
-		log.info("상품 수정 post-----------------------------------------");
+//		log.info("상품 수정 post-----------------------------------------");
 		// 코멘트 없으면 초기화
 		if (productVO.getProduct_comment().trim().equals("") || productVO.getProduct_comment().trim() == null
 				|| productVO.getProduct_comment().trim().length() == 0)
@@ -105,7 +105,7 @@ public class ProductController {
 				|| productVO.getProduct_youtube_url().trim().length() == 0)
 			productVO.setProduct_youtube_url("no url");
 
-		log.info("컨트롤러로 전달된 정보 : " + productVO);
+//		log.info("컨트롤러로 전달된 정보 : " + productVO);
 		int result = productService.updateProduct(productVO, imgs1, imgs2);
 		int product_id = productVO.getProduct_id();
 		if(result == 1) {
@@ -123,8 +123,8 @@ public class ProductController {
 
 	@RequestMapping(value = "/review", method = RequestMethod.POST)
 	public String moreReview(@RequestBody Map<String, Object> param, Model model) {
-		log.info("리뷰 더보기 =============================================================");
-		log.info(param);
+//		log.info("리뷰 더보기 =============================================================");
+//		log.info(param);
 		int product_id = Integer.parseInt(param.get("product_id").toString());
 		int currentPage = Integer.parseInt(param.get("currentPage").toString());
 
@@ -135,7 +135,7 @@ public class ProductController {
 
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
-		log.info("리뷰 페이지 : " + pageReview);
+//		log.info("리뷰 페이지 : " + pageReview);
 
 		// 상품 리뷰 목록
 		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);
@@ -148,7 +148,7 @@ public class ProductController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detailGet(@RequestParam(value = "product_id") int product_id,
 			@RequestParam(defaultValue = "1") int currentPage, Model model, HttpServletRequest request) {
-		log.info("상품 상세 get ------------------------------------------------");
+//		log.info("상품 상세 get ------------------------------------------------");
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("login_id") != null && session.getAttribute("login_auth").toString().equals("관리자")) {
@@ -171,7 +171,7 @@ public class ProductController {
 
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
-		log.info(pageReview);
+//		log.info(pageReview);
 
 		// 상품 리뷰 목록
 		List<ProductReviewVO> reviewList = productService.getProductReviewList(pageReview);
@@ -188,7 +188,7 @@ public class ProductController {
 	@RequestMapping(value = "/detail/admin", method = RequestMethod.GET)
 	public String detailAdminGet(@RequestParam(value = "product_id") int product_id,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
-		log.info("상품 관리자 상세 get ------------------------------------------------");
+//		log.info("상품 관리자 상세 get ------------------------------------------------");
 		// 상품 상세
 		ProductVO productVO = productService.getPrdocutDetail(product_id);
 
@@ -201,7 +201,7 @@ public class ProductController {
 		List<Map<String, Object>> data = productService.getSpeedAverage(product_id);
 		// 상품 아이디
 		pageReview.setProduct_id(product_id);
-		log.info(pageReview);
+//		log.info(pageReview);
 		// 상품 평점
 		List<Map<String, Object>> gradeData = productService.getGradeAverage(product_id);
 		// 리뷰 목록
@@ -218,7 +218,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String delete(@RequestParam int product_id, Model model) {
-		log.info("상품 비공개 ============================================");
+//		log.info("상품 비공개 ============================================");
 		int result = productService.setProductClosed(product_id);
 		if(result == 1) {
 			model.addAttribute("msg", "비공개 처리 되었습니다.");
@@ -234,8 +234,8 @@ public class ProductController {
 	@ResponseBody
 	@RequestMapping(value = "basket", method = RequestMethod.POST, produces = "text/html;charset=utf-8")
 	public String basket(@RequestBody BasketVO basketVO) {
-		log.info("장바구니 담기 ========================================");
-		log.info(basketVO);
+//		log.info("장바구니 담기 ========================================");
+//		log.info(basketVO);
 		String resultText = userService.setBasket(basketVO);
 		return resultText;
 	}

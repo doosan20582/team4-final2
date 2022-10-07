@@ -16,12 +16,12 @@
 	
 	<!-- 회원 상세 정보 -->
 	<select id="selectMemberInfo" parameterType="String" resultType="com.goott.domain.MemberVO">
-		select member_id, member_email, member_name, member_phone, member_age, member_gender,
-				   member_postal_code, member_address, member_join_date, member_last_login_date, member_state,
-				   member_withdrawal, member_email_agree, member_service_agree, member_personal_agree,
-				   grade_id, member_purchase_point, member_write_point, member_profile_img_url, member_login_count,
-				   member_off_limits_date, member_init_pw
-			from t_member where member_id = #{member_id}
+		select m.member_id as member_id, m.member_email as member_email, m.member_name as member_name, m.member_phone as member_phone, m.member_age as member_age, m.member_gender as member_gender,
+				   m.member_postal_code as member_postal_code, m.member_address as member_address, m.member_join_date as member_join_date, m.member_last_login_date as member_last_login_date, m.member_state as member_state,
+				   m.member_withdrawal as member_withdrawal, m.member_email_agree as member_email_agree, m.member_service_agree as member_service_agree, m.member_personal_agree as member_personal_agree,
+				   g.grade_name as grade_name, m.member_purchase_point as member_purchase_point, m.member_write_point as member_write_point, m.member_profile_img_url as member_profile_img_url, m.member_login_count as member_login_count,
+				   m.member_off_limits_date as member_off_limits_date, m.member_init_pw as member_init_pw from t_member m inner join t_grade g on m.grade_id = g.grade_id
+		where m.member_id = #{member_id}
 	</select>
 	
 	<!-- 자유 게시판 글목록 -->

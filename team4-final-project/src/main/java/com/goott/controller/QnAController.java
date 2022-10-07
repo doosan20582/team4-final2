@@ -46,15 +46,15 @@ public class QnAController {
 			return "redirect:/shop/QnA_admin";
 		}
 			
-		log.info("게시글페이지 보기------------------------------------");
-		log.info("카테고리 " + checkcategory);
-		log.info("검색어 " + QnASearch);
-		log.info("현재페이지 " + nowPage);
-		log.info("페이지개수 " + cntPerPage);
-		log.info("내가 검색하고싶은거는" + QnASearch);
+//		log.info("게시글페이지 보기------------------------------------");
+//		log.info("카테고리 " + checkcategory);
+//		log.info("검색어 " + QnASearch);
+//		log.info("현재페이지 " + nowPage);
+//		log.info("페이지개수 " + cntPerPage);
+//		log.info("내가 검색하고싶은거는" + QnASearch);
 		int total = qnaservice.countQnABoardCategory(checkcategory, QnASearch);
 
-		log.info(" 게시글 총 개수     " + total);
+//		log.info(" 게시글 총 개수     " + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -65,16 +65,16 @@ public class QnAController {
 		}
 
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		log.info("-------------------------------");
-		log.info("vo는 " + vo);
+//		log.info("-------------------------------");
+//		log.info("vo는 " + vo);
 		List<QnAVO> data = qnaservice.selectQnABoard(vo, checkcategory, QnASearch);
 		model.addAttribute("paging", vo);
 		model.addAttribute("list", data);
 		model.addAttribute("checkcategory", checkcategory);
 		model.addAttribute("QnASearch", QnASearch);
-		log.info("-------------------------------");
-		log.info(data);
-		log.info("-------------------------------");
+//		log.info("-------------------------------");
+//		log.info(data);
+//		log.info("-------------------------------");
 
 		return "/shop/QnA";
 	}
@@ -88,12 +88,12 @@ public class QnAController {
 	// 게시물 작성
 	@RequestMapping(value = "/Question", method = RequestMethod.POST)
 	public ModelAndView Question(QnAVO QnA) {
-		log.info(QnA);
+//		log.info(QnA);
 		if(QnA.getQna_text().equals("")) {
 			QnA.setQna_text("내용이 없습니다.");
 		}
 		qnaservice.Question(QnA);
-		log.info("작업끝");
+//		log.info("작업끝");
 		
 		
 		ModelAndView mv = new ModelAndView();
@@ -104,12 +104,12 @@ public class QnAController {
 	// 게시물 상세페이지
 	@RequestMapping(value = "/QnA_detail", method = RequestMethod.GET)
 	public ModelAndView Question_detail(@RequestParam Map<String, Object> map, QnAVO QnA) {
-		log.info(QnA);
-		log.info(map);
+//		log.info(QnA);
+//		log.info(map);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("shop/QnA_detail");
 		mv.addObject("data", qnaservice.QnA_detail(map));
-		log.info(mv);
+//		log.info(mv);
 		return mv;
 	}
 
@@ -123,7 +123,7 @@ public class QnAController {
 	// 게시물 수정
 	@RequestMapping(value = "/Question_update", method = RequestMethod.POST)
 	public ModelAndView QnA_update(@RequestParam Map<String, Object> map, QnAVO QnA) {
-		System.out.println(map);
+//		System.out.println(map);
 		ModelAndView mv = new ModelAndView();
 		qnaservice.Question_update(QnA);
 		mv.setViewName("redirect:/shop/QnA");
@@ -133,7 +133,7 @@ public class QnAController {
 	// 게시물 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(QnAVO QnA) {
-		log.info(QnA);
+//		log.info(QnA);
 		qnaservice.delete(QnA);
 		return "redirect:/shop/QnA";
 	}
@@ -142,9 +142,9 @@ public class QnAController {
 	@RequestMapping(value = "/Question_admin", method = RequestMethod.GET)
 	public String Quetion_admin(@RequestParam Map<String, Object> map, Model model) {
 		model.addAttribute("data", qnaservice.QnA_detail(map));
-		log.info("=============================================");
-		log.info(model);
-		log.info("=============================================");
+//		log.info("=============================================");
+//		log.info(model);
+//		log.info("=============================================");
 		return "/shop/Question_admin";
 	}
 
@@ -174,13 +174,13 @@ public class QnAController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(defaultValue = "all") String checkadmin, @RequestParam(defaultValue = "all") String QnASearch,
 			QnAVO qna) {
-		log.info("게시글페이지 보기------------------------------------");
-		log.info("현재페이지 " + nowPage);
-		log.info("페이지개수 " + cntPerPage);
-		log.info("내가 검색하고싶은거는================" + checkadmin);
+//		log.info("게시글페이지 보기------------------------------------");
+//		log.info("현재페이지 " + nowPage);
+//		log.info("페이지개수 " + cntPerPage);
+//		log.info("내가 검색하고싶은거는================" + checkadmin);
 		int total = qnaservice.countQnAadminBoardCategory(checkadmin, QnASearch);
 
-		log.info(" 게시글 총 개수     " + total);
+//		log.info(" 게시글 총 개수     " + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -191,16 +191,16 @@ public class QnAController {
 		}
 
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		log.info("-------------------------------");
-		log.info("vo는 " + vo);
+//		log.info("-------------------------------");
+//		log.info("vo는 " + vo);
 		List<QnAVO> data = qnaservice.selectQnAadminBoard(vo, checkadmin, QnASearch);
 		model.addAttribute("paging", vo);
 		model.addAttribute("list", data);
 		model.addAttribute("checkadmin", checkadmin);
 		model.addAttribute("QnASearch", QnASearch);
-		log.info("-------------------------------");
-		log.info(data);
-		log.info("-------------------------------");
+//		log.info("-------------------------------");
+//		log.info(data);
+//		log.info("-------------------------------");
 
 		return "/shop/QnA_admin";
 	}
@@ -215,14 +215,14 @@ public class QnAController {
 	  // 게시물 답변 수정
 	  @RequestMapping(value="/Question_admin_update", method =RequestMethod.POST)
 	  public ModelAndView Question_admin_update(@RequestParam Map<String,Object> map,  QnAVO QnA) {
-		 System.out.println(map);
+//		 System.out.println(map);
 		 ModelAndView mv = new ModelAndView();
 		 if(QnA.getQna_answer_text().equals("")) {
 				QnA.setQna_answer_text("이용해주셔서 감사합니다.");
 			}
 		  qnaservice.Question_admin_update(QnA);
 		 mv.setViewName("redirect:/shop/QnA_admin");
-		 log.info(mv);
+//		 log.info(mv);
 		 return mv;
 	}
 

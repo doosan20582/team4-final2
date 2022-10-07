@@ -6,7 +6,7 @@ let login_id = document.querySelector(".sesseionlogin_id");
     
     QnA_Title_btn.addEventListener('click',function(){
     	if(login_id.value!=null && login_id.value!=''){
-    		console.log(login_id);
+//    		console.log(login_id);
     		location.href="Question";
     	}else{
     		alert("로그인 후 이용해주세요!");
@@ -23,7 +23,7 @@ let login_id = document.querySelector(".sesseionlogin_id");
     checkboxbtn.addEventListener('click', function(){
     	for(let i=0; i<checktype.length; i++){
     		if(checktype[i].checked == true){
-    			console.log(checktype[i].value);
+//    			console.log(checktype[i].value);
     			document.sk.submit();
     		}
     	}

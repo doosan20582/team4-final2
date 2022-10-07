@@ -1,5 +1,8 @@
 package com.goott.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.goott.domain.SessionVO;
@@ -11,20 +14,44 @@ public interface SessionMapper {
 	 * @param sessionVO
 	 * @return
 	 */
-	public int insertSession(SessionVO sessionVO);
+	public Integer insertSession(SessionVO sessionVO);
 	/**
 	 * 총 방문자수
 	 * @return
 	 */
-	public int selectCountTotal();
+	public Integer selectCountTotal();
 	/**
 	 * 오늘 방문자수
 	 * @return
 	 */
-	public int selectCountToday();
+	public Integer selectCountToday();
 	/**
 	 * 이번주 방문자수
 	 * @return
 	 */
-	public int selectCountWeek();
+	public Integer selectCountWeek();
+	
+	public Integer selectCountBoardTotal();
+	public Integer selectCountBoardWeek();
+	public Integer selectCountBoardToday();
+	
+	public Integer selectCountQnaTotal();
+	public Integer selectCountQnaWeek();
+	public Integer selectCountQnaToday();
+	
+	public Integer selectCountSalesTotal();
+	public Integer selectCountSalesWeek();
+	public Integer selectCountSalesToday();
+	
+	public List<Map<String, Object>> selectCountTotalDay();
+	public List<Map<String, Object>> selectCountTotalWeek();
+	
+	public List<Map<String, Object>> selectCountTotalDayBoard();
+	public List<Map<String, Object>> selectCountTotalWeekBoard();
+	
+	public List<Map<String, Object>> selectCountTotalDayQna();
+	public List<Map<String, Object>> selectCountTotalWeekQna();
+	
+	public List<Map<String, Object>> selectCountTotalDayShop();
+	public List<Map<String, Object>> selectCountTotalWeekShop();
 }

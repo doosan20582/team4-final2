@@ -48,7 +48,7 @@ public class UserController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String userGet(HttpServletRequest request, Model model) {
-		log.info("mypage =========================================");
+//		log.info("mypage =========================================");
 		
 		//로그인 유저 아이디
 		//인터셉터로 로그인 여부 확인 하기때문에 따로 로그인 아이디 null 처리 불필요
@@ -60,7 +60,7 @@ public class UserController {
 		List<SalesVO> salesList = userService.getUserSalesList(member_id);
 		//회원 정보
 		MemberVO memberVO = memberService.getMemberInfo(member_id);
-		log.info(memberVO);
+//		log.info(memberVO);
 		model.addAttribute("orderList" , orderList);
 		model.addAttribute("salesList" , salesList);
 		model.addAttribute("memberVO" , memberVO);
@@ -85,7 +85,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "profile", method = RequestMethod.POST)
 	public Map<String, Object> profile(@RequestParam MultipartFile file, @RequestParam String member_id){
-		log.info("프로필 이미지 변경 =======================================================");
+//		log.info("프로필 이미지 변경 =======================================================");
 		
 		
 		return userService.changeProfileImg(file, member_id);
@@ -93,7 +93,7 @@ public class UserController {
 	
 	@RequestMapping(value = "review", method = RequestMethod.GET)
 	public String reviewGet(@RequestParam int sales_id, Model model) {
-		log.info("리뷰작성 ====================================");
+//		log.info("리뷰작성 ====================================");
 		
 		
 		model.addAttribute("sales_id", sales_id);
@@ -102,7 +102,7 @@ public class UserController {
 	
 	@RequestMapping(value = "review", method = RequestMethod.POST)
 	public String reviewGet(@RequestParam MultipartFile fileImg, @RequestParam MultipartFile fileVideo, ProductReviewVO productReviewVO, @RequestParam int sales_id, Model model) {
-		log.info("리뷰작성 post ====================================");
+//		log.info("리뷰작성 post ====================================");
 		
 		//이미지 업로드  주소 초기화
 		productReviewVO.setProduct_review_img_url("no url");
@@ -132,7 +132,7 @@ public class UserController {
 	public String deleteUser(@RequestParam String member_id, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		//포스트 아이디 제대로 넘어오는지 확인
-		log.info(member_id);
+//		log.info(member_id);
 		
 		//세션에 로그인 된 상태인제 체크
 		if(session.getAttribute("login_id") != null) {
@@ -181,7 +181,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "check", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String checkPw(@RequestBody Map<String, Object> param, Model model) {
-		log.info("비밀번호 변경전 체크 =======================================");
+//		log.info("비밀번호 변경전 체크 =======================================");
 		String member_id = param.get("member_id").toString();
 		String member_pw = param.get("member_pw").toString();
 		
@@ -198,12 +198,12 @@ public class UserController {
 	}
 	@RequestMapping(value = "change_password", method = RequestMethod.GET)
 	public String changePw() {
-		log.info("비밀번호 변경 페이지 get ==============================================");
+//		log.info("비밀번호 변경 페이지 get ==============================================");
 		return "user/change_password";
 	}
 	@RequestMapping(value = "change_password", method = RequestMethod.POST)
 	public String changePwPost(@RequestParam String member_pw, HttpServletRequest request, Model model) {
-		log.info("비밀번호 변경 페이지 post ==============================================");
+//		log.info("비밀번호 변경 페이지 post ==============================================");
 		//비밀번호 업데이트 로직 작성
 		HttpSession session = request.getSession();
 		//세션에 로그인 되어 있다면
@@ -235,7 +235,7 @@ public class UserController {
 	
 	@RequestMapping(value = "basket", method = RequestMethod.GET)
 	public String basketGet(HttpServletRequest request, Model model) {
-		log.info("장바구니 ==================================================");
+//		log.info("장바구니 ==================================================");
 		HttpSession session = request.getSession();
 		
 		String member_id = session.getAttribute("login_id").toString();
@@ -248,7 +248,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "helpful", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public Map<String, Object> helpful(@RequestBody Map<String, Object> param, HttpServletRequest request) {
-		log.info("도움되요 ===========================================");
+//		log.info("도움되요 ===========================================");
 		HttpSession session = request.getSession();
 		
 		String member_id = session.getAttribute("login_id").toString();
@@ -266,8 +266,8 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "deleteBasket", method = RequestMethod.POST, produces = "text/html;charset=utf-8")
 	public String deleteBasket(@RequestBody Map<String, Object> param) {
-		log.info("장바구니 삭제 ================================");
-		log.info(param);
+//		log.info("장바구니 삭제 ================================");
+//		log.info(param);
 		int basket_id = Integer.parseInt( param.get("basket_id").toString() );
 		int result = userMapper.deleteBasket(basket_id);
 		
@@ -279,8 +279,8 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "buyBasket", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public Map<String, Object> buyBasket(@RequestBody Map<String, Object> param) {
-		log.info("장바구니 구매 ================================");
-		log.info(param);
+//		log.info("장바구니 구매 ================================");
+//		log.info(param);
 		int basket_id = Integer.parseInt( param.get("basket_id").toString() );
 		Map<String, Object> returnMap = userService.buyToBasket(basket_id);
 		return returnMap;

@@ -32,7 +32,7 @@ public class DrawController {
 
 	@RequestMapping(value = "/shop/draw_admin", method = RequestMethod.GET)
 	public ModelAndView draw_admin() {
-		log.info("draw 목록 관리자 =====================================================");
+//		log.info("draw 목록 관리자 =====================================================");
 		List<DrawVO> draw_admin = drawServiceAdmin.draw_admin();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("shop/draw_admin");
@@ -63,12 +63,12 @@ public class DrawController {
 		String temp_category_id = request.getParameter("product_category_id");
 		// 카테고리 아이디(인트형)
 		int product_category_id = Integer.parseInt(temp_category_id);
-		log.info("입력된 카테고리 번호 : " + product_category_id);
+//		log.info("입력된 카테고리 번호 : " + product_category_id);
 		// 카테고리로 정렬된 상품 리스트
 		List<Map<String, Object>> list = new ArrayList<>();
 		// 디비에서 넘어온 상품 리스트 저장
 		list = drawServiceAdmin.admin_add_plus(product_category_id);
-		log.info("한정판 상품 리스트 : " + list);
+//		log.info("한정판 상품 리스트 : " + list);
 		return list;
 	}
 
@@ -204,7 +204,7 @@ public class DrawController {
 
 	@RequestMapping(value = "/shop/draw_admin_change", method = RequestMethod.POST)
 	public ModelAndView update(DrawVO vo) {
-		log.info("이벤트 업데이트 내용 : " + vo);
+//		log.info("이벤트 업데이트 내용 : " + vo);
 		ModelAndView mv = new ModelAndView();
 		drawServiceAdmin.update(vo); 
 		mv.setViewName("redirect:/shop/draw_admin");
@@ -244,7 +244,7 @@ public class DrawController {
 			  String member_id = valueArrTest.get(i);
 			  map.put("draw_id", draw_id);
 			  map.put("member_id", member_id);
-			  log.info(map);
+//			  log.info(map);
 			  if(drawServiceAdmin.draw_admin_button_check(map)!=0) {
 					
 				} else {
@@ -259,12 +259,12 @@ public class DrawController {
   @RequestMapping(value = "/shop/draw_customer_button_ajax", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
   public List<Map<String, Object>> customer_draw_event(@RequestBody Map<String, Object> draw_button3) {
 		int draw_id = Integer.parseInt( draw_button3.get("draw_id").toString() );
-		log.info("검색 이벤트 번호 : " + draw_id);
+//		log.info("검색 이벤트 번호 : " + draw_id);
 		  
 		List<Map<String, Object>> list = new ArrayList<>();
 			
 		list = drawServiceAdmin.customer_draw_event(draw_id);
-		log.info(list);
+//		log.info(list);
 		return list;
 	  }
 	

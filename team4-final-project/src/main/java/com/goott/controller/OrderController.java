@@ -43,7 +43,7 @@ public class OrderController {
 	@RequestMapping(value = "order", method = RequestMethod.GET)
 	public String orderGet(HttpServletRequest request, @RequestParam String product_id,
 			@RequestParam(defaultValue = "1") String order_quantity, Model model) {
-		log.info("order ============================================================");
+//		log.info("order ============================================================");
 		HttpSession session = request.getSession();
 		// 세션에 저장된 아이디
 		String member_id = session.getAttribute("login_id").toString();
@@ -74,15 +74,15 @@ public class OrderController {
 	@ResponseBody
 	@RequestMapping(value = "order/coupon", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public Map<String, Object> useCoupon(@RequestBody Map<String, Object> param) {
-		log.info("쿠폰 검색 ================================================");
-		log.info(param);
+//		log.info("쿠폰 검색 ================================================");
+//		log.info(param);
 
 		String coupon_num = param.get("coupon_num").toString();
 		int product_category_id = Integer.parseInt(param.get("product_category_id").toString());
 		int product_brand_id = Integer.parseInt(param.get("product_brand_id").toString());
 
 		String result = couponService.checkCoupon(coupon_num, product_category_id, product_brand_id);
-		log.info(result);
+//		log.info(result);
 
 		CouponVO couponVO = null;
 		// 만약 쿠폰이 사용가능 하다면
@@ -103,7 +103,7 @@ public class OrderController {
 	@RequestMapping(value = "buy", method = RequestMethod.POST)
 	public String buy(HttpServletRequest request, @RequestParam double getPoint, OrderVO orderVO, Model model) {
 	
-		log.info("buy ===========================================");
+//		log.info("buy ===========================================");
 		
 		// 구매자 아이디 세션에서 받아오기
 		orderVO.setMember_id(request.getSession().getAttribute("login_id").toString());
@@ -132,15 +132,15 @@ public class OrderController {
 			model.addAttribute("url", "/order?product_id=" + query1 + "&" + "order_quantity=" + query2);
 		}
 
-		log.info(resultText);
+//		log.info(resultText);
 
 		return "alert";
 	}
 
 	@RequestMapping(value = "order/confirm", method = RequestMethod.GET)
 	public String confirmPurchase(@RequestParam int order_id, Model model) {
-		log.info("구매 확정 ====================================================");
-		log.info("구매 확정 번호 : " + order_id);
+//		log.info("구매 확정 ====================================================");
+//		log.info("구매 확정 번호 : " + order_id);
 
 		String result = orderSerivce.confirmProduct(order_id);
 		model.addAttribute("msg", result);

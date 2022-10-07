@@ -54,8 +54,7 @@ public class MemberServiceImpl implements MemberService {
 	public String pwEncode(String password) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(password);
-		log.info("암호화 처리====================================================================");
-		log.info(password + " >> " + encodedPassword);
+		
 		return encodedPassword;
 
 	}
@@ -150,7 +149,7 @@ public class MemberServiceImpl implements MemberService {
 			}
 			// 제한일 이후
 			else if (dateCount > 0) {
-				log.info("로그인 제한 일자가 지나 [ " + member_id + " ] 의 로그인 제한을 초기화 합니다.");
+//				log.info("로그인 제한 일자가 지나 [ " + member_id + " ] 의 로그인 제한을 초기화 합니다.");
 				// 로그인 시도 횟수 초기화
 				this.initUserLoginCount(member_id);
 			}

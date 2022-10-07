@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override 
 	public void saveProduct(ProductVO productVO, MultipartFile[] imgs1, MultipartFile[] imgs2) {
 		
-		log.info("이미지 저장 처리 전 : " + productVO);
+//		log.info("이미지 저장 처리 전 : " + productVO);
 		
 		//상품 이미지 
 		if(!imgs1[0].getOriginalFilename().isEmpty()) {
@@ -65,9 +65,9 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-		log.info("이미지 저장 처리 후 : " + productVO);
+//		log.info("이미지 저장 처리 후 : " + productVO);
 		productMapper.insert(productVO);
-		log.info("디비 저장 완료");
+//		log.info("디비 저장 완료");
 		
 		
 	}
@@ -108,10 +108,10 @@ public class ProductServiceImpl implements ProductService {
 			File thumbFile = new File(filePath + todayPath, thumbnailImgName);
 			try {
 				file.transferTo(saveFile);
-				log.info("메인 상품 이미지 저장");
+//				log.info("메인 상품 이미지 저장");
 				//사진 원본 파일, 사이즈, 썸네일 파일
 				Thumbnails.of(saveFile).size(100, 200).toFile(thumbFile);
-				log.info("썸네일 이미지 저장");
+//				log.info("썸네일 이미지 저장");
 				urlArr[0] = todayPath + File.separator + uuid + extention;
 				urlArr[1] = todayPath + File.separator + thumbnailImgName;
 			} catch (IllegalStateException | IOException e) {
@@ -150,17 +150,18 @@ public class ProductServiceImpl implements ProductService {
 
 			//날짜별 폴더 생성
 			File folder = new File(filePath + todayPath);
-			if(folder.mkdirs())
-				log.info("폴더 생성");
-			else
-				log.info("폴더 존재");
+			folder.mkdirs();
+//			if(folder.mkdirs())
+//				log.info("폴더 생성");
+//			else
+//				log.info("폴더 존재");
 			//파라미터로 넘어온 이미지 파일 신규 파일에 복사하여 c드라이브에 저장
 			File saveImg = new File(filePath + todayPath, uuid + fileExtention);
 			try {
 				file.transferTo(saveImg);
-				log.info("저장 성공");
-				log.info("원본 파일 이름 : " + file.getOriginalFilename());
-				log.info("저장 위치 : " + filePath + todayPath + "/" + uuid + fileExtention);
+//				log.info("저장 성공");
+//				log.info("원본 파일 이름 : " + file.getOriginalFilename());
+//				log.info("저장 위치 : " + filePath + todayPath + "/" + uuid + fileExtention);
 				//디비에 저장할 사진 위치 리턴
 				return todayPath + File.separator + uuid + fileExtention;
 				
@@ -177,14 +178,14 @@ public class ProductServiceImpl implements ProductService {
 	//사진 삭제 함수
 	public void deleteImg(String img_url) {
 		if(img_url.equals("no url")) {
-			log.info("입력된 주소 : " + img_url);
-			log.info("삭제 처리 건너뜀");
+//			log.info("입력된 주소 : " + img_url);
+//			log.info("삭제 처리 건너뜀");
 //			return "no url";
 		}
 		else {
 			String filePath = "C:/uploadtest/productImg/";
 			filePath = filePath.replace("/", File.separator);
-			log.info("삭제할 파일 : " + filePath + img_url);
+//			log.info("삭제할 파일 : " + filePath + img_url);
 			File deleteFile = new File(filePath, img_url);
 			//원본 파일 경로
 //			String folderPath = img_url.substring(0,img_url.lastIndexOf(File.separator) + 1);
@@ -214,7 +215,7 @@ public class ProductServiceImpl implements ProductService {
 //				e.printStackTrace();
 //			}
 
-			log.info("원본 파일 [ " + img_url + " ] 삭제 결과 : " + deleteFile.delete());
+//			log.info("원본 파일 [ " + img_url + " ] 삭제 결과 : " + deleteFile.delete());
 //			return filePath + folderPath + temp_img_url + extention;
 		}
 		
@@ -280,7 +281,7 @@ public class ProductServiceImpl implements ProductService {
 		//작성 해야함..
 		
 		
-		log.info("이미지 저장 처리 전 : " + productVO);
+//		log.info("이미지 저장 처리 전 : " + productVO);
 		
 		//상품 이미지 3장 저장 후 저장위치 vo에 저장
 		if(!imgs1[0].getOriginalFilename().isEmpty()) {
@@ -306,7 +307,7 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-		log.info("이미지 저장 처리 후 : " + productVO);
+//		log.info("이미지 저장 처리 후 : " + productVO);
 		
 		return productMapper.update(productVO);
 		
@@ -365,7 +366,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Map<String, Object> getProductTopSales() {
+	public List<Map<String, Object>> getProductTopSales() {
 		// TODO Auto-generated method stub
 		return productMapper.selectTopProduct();
 	}

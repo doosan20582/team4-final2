@@ -18,7 +18,7 @@ public class CommonInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("인터셉터 ==============================================================");
+//		log.info("인터셉터 ==============================================================");
 		
 		//세션 생성
 		HttpSession session = request.getSession();
@@ -26,7 +26,7 @@ public class CommonInterceptor implements HandlerInterceptor{
 		
 		//로그인 아이디가 없다면
 		if(session.getAttribute("login_id") == null) {
-			log.info("세션 로그인 여부 체크중 =======================================");
+//			log.info("세션 로그인 여부 체크중 =======================================");
 			//로그인 페이지 리다이렉트 전 보려던 페이지 주소 세션에 저장
 //			String prior_uri  = request.getRequestURI();
 //			
@@ -41,7 +41,7 @@ public class CommonInterceptor implements HandlerInterceptor{
 			
 			//없으면 로그인 페이지로 리다이렉트 후 리턴 false
 			//로그인 페이지로 리다이렉트
-			log.info("리다이렉트 보내는 중 =======================================");
+//			log.info("리다이렉트 보내는 중 =======================================");
 			session.setAttribute("msg", "로그인이 필요한 페이지 입니다. 로그인 페이지로 이동합니다.");
 			session.setAttribute("url", "/login");
 			response.sendRedirect("/alert");
@@ -51,7 +51,7 @@ public class CommonInterceptor implements HandlerInterceptor{
 		
 		//있다면 리턴 트루
 		else {
-			log.info("로그인 중 , 아이디 : " + session.getAttribute("login_id").toString());
+//			log.info("로그인 중 , 아이디 : " + session.getAttribute("login_id").toString());
 			return true;
 			
 		}

@@ -30,13 +30,13 @@ public class AdminController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String adminGet() {
-		log.info("관리자 메인 ========================================");
+//		 log.info("관리자 메인 ========================================"); 
 		
 		return "/admin/admin";
 	}
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(Model model) {
-		log.info("회원 리스트 보기 =======================================");
+//		log.info("회원 리스트 보기 =======================================");
 		
 		List<MemberVO> list = adminService.getMemberAllList(); 
 		
@@ -46,7 +46,7 @@ public class AdminController {
 	}
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String detail(@RequestParam String member_id, Model model) {
-		log.info("회원 디테일 ===========================================");
+//		log.info("회원 디테일 ===========================================");
 		
 		MemberVO member = adminService.getMemberInfo(member_id);
 		List<Map<String, Object>> freeMapList = adminService.getFreeList(member_id);
@@ -66,14 +66,14 @@ public class AdminController {
 	
 	@RequestMapping(value = "send", method = RequestMethod.GET)
 	public String sendGet() {
-		log.info("프로모션 메일 보내기 get ==============================================");
+//		log.info("프로모션 메일 보내기 get ==============================================");
 		
 		return "/admin/send";
 	}
 	
 	@RequestMapping(value = "send", method = RequestMethod.POST)
 	public String send(@RequestParam String subject, @RequestParam String content) {
-		log.info("프로모션 메일 보내기 post ==============================================");
+//		log.info("프로모션 메일 보내기 post ==============================================");
 		adminService.setPromotionEmail(subject, content);
 		return "/admin/admin";
 	}
@@ -81,11 +81,30 @@ public class AdminController {
 	
 	@RequestMapping(value = "count", method = RequestMethod.GET)
 	public String count(Model model){
-		log.info("방문자수 ===============================================");
+//		log.info("방문자수 ===============================================");
 		
 		Map<String, Object> countMap = sessionService.countBasic();
-		log.info(countMap);
+		List<Map<String, Object>> countTotalDayMap = sessionService.countTotalDay();
+		List<Map<String, Object>> countTotalWeekMap = sessionService.countTotalWeek();
+		List<Map<String, Object>> countTotalDayMapBoard = sessionService.countTotalDayBoard();
+		List<Map<String, Object>> countTotalWeekMapBoard = sessionService.countTotalWeekBoard();
+		List<Map<String, Object>> countTotalDayMapQna = sessionService.countTotalDayQna();
+		List<Map<String, Object>> countTotalWeekMapQna = sessionService.countTotalWeekQna();
+		List<Map<String, Object>> countTotalDayMapShop = sessionService.countTotalDayShop();
+		List<Map<String, Object>> countTotalWeekMapShop = sessionService.countTotalWeekShop();
+		
+		
 		model.addAttribute("countMap", countMap);
+		model.addAttribute("countTotalDayMap", countTotalDayMap);
+		model.addAttribute("countTotalWeekMap", countTotalWeekMap);
+		model.addAttribute("countTotalDayMapBoard", countTotalDayMapBoard);
+		model.addAttribute("countTotalWeekMapBoard", countTotalWeekMapBoard);
+		model.addAttribute("countTotalDayMapQna", countTotalDayMapQna);
+		model.addAttribute("countTotalWeekMapQna", countTotalWeekMapQna);
+		model.addAttribute("countTotalDayMapShop", countTotalDayMapShop);
+		model.addAttribute("countTotalWeekMapShop", countTotalWeekMapShop);
+		
+		
 		return "/admin/count";
 	}
 }

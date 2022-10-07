@@ -41,13 +41,13 @@ function selectDelete(){
 		if(confirmCk){
 				let valueArr = new Array();
 				let list = document.querySelectorAll('input[name="grade"]');
-				console.log(list);
+//				console.log(list);
 				for(let i=0; i<list.length; i++){
 					if(list[i].checked){
 						valueArr.push(list[i].value);
 					}
 				}
-				console.log(valueArr);
+//				console.log(valueArr);
 				
 				//삭제 
 				$.ajax({

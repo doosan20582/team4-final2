@@ -16,7 +16,7 @@ let login_id = document.querySelector(".sesseionlogin_id");
     checkadminboxbtn.addEventListener('click', function(){
     	for(let i=0; i<checkadmintype.length; i++){
     		if(checkadmintype[i].checked == true){
-    			console.log(checkadmintype[i].value);
+//    			console.log(checkadmintype[i].value);
     			document.sk.submit();
     		}
     	}

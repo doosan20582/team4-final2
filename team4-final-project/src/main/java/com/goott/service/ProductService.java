@@ -121,5 +121,5 @@ public interface ProductService {
 	 * 상품 판매 탑 10 가져오기
 	 * @return map(product_id, count, product_name, product_thumbnail_img_url) 상위 10개
 	 */
-	public Map<String, Object> getProductTopSales();
+	public List<Map<String, Object>> getProductTopSales();
 }

@@ -14,12 +14,12 @@ public class AdminInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("관리자 인터셉터========================================================================");
+//		log.info("관리자 인터셉터========================================================================");
 		HttpSession session = request.getSession();
 		
 		//로그인 유저의 권한이 관리자가 아니라면 접근 금지
 		if(session.getAttribute("login_auth") == null || !session.getAttribute("login_auth").equals("관리자")) {
-			log.info("관리자 권한이 없습니다. ========================================================================");
+//			log.info("관리자 권한이 없습니다. ========================================================================");
 			session.setAttribute("msg", "관리자 권한이 필요한 페이지 입니다. 관리자 아이디로 로그인 해 주세요.");
 			session.setAttribute("url", "/login");
 			response.sendRedirect("/alert");

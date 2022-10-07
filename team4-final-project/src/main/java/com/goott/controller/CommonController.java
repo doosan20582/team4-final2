@@ -34,12 +34,12 @@ public class CommonController {
 	
 	@RequestMapping(value = "alert", method = RequestMethod.GET)
 	public void alert() {
-		log.info("경고 창 이동");
+//		log.info("경고 창 이동");
 	}
 
 	@RequestMapping(value = "agree", method = RequestMethod.GET)
 	public void agreeGet() {
-		log.info("약관 동의 get =================================");
+//		log.info("약관 동의 get =================================");
 	}
 	
 	
@@ -49,7 +49,7 @@ public class CommonController {
 	 * */
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public void joinGet(@RequestParam String member_email_agree, Model model) {
-		log.info("회원 가입 get ===========================================");
+//		log.info("회원 가입 get ===========================================");
 		model.addAttribute("member_email_agree", member_email_agree);
 	}
 	/** 회원 가입 전 이메일 인증 체크 
@@ -58,14 +58,14 @@ public class CommonController {
 	 * */
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String joinPost(MemberVO memberVO, Model model) {
-		log.info("이메일 인증 처리 post ===========================================");
+//		log.info("이메일 인증 처리 post ===========================================");
 		//기본 프로필 이미지
 		memberVO.setMember_profile_img_url("/resources/img/user/basic_profile.jpg");
-		log.info(memberVO);
+//		log.info(memberVO);
 		model.addAttribute("member" , memberVO);
 		//가입 신청 유저 이메일 주소로 메일 발송 , 생성된 랜덤 코드 리턴
 		String code = mailSendService.joinEmail(memberVO.getMember_email());
-		log.info("인증 메일 발송==============================================");
+//		log.info("인증 메일 발송==============================================");
 		model.addAttribute("code", code );
 		return "auth_mail";
 	}
@@ -76,15 +76,15 @@ public class CommonController {
 	 */
 	@RequestMapping(value = "joinSuccess", method = RequestMethod.POST)
 	public String joinSuccessPost(MemberVO memberVO) {
-		log.info("회원 가입 완료 post ============================================");
-		log.info(memberVO);
+//		log.info("회원 가입 완료 post ============================================");
+//		log.info(memberVO);
 		memberService.joinMember(memberVO);
-		log.info("회원 가입 완료");
+//		log.info("회원 가입 완료");
 		return "home";
 	}
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void loginGet() {
-		log.info("로그인 get ==============================================================");
+//		log.info("로그인 get ==============================================================");
 	}
 	
 	/**
@@ -95,14 +95,14 @@ public class CommonController {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginPost(@RequestParam String member_id, @RequestParam String member_pw , Model model, HttpServletRequest request) {
-		log.info("로그인 post ==============================================================");
+//		log.info("로그인 post ==============================================================");
 		
 		
-		log.info("로그인 시도 아이디 : " + member_id);
+//		log.info("로그인 시도 아이디 : " + member_id);
 		
 		String msg = memberService.loginCheck(member_id, member_pw);
 		
-		log.info("로그인 시도 결과 : " + msg);
+//		log.info("로그인 시도 결과 : " + msg);
 		
 		//로그인 성공 이라면 세션에 로그인 아이디 추가
 		if(msg.equals("로그인 성공.")) {
@@ -125,7 +125,7 @@ public class CommonController {
 			if(session.getAttribute("prior_uri") != null) {
 				String prior_uri = session.getAttribute("prior_uri").toString();
 				String query_string = session.getAttribute("query_string").toString();
-				log.info("세션에 저장된 접속하려던 주소 : " + prior_uri);
+//				log.info("세션에 저장된 접속하려던 주소 : " + prior_uri);
 				//세션에 이전 접속 주소 초기화
 				session.removeAttribute("prior_uri");
 				session.removeAttribute("query_string");
@@ -170,8 +170,8 @@ public class CommonController {
 	@ResponseBody
 	@RequestMapping(value = "checkDupIdAjax", method = RequestMethod.POST)
 	public String checkDupIdAjax(@RequestBody Map<String, String> param) {
-		log.info("아이디 중복 체크 ajax============================================");
-		log.info(param);
+//		log.info("아이디 중복 체크 ajax============================================");
+//		log.info(param);
 		String member_id = param.get("id");
 		String result = Integer.toString(memberService.checkDupId(member_id));
 		return result;
@@ -185,8 +185,8 @@ public class CommonController {
 	@ResponseBody
 	@RequestMapping(value = "checkDupEmailAjax", method = RequestMethod.POST)
 	public String checkDupEmailAjax(@RequestBody Map<String, String> param) {
-		log.info("이메일 중복 체크 ajax============================================");
-		log.info(param);
+//		log.info("이메일 중복 체크 ajax============================================");
+//		log.info(param);
 		String member_email = param.get("email");
 		String result = Integer.toString(memberService.checkDupEmail(member_email));
 		return result;
@@ -195,13 +195,13 @@ public class CommonController {
 
 	@RequestMapping(value = "forgot", method = RequestMethod.GET)
 	public String forgotGet() {
-		log.info("비밀번호 찾기 get ==========================================================");
+//		log.info("비밀번호 찾기 get ==========================================================");
 		return "/forgot";
 	}
 	
 	@RequestMapping(value = "forgot", method = RequestMethod.POST)
 	public String forgotPost(@RequestParam String member_id, @RequestParam String member_email, Model model) {
-		log.info("비밀번호 찾기 post ==========================================================");
+//		log.info("비밀번호 찾기 post ==========================================================");
 		
 		String resultText = userService.forgotPassword(member_id, member_email);
 		//비밀번호 초기화 이메일을 발송 하였다면

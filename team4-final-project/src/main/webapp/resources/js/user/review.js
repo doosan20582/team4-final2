@@ -85,7 +85,7 @@ function selectSpeed(){
     this.style.backgroundColor = 'black';
     this.style.color = 'white';
     productSpeedInput.value = this.innerHTML;
-    console.log(`선택한 배송속도 : ${productSpeedInput.value}`);
+//    console.log(`선택한 배송속도 : ${productSpeedInput.value}`);
 }
 
 /*별들 색칠하는 함수 */

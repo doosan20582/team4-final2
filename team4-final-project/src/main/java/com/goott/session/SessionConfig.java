@@ -35,10 +35,10 @@ public class SessionConfig implements HttpSessionListener {
         //request를 파라미터에 넣지 않고도 사용할수 있도록 설정
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 		
-		log.info("세션리스너 테스트");
-		
-		log.info("접속 브라우저 : " + request.getHeader("User-Agent"));
-		log.info("접속 아이피 : " + request.getRemoteAddr());
+//		log.info("세션리스너 테스트");
+//		
+//		log.info("접속 브라우저 : " + request.getHeader("User-Agent"));
+//		log.info("접속 아이피 : " + request.getRemoteAddr());
 		
 		SessionVO sessionVO = new SessionVO();
 		sessionVO.setBrowser(request.getHeader("User-Agent"));

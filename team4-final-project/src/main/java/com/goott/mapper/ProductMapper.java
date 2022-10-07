@@ -123,5 +123,5 @@ public interface ProductMapper {
 	 * 상품 판매량 탑 10 가져오기
 	 * @return map(product_id, count, product_name, product_thumbnail_img_url) 상위 10개
 	 */
-	public Map<String, Object> selectTopProduct();
+	public List<Map<String, Object>> selectTopProduct();
 }

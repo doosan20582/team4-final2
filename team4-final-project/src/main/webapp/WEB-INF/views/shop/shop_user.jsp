@@ -166,12 +166,12 @@
 		</div>
 
 		<div class="side">
-			<div class="side_navBar">
+			<div class="side_navBar" >
 				<!-- 등급 구역 -->
-				<div class="gradeDiv">
+				<div class="gradeDiv" style="background-color: ${userInfo.grade_color};">
 					
 				
-					<div class="gradeInnerTop">
+					<div class="gradeInnerTop" >
 						<c:if test="${empty userInfo }">
 							<p>로그인후 이용하실수 있습니다.</p>
 						</c:if>
@@ -186,7 +186,7 @@
 							<p>로그인후 이용하실수 있습니다.</p>
 						</c:if>
 						<c:if test="${!empty userInfo }">
-							<span class="userGradeSpan" style="color: ${userInfo.grade_color}">${userInfo.grade_name }</span>
+							<span class="userGradeSpan" style="color: ${userInfo.grade_font_color}">${userInfo.grade_name }</span>
 							<a href="user/basket" class="basketAnchor">장바구니</a>
 						</c:if>
 						
