@@ -36,6 +36,8 @@ h1 {
     cursor:pointer;
     background-color : var(--mainColor);
     transition : all 0.1s;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
 }
 #checkboxbtn{
 	width: 100px;
@@ -47,6 +49,8 @@ h1 {
     cursor:pointer;
     background-color : var(--mainColor);
     transition : all 0.1s;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
 }
 #QnA_Title_btnAsked:hover, #QnA_Title_btn:hover .asked:hover, #checkadminboxbtn:hover, #checkboxbtn:hover{
 	box-shadow : white 0 0 2px 2px;
@@ -59,6 +63,8 @@ h1 {
 	border-radius: 5px;
     color: white;
     cursor:pointer;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
     background-color : var(--mainColor);
     transition : all 0.1s;
 }

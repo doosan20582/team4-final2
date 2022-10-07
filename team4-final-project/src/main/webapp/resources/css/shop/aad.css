@@ -32,6 +32,8 @@ main{
     cursor:pointer;
     background-color : var(--mainColor);
     transition : all 0.1s;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
      margin: 5px; 
      float: right; 
 }
@@ -87,12 +89,14 @@ main{
 .btn_ask, .btn_update, .btn_delete{
 	width: 100px;
     height: 40px;
-    /* font-size: 1.0rem; */
+    font-size: 1.0rem;
     border-style: none;
     border-radius: 5px;
     color: white;
     margin:10px;
     cursor:pointer;
+    font-family: 'GimpoGothicBold00';
+	transition: .3s;
     background-color : var(--mainColor);
     transition : all 0.1s;
 }

@@ -20,7 +20,7 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <title>Document</title>
 <style>
-	.ck.ck-editor{ width: 700px; }
+	.ck.ck-editor{ width: 760px; }
 	.ck-editor__editable { height: 340px; }	
 </style>
 </head>

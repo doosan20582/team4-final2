@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2/xeicon.min.css">
 <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 <style>
-	.ck.ck-editor{ width: 700px; }
+	.ck.ck-editor{ width: 760px; }
 	.ck-editor__editable { height: 340px; }	
 </style>
 <title>Document</title>
