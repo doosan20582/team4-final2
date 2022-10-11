@@ -354,7 +354,7 @@ main .productBottom{
 
 /*리뷰 도움이되요*/
 .thumb {
-	cursor: pointer;
+	cursor: not-allowed;
 	color: rgb(139, 197, 255);
 	transition: .3s;
   	font-variation-settings:
@@ -363,9 +363,9 @@ main .productBottom{
   	'GRAD' 0,
   	'opsz' 48;
 }
-.thumb:hover{
+/* .thumb:hover{
 	color: rgb(0, 128, 255);
-}
+} */
 
 .reviewsContent{
 	overflow-y: scroll;

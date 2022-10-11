@@ -244,9 +244,18 @@ function viewMoreReview(){
 			}
 			//일회성 필요하므로 삭제
 			document.querySelector('#pageEnd').remove();
+			
+			//리뷰 좋아요 스팬
+			const thumbs = document.querySelectorAll('.thumb');
+			thumbs.forEach((item) => {
+				item.addEventListener('click', doHelpful);
+			});
 		}
 		
 	});
+	
+	
+	
 }
 
 /*리뷰 구역 이동 함수 */
