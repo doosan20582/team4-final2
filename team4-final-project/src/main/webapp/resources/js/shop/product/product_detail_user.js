@@ -226,7 +226,7 @@ function viewMoreReview(){
 	currentPage.value = temp;
 	let param = { product_id : product_id.value ,currentPage : currentPage.value };
 	//ajax 처리후 다음 10개 가져오기 로직 작성
-	$.ajax({
+	$.ajax({  
 		type: 'post',
 		url: '/product/review',
 		data: JSON.stringify(param),
