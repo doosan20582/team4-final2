@@ -226,7 +226,7 @@ function viewMoreReview(){
 	currentPage.value = temp;
 	let param = { product_id : product_id.value ,currentPage : currentPage.value };
 	//ajax 처리후 다음 10개 가져오기 로직 작성
-	$.ajax({
+	$.ajax({  
 		type: 'post',
 		url: '/product/review',
 		data: JSON.stringify(param),
@@ -244,9 +244,18 @@ function viewMoreReview(){
 			}
 			//일회성 필요하므로 삭제
 			document.querySelector('#pageEnd').remove();
+			
+			//리뷰 좋아요 스팬
+			const thumbs = document.querySelectorAll('.thumb');
+			thumbs.forEach((item) => {
+				item.addEventListener('click', doHelpful);
+			});
 		}
 		
 	});
+	
+	
+	
 }
 
 /*리뷰 구역 이동 함수 */
